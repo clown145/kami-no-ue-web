@@ -1,0 +1,320 @@
+{
+  "source": "system_subroutine.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1
+    },
+    {
+      "type": "comment",
+      "text": " system_subroutine.ks…サブルーチン集",
+      "line": 3
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 5
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 11
+    },
+    {
+      "type": "comment",
+      "text": " 全メッセージレイヤ表画面を非表示にする",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 15
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": "   [call storage=\"system_subroutine.ks\" target=*sub_messlayernoshow]",
+      "line": 19
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 21
+    },
+    {
+      "type": "comment",
+      "text": " 使用している変数：",
+      "line": 23
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sub_i … ループカウンタ",
+      "line": 25
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 27
+    },
+    {
+      "type": "label",
+      "name": "sub_messlayernoshow",
+      "line": 29
+    },
+    {
+      "type": "comment",
+      "text": " 全メッセージレイヤ表画面を非表示",
+      "line": 31
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.sub_i = 0"
+      },
+      "line": 33,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "sub_messlayernoshow_loop0",
+      "line": 35
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&'message'+tf.sub_i",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 37,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sub_messlayernoshow_loop0",
+        "cond": "++tf.sub_i < kag.numMessageLayers"
+      },
+      "line": 39,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 41,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 47
+    },
+    {
+      "type": "comment",
+      "text": " 全前景レイヤ表画面を非表示にする",
+      "line": 49
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 51
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 53
+    },
+    {
+      "type": "comment",
+      "text": "   [call storage=\"system_subroutine.ks\" target=*sub_fglayernoshow]",
+      "line": 55
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 57
+    },
+    {
+      "type": "comment",
+      "text": " 注意事項：",
+      "line": 59
+    },
+    {
+      "type": "comment",
+      "text": "   ‐前景レイヤの透明度は完全不透明（255）に変更する",
+      "line": 61
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 63
+    },
+    {
+      "type": "comment",
+      "text": " 使用している変数：",
+      "line": 65
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sub_i … ループカウンタ",
+      "line": 67
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 69
+    },
+    {
+      "type": "label",
+      "name": "sub_fglayernoshow",
+      "line": 71
+    },
+    {
+      "type": "comment",
+      "text": " 全前景レイヤ表画面を非表示",
+      "line": 73
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.sub_i = 0"
+      },
+      "line": 75,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "sub_fglayernoshow_loop0",
+      "line": 77
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.sub_i",
+        "page": "fore",
+        "visible": "false",
+        "opacity": "255"
+      },
+      "line": 79,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sub_fglayernoshow_loop0",
+        "cond": "++tf.sub_i < kag.numCharacterLayers"
+      },
+      "line": 81,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 83,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 89
+    },
+    {
+      "type": "comment",
+      "text": " 全メッセージレイヤ表画面、全前景レイヤ表画面を非表示にする",
+      "line": 91
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 93
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 95
+    },
+    {
+      "type": "comment",
+      "text": "   [call storage=\"system_subroutine.ks\" target=*sub_layernoshow]",
+      "line": 97
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 99
+    },
+    {
+      "type": "comment",
+      "text": " 注意事項：",
+      "line": 101
+    },
+    {
+      "type": "comment",
+      "text": "   ‐前景レイヤの透明度は完全不透明（255）に変更する",
+      "line": 103
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 105
+    },
+    {
+      "type": "comment",
+      "text": " 使用している変数：",
+      "line": 107
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sub_i … ループカウンタ（呼び出し先のサブルーチンで）",
+      "line": 109
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 111
+    },
+    {
+      "type": "label",
+      "name": "sub_layernoshow",
+      "line": 113
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "target": "*sub_messlayernoshow"
+      },
+      "line": 115,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "target": "*sub_fglayernoshow"
+      },
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 119,
+      "inline": true
+    }
+  ]
+}

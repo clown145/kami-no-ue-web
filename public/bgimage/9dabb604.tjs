@@ -1,0 +1,290 @@
+// Copyright(C) 2010-2012 none
+class SliderLayer_sd extends SliderLayer
+{
+	var Slider_tabHeight = 10;
+	var Slider_tabColor  = 0xFF999999; // タブの色
+									   // fillRectを使っているので0xAARRBBGG。
+									   // 不透明度によっては不都合がでるかもしれない
+	var Slider_tabImg;
+	var tabImg = false;
+	
+	var Slider_barColor  = 0xFF000000; // バーの色　以下上に同じ
+	var Slider_barImg;
+	var barImg = false;
+	
+	var Slider_dragOriginY;
+	
+	var mode = 'x'; // x or y
+	
+	var keyDown = false;
+	//var once = true;
+	
+	var se = '';
+	var seBuf = 0;
+	
+	function SliderLayer_sd(win, parent)
+	{
+		super.SliderLayer(win, parent);
+		Slider_tabImg = new global.Layer(win, this);
+		Slider_barImg = new global.Layer(win, this);
+		
+		Slider_position = -1;
+		
+		hitType = htMask;
+		hitThreshold = 0;
+		
+		enabled = true;
+	}
+	
+	function onPaint()
+	{
+		super.onPaint(...);
+		
+		// よく使う値をローカル変数に用意する
+		var imw = imageWidth, imh = imageHeight;
+		var tabw = Slider_tabWidth;
+		var tabh = Slider_tabHeight;
+		var htabw = tabw >> 1;
+		var htabh = tabh >> 1;
+		
+		if(barImg)
+		{
+			// バーの画像がある
+			assignImages(Slider_barImg);
+		}
+		else
+		{
+			// ない
+			fillRect(0, 0, width, height, Slider_barColor);
+		}
+		
+		
+		var x_htabw = 0;
+		var y_htabh = 0;
+		
+		if(mode == 'x')
+		{
+			var saru = tabImg? 2:2;
+			var pos_x = int(
+				(Slider_position-Slider_min) * (imw - tabw - saru)/(Slider_max - Slider_min)) +
+				htabw + 1;
+				x_htabw = pos_x - htabw;
+		}
+		else
+		{
+			var saru = tabImg? 2:2;
+			var pos_y = int(
+				(Slider_position-Slider_min) * (imh - tabh - saru)/(Slider_max - Slider_min)) +
+				htabh + 1;
+				y_htabh = pos_y - htabh;
+		}
+		
+		if(tabImg)
+		{
+			// タブの画像がある
+			
+			// ハイライト
+			if(Slider_mouseOn)
+			{
+				copyRect(x_htabw, y_htabh, Slider_tabImg, Slider_tabWidth, 0, Slider_tabWidth, Slider_tabHeight);
+			}
+			else
+			{
+				copyRect(x_htabw, y_htabh, Slider_tabImg, 0, 0, Slider_tabWidth, Slider_tabHeight);
+			}
+		}
+		else
+		{
+			// ない
+			fillRect(x_htabw, y_htabh, tabw, tabh, Slider_tabColor);
+		}
+	}
+	
+	function onKeyDown(key, shift, process)
+	{
+		keyDown = true;
+		// キーが押された
+		if(process)
+		{
+			if(mode == 'x')
+			{
+				super.onKeyDown(...);
+			}
+			else
+			{
+				//super.onKeyDown(...);
+			}
+		}
+		else
+		{
+			// process が false の場合は処理は行わない
+			//super.onKeyDown(...);
+		}
+	}
+	
+	function onKeyUp(key, shift, process=true)
+	{
+		if(keyDown && se!='') kag.se[seBuf].play(%[storage: se, loop: false]);
+		keyDown = false;
+		super.onKeyUp(...);
+	}
+	
+	function onBlur()
+	{
+		keyDown = false;
+		super.onBlur(...);
+	}
+	
+	function onMouseDown(x, y, button)
+	{
+		// マウスボタンが押された
+		//focus();
+			
+			if(mode == 'x')
+			{
+				super.onMouseDown(...);
+			}
+			else
+			{
+				var tabh = Slider_tabHeight;
+				var htabh = tabh >> 1;
+				var pos_y = int(
+					(Slider_position-Slider_min) * (imageHeight - tabh - 2)/(Slider_max - Slider_min)) +
+					htabh + 1;
+				if(pos_y - htabh > y)
+				{
+					// タブより上
+					// 切り上げ処理
+					var i = int(Math.ceil((Slider_max - Slider_min)/ (tabh-2)));
+					position = Slider_position - i;
+				}
+				else if(pos_y + htabh < y)
+				{
+					// タブより下
+					// 切り上げ処理
+					var i = int(Math.ceil((Slider_max - Slider_min)/ (tabh-2)));
+					position = Slider_position + i;
+				}
+				else
+				{
+					// タブ
+					// タブのドラッグを開始
+					Slider_dragging = true;
+					Slider_dragOriginY = y - pos_y;
+				}
+			}
+	}
+	
+	function onMouseUp(x, y, button)
+	{
+		if(se!='') kag.se[seBuf].play(%[storage: se, loop: false]);
+		super.onMouseUp(...);
+	}
+	
+	function onMouseMove(x, y)
+	{
+		// マウスが移動した
+		
+		if(Slider_dragging)
+		{
+			if(mode == 'x')
+			{
+				super.onMouseMove(...);
+			}
+			else
+			{
+				// タブをドラッグ
+				position = int(
+					(y - Slider_dragOriginY - (Slider_tabHeight >> 1)) * (Slider_max - Slider_min) /
+					(imageHeight - Slider_tabHeight - 2) + Slider_min);
+			}
+		}
+	}
+	
+	property position
+	{
+		setter(x)
+		{
+			if(x < Slider_min) x = Slider_min;
+			if(x > Slider_max) x = Slider_max;
+			
+			if(x != Slider_position)
+			{
+				Slider_position = x;
+				update();
+				onChange(Slider_position);
+			}
+		}
+		getter
+		{
+			return Slider_position;
+		}
+	}
+	
+	function loadTubImage(storage)
+	{
+		Slider_tabImg.loadImages(storage);
+		Slider_tabImg.setSizeToImageSize();
+		Slider_tabImg.name = storage;
+		
+		Slider_tabWidth  = Slider_tabImg.width\2;
+		Slider_tabHeight = Slider_tabImg.height;
+		
+		if(mode == 'x')
+		{
+			height = Slider_tabHeight;
+		}
+		else
+		{
+			width = Slider_tabWidth;
+		}
+		
+		tabImg = true;
+	}
+	
+	function loadBarImage(storage)
+	{
+		Slider_barImg.loadImages(storage);
+		Slider_barImg.setSizeToImageSize();
+		Slider_barImg.name = storage;
+		
+		width = imageWidth;
+		height= imageHeight;
+		
+		barImg = true;
+	}
+	
+	function setImages(tub, bar)
+	{
+		loadTubImage(tub);
+		loadBarImage(bar);
+	}
+	
+	function setTabSize()
+	{
+		if(mode == 'x')
+		{
+			var w = (imageWidth\max<10)? 10:imageWidth\max;
+			Slider_tabWidth  = w;
+			Slider_tabHeight = imageHeight;
+		}
+		else
+		{
+			var h = (imageHeight\max<10)? 10:imageHeight\max;
+			Slider_tabHeight = h;
+			Slider_tabWidth  = imageWidth;
+		}
+		update();
+	}
+	
+	function setColor(base, tab)
+	{
+		Slider_tabColor = tab;
+		Slider_barColor = base;
+	}
+	
+	function finalize()
+	{
+		super.finalize(...);
+	}
+}

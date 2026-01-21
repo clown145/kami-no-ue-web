@@ -1,0 +1,48 @@
+// 文字表示速度（厳密にはウェイト）を変更
+function chspeed_func(pos)
+{
+	kag.userChSpeed = pos;
+	kag.userCh2ndSpeed = pos;
+}
+
+// 既読文字表示速度（厳密にはウェイト）を変更
+function ch2speed_func(pos)
+{
+	kag.userCh2ndSpeed = pos;
+}
+
+// 透明度を変更
+function waku_func(pos)
+{
+	sf.frame_opacity = pos;
+}
+
+// 改行ウェイトを変更
+function linewait_func(pos)
+{
+	kag.autoModeLineWait = pos;
+}
+
+// 改ページウェイトを変更
+function pagewait_func(pos)
+{
+	kag.autoModePageWait = pos;
+}
+
+// BGM大域音量を変更
+function bgmvolume_func(pos)
+{
+	var dic = %["gvolume"=>pos];
+	kag.bgm.setOptions(dic);
+	invalidate dic;
+}
+
+// 全効果音バッファ大域音量を変更
+function sevolume_func(pos)
+{
+	var dic = %["gvolume"=>pos];
+	for(var i = 0; i < kag.numSEBuffers; i++)
+		kag.se[i].setOptions(dic);
+	invalidate dic;
+}
+

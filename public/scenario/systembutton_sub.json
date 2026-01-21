@@ -1,0 +1,552 @@
+{
+  "source": "systembutton_sub.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 3
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 5
+    },
+    {
+      "type": "comment",
+      "text": "   ‐予め、Config.tjsの以下の項目を修正すること",
+      "line": 7
+    },
+    {
+      "type": "comment",
+      "text": "       characterMenu.visible … falseに変更",
+      "line": 9
+    },
+    {
+      "type": "comment",
+      "text": "       displayMenu.visible   … falseに変更",
+      "line": 11
+    },
+    {
+      "type": "comment",
+      "text": "       storeMenu.visible     … falseに変更",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "       restoreMenu.visible   … falseに変更",
+      "line": 15
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 27
+    },
+    {
+      "type": "comment",
+      "text": " 「ロードする」が選択された",
+      "line": 29
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 31
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンの表示／非表示、マウス右クリックの設定復帰をここで行っていることに注意",
+      "line": 33
+    },
+    {
+      "type": "comment",
+      "text": " これはタイトルメニュー画面からもロード画面を呼び出せるようにするための措置",
+      "line": 35
+    },
+    {
+      "type": "comment",
+      "text": " （呼び出し側で辻褄合わせすれば、ロード画面のKAGシナリオを共有できるため）",
+      "line": 37
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 39
+    },
+    {
+      "type": "label",
+      "name": "sys_load",
+      "line": 41
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンを非表示",
+      "line": 43
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "false",
+        "backvisible": "false"
+      },
+      "line": 45
+    },
+    {
+      "type": "comment",
+      "text": " ロード画面へ",
+      "line": 47
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "system_load.ks",
+        "target": "*load_menu"
+      },
+      "line": 49,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す（system_load.ks内でマウス右クリックの設定が変わっているため）",
+      "line": 51
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "call": "false",
+        "jump": "false"
+      },
+      "line": 53,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンを表示",
+      "line": 55
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "true",
+        "backvisible": "true"
+      },
+      "line": 57
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 59,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 69
+    },
+    {
+      "type": "comment",
+      "text": " 「ゲーム設定」が選択された",
+      "line": 71
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 73
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンの表示／非表示、マウス右クリックの設定復帰をここで行っていることに注意",
+      "line": 75
+    },
+    {
+      "type": "comment",
+      "text": " これはタイトルメニュー画面からもコンフィグ画面を呼び出せるようにするための措置",
+      "line": 77
+    },
+    {
+      "type": "comment",
+      "text": " （呼び出し側で辻褄合わせすれば、コンフィグ画面のKAGシナリオを共有できるため）",
+      "line": 79
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 81
+    },
+    {
+      "type": "label",
+      "name": "sys_config",
+      "line": 83
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンを非表示",
+      "line": 85
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "false",
+        "backvisible": "false"
+      },
+      "line": 87
+    },
+    {
+      "type": "comment",
+      "text": " コンフィグ画面へ",
+      "line": 89
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "r_click_config.ks",
+        "target": "*config_menu"
+      },
+      "line": 91,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す（system_config.ks内でマウス右クリックの設定が変わっているため）",
+      "line": 93
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "call": "false",
+        "jump": "false"
+      },
+      "line": 95,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンを表示",
+      "line": 97
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "true",
+        "backvisible": "true"
+      },
+      "line": 99
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 101,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "sys_menu",
+      "line": 105
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンを非表示",
+      "line": 107
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "false",
+        "backvisible": "false"
+      },
+      "line": 109
+    },
+    {
+      "type": "comment",
+      "text": " コンフィグ画面へ",
+      "line": 111
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "rclick_tjs.ks",
+        "target": "*rclick_top",
+        "enabled": "true"
+      },
+      "line": 113,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す（system_config.ks内でマウス右クリックの設定が変わっているため）",
+      "line": 115
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "call": "false",
+        "jump": "false"
+      },
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンを表示",
+      "line": 119
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "true",
+        "backvisible": "true"
+      },
+      "line": 121
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 123,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "qsave",
+      "line": 127
+    },
+    {
+      "type": "comment",
+      "text": "[mappfont storage=\"haikarapop.tft\"][font face=\"AR PハイカラＰＯＰ体H\"]",
+      "line": 129
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.qsaveAsk"
+      },
+      "line": 131
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!askYesNo('即时存档？')"
+      },
+      "line": 133
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 135
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 137
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 139
+    },
+    {
+      "type": "command",
+      "name": "save",
+      "args": {
+        "place": "60"
+      },
+      "line": 141
+    },
+    {
+      "type": "command",
+      "name": "resetfont",
+      "args": {},
+      "line": 143
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 145
+    },
+    {
+      "type": "label",
+      "name": "qload",
+      "line": 149
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {
+        "cond": "kag.getBookMarkPageName(50) == '(未設定)'"
+      },
+      "line": 151
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.qloadAsk"
+      },
+      "line": 153
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!askYesNo('即时读档？')"
+      },
+      "line": 155
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 157
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 159
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 161
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "resetfont",
+      "args": {},
+      "line": 165
+    },
+    {
+      "type": "command",
+      "name": "load",
+      "args": {
+        "place": "60"
+      },
+      "line": 167
+    },
+    {
+      "type": "label",
+      "name": "sys_voice",
+      "line": 171
+    },
+    {
+      "type": "command",
+      "name": "pv_playpart",
+      "args": {
+        "char": "&f.pv_char",
+        "voice": "&f.pv_voice"
+      },
+      "line": 173
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 175
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 179
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトルへ戻る」が選択された",
+      "line": 181
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 183
+    },
+    {
+      "type": "label",
+      "name": "sys_title",
+      "line": 185
+    },
+    {
+      "type": "command",
+      "name": "gotostart",
+      "args": {
+        "ask": "true"
+      },
+      "line": 187,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 189,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 197
+    },
+    {
+      "type": "comment",
+      "text": " 「ゲームを終了する」が選択された",
+      "line": 199
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 201
+    },
+    {
+      "type": "label",
+      "name": "sys_exit",
+      "line": 203
+    },
+    {
+      "type": "command",
+      "name": "close",
+      "args": {},
+      "line": 205,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 207,
+      "inline": true
+    }
+  ]
+}

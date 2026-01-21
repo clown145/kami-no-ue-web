@@ -1,0 +1,367 @@
+{
+  "source": "scenario_0.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "最初に入力",
+      "line": 1
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 2"
+      },
+      "line": 3,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 5,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 7,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 9,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 11,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 13,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 15,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "messages": "4"
+      },
+      "line": 17,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "visible": "false",
+        "page": "fore"
+      },
+      "line": 19,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 21,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000001",
+      "line": 25
+    },
+    {
+      "type": "comment",
+      "text": "===================================================",
+      "line": 27
+    },
+    {
+      "type": "comment",
+      "text": "ここから記入",
+      "line": 29
+    },
+    {
+      "type": "label",
+      "name": "label000002",
+      "line": 33
+    },
+    {
+      "type": "comment",
+      "text": "注意",
+      "line": 35
+    },
+    {
+      "type": "comment",
+      "text": "「*label002416|」[ps][ps]等はセーブする際の目印。[l][l]",
+      "line": 37
+    },
+    {
+      "type": "comment",
+      "text": "最後にツールを使ってまとめて入力しますので、一行あけて下さると助かります。[l][l]",
+      "line": 39
+    },
+    {
+      "type": "comment",
+      "text": "わからない場合にはそのままで結構です。[l][l]",
+      "line": 41
+    },
+    {
+      "type": "label",
+      "name": "label000003",
+      "line": 45
+    },
+    {
+      "type": "comment",
+      "text": "ラベル",
+      "line": 47
+    },
+    {
+      "type": "label",
+      "name": "charapter01",
+      "line": 49
+    },
+    {
+      "type": "label",
+      "name": "label000004",
+      "line": 53
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤ０表画面を表示",
+      "line": 55
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "page": "fore",
+        "visible": "true"
+      },
+      "line": 57,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000005",
+      "line": 61
+    },
+    {
+      "type": "comment",
+      "text": "//背景フェードイン",
+      "line": 63
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "暗転",
+        "tm": "3500"
+      },
+      "line": 65,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "subtitle_outline1",
+        "tm": "3500"
+      },
+      "line": 67,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 67,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "暗転",
+        "tm": "2500"
+      },
+      "line": 69,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "ＢＧＭ再生",
+      "line": 71
+    },
+    {
+      "type": "command",
+      "name": "bgm",
+      "args": {
+        "fn": "BGM02"
+      },
+      "line": 73,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000006",
+      "line": 77
+    },
+    {
+      "type": "comment",
+      "text": "メッセージウィンドウ表示",
+      "line": 79
+    },
+    {
+      "type": "command",
+      "name": "mess",
+      "args": {},
+      "line": 81,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000007",
+      "line": 85
+    },
+    {
+      "type": "comment",
+      "text": "システムボタン表示",
+      "line": 87
+    },
+    {
+      "type": "command",
+      "name": "sysb",
+      "args": {},
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000008",
+      "line": 93
+    },
+    {
+      "type": "comment",
+      "text": "名前表示 fn=（キャラの名前）",
+      "line": 95
+    },
+    {
+      "type": "label",
+      "name": "label000009",
+      "line": 99
+    },
+    {
+      "type": "comment",
+      "text": "[r]は改行",
+      "line": 103
+    },
+    {
+      "type": "comment",
+      "text": "[l]はクリック待ち",
+      "line": 105
+    },
+    {
+      "type": "label",
+      "name": "label000010",
+      "line": 109
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転",
+        "tm": "2500"
+      },
+      "line": 113,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000011",
+      "line": 117
+    },
+    {
+      "type": "label",
+      "name": "label000012",
+      "line": 121
+    },
+    {
+      "type": "comment",
+      "text": "□□タイトルに戻る",
+      "line": 127
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "1000",
+        "mode": "normal",
+        "canskip": "false"
+      },
+      "line": 129,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "title.ks",
+        "target": "*title_menu"
+      },
+      "line": 131,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000013",
+      "line": 135
+    },
+    {
+      "type": "comment",
+      "text": "□□他のファイルへジャンプ",
+      "line": 139
+    },
+    {
+      "type": "comment",
+      "text": "[jump storage=\"○○.ks\"]",
+      "line": 141
+    }
+  ]
+}

@@ -1,0 +1,2141 @@
+{
+  "source": "scene.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1
+    },
+    {
+      "type": "comment",
+      "text": " scene.ks…アルバム画面",
+      "line": 3
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 5
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 9
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 11
+    },
+    {
+      "type": "comment",
+      "text": "   [call storage=\"scene.ks\" target=*scene_menu]",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 15
+    },
+    {
+      "type": "comment",
+      "text": " 注意事項：",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": "   ‐システム変数sf.scene_flagは参照のみ。各KAGシナリオでこの配列要素の値を変更すること",
+      "line": 19
+    },
+    {
+      "type": "comment",
+      "text": "   ‐macro.ksのeventcgマクロを使えば、簡単に配列sf.scene_flagのフラグを変更できる",
+      "line": 21
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 23
+    },
+    {
+      "type": "comment",
+      "text": " 使用している変数：",
+      "line": 25
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_x         … サムネイル画像とプリ選択用グラフィカルボタンを表示するＸ座標の配列",
+      "line": 27
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_y         … 同、Ｙ座標の配列",
+      "line": 29
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_page_x    … ページ用ボタンを表示するＸ座標の配列",
+      "line": 31
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_page_y    … 同、Ｙ座標の配列",
+      "line": 33
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_message   … アルバム画面で使用するメッセージレイヤ名",
+      "line": 35
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_column    … サムネイル画像を表示する列",
+      "line": 37
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_line      … サムネイル画像を表示する行",
+      "line": 39
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_select    … 選択したイベント絵の番号",
+      "line": 41
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_layer     … イベント絵を表示する前景レイヤ番号",
+      "line": 43
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_i         … ループカウンタ",
+      "line": 45
+    },
+    {
+      "type": "comment",
+      "text": "   sf.scene_page      … 現在、表示中のページ",
+      "line": 47
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 49
+    },
+    {
+      "type": "comment",
+      "text": "   以下の配列は、scene_init.ksのサブルーチン*scene_initで設定",
+      "line": 51
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_storage   … イベント絵のファイル名の配列",
+      "line": 53
+    },
+    {
+      "type": "comment",
+      "text": "   tf.scene_thumbnail … 同、サムネイル画像のファイル名の配列",
+      "line": 55
+    },
+    {
+      "type": "comment",
+      "text": "   sf.scene_flag      … そのイベント絵を閲覧したか否かの配列。初期値false（各KAGシナリオでこのフラグを変更する）",
+      "line": 57
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 59
+    },
+    {
+      "type": "label",
+      "name": "scene_menu",
+      "line": 63
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_mode = true"
+      },
+      "line": 65,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システム変数sf.scene_pageがvoidなら０を代入しておく",
+      "line": 67
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"sf.scene_page = 0\" cond=\"sf.scene_page === void\"]",
+      "line": 69
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.scene_page = 0"
+      },
+      "line": 71,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタンとサムネイル画像を表示する座標の配列",
+      "line": 73
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.scene_x"
+      },
+      "line": 75,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" cond=\"tf.scene_x === void\"]",
+      "line": 75
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.scene_y"
+      },
+      "line": 77,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" cond=\"tf.scene_y === void\"]",
+      "line": 77
+    },
+    {
+      "type": "comment",
+      "text": " ループカウンタを０にする",
+      "line": 79
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_i = 0"
+      },
+      "line": 81,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "scene_loop0",
+      "line": 83
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタンとサムネイル画像を描画する列を計算",
+      "line": 85
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_column = tf.scene_i % 5"
+      },
+      "line": 87,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタンとサムネイル画像を描画する行を計算",
+      "line": 89
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_line   = tf.scene_i \\ 5"
+      },
+      "line": 91,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタンとサムネイル画像を描画する座標を計算し、配列に格納",
+      "line": 93
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.scene_x[tf.scene_i"
+      },
+      "line": 95,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = 99 + 228*tf.scene_column\"]",
+      "line": 95
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.scene_y[tf.scene_i"
+      },
+      "line": 97,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = 151 + 160*tf.scene_line\"]",
+      "line": 97
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*scene_loop0",
+        "cond": "++tf.scene_i < 15"
+      },
+      "line": 99,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ページ用ボタンを表示する座標の配列",
+      "line": 101
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"tf.scene_page_x = [492, 542, 592, 642, 692, 742]\" cond=\"tf.scene_page_x === void\"]",
+      "line": 103
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"tf.scene_page_y = [595, 595, 595, 595, 595, 595]\" cond=\"tf.scene_page_y === void\"]",
+      "line": 105
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面で使用するメッセージレイヤ",
+      "line": 107
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_message = 'message1'"
+      },
+      "line": 109,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " イベント絵を表示する前景レイヤ",
+      "line": 111
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_layer = kag.numCharacterLayers-1"
+      },
+      "line": 113,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面でマウス右クリックされたら、「戻る」と同じ動作をさせる",
+      "line": 117
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "jump": "true",
+        "target": "*scene_return",
+        "storage": "scene.ks",
+        "enabled": "true"
+      },
+      "line": 119,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞６に現在の状態を保存",
+      "line": 121
+    },
+    {
+      "type": "command",
+      "name": "tempsave",
+      "args": {
+        "place": "6"
+      },
+      "line": 123,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤの属性を設定",
+      "line": 125
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "&tf.scene_message",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "width": "&kag.scWidth",
+        "height": "&kag.scHeight",
+        "frame": null,
+        "color": "0x000000",
+        "opacity": "0",
+        "marginl": "0",
+        "margint": "0",
+        "marginr": "0",
+        "marginb": "0",
+        "draggable": "false",
+        "visible": "true"
+      },
+      "line": 127,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "&tf.scene_message"
+      },
+      "line": 129,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ↓ページボタンを選択したときに戻ってくるラベル",
+      "line": 133
+    },
+    {
+      "type": "label",
+      "name": "scene_redraw",
+      "line": 135
+    },
+    {
+      "type": "comment",
+      "text": " 背景を背景レイヤ表画面に読み込み",
+      "line": 137
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_bg",
+        "layer": "base",
+        "page": "fore"
+      },
+      "line": 139,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤのクリア",
+      "line": 141
+    },
+    {
+      "type": "command",
+      "name": "er",
+      "args": {},
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ループカウンタを０にする",
+      "line": 147
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_i = 0"
+      },
+      "line": 149,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "scene_loop1",
+      "line": 151
+    },
+    {
+      "type": "comment",
+      "text": " 該当のイベント絵を閲覧済みなら…",
+      "line": 153
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "\"sf.scene_flag[tf.scene_i+15*sf.scene_page"
+      },
+      "line": 155,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\"]",
+      "line": 155
+    },
+    {
+      "type": "comment",
+      "text": " サムネイル画像を背景レイヤ表画面に追加読み込み",
+      "line": 157
+    },
+    {
+      "type": "command",
+      "name": "pimage",
+      "args": {
+        "storage": "\"&tf.scene_thumbnail[tf.scene_i+15*sf.scene_page"
+      },
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" layer=base page=fore dx=\"&tf.scene_x",
+      "line": 159
+    },
+    {
+      "type": "command",
+      "name": "tf.scene_i",
+      "args": {},
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" dy=\"&tf.scene_y",
+      "line": 159
+    },
+    {
+      "type": "command",
+      "name": "tf.scene_i",
+      "args": {},
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" sw=\"170\" sh=\"96\"]",
+      "line": 159
+    },
+    {
+      "type": "comment",
+      "text": " サムネイル画像の上にグラフィカルボタンを表示",
+      "line": 161
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "\"&tf.scene_x[tf.scene_i"
+      },
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" y=\"&tf.scene_y",
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "tf.scene_i",
+      "args": {},
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\"]",
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "album_thum_mouseover.png",
+        "target": "*scene_select",
+        "exp": "&'tf.scene_select='+tf.scene_i"
+      },
+      "line": 165,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 167,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*scene_loop1",
+        "cond": "++tf.scene_i < 15"
+      },
+      "line": 169,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ループカウンタを０にする",
+      "line": 173
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_i = 0"
+      },
+      "line": 175,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "scene_loop2",
+      "line": 177
+    },
+    {
+      "type": "comment",
+      "text": " ページ用ボタンを表示する（現在、表示中のページのボタンのみデザインを変える）",
+      "line": 179
+    },
+    {
+      "type": "comment",
+      "text": "\t[locate x=\"&tf.scene_page_x[tf.scene_i]\" y=\"&tf.scene_page_y[tf.scene_i]\"]",
+      "line": 181
+    },
+    {
+      "type": "comment",
+      "text": "\t[button graphic=\"&'savemode_bt_page0'+(tf.scene_i+1)+'.png'\" target=*scene_redraw exp=\"&'sf.scene_page='+tf.scene_i\" hint=\"&'ページ'+(tf.scene_i+1)\" cond=\"sf.scene_page != tf.scene_i\"]",
+      "line": 183
+    },
+    {
+      "type": "comment",
+      "text": "\t[button graphic=\"&'savemode_bt_nowpage0'+(tf.scene_i+1)+'.png'\" target=*scene_redraw exp=\"&'sf.scene_page='+tf.scene_i\" hint=\"&'ページ'+(tf.scene_i+1)\" cond=\"sf.scene_page == tf.scene_i\"]",
+      "line": 185
+    },
+    {
+      "type": "comment",
+      "text": "\t[jump target=*scene_loop2 cond=\"++tf.scene_i < tf.scene_page_x.count\"]",
+      "line": 187
+    },
+    {
+      "type": "comment",
+      "text": " 「戻る」用ボタンを配置",
+      "line": 191
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "713",
+        "y": "683"
+      },
+      "line": 193,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-back.png",
+        "storage": "scene.ks",
+        "target": "*scene_return",
+        "recthit": "false"
+      },
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「終了」用ボタンを配置",
+      "line": 199
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "583",
+        "y": "683"
+      },
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-exit.png",
+        "exp": "kag.close()"
+      },
+      "line": 203,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトル」用ボタンを配置",
+      "line": 207
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "453",
+        "y": "683"
+      },
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-title.png",
+        "storage": "scene.ks",
+        "target": "*scene_title",
+        "recthit": "false"
+      },
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "001-1",
+      "line": 219
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 221
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag01",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 223,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 225
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 227
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 229,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "001-2",
+      "line": 231
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 233
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 235,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 237
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 239
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 241,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "002-1",
+      "line": 243
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 245
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag02",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 247,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 249
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 251
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 253,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "002-2",
+      "line": 255
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 257
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 259,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 261
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 263
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "003-1",
+      "line": 267
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 269
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag03",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 273
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 275
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 277,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "003-2",
+      "line": 279
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 281
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 283,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 285
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 287
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 289,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "004-1",
+      "line": 291
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 293
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag04",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 295,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 297
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 299
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 301,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "004-2",
+      "line": 303
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 305
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 307,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 309
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 311
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 313,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "005-1",
+      "line": 315
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 317
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag05",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 319,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 321
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 323
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 325,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "005-2",
+      "line": 327
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 329
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 331,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 333
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 335
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 337,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "006-1",
+      "line": 339
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 341
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag06",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 343,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 345
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 347
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 349,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "006-2",
+      "line": 351
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 353
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 355,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 357
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 359
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 361,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "007-1",
+      "line": 363
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 365
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag07",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 367,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 369
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 371
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 373,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "007-2",
+      "line": 375
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 377
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 379,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 381
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 383
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 385,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "008-1",
+      "line": 387
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 389
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag08",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 391,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 393
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 395
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 397,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "008-2",
+      "line": 399
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 401
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 403,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 405
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 407
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 409,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "009-1",
+      "line": 411
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 413
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag09",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 415,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 417
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 419
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 421,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "009-2",
+      "line": 423
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 425
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 427,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 429
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 431
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 433,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "010-1",
+      "line": 435
+    },
+    {
+      "type": "comment",
+      "text": " カーソルにボタンが乗ったらレイヤ０にhogeという画像を表示する",
+      "line": 437
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "scene_flag10",
+        "layer": "0",
+        "visible": "true",
+        "left": "74",
+        "top": "385"
+      },
+      "line": 439,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 441
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 443
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 445,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "010-2",
+      "line": 447
+    },
+    {
+      "type": "comment",
+      "text": " カーソルが離れたらレイヤ０を不可視に",
+      "line": 449
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 451,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[er]",
+      "line": 453
+    },
+    {
+      "type": "comment",
+      "text": " 進行をとめる",
+      "line": 455
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 457,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " シーンが選択された",
+      "line": 461
+    },
+    {
+      "type": "label",
+      "name": "scene_select",
+      "line": 463
+    },
+    {
+      "type": "comment",
+      "text": " リンクのロックを解除",
+      "line": 465
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 467,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ウェイト解除",
+      "line": 469
+    },
+    {
+      "type": "command",
+      "name": "delay",
+      "args": {
+        "speed": "user"
+      },
+      "line": 471,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 栞の機能を無効化（呼び出し先のKAGシナリオにセーブ可能なラベルがあるため）",
+      "line": 473
+    },
+    {
+      "type": "command",
+      "name": "store",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 475,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞６に現在の状態を保存",
+      "line": 477
+    },
+    {
+      "type": "command",
+      "name": "tempsave",
+      "args": {
+        "place": "6"
+      },
+      "line": 479,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックでメッセージレイヤを消す（実際には右クリックサブルーチンを呼び出せた方がよい）",
+      "line": 481
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "call": "false",
+        "jump": "false"
+      },
+      "line": 483,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システムボタンを表示",
+      "line": 485
+    },
+    {
+      "type": "command",
+      "name": "stopbgm",
+      "args": {},
+      "line": 489,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "er",
+      "args": {},
+      "line": 491,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message3",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 493,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "visible": "false"
+      },
+      "line": 495,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 2"
+      },
+      "line": 499,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 501,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 503,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 505,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 507,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 509,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "messages": "4"
+      },
+      "line": 511,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "visible": "false",
+        "page": "fore"
+      },
+      "line": 513,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 515,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 履歴レイヤを有効化",
+      "line": 521
+    },
+    {
+      "type": "command",
+      "name": "history",
+      "args": {
+        "output": "true",
+        "enabled": "true"
+      },
+      "line": 523,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 該当シーンを再生",
+      "line": 525
+    },
+    {
+      "type": "comment",
+      "text": "   ‐シーン回想中（tf.scene_modeが真）かどうか内部で判定すること",
+      "line": 527
+    },
+    {
+      "type": "comment",
+      "text": "   ‐栞をたどるわけではないので、背景．前景．メッセージフレーム（枠）、BGMなど、辻褄合わせが必要",
+      "line": 529
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "\"&tf.scene_storage[tf.scene_select"
+      },
+      "line": 531,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" target=\"&tf.scene_target",
+      "line": 531
+    },
+    {
+      "type": "command",
+      "name": "tf.scene_select",
+      "args": {},
+      "line": 531,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\"]",
+      "line": 531
+    },
+    {
+      "type": "comment",
+      "text": " 「自動的に読み進む」のを解除",
+      "line": 533
+    },
+    {
+      "type": "command",
+      "name": "cancelautomode",
+      "args": {},
+      "line": 535,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " スキップも解除",
+      "line": 537
+    },
+    {
+      "type": "command",
+      "name": "cancelskip",
+      "args": {},
+      "line": 539,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "true",
+        "backvisible": "true",
+        "left": "5",
+        "top": "578"
+      },
+      "line": 543,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックの設定を元に戻す",
+      "line": 547
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "jump": "true",
+        "target": "*scene_return",
+        "storage": "scene.ks",
+        "enabled": "true"
+      },
+      "line": 549,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞６を読み込み、状態復帰",
+      "line": 551
+    },
+    {
+      "type": "command",
+      "name": "tempload",
+      "args": {
+        "place": "6"
+      },
+      "line": 553,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 栞の機能を有効化（栞をはさむ／たどる共に有効になるため、更に↓のdisablestoreタグを使う）",
+      "line": 555
+    },
+    {
+      "type": "command",
+      "name": "store",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 557,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 栞にはさめなくする（タイトルメニュー画面での設定に戻す）",
+      "line": 559
+    },
+    {
+      "type": "command",
+      "name": "disablestore",
+      "args": {
+        "store": "true",
+        "restore": "false"
+      },
+      "line": 561,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ノーウェイトに戻す",
+      "line": 563
+    },
+    {
+      "type": "command",
+      "name": "delay",
+      "args": {
+        "speed": "nowait"
+      },
+      "line": 565,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " *scene_redrawにジャンプし、シーン一覧を再描画する",
+      "line": 567
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*scene_redraw"
+      },
+      "line": 569,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 575
+    },
+    {
+      "type": "comment",
+      "text": " 「戻る」が選択された",
+      "line": 577
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 579
+    },
+    {
+      "type": "label",
+      "name": "scene_return",
+      "line": 581
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞５を読み込み、状態復帰",
+      "line": 583
+    },
+    {
+      "type": "command",
+      "name": "tempload",
+      "args": {
+        "place": "6",
+        "bgm": "false"
+      },
+      "line": 585,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す",
+      "line": 587
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 589,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " シーン回想モードを解除",
+      "line": 591
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_mode = false"
+      },
+      "line": 593,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 595,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 599
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトルへ戻る」が選択された",
+      "line": 601
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 603
+    },
+    {
+      "type": "label",
+      "name": "scene_title",
+      "line": 605
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.noStoreCurrentMessage = 0"
+      },
+      "line": 607
+    },
+    {
+      "type": "command",
+      "name": "gotostart",
+      "args": {
+        "ask": "true"
+      },
+      "line": 609,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*scene_loop0"
+      },
+      "line": 611,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "title_menu_sound",
+      "line": 617
+    },
+    {
+      "type": "comment",
+      "text": " サウンドテスト画面へ",
+      "line": 619
+    },
+    {
+      "type": "command",
+      "name": "otokie",
+      "args": {},
+      "line": 621,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "er",
+      "args": {},
+      "line": 623,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "sound_test.ks",
+        "target": "*sound_menu"
+      },
+      "line": 625,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*scene_return"
+      },
+      "line": 627,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "title_menu_scene",
+      "line": 631
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面へ",
+      "line": 633
+    },
+    {
+      "type": "command",
+      "name": "er",
+      "args": {},
+      "line": 635,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "scene.ks",
+        "target": "*scene_menu"
+      },
+      "line": 637,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*scene_return"
+      },
+      "line": 639,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 645
+    },
+    {
+      "type": "comment",
+      "text": " シーン回想中に「システム‐最初に戻る」メニューが選択された場合の辻褄合わせを行う",
+      "line": 647
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 649
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 651
+    },
+    {
+      "type": "comment",
+      "text": "   [call storage=\"scene.ks\" target=*scene_reset]",
+      "line": 653
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 655
+    },
+    {
+      "type": "comment",
+      "text": " 注意事項：",
+      "line": 657
+    },
+    {
+      "type": "comment",
+      "text": "   ‐startanchorタグの直後で当サブルーチンを呼び出すこと",
+      "line": 659
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 661
+    },
+    {
+      "type": "label",
+      "name": "scene_reset",
+      "line": 663
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.scene_mode = false"
+      },
+      "line": 665,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 667,
+      "inline": true
+    }
+  ]
+}

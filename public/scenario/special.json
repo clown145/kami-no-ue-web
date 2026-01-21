@@ -1,0 +1,1259 @@
+{
+  "source": "special.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": " 一時変数tf.frame_layer：メッセージ枠（フレーム）画像を読み込ませる前景レイヤ番号を示す",
+      "line": 1
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 2"
+      },
+      "line": 3,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " KAGプラグインを組み込む",
+      "line": 5
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 7,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 9,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システム変数sf.frame_opacity：メッセージ枠（フレーム）画像を読み込ませる前景レイヤの不透明度を示す",
+      "line": 11
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 13,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 15,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 17,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 19,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " カレントのメッセージレイヤをメッセージレイヤ０表画面に変更",
+      "line": 21
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "messages": "4"
+      },
+      "line": 23,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "visible": "false",
+        "page": "fore"
+      },
+      "line": 25,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 27,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.headline='プロローグ'"
+      },
+      "line": 31,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "start",
+      "line": 35
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 39,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤ０表画面を表示",
+      "line": 43
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "page": "fore",
+        "visible": "true"
+      },
+      "line": 45,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 47
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "暗転",
+        "layer": "base",
+        "page": "back",
+        "visible": "true"
+      },
+      "line": 49
+    },
+    {
+      "type": "comment",
+      "text": "[layopt layer=\"&tf.frame_layer\" page=back visible=false]",
+      "line": 51
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "0",
+        "method": "crossfade"
+      },
+      "line": 53
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 55
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 57,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤ０は完全透明",
+      "line": 59
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "message0",
+        "page": "fore",
+        "opacity": "0"
+      },
+      "line": 61,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "message0",
+        "page": "back",
+        "opacity": "0"
+      },
+      "line": 63,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "comment",
+        "tm": "3500"
+      },
+      "line": 67,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0"
+      },
+      "line": 71,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002415",
+      "line": 75
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 77,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "□□　導入部ここから",
+      "line": 79
+    },
+    {
+      "type": "comment",
+      "text": "□□　シナリオ題名「序章／運命のはじまり」",
+      "line": 81
+    },
+    {
+      "type": "comment",
+      "text": "□□　ＢＧＭ．１",
+      "line": 83
+    },
+    {
+      "type": "comment",
+      "text": "◇◇　背景．空",
+      "line": 85
+    },
+    {
+      "type": "command",
+      "name": "splaybgm",
+      "args": {
+        "storage": "ブリージング．ラグ"
+      },
+      "line": 87,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "true",
+        "backvisible": "true",
+        "left": "5",
+        "top": "78"
+      },
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "□□　プロローグここから。[ps][cm]",
+      "line": 91
+    },
+    {
+      "type": "comment",
+      "text": "□□　ＢＧＭ．７",
+      "line": 93
+    },
+    {
+      "type": "comment",
+      "text": "◇◇　背景なし（暗転）",
+      "line": 95
+    },
+    {
+      "type": "comment",
+      "text": "[chara fn=man_s_001]",
+      "line": 97
+    },
+    {
+      "type": "comment",
+      "text": "[charar fn=man_s_001 left=610 top=28]",
+      "line": 99
+    },
+    {
+      "type": "comment",
+      "text": "[charal fn=tou_s_001 left=88 top=34]",
+      "line": 101
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "yorukoA_aa",
+        "top": "200",
+        "left": "-250"
+      },
+      "line": 103,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "rioB_aa",
+        "top": "200",
+        "left": "880"
+      },
+      "line": 105,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "あかさたなあかさたな"
+      },
+      "line": 109,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ",
+      "line": 111
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ",
+      "line": 113
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ",
+      "line": 115
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 115,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 115,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002416-1",
+      "line": 119
+    },
+    {
+      "type": "text",
+      "text": "次音鳴ります（夜子の声、音量試し）",
+      "line": 121
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 121,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 121,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002416",
+      "line": 125
+    },
+    {
+      "type": "comment",
+      "text": "[kao fn=man_l_001]",
+      "line": 127
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 129,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "yorukoB_aa",
+        "top": "34"
+      },
+      "line": 131,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "enter01.ogg"
+      },
+      "line": 133
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 135,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ",
+      "line": 137
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 137,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002416-2",
+      "line": 141
+    },
+    {
+      "type": "text",
+      "text": "次音鳴ります（りおの声、音量試し）",
+      "line": 143
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002417",
+      "line": 147
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "rioA_ba",
+        "top": "28"
+      },
+      "line": 149,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "理央"
+      },
+      "line": 151,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "rio",
+        "voice": "enter01.ogg"
+      },
+      "line": 153
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ",
+      "line": 155
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 155,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 155,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002422",
+      "line": 159
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "time": "2000"
+      },
+      "line": 161,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "次ＢＧＭ変わります",
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002423",
+      "line": 167
+    },
+    {
+      "type": "command",
+      "name": "splaybgm",
+      "args": {
+        "storage": "めろでぃっくのどかな曲"
+      },
+      "line": 169,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "てすと",
+      "line": 171
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002424",
+      "line": 175
+    },
+    {
+      "type": "text",
+      "text": "効果音を出します",
+      "line": 177
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 177,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 177,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002425",
+      "line": 181
+    },
+    {
+      "type": "command",
+      "name": "splayse",
+      "args": {
+        "storage": "がらっと扉を開く音",
+        "buf": "&f.se_sys_buf"
+      },
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[splayse storage=\"階段\" buf=&f.se_sys_buf]",
+      "line": 185
+    },
+    {
+      "type": "text",
+      "text": "キャラ立ち絵消します",
+      "line": 187
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 187,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 187,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002426",
+      "line": 191
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 193,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "てすと",
+      "line": 195
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002431",
+      "line": 199
+    },
+    {
+      "type": "text",
+      "text": "タイトルに戻るとギャラリーと回想に１ページ分の画像が追加されています",
+      "line": 201
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "□□　ＢＧＭ停止",
+      "line": 203
+    },
+    {
+      "type": "comment",
+      "text": "◆◆　場面切り替え暗幕。[ps][cm]",
+      "line": 205
+    },
+    {
+      "type": "label",
+      "name": "label002432",
+      "line": 209
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "暗転",
+        "tm": "1500"
+      },
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "□□　プロローグここまで。[ps][cm]",
+      "line": 217
+    },
+    {
+      "type": "comment",
+      "text": "□□　導入部へ。[ps][cm]",
+      "line": 219
+    },
+    {
+      "type": "label",
+      "name": "label002433",
+      "line": 223
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "time": "2000"
+      },
+      "line": 225,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[layopt layer=\"&tf.frame_layer\" page=fore visible=false]",
+      "line": 227
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "false",
+        "backvisible": "false"
+      },
+      "line": 229
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[0"
+      },
+      "line": 233,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 233
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[1"
+      },
+      "line": 235,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 235
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[2"
+      },
+      "line": 237,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 237
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[3"
+      },
+      "line": 239,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 239
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[4"
+      },
+      "line": 241,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 241
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[5"
+      },
+      "line": 243,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 243
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[6"
+      },
+      "line": 245,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 245
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[7"
+      },
+      "line": 247,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 247
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[8"
+      },
+      "line": 249,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 249
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[9"
+      },
+      "line": 251,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 251
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[10"
+      },
+      "line": 253,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 253
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[11"
+      },
+      "line": 255,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 255
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[12"
+      },
+      "line": 257,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 257
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[13"
+      },
+      "line": 259,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 259
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[14"
+      },
+      "line": 261,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 261
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[0"
+      },
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 265
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[1"
+      },
+      "line": 267,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 267
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[2"
+      },
+      "line": 269,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 269
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[3"
+      },
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 271
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[4"
+      },
+      "line": 273,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 273
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[5"
+      },
+      "line": 275,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 275
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[6"
+      },
+      "line": 277,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 277
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[7"
+      },
+      "line": 279,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 279
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[8"
+      },
+      "line": 281,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 281
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[9"
+      },
+      "line": 283,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 283
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[10"
+      },
+      "line": 285,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 285
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[11"
+      },
+      "line": 287,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 287
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[12"
+      },
+      "line": 289,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 289
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "1000",
+        "mode": "normal",
+        "canskip": "false"
+      },
+      "line": 293,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "title.ks",
+        "target": "*title_menu"
+      },
+      "line": 295,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "□□　ＢＧＭ停止",
+      "line": 297
+    },
+    {
+      "type": "comment",
+      "text": "◆◆　場面切り替え暗幕",
+      "line": 299
+    },
+    {
+      "type": "label",
+      "name": "label002434",
+      "line": 303
+    },
+    {
+      "type": "comment",
+      "text": "□□　回想１に導入部001を登録",
+      "line": 305
+    },
+    {
+      "type": "comment",
+      "text": "□□　ＣＧ１にＣＧ．１を登録",
+      "line": 307
+    },
+    {
+      "type": "comment",
+      "text": "□□　導入部００２へ続く",
+      "line": 309
+    }
+  ]
+}

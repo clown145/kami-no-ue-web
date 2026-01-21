@@ -1,0 +1,972 @@
+{
+  "source": "album.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1
+    },
+    {
+      "type": "comment",
+      "text": " album.ks…アルバム画面",
+      "line": 3
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 5
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 9
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 11
+    },
+    {
+      "type": "comment",
+      "text": "   [call storage=\"album.ks\" target=*album_menu]",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 15
+    },
+    {
+      "type": "comment",
+      "text": " 注意事項：",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": "   ‐システム変数sf.album_flagは参照のみ。各KAGシナリオでこの配列要素の値を変更すること",
+      "line": 19
+    },
+    {
+      "type": "comment",
+      "text": "   ‐macro.ksのeventcgマクロを使えば、簡単に配列sf.album_flagのフラグを変更できる",
+      "line": 21
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 23
+    },
+    {
+      "type": "comment",
+      "text": " 使用している変数：",
+      "line": 25
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_x         … サムネイル画像とプリ選択用グラフィカルボタンを表示するＸ座標の配列",
+      "line": 27
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_y         … 同、Ｙ座標の配列",
+      "line": 29
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_page_x    … ページ用ボタンを表示するＸ座標の配列",
+      "line": 31
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_page_y    … 同、Ｙ座標の配列",
+      "line": 33
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_message   … アルバム画面で使用するメッセージレイヤ名",
+      "line": 35
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_column    … サムネイル画像を表示する列",
+      "line": 37
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_line      … サムネイル画像を表示する行",
+      "line": 39
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_select    … 選択したイベント絵の番号",
+      "line": 41
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_layer     … イベント絵を表示する前景レイヤ番号",
+      "line": 43
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_i         … ループカウンタ",
+      "line": 45
+    },
+    {
+      "type": "comment",
+      "text": "   sf.album_page      … 現在、表示中のページ",
+      "line": 47
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 49
+    },
+    {
+      "type": "comment",
+      "text": "   以下の配列は、album_init.ksのサブルーチン*album_initで設定",
+      "line": 51
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_storage   … イベント絵のファイル名の配列",
+      "line": 53
+    },
+    {
+      "type": "comment",
+      "text": "   tf.album_thumbnail … 同、サムネイル画像のファイル名の配列",
+      "line": 55
+    },
+    {
+      "type": "comment",
+      "text": "   sf.album_flag      … そのイベント絵を閲覧したか否かの配列。初期値false（各KAGシナリオでこのフラグを変更する）",
+      "line": 57
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 59
+    },
+    {
+      "type": "label",
+      "name": "album_menu",
+      "line": 63
+    },
+    {
+      "type": "comment",
+      "text": " システム変数sf.album_pageがvoidなら０を代入しておく",
+      "line": 65
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"sf.album_page = 0\" cond=\"sf.album_page === void\"]",
+      "line": 67
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.album_page = 0"
+      },
+      "line": 69,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタンとサムネイル画像を表示する座標の配列",
+      "line": 71
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.album_x"
+      },
+      "line": 73,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" cond=\"tf.album_x === void\"]",
+      "line": 73
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.album_y"
+      },
+      "line": 75,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" cond=\"tf.album_y === void\"]",
+      "line": 75
+    },
+    {
+      "type": "comment",
+      "text": " ループカウンタを０にする",
+      "line": 77
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.album_i = 0"
+      },
+      "line": 79,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "album_loop0",
+      "line": 81
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタンとサムネイル画像を描画する列を計算",
+      "line": 83
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.album_column = tf.album_i % 5"
+      },
+      "line": 85,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタンとサムネイル画像を描画する行を計算",
+      "line": 87
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.album_line   = tf.album_i \\ 5"
+      },
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタンとサムネイル画像を描画する座標を計算し、配列に格納",
+      "line": 91
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.album_x[tf.album_i"
+      },
+      "line": 93,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = 99 + 228*tf.album_column\"]",
+      "line": 93
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.album_y[tf.album_i"
+      },
+      "line": 95,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = 131 + 160*tf.album_line\"]",
+      "line": 95
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*album_loop0",
+        "cond": "++tf.album_i < 15"
+      },
+      "line": 97,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ページ用ボタンを表示する座標の配列",
+      "line": 99
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.album_page_x"
+      },
+      "line": 101,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" cond=\"tf.album_page_x === void\"]",
+      "line": 101
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.album_page_y"
+      },
+      "line": 103,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" cond=\"tf.album_page_y === void\"]",
+      "line": 103
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面で使用するメッセージレイヤ",
+      "line": 105
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.album_message = 'message1'"
+      },
+      "line": 107,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " イベント絵を表示する前景レイヤ",
+      "line": 109
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.album_layer = kag.numCharacterLayers-1"
+      },
+      "line": 111,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面でマウス右クリックされたら、「戻る」と同じ動作をさせる",
+      "line": 115
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "jump": "true",
+        "target": "*album_return",
+        "storage": "album.ks",
+        "enabled": "true"
+      },
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞６に現在の状態を保存",
+      "line": 119
+    },
+    {
+      "type": "command",
+      "name": "tempsave",
+      "args": {
+        "place": "6"
+      },
+      "line": 121,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤの属性を設定",
+      "line": 123
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "&tf.album_message",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "width": "&kag.scWidth",
+        "height": "&kag.scHeight",
+        "frame": null,
+        "color": "0x000000",
+        "opacity": "0",
+        "marginl": "0",
+        "margint": "0",
+        "marginr": "0",
+        "marginb": "0",
+        "draggable": "false",
+        "visible": "true"
+      },
+      "line": 125,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "&tf.album_message"
+      },
+      "line": 127,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ↓ページボタンを選択したときに戻ってくるラベル",
+      "line": 131
+    },
+    {
+      "type": "label",
+      "name": "album_redraw",
+      "line": 133
+    },
+    {
+      "type": "comment",
+      "text": " 背景を背景レイヤ表画面に読み込み",
+      "line": 135
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "gallery_bg",
+        "layer": "base",
+        "page": "fore"
+      },
+      "line": 137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "gallery_bg_2",
+        "layer": "base",
+        "page": "fore",
+        "cond": "sf.album_page == 5"
+      },
+      "line": 139,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤのクリア",
+      "line": 141
+    },
+    {
+      "type": "command",
+      "name": "er",
+      "args": {},
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ループカウンタを０にする",
+      "line": 147
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.album_i = 0"
+      },
+      "line": 149,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "album_loop1",
+      "line": 151
+    },
+    {
+      "type": "comment",
+      "text": " 該当のイベント絵を閲覧済みなら…",
+      "line": 153
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "\"sf.album_flag[tf.album_i+15*sf.album_page"
+      },
+      "line": 155,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\"]",
+      "line": 155
+    },
+    {
+      "type": "comment",
+      "text": " サムネイル画像を背景レイヤ表画面に追加読み込み",
+      "line": 157
+    },
+    {
+      "type": "command",
+      "name": "pimage",
+      "args": {
+        "storage": "\"&tf.album_thumbnail[tf.album_i+15*sf.album_page"
+      },
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" layer=base page=fore dx=\"&tf.album_x",
+      "line": 159
+    },
+    {
+      "type": "command",
+      "name": "tf.album_i",
+      "args": {},
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" dy=\"&tf.album_y",
+      "line": 159
+    },
+    {
+      "type": "command",
+      "name": "tf.album_i",
+      "args": {},
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" sw=\"170\" sh=\"96\"]",
+      "line": 159
+    },
+    {
+      "type": "comment",
+      "text": " サムネイル画像の上にグラフィカルボタンを表示",
+      "line": 161
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "\"&tf.album_x[tf.album_i"
+      },
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" y=\"&tf.album_y",
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "tf.album_i",
+      "args": {},
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\"]",
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "album_thum_mouseover.png",
+        "target": "*album_select",
+        "exp": "&'tf.album_select='+tf.album_i"
+      },
+      "line": 165,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 167,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*album_loop1",
+        "cond": "++tf.album_i < 15"
+      },
+      "line": 169,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ループカウンタを０にする",
+      "line": 173
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.album_i = 0"
+      },
+      "line": 175,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "album_loop2",
+      "line": 177
+    },
+    {
+      "type": "comment",
+      "text": " ページ用ボタンを表示する（現在、表示中のページのボタンのみデザインを変える）",
+      "line": 179
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "\"&tf.album_page_x[tf.album_i"
+      },
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" y=\"&tf.album_page_y",
+      "line": 181
+    },
+    {
+      "type": "command",
+      "name": "tf.album_i",
+      "args": {},
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\"]",
+      "line": 181
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "&'savemode_bt_page0'+(tf.album_i+1)+'.png'",
+        "target": "*album_redraw",
+        "exp": "&'sf.album_page='+tf.album_i",
+        "hint": "&'页'+(tf.album_i+1)",
+        "cond": "sf.album_page != tf.album_i"
+      },
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "&'savemode_bt_nowpage0'+(tf.album_i+1)+'.png'",
+        "target": "*album_redraw",
+        "exp": "&'sf.album_page='+tf.album_i",
+        "hint": "&'页'+(tf.album_i+1)",
+        "cond": "sf.album_page == tf.album_i"
+      },
+      "line": 185,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*album_loop2",
+        "cond": "++tf.album_i < tf.album_page_x.count"
+      },
+      "line": 187,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「戻る」用ボタンを配置",
+      "line": 191
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "713",
+        "y": "683"
+      },
+      "line": 193,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-back.png",
+        "storage": "album.ks",
+        "target": "*album_return",
+        "recthit": "false"
+      },
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「終了」用ボタンを配置",
+      "line": 199
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "583",
+        "y": "683"
+      },
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-exit.png",
+        "exp": "kag.close()"
+      },
+      "line": 203,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトル」用ボタンを配置",
+      "line": 207
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "453",
+        "y": "683"
+      },
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-title.png",
+        "storage": "album.ks",
+        "target": "*album_title",
+        "recthit": "false"
+      },
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 219
+    },
+    {
+      "type": "comment",
+      "text": " サムネイル画像が選択された",
+      "line": 221
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 223
+    },
+    {
+      "type": "label",
+      "name": "album_select",
+      "line": 225
+    },
+    {
+      "type": "comment",
+      "text": " イベント絵を前景レイヤに読み込み、表示",
+      "line": 227
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "album_sub.ks",
+        "target": "\"&tf.album_storage[tf.album_select+15*sf.album_page"
+      },
+      "line": 229,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" layer=\"&tf.album_layer\" page=fore visible=true left=0 top=0 index=1999999]",
+      "line": 229
+    },
+    {
+      "type": "comment",
+      "text": " クリックを待つ",
+      "line": 231
+    },
+    {
+      "type": "command",
+      "name": "waitclick",
+      "args": {},
+      "line": 233,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " イベント絵の前景レイヤを非表示にする",
+      "line": 235
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.album_layer",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 237,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 239,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 241,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 245
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトルへ戻る」が選択された",
+      "line": 247
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 249
+    },
+    {
+      "type": "label",
+      "name": "album_title",
+      "line": 251
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.noStoreCurrentMessage = 0"
+      },
+      "line": 253
+    },
+    {
+      "type": "command",
+      "name": "gotostart",
+      "args": {
+        "ask": "true"
+      },
+      "line": 255,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*album_loop0"
+      },
+      "line": 257,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 261
+    },
+    {
+      "type": "comment",
+      "text": " 「戻る」が選択された",
+      "line": 263
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 265
+    },
+    {
+      "type": "label",
+      "name": "album_return",
+      "line": 267
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞６を読み込み、状態復帰",
+      "line": 269
+    },
+    {
+      "type": "command",
+      "name": "tempload",
+      "args": {
+        "place": "6",
+        "bgm": "false"
+      },
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す",
+      "line": 273
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 275,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 277,
+      "inline": true
+    }
+  ]
+}

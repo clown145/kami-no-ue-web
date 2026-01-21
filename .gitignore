@@ -1,0 +1,10 @@
+# 忽略大型资源文件
+*.ogg
+*.png
+*.jpg
+*.wav
+*.asd
+
+# 忽略临时文件
+.DS_Store
+Thumbs.db

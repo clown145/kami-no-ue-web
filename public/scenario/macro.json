@@ -1,0 +1,3039 @@
+{
+  "source": "macro.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1
+    },
+    {
+      "type": "comment",
+      "text": " macro.ks…マクロ定義",
+      "line": 3
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 5
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 9
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 11
+    },
+    {
+      "type": "comment",
+      "text": "   [call storage=\"macro.ks\"]",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 15
+    },
+    {
+      "type": "comment",
+      "text": " 注意事項：",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": "   ‐first.ksの先頭（セーブ可能なラベルより前に）で当サブルーチンを呼び出すこと",
+      "line": 19
+    },
+    {
+      "type": "comment",
+      "text": "メッセージウィンドウ表示",
+      "line": 21
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "mess"
+      },
+      "line": 23,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "win",
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "visible": "true"
+      },
+      "line": 25,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "autohide": "true"
+      },
+      "line": 27,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "win",
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "left": "0",
+        "top": "0",
+        "visible": "true"
+      },
+      "line": 29,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "autohide": "true"
+      },
+      "line": 31,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hlocate",
+      "args": {
+        "pos": "409"
+      },
+      "line": 33,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "indent",
+      "args": {},
+      "line": 35,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 37,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "名前付きメッセージウィンドウ",
+      "line": 41
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "mess2"
+      },
+      "line": 43,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "win-2",
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "visible": "true"
+      },
+      "line": 45,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "autohide": "true"
+      },
+      "line": 47,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "win-2",
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "left": "0",
+        "top": "0",
+        "visible": "true"
+      },
+      "line": 49,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "autohide": "true"
+      },
+      "line": 51,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 53,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "メッセージ非表示",
+      "line": 57
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "mess-off"
+      },
+      "line": 59,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 61,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 63,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "システムボタン",
+      "line": 67
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sysb"
+      },
+      "line": 69,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "true",
+        "backvisible": "true",
+        "left": "5",
+        "top": "78"
+      },
+      "line": 71,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 73,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "システムボタン非表示",
+      "line": 77
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sysb-off"
+      },
+      "line": 79,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "false",
+        "backvisible": "false"
+      },
+      "line": 81,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 83,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "BGM再生",
+      "line": 87
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "bgm"
+      },
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "splaybgm",
+      "args": {
+        "storage": "%fn"
+      },
+      "line": 91,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 93,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "SE再生",
+      "line": 97
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "se"
+      },
+      "line": 99,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "splayse",
+      "args": {
+        "storage": "%fn",
+        "buf": "&f.se_sys_buf"
+      },
+      "line": 101,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 103,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "シーンモード再生用マクロ",
+      "line": 107
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "scene"
+      },
+      "line": 109,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.scene_mode"
+      },
+      "line": 111,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " カレントのメッセージレイヤをメッセージレイヤ０表画面に変更",
+      "line": 113
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 115,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤ０表画面を表示",
+      "line": 117
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "page": "fore",
+        "visible": "true"
+      },
+      "line": 119,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 背景画像を辻褄合わせ",
+      "line": 121
+    },
+    {
+      "type": "command",
+      "name": "eventcg",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "fore"
+      },
+      "line": 123,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 125,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 127,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "エフェクトのオンオフ",
+      "line": 131
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "haikei-c"
+      },
+      "line": 133
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 135
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 137
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 139
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 141
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 143
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back",
+        "visible": "true"
+      },
+      "line": 145
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm",
+        "method": "%eff|crossfade"
+      },
+      "line": 147
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 149
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 151
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 153
+    },
+    {
+      "type": "comment",
+      "text": "キャラと一緒にエフェクトを消す",
+      "line": 157
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "chara-ckie"
+      },
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 161
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 165
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 167
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 169
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back"
+      },
+      "line": 171
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "%lay|0",
+        "page": "back",
+        "visible": "false"
+      },
+      "line": 173,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm|500",
+        "method": "%eff|crossfade"
+      },
+      "line": 175
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 177
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 179
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラと一緒にエフェクトを消す",
+      "line": 185
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charar-ckie"
+      },
+      "line": 187,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 189
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 191
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 193
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 195
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 197
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back"
+      },
+      "line": 199
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "%lay|1",
+        "page": "back",
+        "visible": "false"
+      },
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm|500",
+        "method": "%eff|crossfade"
+      },
+      "line": 203
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 205
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 207
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラと一緒にエフェクトを消す",
+      "line": 213
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charalr-ckie"
+      },
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 217
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 219
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 221
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 223
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 225
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back"
+      },
+      "line": 227
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "%lay|0",
+        "page": "back",
+        "visible": "false"
+      },
+      "line": 229,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "%lay|1",
+        "page": "back",
+        "visible": "false"
+      },
+      "line": 231,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm|500",
+        "method": "%eff|crossfade"
+      },
+      "line": 233
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 235
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 237
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 239,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラと一緒にエフェクトを表示する",
+      "line": 243
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charal-c"
+      },
+      "line": 245,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 247
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 249
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 251
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 253
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 255
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back",
+        "visible": "true"
+      },
+      "line": 257
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"%chara\" layer=\"%lay|0\" page=back left=\"%left|390\" top=\"%top|28\" opacity=\"%opa|255\" visible=true]",
+      "line": 259
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%chara",
+        "layer": "0",
+        "page": "back",
+        "left": "%left|100",
+        "top": "%top|0",
+        "opacity": "255",
+        "visible": "true"
+      },
+      "line": 261,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"%charar\" layer=1 page=back pos=r opacity=255 visible=true]",
+      "line": 263
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm|500",
+        "method": "%eff|crossfade"
+      },
+      "line": 265
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 267
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 269
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラと一緒にエフェクトを表示する",
+      "line": 275
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charar-c"
+      },
+      "line": 277,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 279
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 281
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 283
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 285
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 287
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back",
+        "visible": "true"
+      },
+      "line": 289
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"%chara\" layer=\"%lay|0\" page=back left=\"%left|390\" top=\"%top|28\" opacity=\"%opa|255\" visible=true]",
+      "line": 291
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%chara",
+        "layer": "1",
+        "page": "back",
+        "left": "%left|550",
+        "top": "%top|0",
+        "opacity": "255",
+        "visible": "true"
+      },
+      "line": 293,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"%charar\" layer=1 page=back pos=r opacity=255 visible=true]",
+      "line": 295
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm|500",
+        "method": "%eff|crossfade"
+      },
+      "line": 297
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 299
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 301
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 303,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラと一緒にエフェクトを表示する",
+      "line": 307
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "chara-c"
+      },
+      "line": 309,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 311
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 313
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 315
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 317
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 319
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back",
+        "visible": "true"
+      },
+      "line": 321
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%chara",
+        "layer": "%lay|0",
+        "page": "back",
+        "left": "%left|300",
+        "top": "%top|0",
+        "opacity": "%opa|255",
+        "visible": "true"
+      },
+      "line": 323,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"%charal\" layer=0 page=back pos=l opacity=255 visible=true]",
+      "line": 325
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"%charar\" layer=1 page=back pos=r opacity=255 visible=true]",
+      "line": 327
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm|500",
+        "method": "%eff|crossfade"
+      },
+      "line": 329
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 331
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 333
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 335,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラと一緒にエフェクトを表示する",
+      "line": 339
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charalr-c"
+      },
+      "line": 341,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 343
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 345
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 347
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 349
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 351
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back",
+        "visible": "true"
+      },
+      "line": 353
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"%chara\" layer=\"%lay|0\" page=back left=\"%left|390\" top=\"%top|28\" opacity=\"%opa|255\" visible=true]",
+      "line": 355
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%charal",
+        "layer": "0",
+        "page": "back",
+        "left": "%leftl|100",
+        "top": "%topl|0",
+        "opacity": "255",
+        "visible": "true"
+      },
+      "line": 357,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%charar",
+        "layer": "1",
+        "page": "back",
+        "left": "%leftr|550",
+        "top": "%topr|0",
+        "opacity": "255",
+        "visible": "true"
+      },
+      "line": 359,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm|500",
+        "method": "%eff|crossfade"
+      },
+      "line": 361
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 363
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 365
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 367,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラと一緒にエフェクトを表示する",
+      "line": 371
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charalr-cr"
+      },
+      "line": 373,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 375
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 377
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 379
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 381
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 383
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back",
+        "visible": "true"
+      },
+      "line": 385
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"%chara\" layer=\"%lay|0\" page=back left=\"%left|390\" top=\"%top|28\" opacity=\"%opa|255\" visible=true]",
+      "line": 387
+    },
+    {
+      "type": "command",
+      "name": "freeimage",
+      "args": {
+        "layer": "0",
+        "page": "back"
+      },
+      "line": 389,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "freeimage",
+      "args": {
+        "layer": "1",
+        "page": "back"
+      },
+      "line": 391,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "layer": "base",
+        "time": "%tm",
+        "method": "%eff|crossfade"
+      },
+      "line": 393
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 395
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 397
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 399,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "ルール画像を使う背景切り替え",
+      "line": 405
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "haikei-r"
+      },
+      "line": 407
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 409
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 411
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 413
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 415
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 417
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "base",
+        "page": "back",
+        "visible": "true"
+      },
+      "line": 419
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "method": "universal",
+        "rule": "%eff",
+        "vague": "128",
+        "time": "%tm"
+      },
+      "line": 421,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 423
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 425
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 427
+    },
+    {
+      "type": "comment",
+      "text": "名前",
+      "line": 431
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "name"
+      },
+      "line": 433,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "win-2",
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "visible": "true"
+      },
+      "line": 435,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "autohide": "true"
+      },
+      "line": 437,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "win-2",
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "left": "0",
+        "top": "0",
+        "visible": "true"
+      },
+      "line": 439,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "autohide": "true"
+      },
+      "line": 441,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[layopt layer=message3 page=fore visible=true left=182 top=486 width=150 height=40]",
+      "line": 443
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "message3",
+        "color": "0x000000",
+        "top": "532",
+        "left": "182",
+        "width": "350",
+        "height": "100",
+        "opacity": "0",
+        "visible": "true",
+        "margint": "4"
+      },
+      "line": 445,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message3",
+        "page": "fore"
+      },
+      "line": 447,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "nowait",
+      "args": {},
+      "line": 449,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "font",
+      "args": {
+        "size": "24",
+        "edge": "true"
+      },
+      "line": 451,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "style",
+      "args": {
+        "pitch": "20",
+        "align": "center"
+      },
+      "line": 453,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hlocate",
+      "args": {
+        "pos": "180"
+      },
+      "line": 455,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ch",
+      "args": {
+        "text": "%fn"
+      },
+      "line": 457,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hlocate",
+      "args": {
+        "pos": "409"
+      },
+      "line": 459,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "indent",
+      "args": {},
+      "line": 461,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "font",
+      "args": {
+        "size": "24",
+        "edge": "true"
+      },
+      "line": 463,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 465,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "style",
+      "args": {
+        "align": "left"
+      },
+      "line": 467
+    },
+    {
+      "type": "command",
+      "name": "delay",
+      "args": {
+        "speed": "user"
+      },
+      "line": 469,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 471,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "名前消し",
+      "line": 475
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "namekie"
+      },
+      "line": 477,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message3",
+        "page": "fore",
+        "visible": "false",
+        "left": "53",
+        "top": "368",
+        "width": "150",
+        "height": "40"
+      },
+      "line": 479,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 481,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "立ち絵",
+      "line": 485
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "chara"
+      },
+      "line": 487,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 489
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 491
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 493
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 495,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 497
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "%lay|0",
+        "page": "back",
+        "left": "%left|300",
+        "top": "%top|0",
+        "opacity": "%opa|255",
+        "visible": "true"
+      },
+      "line": 499,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "time": "%tm|0",
+        "method": "crossfade"
+      },
+      "line": 501,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 503,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 505
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 507,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "立ち絵左に表示（layer0）標準時間は500",
+      "line": 511
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charal"
+      },
+      "line": 513,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 515
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 517
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 519
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 521,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 523
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "0",
+        "left": "%left|100",
+        "top": "%top|0",
+        "page": "back",
+        "opacity": "%opa|255",
+        "visible": "true"
+      },
+      "line": 525,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "time": "%tm|0",
+        "method": "crossfade"
+      },
+      "line": 527,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 529,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 531
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 533,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "前景右に表示（layer1）標準時間は500",
+      "line": 537
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charar"
+      },
+      "line": 539,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 541
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 543
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 545
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 547,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 549
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "%fn",
+        "layer": "1",
+        "left": "%left|550",
+        "top": "%top|0",
+        "page": "back",
+        "opacity": "%opa|255",
+        "visible": "true"
+      },
+      "line": 551,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "time": "%tm|0",
+        "method": "crossfade"
+      },
+      "line": 553,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 555,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 557
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 559,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "中央の立ち絵か左の立ち絵（layer0）を消す　標準時間は300",
+      "line": 563
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charakie"
+      },
+      "line": 565,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 567
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 569
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 571
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 573,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 575
+    },
+    {
+      "type": "command",
+      "name": "freeimage",
+      "args": {
+        "layer": "0",
+        "page": "back"
+      },
+      "line": 577,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "time": "%tm|0",
+        "method": "crossfade"
+      },
+      "line": 579,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 581,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 583
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 585,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "右の立ち絵（layer1）を消す",
+      "line": 589
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "charakier"
+      },
+      "line": 591,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 593
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 595
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 597
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 599,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 601
+    },
+    {
+      "type": "command",
+      "name": "freeimage",
+      "args": {
+        "layer": "1",
+        "page": "back"
+      },
+      "line": 603,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "time": "%tm|0",
+        "method": "crossfade"
+      },
+      "line": 605,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 607,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 609
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 611,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "左右の前景を同時に消す",
+      "line": 615
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "hutakie"
+      },
+      "line": 617,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip == 0"
+      },
+      "line": 619
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 621
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 623
+    },
+    {
+      "type": "command",
+      "name": "backlay",
+      "args": {},
+      "line": 625,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true",
+        "cond": "kag.skipMode>=1"
+      },
+      "line": 627
+    },
+    {
+      "type": "command",
+      "name": "freeimage",
+      "args": {
+        "layer": "0",
+        "page": "back"
+      },
+      "line": 629,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "freeimage",
+      "args": {
+        "layer": "1",
+        "page": "back"
+      },
+      "line": 631,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "trans",
+      "args": {
+        "time": "%tm|0",
+        "method": "crossfade"
+      },
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wt",
+      "args": {},
+      "line": 635,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 637
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 639,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "選択肢",
+      "line": 643
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sentakusi"
+      },
+      "line": 647,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "message2",
+        "page": "fore",
+        "left": "0",
+        "top": "15",
+        "width": "1270",
+        "height": "720",
+        "frame": null,
+        "marginl": "0",
+        "margint": "0",
+        "marginr": "0",
+        "marginb": "40",
+        "visible": "true"
+      },
+      "line": 649,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message2",
+        "page": "fore"
+      },
+      "line": 651,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 653,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sentakusi01"
+      },
+      "line": 657,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "285",
+        "y": "225"
+      },
+      "line": 659
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "%fn",
+        "target": "%tr",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 661
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 663,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sentakusi02"
+      },
+      "line": 667,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "285",
+        "y": "305"
+      },
+      "line": 669
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "%fn",
+        "target": "%tr",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 671
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 673,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sentakusi-off"
+      },
+      "line": 677,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 679,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 681,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 683,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 状況に合わせて右クリックまたはメニューから戻る",
+      "line": 687
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "myreturn"
+      },
+      "line": 689
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {
+        "cond": "!kag.canStore() || sf.menu_mode == 0 || sf.menu_mode == 2"
+      },
+      "line": 691
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "Menu.ks",
+        "target": "*rclick_return",
+        "cond": "sf.menu_mode == 1"
+      },
+      "line": 693
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 695
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 701
+    },
+    {
+      "type": "comment",
+      "text": " buttoncaptionマクロ",
+      "line": 703
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 705
+    },
+    {
+      "type": "comment",
+      "text": " 機能概要",
+      "line": 707
+    },
+    {
+      "type": "comment",
+      "text": "   グラフィカルボタンに任意の文字列を描画する",
+      "line": 709
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 711
+    },
+    {
+      "type": "comment",
+      "text": " 属性",
+      "line": 713
+    },
+    {
+      "type": "comment",
+      "text": "   num     … グラフィカルボタンの番号（０～）",
+      "line": 715
+    },
+    {
+      "type": "comment",
+      "text": "   caption … 描画する文字列",
+      "line": 717
+    },
+    {
+      "type": "comment",
+      "text": "   size    … フォントの文字高さ（ピクセル）",
+      "line": 719
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 721
+    },
+    {
+      "type": "comment",
+      "text": " 補足",
+      "line": 723
+    },
+    {
+      "type": "comment",
+      "text": "   ‐buttonタグの直後にbuttoncaptionマクロを使用すること",
+      "line": 725
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 727
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "buttoncaption"
+      },
+      "line": 729
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "drawButtonCaption(+mp.num, mp.caption, +mp.size,+mp.color)"
+      },
+      "line": 731
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 733
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 735
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 741
+    },
+    {
+      "type": "comment",
+      "text": " eventcgマクロ",
+      "line": 743
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 745
+    },
+    {
+      "type": "comment",
+      "text": " 機能概要：",
+      "line": 747
+    },
+    {
+      "type": "comment",
+      "text": "   imageタグのラッパー。イベント絵を表示したら、システム変数sf.album_flagの該当する",
+      "line": 749
+    },
+    {
+      "type": "comment",
+      "text": "   要素をtrue（閲覧済み）にする。以降、アルバムモードでそのイベント絵が閲覧できる",
+      "line": 751
+    },
+    {
+      "type": "comment",
+      "text": "   album.ks、album_init.ksも参照のこと",
+      "line": 753
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 755
+    },
+    {
+      "type": "comment",
+      "text": " 注意事項：",
+      "line": 757
+    },
+    {
+      "type": "comment",
+      "text": "   ‐storage属性値はtf.album_storageの要素と大文字小文字まで厳密に一致しないと閲覧済み",
+      "line": 759
+    },
+    {
+      "type": "comment",
+      "text": "     扱いにならない（拡張子の有無まで一致する必要あり）。storage属性値の指定には注意",
+      "line": 761
+    },
+    {
+      "type": "comment",
+      "text": "   ‐内部的に一時変数tf.___eventcg_iを使用している。変数名の衝突には注意のこと",
+      "line": 763
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 765
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "eventcg"
+      },
+      "line": 767,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " storage属性値と同じ値の要素が、配列tf.album_storageにあるか調べる",
+      "line": 769
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.___eventcg_i = tf.album_storage.find(mp.storage)"
+      },
+      "line": 771,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 見つけたら、配列sf.album_flagの該当要素をtrue（閲覧済み）にする",
+      "line": 773
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[tf.___eventcg_i"
+      },
+      "line": 775,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = true\" cond=\"tf.___eventcg_i >= 0\"]",
+      "line": 775
+    },
+    {
+      "type": "comment",
+      "text": " 各属性はimageタグにスルーしてしまう",
+      "line": 777
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "*": true
+      },
+      "line": 779,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 781,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 787
+    },
+    {
+      "type": "comment",
+      "text": " button_chgimageマクロ",
+      "line": 789
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 791
+    },
+    {
+      "type": "comment",
+      "text": " 機能概要：",
+      "line": 793
+    },
+    {
+      "type": "comment",
+      "text": "   グラフィカルボタンの画像を変更する",
+      "line": 795
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 797
+    },
+    {
+      "type": "comment",
+      "text": " 属性：",
+      "line": 799
+    },
+    {
+      "type": "comment",
+      "text": "   num … グラフィカルボタンの番号。省略時０",
+      "line": 801
+    },
+    {
+      "type": "comment",
+      "text": "   graphic … ボタンの画像ファイル名。指定必須",
+      "line": 803
+    },
+    {
+      "type": "comment",
+      "text": "   graphickey … カラーキー",
+      "line": 805
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 807
+    },
+    {
+      "type": "comment",
+      "text": " 備考：",
+      "line": 809
+    },
+    {
+      "type": "comment",
+      "text": "   ‐num属性に指定する値は、メッセージレイヤのクリア後、作成したグラフィカルボタンの順番（０オリジン）となる",
+      "line": 811
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 813
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "button_chgimage"
+      },
+      "line": 815,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"kag.current.links[+mp.num"
+      },
+      "line": 817,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".object.loadImages(mp.graphic, mp.graphickey)\"]",
+      "line": 817
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 819,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 825
+    },
+    {
+      "type": "comment",
+      "text": " button_loadthumbnailマクロ",
+      "line": 827
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 829
+    },
+    {
+      "type": "comment",
+      "text": " 機能概要：",
+      "line": 831
+    },
+    {
+      "type": "comment",
+      "text": "   グラフィカルボタンにセーブデータのサムネイル画像を描画する",
+      "line": 833
+    },
+    {
+      "type": "comment",
+      "text": "     通常の状態：セピア調にする",
+      "line": 835
+    },
+    {
+      "type": "comment",
+      "text": "     ボタンが押された状態：ガンマを上げる",
+      "line": 837
+    },
+    {
+      "type": "comment",
+      "text": "     ボタン上にマウスがある状態：加工なし",
+      "line": 839
+    },
+    {
+      "type": "comment",
+      "text": "   グラフィカルボタンの元々の画像データはサムネイル画像の上にαブレンドされる",
+      "line": 841
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 843
+    },
+    {
+      "type": "comment",
+      "text": " 属性：",
+      "line": 845
+    },
+    {
+      "type": "comment",
+      "text": "   num … グラフィカルボタンの番号（０オリジン）",
+      "line": 847
+    },
+    {
+      "type": "comment",
+      "text": "   place … 栞の番号（０オリジン）",
+      "line": 849
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 851
+    },
+    {
+      "type": "comment",
+      "text": " 備考：",
+      "line": 853
+    },
+    {
+      "type": "comment",
+      "text": "   ‐numに指定する値は、カレントのメッセージレイヤのクリア後、作成したグラフィカルボタンの順番であること。",
+      "line": 855
+    },
+    {
+      "type": "comment",
+      "text": "     この値は、ハイパーリンク、チェックボックス、エディットボックスもカウントの対象となっているので注意",
+      "line": 857
+    },
+    {
+      "type": "comment",
+      "text": "   ‐グラフィカルボタンのサイズは幅kag.thumbnailWidth*3×高さkag.thumbnailWidth*kag.scHeight\\kag.scWidth",
+      "line": 859
+    },
+    {
+      "type": "comment",
+      "text": "     ピクセルであること",
+      "line": 861
+    },
+    {
+      "type": "comment",
+      "text": "       画面サイズ800×600ピクセルなら、デフォルトのグラフィカルボタンは399×99ピクセルとなる",
+      "line": 863
+    },
+    {
+      "type": "comment",
+      "text": "   ‐Config.tjsのsaveThumbnailがtrueであること",
+      "line": 865
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 867
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "button_loadthumbnail"
+      },
+      "line": 869,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "loadThumbnail(+mp.num, +mp.place)"
+      },
+      "line": 871,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 873,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 877,
+      "inline": true
+    }
+  ]
+}

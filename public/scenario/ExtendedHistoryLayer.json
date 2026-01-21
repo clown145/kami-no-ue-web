@@ -1,0 +1,37 @@
+{
+  "source": "ExtendedHistoryLayer.ks",
+  "tokens": [
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "hlocate"
+      },
+      "line": 1,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.historyLayer.setHorizontalOffset(mp)"
+      },
+      "line": 3,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 5,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 7,
+      "inline": true
+    }
+  ]
+}

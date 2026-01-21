@@ -1,0 +1,453 @@
+// YesNoDialog.tjs - はい/いいえを選択するダイアログボックス
+
+// Copyright (C)2001-2005, W.Dee and contributors  改変・配布は自由です
+
+ 
+
+//
+
+// ■確認ダイアログボックス改造版
+
+//
+
+// ◎不定形の確認ダイアログボックスを表示する
+
+//     ‐ダイアログボックス本体、はい/いいえボタンにはαチャンネルつき画像を用いる
+
+//     ‐ボーダー（とタイトルバー）は付かない。関数askYesNo()の第２引数は無視される
+
+// ◎メッセージは左上寄せで描画される（センタリングされない）
+
+// ◎メッセージは最大横幅（MessageWidth）に収まるよう改行される。最大縦幅（MessageHeight）
+
+//   を超えるほど長いメッセージを指定した場合、メッセージが途中で切れるので注意
+
+// ◎各種パラメータは、下のDialogImage～MessageHeightで変更できる
+
+// ◎その他、改造のポイントは☆を含むコメントを参照のこと
+
+//
+
+ 
+
+class YesNoDialogWindow extends Window
+
+{
+
+  var yesButton; // [はい] ボタン
+
+  var noButton;  // [いいえ] ボタン
+
+ 
+
+  var result = false; // no:false yes:true
+
+ 
+
+  // 以下は定数として扱う
+
+  var DialogImage = "dialog_base.png";   // ダイアログボックス本体の画像ファイル
+
+  var YesButtonImage = "dialog_bt_yes.png";  // ［はい］ボタンの画像ファイル
+
+  var YesButtonLeft =115;               // 同、Ｘ座標（ピクセル）
+
+  var YesButtonTop = 100;                 // 同、Ｙ座標（ピクセル）
+
+  var NoButtonImage = "dialog_bt_no.png";    // ［いいえ］ボタンの画像ファイル
+
+  var NoButtonLeft = 295;                // 同、Ｘ座標（ピクセル）
+
+  var NoButtonTop = 100;                  // 同、Ｙ座標（ピクセル）
+
+  var FontHeight = 30;                   // メッセージのフォント高さ（ピクセル）
+
+  var FontColor = 0x514610;             // メッセージの色（0xRRGGBB形式/色定数）
+
+  var ShadowLevel = 0;                   // 影の不透明度（0:影なし）
+
+  var ShadowColor = 0xffffff;            // 影の色（0xRRGGBB形式/色定数）
+
+  var ShadowWidth = 0;                   // 影の幅（0:シャープ～ぼける）
+
+  var ShadowOffsetX = 0;                 // 影の位置のＸ座標（0:真下）
+
+  var ShadowOffsetY = 0;                 // 同、Ｙ座標（0:真下）
+
+  var MessageLeft = 140;                  // メッセージの左上隅Ｘ座標（ピクセル）
+
+  var MessageTop = 39;                   // 同、左上隅Ｙ座標（ピクセル）
+
+  var MessageWidth = 280;                // メッセージの最大横幅（ピクセル）
+
+  var MessageHeight = 54;                // 同、最大縦幅（ピクセル）
+	var dialogFontHeight = 20;						// メッセージのフォント高さ（ピクセル）
+	var dialogFontFace = "ＭＳ 明朝,メイリオ";			// メッセージのフォント
+	var dialogFontBold = true;						// メッセージを太字にする場合はtrue
+	var dialogFontColor = 0x514610;				// メッセージの色（0xRRGGBB形式/色定数）
+	var dialogShadowLevel = 0;						// 影の不透明度（0:影なし）
+	var dialogShadowColor = 0xffffff;				// 影の色（0xRRGGBB形式/色定数）
+	var dialogShadowWidth = 0;						// 影の幅（0:シャープ～ぼける）
+	var dialogShadowOffsetX = 0;					// 影の位置のＸ座標（0:真下）
+	var dialogShadowOffsetY = 0;					// 同、Ｙ座標（0:真下）
+
+	var dialogMessageLeft = 0;						// メッセージ描画領域の左上隅Ｘ座標（ピクセル）
+	var dialogMessageTop = 40;						// 同、Ｙ座標（ピクセル）
+	var dialogMessageWidth = 573 - 0*2;			// メッセージ描画領域の最大横幅（ピクセル）
+	var dialogMessageHeight = 173 ;		// 同、高さ（ピクセル）
+
+	var dialogCaptionFontHeight = 18;				// タイトルバーキャプションのフォント高さ（ピクセル）
+	var dialogCaptionTop = 18;						// 同、Ｙ座標（ピクセル）
+
+ 
+
+  function YesNoDialogWindow(message, cap)
+
+  {
+
+    super.Window();
+
+ 
+
+    // メインウィンドウから cursor**** の情報をとってくる
+
+    if(global.Window.mainWindow !== null &&
+
+      typeof global.Window.mainWindow.cursorDefault != "undefined")
+
+      this.cursorDefault = global.Window.mainWindow.cursorDefault;
+
+    if(global.Window.mainWindow !== null &&
+
+      typeof global.Window.mainWindow.cursorPointed != "undefined")
+
+      this.cursorPointed = global.Window.mainWindow.cursorPointed;
+
+ 
+
+    // 外見の調整
+
+    borderStyle = bsNone;  // ウィンドウのボーダーをなくす
+
+    innerSunken = false;   // クライアント領域の外見をフラットに（凹ませない）
+
+    // caption = cap;      // ←ウィンドウのボーダーをなくしたため、現在は無意味なコード
+
+ 
+
+    // プライマリレイヤの作成
+
+    add(new Layer(this, null));
+
+ 
+
+    primaryLayer.loadImages(DialogImage);  // ダイアログボックスの画像ファイルを読み込み
+
+    primaryLayer.setSizeToImageSize();     // レイヤのサイズを画像ファイルのそれに合わせる
+
+    setMaskRegion();                       // ウィンドウを不定形にする
+
+ 
+
+    // プライマリのマウスカーソルを設定
+
+    if(typeof this.cursorDefault !== "undefined")
+
+      primaryLayer.cursor = cursorDefault;
+
+ 
+
+    setInnerSize(primaryLayer.width, primaryLayer.height);
+
+ 
+
+    // ウィンドウ位置の調整
+
+    if(global.Window.mainWindow !== null && global.Window.mainWindow isvalid)
+
+    {
+
+      var win = global.Window.mainWindow;
+
+      var l, t;
+
+      l = ((win.width - width)>>1) + win.left;
+
+      t = ((win.height - height)>>1) + win.top;
+
+      if(l < 0) l = 0;
+
+      if(t < 0) t = 0;
+
+      if(l + width > System.screenWidth) l = System.screenWidth - width;
+
+      if(t + height > System.screenHeight) t = System.screenHeight - height;
+
+      setPos(l, t);
+
+    }
+
+    else
+
+    {
+
+      setPos((System.screenWidth - width)>>1, (System.screenHeight - height)>>1);
+
+    }
+
+ 
+
+// メッセージの描画
+		primaryLayer.font.height = dialogFontHeight;	// フォント高さを設定
+		primaryLayer.font.face = dialogFontFace;		// フォントを設定
+		primaryLayer.font.bold = dialogFontBold;		// 太字にする場合はtrueを設定する
+		var lines = getLines(message);		// メッセージを領域内に収まるよう分割する
+		var y = dialogMessageTop;
+		for (var i = 0; i < lines.count; i++) {		// 分割したメッセージを一行ずつ描画する
+			var th = primaryLayer.font.getTextHeight(lines[i]);
+			if (y+th > dialogMessageTop+dialogMessageHeight) {
+				// primaryLayer.hint = message;		// ☆ヒントにメッセージを表示させる
+				Debug.notice("YesNoDialogWindow.YesNoDialogWindow(): 表示するメッセージが長すぎます");
+				break;
+			}
+			var x = dialogMessageLeft + (dialogMessageWidth - primaryLayer.font.getTextWidth(lines[i])) \ 2;
+			primaryLayer.drawText(x, y, lines[i], dialogFontColor, 255, true,
+				dialogShadowLevel, dialogShadowColor, dialogShadowWidth, dialogShadowOffsetX, dialogShadowOffsetY);
+			y += th;
+		}
+		invalidate lines;
+ 
+
+    // Yesボタン
+
+    add(yesButton = new ButtonLayer(this, primaryLayer));
+
+    with (yesButton) {
+
+      .loadImages(YesButtonImage);
+
+      .top = YesButtonTop;
+
+      .left = YesButtonLeft;
+
+      .visible = true;
+
+    }
+
+ 
+
+    // Noボタン
+
+    add(noButton = new ButtonLayer(this, primaryLayer));
+
+    with (noButton) {
+
+      .loadImages(NoButtonImage);
+
+      .top = NoButtonTop;
+
+      .left = NoButtonLeft;
+
+      .visible = true;
+
+    }
+
+  }
+
+ 
+
+  function finalize()
+
+  {
+
+    super.finalize(...);
+
+  }
+
+ 
+
+  function action(ev)
+
+  {
+
+    // action
+
+    if(ev.type == "onClick")
+
+    {
+
+      if(ev.target == yesButton)
+
+      {
+
+        result = true;
+
+        close();
+
+      }
+
+      else if(ev.target == noButton)
+
+      {
+
+        result = false;
+
+        close();
+
+      }
+
+    }
+
+    else if(ev.type == "onKeyDown" && ev.target === this)
+
+    {
+
+      // パッド入力に対応する処理
+
+      switch(ev.key)
+
+      {
+
+      case VK_PADLEFT:
+
+        yesButton.focus();
+
+        break;
+
+      case VK_PADRIGHT:
+
+        noButton.focus();
+
+        break;
+
+      case VK_PAD1:
+
+        if(focusedLayer == yesButton)
+
+        {
+
+          result = true;
+
+          close();
+
+        }
+
+        else if(focusedLayer == noButton)
+
+        {
+
+          result = false;
+
+          close();
+
+        }
+
+        break;
+
+      case VK_PAD2:
+
+        result = false;
+
+        close();
+
+        break;
+
+      }
+
+    }
+
+  }
+
+ 
+
+  function onKeyDown(key, shift)
+
+  {
+
+    super.onKeyDown(...);
+
+    if(key == VK_ESCAPE)
+
+    {
+
+      // ESC キーが押された
+
+      // 「いいえ」として処理
+
+      result = false;
+
+      close();
+
+    }
+
+  }
+
+ 
+
+  function getLines(message)
+
+  {
+
+    // ↓あまり効率的なコードではないので、気になる場合は修正すると良い
+
+    var lines = new Array();
+
+    var remainder = message.length;  // 残りの文字数
+
+    var start = 0;                   // 行頭のインデックス
+
+    var num = 1;                     // MessageWidthに納まる文字数
+
+    while (remainder > 0) {
+
+      // 幅MessageWidthピクセルに納まる文字数を調べる
+
+      for (var i = 1; i <= remainder; i++) {
+
+        if (primaryLayer.font.getTextWidth(message.substr(start,i)) <= MessageWidth)
+
+          num = i;
+
+        else
+
+          break;
+
+      }
+
+      // message[start]～message[start+num]までの文字列を抜き出し、配列に登録
+
+      lines.add( message.substr(start,num) );
+
+      // 行頭のインデックス、残りの文字数を更新
+
+      start += num;
+
+      remainder -= num;
+
+    }
+
+    return lines;
+
+  }
+
+}
+
+ 
+
+// Yes か No かはっきりさせる関数
+
+function askYesNo(message, caption = "確認")
+
+{
+
+  var win = new YesNoDialogWindow(message, caption);
+
+  win.showModal();
+
+  var res = win.result;
+
+  invalidate win;
+
+  return res;
+
+}

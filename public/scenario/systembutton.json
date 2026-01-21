@@ -1,0 +1,1922 @@
+{
+  "source": "systembutton.ks",
+  "tokens": [
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "typeof(global.systembutton_object) == 'undefined'"
+      },
+      "line": 1
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 3
+    },
+    {
+      "type": "text",
+      "text": "// 画面に「セーブ」「ロード」のボタンを表示するサンプル",
+      "line": 7
+    },
+    {
+      "type": "text",
+      "text": "// メッセージレイヤのクリアごとにこれらのボタンを button タグで表示することでも",
+      "line": 11
+    },
+    {
+      "type": "text",
+      "text": "// 実現できますが、あまりそれでは効率が良くないです。",
+      "line": 13
+    },
+    {
+      "type": "text",
+      "text": "// このサンプルでは、「セーブ」と「ロード」のボタンを含んだレイヤを画面上に",
+      "line": 15
+    },
+    {
+      "type": "text",
+      "text": "// 表示するものです。",
+      "line": 17
+    },
+    {
+      "type": "text",
+      "text": "// この例はフリーセーブモードで動作します。いろいろ改造できると思います。",
+      "line": 19
+    },
+    {
+      "type": "text",
+      "text": "class SystemButtonLayer extends ButtonLayer",
+      "line": 27
+    },
+    {
+      "type": "text",
+      "text": "// クリックされたときに実行する関数を指定できるボタンレイヤ",
+      "line": 29
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 31
+    },
+    {
+      "type": "text",
+      "text": "var onClickFunction;",
+      "line": 33
+    },
+    {
+      "type": "text",
+      "text": "function SystemButtonLayer(window, parent, func)",
+      "line": 37
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 39
+    },
+    {
+      "type": "text",
+      "text": "super.ButtonLayer(window, parent);",
+      "line": 41
+    },
+    {
+      "type": "text",
+      "text": "focusable = false;",
+      "line": 43
+    },
+    {
+      "type": "text",
+      "text": "visible = true;",
+      "line": 45
+    },
+    {
+      "type": "text",
+      "text": "onClickFunction = func;",
+      "line": 47
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 49
+    },
+    {
+      "type": "text",
+      "text": "function finalize()",
+      "line": 53
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 55
+    },
+    {
+      "type": "text",
+      "text": "super.finalize(...);",
+      "line": 57
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 59
+    },
+    {
+      "type": "text",
+      "text": "function onClick()",
+      "line": 63
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 65
+    },
+    {
+      "type": "text",
+      "text": "super.onClick(...);",
+      "line": 67
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 69
+    },
+    {
+      "type": "text",
+      "text": "function onMouseUp(x, y, button, shift)",
+      "line": 73
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 75
+    },
+    {
+      "type": "text",
+      "text": "if(enabled && button == mbLeft)",
+      "line": 77
+    },
+    {
+      "type": "text",
+      "text": "onClickFunction(this);",
+      "line": 79
+    },
+    {
+      "type": "text",
+      "text": "super.onMouseUp(...);",
+      "line": 81
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 83
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 87
+    },
+    {
+      "type": "text",
+      "text": "class SystemButtonPlugin extends KAGPlugin",
+      "line": 91
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 93
+    },
+    {
+      "type": "text",
+      "text": "var x = 125; // 初期 x 位置",
+      "line": 95
+    },
+    {
+      "type": "text",
+      "text": "var y = 416; // 初期 y 位置",
+      "line": 97
+    },
+    {
+      "type": "text",
+      "text": "var foreSeen = false; // 表画面のボタンが可視か",
+      "line": 101
+    },
+    {
+      "type": "text",
+      "text": "var backSeen = false; // 裏画面のボタンが可視か",
+      "line": 103
+    },
+    {
+      "type": "text",
+      "text": "var foreButtons = []; // 表画面のボタンの配列",
+      "line": 107
+    },
+    {
+      "type": "text",
+      "text": "var backButtons = []; // 裏画面のボタンの配列",
+      "line": 109
+    },
+    {
+      "type": "text",
+      "text": "// 以下は定数として扱う",
+      "line": 113
+    },
+    {
+      "type": "text",
+      "text": "var IndexHistory = 0;\t// LOGボタンのインデックス",
+      "line": 115
+    },
+    {
+      "type": "text",
+      "text": "var IndexSave = 3;\t\t// SAVEボタンのインデックス",
+      "line": 117
+    },
+    {
+      "type": "text",
+      "text": "var IndexLoad = 4;\t\t// LOADボタンのインデックス",
+      "line": 119
+    },
+    {
+      "type": "text",
+      "text": "function SystemButtonPlugin()",
+      "line": 123
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 125
+    },
+    {
+      "type": "text",
+      "text": "// SystemButtonPlugin コンストラクタ",
+      "line": 127
+    },
+    {
+      "type": "text",
+      "text": "createButtons(kag.fore.base, foreButtons); // 表画面のボタンを作成",
+      "line": 131
+    },
+    {
+      "type": "text",
+      "text": "createButtons(kag.back.base, backButtons); // 裏画面のボタンを作成",
+      "line": 133
+    },
+    {
+      "type": "text",
+      "text": "realign(); // 再配置",
+      "line": 137
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(foreButtons, 'visible', foreSeen = false);",
+      "line": 141
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(backButtons, 'visible', backSeen = false);",
+      "line": 143
+    },
+    {
+      "type": "text",
+      "text": "// 非表示に",
+      "line": 145
+    },
+    {
+      "type": "text",
+      "text": "onStableStateChanged(kag.inStable);\t\t// イネーブル／ディセーブル状態を更新しておく",
+      "line": 149
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 151
+    },
+    {
+      "type": "text",
+      "text": "function finalize()",
+      "line": 155
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 157
+    },
+    {
+      "type": "text",
+      "text": "// ボタンを無効化",
+      "line": 159
+    },
+    {
+      "type": "text",
+      "text": "for(var i = 0; i < foreButtons.count; i++)",
+      "line": 161
+    },
+    {
+      "type": "text",
+      "text": "invalidate foreButtons",
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 163
+    },
+    {
+      "type": "text",
+      "text": "for(var i = 0; i < backButtons.count; i++)",
+      "line": 165
+    },
+    {
+      "type": "text",
+      "text": "invalidate backButtons",
+      "line": 167
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 167,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 167
+    },
+    {
+      "type": "text",
+      "text": "super.finalize(...);",
+      "line": 171
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 173
+    },
+    {
+      "type": "text",
+      "text": "function setObjProp(array, member, value)",
+      "line": 177
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 179
+    },
+    {
+      "type": "text",
+      "text": "// array の各メンバのプロパティの設定",
+      "line": 181
+    },
+    {
+      "type": "text",
+      "text": "for(var i = array.count - 1; i >= 0; i--) array",
+      "line": 183
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "member",
+      "args": {},
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = value;",
+      "line": 183
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 185
+    },
+    {
+      "type": "text",
+      "text": "function createButtons(parent, array)",
+      "line": 189
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 191
+    },
+    {
+      "type": "text",
+      "text": "// parent を親レイヤとしてボタンを作成し、array に登録する。",
+      "line": 193
+    },
+    {
+      "type": "text",
+      "text": "// ボタンは表画面と裏画面の両方に対して作成されるので注意。",
+      "line": 195
+    },
+    {
+      "type": "text",
+      "text": "// ボタンを追加するには、これを参考にして いろいろ追加してください。",
+      "line": 199
+    },
+    {
+      "type": "text",
+      "text": "var obj;",
+      "line": 203
+    },
+    {
+      "type": "text",
+      "text": "array.add(obj = new SystemButtonLayer(kag, parent, onLogButtonClick));",
+      "line": 207
+    },
+    {
+      "type": "text",
+      "text": "obj.loadImages('sysbt_bt_log_3mode.png'); // LOG ボタン用画像を読み込む",
+      "line": 209
+    },
+    {
+      "type": "text",
+      "text": "obj.hint = \"显示履历界面。\";",
+      "line": 211
+    },
+    {
+      "type": "text",
+      "text": "array.add(obj = new SystemButtonLayer(kag, parent, onSkipButtonClick));",
+      "line": 215
+    },
+    {
+      "type": "text",
+      "text": "obj.loadImages('sysbt_bt_skip_3mode.png'); // SKIP ボタン用画像を読み込む",
+      "line": 217
+    },
+    {
+      "type": "text",
+      "text": "obj.hint = \"开始快速翻页。\";",
+      "line": 219
+    },
+    {
+      "type": "text",
+      "text": "array.add(obj = new SystemButtonLayer(kag, parent, onAutoButtonClick));",
+      "line": 223
+    },
+    {
+      "type": "text",
+      "text": "obj.loadImages('sysbt_bt_auto_3mode.png'); // AUTO ボタン用画像を読み込む",
+      "line": 225
+    },
+    {
+      "type": "text",
+      "text": "obj.hint = \"开始自动翻页。\";",
+      "line": 227
+    },
+    {
+      "type": "text",
+      "text": "array.add(obj = new SystemButtonLayer(kag, parent, onSaveButtonClick));",
+      "line": 231
+    },
+    {
+      "type": "text",
+      "text": "obj.loadImages('sysbt_bt_save_3mode.png'); // SAVE ボタン用画像を読み込む",
+      "line": 233
+    },
+    {
+      "type": "text",
+      "text": "obj.hint = \"打开存档界面\";",
+      "line": 235
+    },
+    {
+      "type": "text",
+      "text": "array.add(obj = new SystemButtonLayer(kag, parent, onLoadButtonClick));",
+      "line": 239
+    },
+    {
+      "type": "text",
+      "text": "obj.loadImages('sysbt_bt_load_3mode.png'); // LOAD ボタン用画像を読み込む",
+      "line": 241
+    },
+    {
+      "type": "text",
+      "text": "obj.hint = \"打开读档界面。\";",
+      "line": 243
+    },
+    {
+      "type": "text",
+      "text": "array.add(obj = new SystemButtonLayer(kag, parent, onConfigButtonClick));",
+      "line": 247
+    },
+    {
+      "type": "text",
+      "text": "obj.loadImages('sysbt_bt_config_3mode.png'); // CONFIG ボタン用画像を読み込む",
+      "line": 249
+    },
+    {
+      "type": "text",
+      "text": "obj.hint = \"打开设定界面。\";",
+      "line": 251
+    },
+    {
+      "type": "text",
+      "text": "//\t\tarray.add(obj = new SystemButtonLayer(kag, parent, onTitleButtonClick));",
+      "line": 255
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.loadImages('sysbt_bt_title_3mode.png'); // TITLE ボタン用画像を読み込む",
+      "line": 257
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.hint = \"タイトルに戻ります。\";",
+      "line": 259
+    },
+    {
+      "type": "text",
+      "text": "//\t\tarray.add(obj = new SystemButtonLayer(kag, parent, onExitButtonClick));",
+      "line": 263
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.loadImages('sysbt_bt_exit_3mode.png'); // EXIT ボタン用画像を読み込む",
+      "line": 265
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.hint = \"ゲームを終了します。\";",
+      "line": 267
+    },
+    {
+      "type": "text",
+      "text": "//\t\tarray.add(obj = new SystemButtonLayer(kag, parent, onVoiceButtonClick));",
+      "line": 271
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.loadImages('sysbt_bt_voice_3mode.png'); // VOICE ボタン用画像を読み込む",
+      "line": 273
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.hint = \"音声をもう一度再生。\";",
+      "line": 275
+    },
+    {
+      "type": "text",
+      "text": "//\t    array.add(obj = new SystemButtonLayer(kag, parent, onQuickSaveButtonClick));",
+      "line": 279
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.loadImages('sysbt_bt_qsave_3mode.png'); // QSAVE ボタン用画像を読み込む",
+      "line": 281
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.hint = \"クイックセーブします。\";",
+      "line": 283
+    },
+    {
+      "type": "text",
+      "text": "//\t    array.add(obj = new SystemButtonLayer(kag, parent, onQuickLoadButtonClick));",
+      "line": 287
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.loadImages('sysbt_bt_qload_3mode.png'); // QLOAD ボタン用画像を読み込む",
+      "line": 289
+    },
+    {
+      "type": "text",
+      "text": "//\t\tobj.hint = \"クイックロードします。\";",
+      "line": 291
+    },
+    {
+      "type": "text",
+      "text": "array.add(obj = new SystemButtonLayer(kag, parent, onCloseButtonClick));",
+      "line": 295
+    },
+    {
+      "type": "text",
+      "text": "obj.loadImages('sysbt_bt_win_3mode.png'); // CLOSE ボタン用画像を読み込む",
+      "line": 297
+    },
+    {
+      "type": "text",
+      "text": "obj.hint = \"关闭文字框\";",
+      "line": 299
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 301
+    },
+    {
+      "type": "text",
+      "text": "function onQuickSaveButtonClick()",
+      "line": 305
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 307
+    },
+    {
+      "type": "text",
+      "text": "// LOAD ボタンが押された",
+      "line": 309
+    },
+    {
+      "type": "text",
+      "text": "kag.callExtraConductor(\"systembutton_sub.ks\", \"*qsave\");",
+      "line": 311
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 313
+    },
+    {
+      "type": "text",
+      "text": "function onQuickLoadButtonClick()",
+      "line": 315
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 317
+    },
+    {
+      "type": "text",
+      "text": "// LOAD ボタンが押された",
+      "line": 319
+    },
+    {
+      "type": "text",
+      "text": "kag.callExtraConductor(\"systembutton_sub.ks\", \"*qload\");",
+      "line": 321
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 323
+    },
+    {
+      "type": "text",
+      "text": "function realign()",
+      "line": 327
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 329
+    },
+    {
+      "type": "text",
+      "text": "// ボタンの再配置",
+      "line": 331
+    },
+    {
+      "type": "text",
+      "text": "// このメソッドは、ボタンを x y 位置から横一列に配置する",
+      "line": 333
+    },
+    {
+      "type": "text",
+      "text": "var count=foreButtons.count;",
+      "line": 335
+    },
+    {
+      "type": "text",
+      "text": "var pos=",
+      "line": 337
+    },
+    {
+      "type": "command",
+      "name": "919,559,620,559,520,559,720,559,819,559,1019,559,1094,598,",
+      "args": {},
+      "line": 337,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 337
+    },
+    {
+      "type": "text",
+      "text": "for(var i = 0; i < count; i++)",
+      "line": 341
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 343
+    },
+    {
+      "type": "text",
+      "text": "var obj;",
+      "line": 345
+    },
+    {
+      "type": "text",
+      "text": "obj = backButtons",
+      "line": 347
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 347,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 347
+    },
+    {
+      "type": "text",
+      "text": "obj.setPos(pos",
+      "line": 349
+    },
+    {
+      "type": "command",
+      "name": "i*2",
+      "args": {},
+      "line": 349,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ",pos",
+      "line": 349
+    },
+    {
+      "type": "command",
+      "name": "i*2+1",
+      "args": {},
+      "line": 349,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 349
+    },
+    {
+      "type": "text",
+      "text": "obj.absolute = 2000000-3;",
+      "line": 351
+    },
+    {
+      "type": "text",
+      "text": "// 重ね合わせ順序はメッセージ履歴よりも奥",
+      "line": 353
+    },
+    {
+      "type": "text",
+      "text": "obj = foreButtons",
+      "line": 357
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 357,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 357
+    },
+    {
+      "type": "text",
+      "text": "obj.setPos(pos",
+      "line": 359
+    },
+    {
+      "type": "command",
+      "name": "i*2",
+      "args": {},
+      "line": 359,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ",pos",
+      "line": 359
+    },
+    {
+      "type": "command",
+      "name": "i*2+1",
+      "args": {},
+      "line": 359,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 359
+    },
+    {
+      "type": "text",
+      "text": "obj.absolute = 2000000-3;",
+      "line": 361
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 363
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 367
+    },
+    {
+      "type": "text",
+      "text": "function onLogButtonClick()",
+      "line": 371
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 373
+    },
+    {
+      "type": "text",
+      "text": "// LOG ボタンが押された",
+      "line": 375
+    },
+    {
+      "type": "text",
+      "text": "kag.onShowHistoryMenuItemClick(kag);",
+      "line": 377
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 379
+    },
+    {
+      "type": "text",
+      "text": "function onAutoButtonClick()",
+      "line": 383
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 385
+    },
+    {
+      "type": "text",
+      "text": "// AUTO ボタンが押された",
+      "line": 387
+    },
+    {
+      "type": "text",
+      "text": "kag.enterAutoMode();",
+      "line": 389
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 391
+    },
+    {
+      "type": "text",
+      "text": "function onSkipButtonClick()",
+      "line": 395
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 397
+    },
+    {
+      "type": "text",
+      "text": "// SKIP ボタンが押された",
+      "line": 399
+    },
+    {
+      "type": "text",
+      "text": "kag.skipToStop();",
+      "line": 401
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 403
+    },
+    {
+      "type": "text",
+      "text": "function onSaveButtonClick()",
+      "line": 407
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 409
+    },
+    {
+      "type": "text",
+      "text": "// SAVE ボタンが押された",
+      "line": 411
+    },
+    {
+      "type": "text",
+      "text": "kag.callExtraConductor(\"system_save.ks\", \"*save_menu\");",
+      "line": 413
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 415
+    },
+    {
+      "type": "text",
+      "text": "function onLoadButtonClick()",
+      "line": 419
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 421
+    },
+    {
+      "type": "text",
+      "text": "// LOAD ボタンが押された",
+      "line": 423
+    },
+    {
+      "type": "text",
+      "text": "kag.callExtraConductor(\"systembutton_sub.ks\", \"*sys_load\");",
+      "line": 425
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 427
+    },
+    {
+      "type": "text",
+      "text": "function onConfigButtonClick()",
+      "line": 431
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 433
+    },
+    {
+      "type": "text",
+      "text": "// CONFIG ボタンが押された",
+      "line": 435
+    },
+    {
+      "type": "text",
+      "text": "//\t\tkag.callExtraConductor(\"config.ks\", \"*initialize\");",
+      "line": 437
+    },
+    {
+      "type": "text",
+      "text": "kag.callExtraConductor(\"systembutton_sub.ks\", \"*sys_config\");",
+      "line": 439
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 441
+    },
+    {
+      "type": "text",
+      "text": "//\tfunction onMenuButtonClick()",
+      "line": 445
+    },
+    {
+      "type": "text",
+      "text": "//\t{",
+      "line": 447
+    },
+    {
+      "type": "text",
+      "text": "// MENU ボタンが押された",
+      "line": 449
+    },
+    {
+      "type": "text",
+      "text": "//\t\tkag.callExtraConductor(\"menu.ks\", \"*rclick_menu\");",
+      "line": 451
+    },
+    {
+      "type": "text",
+      "text": "//\t}",
+      "line": 453
+    },
+    {
+      "type": "text",
+      "text": "//\tfunction onTitleButtonClick()",
+      "line": 457
+    },
+    {
+      "type": "text",
+      "text": "//\t{",
+      "line": 459
+    },
+    {
+      "type": "text",
+      "text": "// TITLE ボタンが押された",
+      "line": 461
+    },
+    {
+      "type": "text",
+      "text": "//\t\tkag.callExtraConductor(\"systembutton_sub.ks\", \"*sys_title\");",
+      "line": 463
+    },
+    {
+      "type": "text",
+      "text": "//\t}",
+      "line": 465
+    },
+    {
+      "type": "text",
+      "text": "//\tfunction onVoiceButtonClick()",
+      "line": 469
+    },
+    {
+      "type": "text",
+      "text": "//\t{",
+      "line": 471
+    },
+    {
+      "type": "text",
+      "text": "// VOICE ボタンが押された",
+      "line": 473
+    },
+    {
+      "type": "text",
+      "text": "//\t\tkag.callExtraConductor(\"systembutton_sub.ks\", \"*sys_voice\");",
+      "line": 475
+    },
+    {
+      "type": "text",
+      "text": "//kag.se",
+      "line": 477
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 477,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".play(%",
+      "line": 477
+    },
+    {
+      "type": "command",
+      "name": "storage:f.lastvoice",
+      "args": {},
+      "line": 477,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") if kag.se",
+      "line": 477
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 477,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".status == 'play';",
+      "line": 477
+    },
+    {
+      "type": "text",
+      "text": "//if(f.pv_voice != '') kag.se",
+      "line": 479
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 479,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".play(%",
+      "line": 479
+    },
+    {
+      "type": "command",
+      "name": "storage:f.pv_voice",
+      "args": {},
+      "line": 479,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 479
+    },
+    {
+      "type": "text",
+      "text": "//pv_playpart char=&f.pv_char voice=&f.pv_voice colorchange=false;",
+      "line": 481
+    },
+    {
+      "type": "text",
+      "text": "//\t}",
+      "line": 485
+    },
+    {
+      "type": "text",
+      "text": "//\tfunction onExitButtonClick()",
+      "line": 489
+    },
+    {
+      "type": "text",
+      "text": "//\t{",
+      "line": 491
+    },
+    {
+      "type": "text",
+      "text": "// EXIT ボタンが押された",
+      "line": 493
+    },
+    {
+      "type": "text",
+      "text": "//\t\tkag.callExtraConductor(\"systembutton_sub.ks\", \"*sys_exit\");",
+      "line": 495
+    },
+    {
+      "type": "text",
+      "text": "//\t}",
+      "line": 497
+    },
+    {
+      "type": "text",
+      "text": "function onCloseButtonClick()",
+      "line": 501
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 503
+    },
+    {
+      "type": "text",
+      "text": "// CLOSE ボタンが押された",
+      "line": 505
+    },
+    {
+      "type": "text",
+      "text": "kag.onPrimaryRightClick();",
+      "line": 507
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 509
+    },
+    {
+      "type": "text",
+      "text": "function setOptions(elm)",
+      "line": 513
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 515
+    },
+    {
+      "type": "text",
+      "text": "// オプションを設定",
+      "line": 517
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(foreButtons, 'visible', foreSeen = +elm.forevisible) if elm.forevisible !== void;",
+      "line": 519
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(backButtons, 'visible', backSeen = +elm.backvisible) if elm.backvisible !== void;",
+      "line": 521
+    },
+    {
+      "type": "text",
+      "text": "var poschanged = false;",
+      "line": 523
+    },
+    {
+      "type": "text",
+      "text": "(x = +elm.left, poschanged = true) if elm.left !== void;",
+      "line": 525
+    },
+    {
+      "type": "text",
+      "text": "(y = +elm.top, poschanged = true) if elm.top !== void;",
+      "line": 527
+    },
+    {
+      "type": "text",
+      "text": "if(poschanged) realign(); // 表示位置の変更",
+      "line": 529
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 531
+    },
+    {
+      "type": "text",
+      "text": "function onStore(f, elm)",
+      "line": 535
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 537
+    },
+    {
+      "type": "text",
+      "text": "// 栞を保存するとき",
+      "line": 539
+    },
+    {
+      "type": "text",
+      "text": "var dic = f.systemButtons = %[];",
+      "line": 541
+    },
+    {
+      "type": "text",
+      "text": "// f.systemButtons に辞書配列を作成",
+      "line": 543
+    },
+    {
+      "type": "text",
+      "text": "dic.foreVisible = foreSeen;",
+      "line": 545
+    },
+    {
+      "type": "text",
+      "text": "dic.backVisible = backSeen;",
+      "line": 547
+    },
+    {
+      "type": "text",
+      "text": "dic.left = x;",
+      "line": 549
+    },
+    {
+      "type": "text",
+      "text": "dic.top = y;",
+      "line": 551
+    },
+    {
+      "type": "text",
+      "text": "// 各情報を辞書配列に記録",
+      "line": 553
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 555
+    },
+    {
+      "type": "text",
+      "text": "function onRestore(f, clear, elm)",
+      "line": 559
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 561
+    },
+    {
+      "type": "text",
+      "text": "// 栞を読み出すとき",
+      "line": 563
+    },
+    {
+      "type": "text",
+      "text": "var dic = f.systemButtons;",
+      "line": 565
+    },
+    {
+      "type": "text",
+      "text": "if(dic === void)",
+      "line": 567
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 569
+    },
+    {
+      "type": "text",
+      "text": "// systemButtons の情報が栞に保存されていない",
+      "line": 571
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(foreButtons, 'visible', foreSeen = false);",
+      "line": 573
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(backButtons, 'visible', backSeen = false);",
+      "line": 575
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 577
+    },
+    {
+      "type": "text",
+      "text": "else",
+      "line": 579
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 581
+    },
+    {
+      "type": "text",
+      "text": "// systemButtons の情報が栞に保存されている",
+      "line": 583
+    },
+    {
+      "type": "text",
+      "text": "setOptions(%[ forevisible : dic.foreVisible, backvisible : dic.backVisible,",
+      "line": 585
+    },
+    {
+      "type": "text",
+      "text": "left : dic.left, top : dic.top]);",
+      "line": 587
+    },
+    {
+      "type": "text",
+      "text": "// オプションを設定",
+      "line": 589
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 591
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 593
+    },
+    {
+      "type": "text",
+      "text": "function onStableStateChanged(stable)",
+      "line": 597
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 599
+    },
+    {
+      "type": "text",
+      "text": "// 「安定」( s l p の各タグで停止中 ) か、",
+      "line": 601
+    },
+    {
+      "type": "text",
+      "text": "// 「走行中」 ( それ以外 ) かの状態が変わったときに呼ばれる",
+      "line": 603
+    },
+    {
+      "type": "text",
+      "text": "// 走行中は各ボタンを無効にする",
+      "line": 607
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(foreButtons, 'enabled', stable);",
+      "line": 609
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(backButtons, 'enabled', stable);",
+      "line": 611
+    },
+    {
+      "type": "text",
+      "text": "if (stable) {",
+      "line": 615
+    },
+    {
+      "type": "text",
+      "text": "// 安定していても、以下の状態になっている場合、対応するボタンをディセーブルにする",
+      "line": 617
+    },
+    {
+      "type": "text",
+      "text": "// ‐historyタグでメッセージ履歴が抑止",
+      "line": 619
+    },
+    {
+      "type": "text",
+      "text": "// ‐disablestore/storeタグでセーブ／ロードが抑止",
+      "line": 621
+    },
+    {
+      "type": "text",
+      "text": "if (!kag.historyEnabled)",
+      "line": 623
+    },
+    {
+      "type": "text",
+      "text": "foreButtons",
+      "line": 625
+    },
+    {
+      "type": "command",
+      "name": "indexhistory",
+      "args": {},
+      "line": 625,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".enabled = backButtons",
+      "line": 625
+    },
+    {
+      "type": "command",
+      "name": "indexhistory",
+      "args": {},
+      "line": 625,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".enabled = false;",
+      "line": 625
+    },
+    {
+      "type": "text",
+      "text": "if (!kag.canStore())",
+      "line": 627
+    },
+    {
+      "type": "text",
+      "text": "foreButtons",
+      "line": 629
+    },
+    {
+      "type": "command",
+      "name": "indexsave",
+      "args": {},
+      "line": 629,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".enabled = backButtons",
+      "line": 629
+    },
+    {
+      "type": "command",
+      "name": "indexsave",
+      "args": {},
+      "line": 629,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".enabled = false;",
+      "line": 629
+    },
+    {
+      "type": "text",
+      "text": "if (!kag.canRestore())",
+      "line": 631
+    },
+    {
+      "type": "text",
+      "text": "foreButtons",
+      "line": 633
+    },
+    {
+      "type": "command",
+      "name": "indexload",
+      "args": {},
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".enabled = backButtons",
+      "line": 633
+    },
+    {
+      "type": "command",
+      "name": "indexload",
+      "args": {},
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".enabled = false;",
+      "line": 633
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 635
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 637
+    },
+    {
+      "type": "text",
+      "text": "function onMessageHiddenStateChanged(hidden)",
+      "line": 641
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 643
+    },
+    {
+      "type": "text",
+      "text": "// メッセージレイヤがユーザの操作によって隠されるとき、現れるときに",
+      "line": 645
+    },
+    {
+      "type": "text",
+      "text": "// 呼ばれる。メッセージレイヤとともに表示/非表示を切り替えたいときは",
+      "line": 647
+    },
+    {
+      "type": "text",
+      "text": "// ここで設定する。",
+      "line": 649
+    },
+    {
+      "type": "text",
+      "text": "if(hidden)",
+      "line": 651
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 653
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(foreButtons, 'visible', false);",
+      "line": 655
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(backButtons, 'visible', false);",
+      "line": 657
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 659
+    },
+    {
+      "type": "text",
+      "text": "else",
+      "line": 661
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 663
+    },
+    {
+      "type": "text",
+      "text": "// foreSeen, backSeen は、ボタンが本来表示中であったかどうかを記録している",
+      "line": 665
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(foreButtons, 'visible', foreSeen);",
+      "line": 667
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(backButtons, 'visible', backSeen);",
+      "line": 669
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 671
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 673
+    },
+    {
+      "type": "text",
+      "text": "function onCopyLayer(toback)",
+      "line": 677
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 679
+    },
+    {
+      "type": "text",
+      "text": "// レイヤの表←→裏の情報のコピー",
+      "line": 681
+    },
+    {
+      "type": "text",
+      "text": "// backlay タグやトランジションの終了時に呼ばれる",
+      "line": 685
+    },
+    {
+      "type": "text",
+      "text": "// ここでレイヤに関してコピーすべきなのは",
+      "line": 689
+    },
+    {
+      "type": "text",
+      "text": "// 表示/非表示の情報だけ",
+      "line": 691
+    },
+    {
+      "type": "text",
+      "text": "if(toback)",
+      "line": 695
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 697
+    },
+    {
+      "type": "text",
+      "text": "// 表→裏",
+      "line": 699
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(backButtons, 'visible', foreButtons",
+      "line": 701
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 701,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".visible);",
+      "line": 701
+    },
+    {
+      "type": "text",
+      "text": "backSeen = foreSeen;",
+      "line": 703
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 705
+    },
+    {
+      "type": "text",
+      "text": "else",
+      "line": 707
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 709
+    },
+    {
+      "type": "text",
+      "text": "// 裏→表",
+      "line": 711
+    },
+    {
+      "type": "text",
+      "text": "setObjProp(foreButtons, 'visible', backButtons",
+      "line": 713
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 713,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".visible);",
+      "line": 713
+    },
+    {
+      "type": "text",
+      "text": "foreSeen = backSeen;",
+      "line": 715
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 717
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 719
+    },
+    {
+      "type": "text",
+      "text": "function onExchangeForeBack()",
+      "line": 723
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 725
+    },
+    {
+      "type": "text",
+      "text": "// 裏と表の管理情報を交換",
+      "line": 727
+    },
+    {
+      "type": "text",
+      "text": "// children = true のトランジションでは、トランジション終了時に",
+      "line": 731
+    },
+    {
+      "type": "text",
+      "text": "// 表画面と裏画面のレイヤ構造がそっくり入れ替わるので、",
+      "line": 733
+    },
+    {
+      "type": "text",
+      "text": "// それまで 表画面だと思っていたものが裏画面に、裏画面だと思って",
+      "line": 735
+    },
+    {
+      "type": "text",
+      "text": "// いたものが表画面になってしまう。ここのタイミングでその情報を",
+      "line": 737
+    },
+    {
+      "type": "text",
+      "text": "// 入れ替えれば、矛盾は生じないで済む。",
+      "line": 739
+    },
+    {
+      "type": "text",
+      "text": "// ここで表画面、裏画面のレイヤに関して管理すべきなのは",
+      "line": 743
+    },
+    {
+      "type": "text",
+      "text": "// foreButtons と backButton 、foreSeen と backSeen の変数だけ",
+      "line": 745
+    },
+    {
+      "type": "text",
+      "text": "var tmp;",
+      "line": 747
+    },
+    {
+      "type": "text",
+      "text": "tmp = backButtons;",
+      "line": 751
+    },
+    {
+      "type": "text",
+      "text": "backButtons = foreButtons;",
+      "line": 753
+    },
+    {
+      "type": "text",
+      "text": "foreButtons = tmp;",
+      "line": 755
+    },
+    {
+      "type": "text",
+      "text": "tmp = backSeen;",
+      "line": 759
+    },
+    {
+      "type": "text",
+      "text": "backSeen = foreSeen;",
+      "line": 761
+    },
+    {
+      "type": "text",
+      "text": "foreSeen = tmp;",
+      "line": 763
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 765
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 767
+    },
+    {
+      "type": "text",
+      "text": "kag.addPlugin(global.systembutton_object = new SystemButtonPlugin(kag));\t// プラグインオブジェクトを作成し、登録する",
+      "line": 771
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 773
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 775
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 777
+    },
+    {
+      "type": "comment",
+      "text": " マクロの登録",
+      "line": 779
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sysbtopt"
+      },
+      "line": 781
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "systembutton_object.setOptions(mp)"
+      },
+      "line": 783
+    },
+    {
+      "type": "comment",
+      "text": " mp がマクロに渡された属性を示す辞書配列オブジェクト",
+      "line": 785
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 787
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 789
+    }
+  ]
+}

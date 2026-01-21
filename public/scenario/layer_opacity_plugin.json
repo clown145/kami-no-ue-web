@@ -1,0 +1,196 @@
+{
+  "source": "layer_opacity_plugin.ks",
+  "tokens": [
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "typeof(global.___layer_opacity_plugin_object) == 'undefined'"
+      },
+      "line": 1
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 3
+    },
+    {
+      "type": "text",
+      "text": "// LayerOpacityPluginクラス",
+      "line": 7
+    },
+    {
+      "type": "text",
+      "text": "class LayerOpacityPlugin extends KAGPlugin",
+      "line": 11
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 13
+    },
+    {
+      "type": "text",
+      "text": "var LayerNum = 2;\t// メッセージ枠（フレーム）画像を読み込ませる前景レイヤ番号（０～）",
+      "line": 15
+    },
+    {
+      "type": "text",
+      "text": "// コンストラクタ",
+      "line": 19
+    },
+    {
+      "type": "text",
+      "text": "function LayerOpacityPlugin()",
+      "line": 21
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 23
+    },
+    {
+      "type": "text",
+      "text": "super.KAGPlugin();\t// スーパークラスのコンストラクタを呼ぶ",
+      "line": 25
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 27
+    },
+    {
+      "type": "text",
+      "text": "// デストラクタ",
+      "line": 31
+    },
+    {
+      "type": "text",
+      "text": "function finalize()",
+      "line": 33
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 35
+    },
+    {
+      "type": "text",
+      "text": "super.finalize(...);\t// スーパークラスのデストラクタを呼ぶ",
+      "line": 37
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 39
+    },
+    {
+      "type": "text",
+      "text": "// 栞を読み出すときに呼ばれるハンドラ",
+      "line": 43
+    },
+    {
+      "type": "text",
+      "text": "// f     = 読み込む栞データ（Dictionaryクラスのオブジェクト）",
+      "line": 45
+    },
+    {
+      "type": "text",
+      "text": "// clear = メッセージレイヤをクリアするか（temploadの時のみfalse）",
+      "line": 47
+    },
+    {
+      "type": "text",
+      "text": "// elm   = tempload時のオプション",
+      "line": 49
+    },
+    {
+      "type": "text",
+      "text": "//         （temploadでない場合はvoid、temploadの場合はDictionaryクラスのオブジェクト）",
+      "line": 51
+    },
+    {
+      "type": "text",
+      "text": "function onRestore(f, clear, elm)",
+      "line": 53
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 55
+    },
+    {
+      "type": "text",
+      "text": "kag.fore.layers",
+      "line": 57
+    },
+    {
+      "type": "command",
+      "name": "layernum",
+      "args": {},
+      "line": 57,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".opacity = kag.back.layers",
+      "line": 57
+    },
+    {
+      "type": "command",
+      "name": "layernum",
+      "args": {},
+      "line": 57,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".opacity = sf.frame_opacity;",
+      "line": 57
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 59
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 61
+    },
+    {
+      "type": "text",
+      "text": "// プラグインオブジェクトを作成し、登録する",
+      "line": 65
+    },
+    {
+      "type": "text",
+      "text": "kag.addPlugin(global.___layer_opacity_plugin_object = new LayerOpacityPlugin());",
+      "line": 67
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 69
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 71
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 73
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 75
+    }
+  ]
+}

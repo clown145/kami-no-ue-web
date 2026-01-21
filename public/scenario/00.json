@@ -1,0 +1,125 @@
+{
+  "source": "00.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "最初に入力",
+      "line": 1
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 2"
+      },
+      "line": 3,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 5,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "true"
+      },
+      "line": 7
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 9,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 11,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 13,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 15,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "messages": "4"
+      },
+      "line": 17,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "visible": "false",
+        "page": "fore"
+      },
+      "line": 19,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 21,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 25,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "試したい場合には「sample.ks」を試したいファイル名に変更",
+      "line": 29
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "scenario_1_1.ks"
+      },
+      "line": 33,
+      "inline": true
+    }
+  ]
+}

@@ -1,0 +1,1486 @@
+{
+  "source": "title.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1
+    },
+    {
+      "type": "comment",
+      "text": " title.ks…タイトルメニュー画面",
+      "line": 3
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 5
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 9
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 11
+    },
+    {
+      "type": "comment",
+      "text": "   [jump storage=\"title.ks\"]",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 15
+    },
+    {
+      "type": "comment",
+      "text": " 注意事項：",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": "   ‐first.ksからジャンプしてくること",
+      "line": 19
+    },
+    {
+      "type": "comment",
+      "text": "   ‐ラベルtitle_menuは、吉里吉里/KAG起動時、最初に通過する「セーブ可能なラベル」であること（gotostartタグで「最初に戻る」のに使う）",
+      "line": 21
+    },
+    {
+      "type": "comment",
+      "text": "   ‐ロード画面、コンフィグ画面は「右クリックサブルーチンを作ろう」のrclick_load.ks、rclick_config.ksを用いる",
+      "line": 23
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 25
+    },
+    {
+      "type": "comment",
+      "text": " 使用している変数：",
+      "line": 27
+    },
+    {
+      "type": "comment",
+      "text": "   tf.title_message … グラフィカルボタンを表示するメッセージレイヤ名（右クリックサブルーチン用メッセージレイヤと同じでも良い）",
+      "line": 29
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 31
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "白",
+        "tm": "1000"
+      },
+      "line": 33,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "1000"
+      },
+      "line": 35,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[se fn=\"Kisaki_1751.ogg\"]",
+      "line": 37
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "Kisaki_1751.ogg"
+      },
+      "line": 39,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "b_logo",
+        "tm": "1000"
+      },
+      "line": 41,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "1000"
+      },
+      "line": 43,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "title_bg",
+        "tm": "1000"
+      },
+      "line": 45,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "600"
+      },
+      "line": 47,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[se fn=\"Kanata_2567.ogg\"]",
+      "line": 49
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "Kanata_2567.ogg"
+      },
+      "line": 51,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "1500"
+      },
+      "line": 53,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "title_menu",
+      "line": 59
+    },
+    {
+      "type": "comment",
+      "text": "[image storage=\"タイトル画面01\" layer=base page=fore]",
+      "line": 61
+    },
+    {
+      "type": "command",
+      "name": "sysbtopt",
+      "args": {
+        "forevisible": "false",
+        "backvisible": "false"
+      },
+      "line": 63
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.showpagebreak = 0"
+      },
+      "line": 65,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.showlinebreak = 0"
+      },
+      "line": 67,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「最初に戻る」を有効にする",
+      "line": 69
+    },
+    {
+      "type": "command",
+      "name": "startanchor",
+      "args": {},
+      "line": 71,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "5",
+        "autohide": "true"
+      },
+      "line": 73,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.frame_opacity"
+      },
+      "line": 75,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".opacity\"]",
+      "line": 75
+    },
+    {
+      "type": "comment",
+      "text": " シーン回想中に「システム‐最初に戻る」メニューが選択された場合の辻褄合わせを行う",
+      "line": 79
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "scene.ks",
+        "target": "*scene_reset"
+      },
+      "line": 81,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 全メッセージレイヤ表画面、全前景レイヤ表画面を非表示にする（詳細は「右クリックサブルーチンを作ろう」を参照）",
+      "line": 83
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "system_subroutine.ks",
+        "target": "*sub_layernoshow"
+      },
+      "line": 85,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " タイトル画面でグラフィカルボタンを表示するメッセージレイヤ名",
+      "line": 87
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.title_message = 'message1'"
+      },
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージ履歴への出力を停止し、表示不可にする",
+      "line": 91
+    },
+    {
+      "type": "command",
+      "name": "history",
+      "args": {
+        "output": "false",
+        "enabled": "false"
+      },
+      "line": 93,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 栞にはさめなくする（↑のセーブ可能なラベルtitle_menuは「最初に戻る」ためにのみ使用する）",
+      "line": 95
+    },
+    {
+      "type": "command",
+      "name": "disablestore",
+      "args": {
+        "store": "true",
+        "restore": "false"
+      },
+      "line": 97,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 右クリックを無効にする",
+      "line": 99
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 101,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " タイトルメニュー画面を背景レイヤ表画面に読み込む",
+      "line": 103
+    },
+    {
+      "type": "comment",
+      "text": " タイトルメニュー画面用メッセージレイヤの各種設定",
+      "line": 107
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "&tf.title_message",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "width": "&kag.scWidth",
+        "height": "&kag.scHeight",
+        "frame": null,
+        "color": "0x000000",
+        "opacity": "0",
+        "marginl": "0",
+        "margint": "0",
+        "marginr": "0",
+        "marginb": "0",
+        "draggable": "false",
+        "visible": "true"
+      },
+      "line": 109,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.title_message",
+        "page": "fore",
+        "visible": "true"
+      },
+      "line": 111,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "&tf.title_message",
+        "page": "fore"
+      },
+      "line": 113,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ノーウェイト",
+      "line": 115
+    },
+    {
+      "type": "command",
+      "name": "delay",
+      "args": {
+        "speed": "nowait"
+      },
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ↓各メニューから戻ってくるラベル",
+      "line": 121
+    },
+    {
+      "type": "label",
+      "name": "title_menu_loop00",
+      "line": 123
+    },
+    {
+      "type": "command",
+      "name": "splaybgm",
+      "args": {
+        "storage": "BGM20"
+      },
+      "line": 129,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "title_menu_loop",
+      "line": 135
+    },
+    {
+      "type": "comment",
+      "text": "本編",
+      "line": 139
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "title_bg",
+        "layer": "base",
+        "page": "fore"
+      },
+      "line": 141,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "5",
+        "autohide": "true"
+      },
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.showpagebreak = 1"
+      },
+      "line": 145,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 一時変数tf.frame_layer：メッセージ枠（フレーム）画像を読み込ませる前景レイヤ番号を示す",
+      "line": 147
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 2"
+      },
+      "line": 149,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 右クリックサブルーチンを設定",
+      "line": 151
+    },
+    {
+      "type": "comment",
+      "text": "[rclick call=true target=\"*initialize\" storage=\"config.ks\" enabled=true]",
+      "line": 153
+    },
+    {
+      "type": "comment",
+      "text": " KAGプラグインを組み込む",
+      "line": 155
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 157,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システム変数sf.frame_opacity：メッセージ枠（フレーム）画像を読み込ませる前景レイヤの不透明度を示す",
+      "line": 159
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 165,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 167,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 169,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "======================================",
+      "line": 173
+    },
+    {
+      "type": "comment",
+      "text": "製品版",
+      "line": 175
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤをクリア",
+      "line": 177
+    },
+    {
+      "type": "command",
+      "name": "er",
+      "args": {},
+      "line": 179,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタン「グラフィック閲覧」～「ゲームを終了する」を配置",
+      "line": 181
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "991",
+        "y": "188"
+      },
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "sc_title_bt_START.png",
+        "target": "*title_menu_start",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 185,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "991",
+        "y": "240"
+      },
+      "line": 187,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "sc_title_bt_LOAD.png",
+        "target": "*title_menu_load",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 189,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "991",
+        "y": "292"
+      },
+      "line": 191,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "sc_title_bt_CONFIG.png",
+        "target": "*title_menu_config",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 193,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "991",
+        "y": "344"
+      },
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "sc_title_bt_GALLERY.png",
+        "target": "*title_menu_album",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 197,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "991",
+        "y": "396"
+      },
+      "line": 199,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "sc_title_bt_SCENE.png",
+        "target": "*title_menu_scene",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "991",
+        "y": "448"
+      },
+      "line": 203,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "sc_title_bt_MUSIC.png",
+        "target": "*title_menu_music",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 205,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.special == 1"
+      },
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "991",
+        "y": "500"
+      },
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "sc_title_bt_SPECIAL.png",
+        "target": "*title_menu_special",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "991",
+        "y": "552"
+      },
+      "line": 219,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "sc_title_bt_EXIT.png",
+        "target": "*title_menu_exit",
+        "clickse": "08.ぺーじめくり強.ogg",
+        "enterse": "07.ぺーじめくり弱.ogg"
+      },
+      "line": 221,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "======================================",
+      "line": 223
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 225,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 229
+    },
+    {
+      "type": "comment",
+      "text": " 「途中から再開」が選択された",
+      "line": 231
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 233
+    },
+    {
+      "type": "label",
+      "name": "title_menu_load",
+      "line": 235
+    },
+    {
+      "type": "comment",
+      "text": " ロード画面へ",
+      "line": 237
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "system_load.ks",
+        "target": "*load_menu"
+      },
+      "line": 239,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す（system_load.ks内でマウス右クリックの設定が変わっているため）",
+      "line": 241
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 243,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*title_menu_loop"
+      },
+      "line": 245,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 251
+    },
+    {
+      "type": "comment",
+      "text": " 「設定」が選択された",
+      "line": 253
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 255
+    },
+    {
+      "type": "label",
+      "name": "title_menu_config",
+      "line": 257
+    },
+    {
+      "type": "comment",
+      "text": " ; 「右クリックサブルーチンを作ろう」で紹介したコンフィグ画面を呼び出す",
+      "line": 259
+    },
+    {
+      "type": "comment",
+      "text": " [call storage=\"rclick_config.ks\" target=*config_menu]",
+      "line": 261
+    },
+    {
+      "type": "comment",
+      "text": " コンフィグ画面へ",
+      "line": 263
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "r_click_config.ks",
+        "target": "*config_menu"
+      },
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す（rclick_config.ks内でマウス右クリックの設定が変わっているため）",
+      "line": 267
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 269,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*title_menu_loop"
+      },
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 277
+    },
+    {
+      "type": "comment",
+      "text": " 「ギャラリー」が選択された",
+      "line": 279
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 281
+    },
+    {
+      "type": "label",
+      "name": "title_menu_album",
+      "line": 283
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面へ",
+      "line": 285
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "album.ks"
+      },
+      "line": 287,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*title_menu_loop"
+      },
+      "line": 289,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 293
+    },
+    {
+      "type": "comment",
+      "text": " 「シーン」が選択された",
+      "line": 295
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 297
+    },
+    {
+      "type": "label",
+      "name": "title_menu_scene",
+      "line": 299
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面へ",
+      "line": 301
+    },
+    {
+      "type": "comment",
+      "text": "[emb exp=\"System.shellExecute('http://www.yahoo.co.jp/')\"]",
+      "line": 303
+    },
+    {
+      "type": "comment",
+      "text": "[jump target=*title_menu_loop]",
+      "line": 305
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "time": "1000"
+      },
+      "line": 307,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ウェイト解除",
+      "line": 309
+    },
+    {
+      "type": "command",
+      "name": "delay",
+      "args": {
+        "speed": "user"
+      },
+      "line": 311,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " タイトルメニュー画面用メッセージレイヤを非表示",
+      "line": 313
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.title_message",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 315,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ; 右クリックサブルーチンの設定を変更",
+      "line": 317
+    },
+    {
+      "type": "comment",
+      "text": " [rclick call=true target=\"*rclick_menu\" storage=\"rclick.ks\" enabled=true]",
+      "line": 319
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "call": "false",
+        "jump": "false",
+        "enabled": "true"
+      },
+      "line": 321,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システムボタン群を表示",
+      "line": 323
+    },
+    {
+      "type": "comment",
+      "text": "@sysbtopt forevisible=true backvisible=true left=125 top=416",
+      "line": 325
+    },
+    {
+      "type": "comment",
+      "text": " 栞にはさめるようにする",
+      "line": 327
+    },
+    {
+      "type": "command",
+      "name": "disablestore",
+      "args": {
+        "store": "false",
+        "restore": "false"
+      },
+      "line": 329,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージ履歴への出力を再開、表示可にする",
+      "line": 331
+    },
+    {
+      "type": "command",
+      "name": "history",
+      "args": {
+        "output": "true",
+        "enabled": "true"
+      },
+      "line": 333,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 実際のシナリオへ…",
+      "line": 335
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "scenario_taiken.ks"
+      },
+      "line": 337,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*title_menu_loop"
+      },
+      "line": 339,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 345
+    },
+    {
+      "type": "comment",
+      "text": " 「ミュージック」が選択された",
+      "line": 347
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 349
+    },
+    {
+      "type": "label",
+      "name": "title_menu_music",
+      "line": 351
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面へ",
+      "line": 353
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "sound_test.ks",
+        "target": "*sound_menu"
+      },
+      "line": 355,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*title_menu_loop"
+      },
+      "line": 357,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 363
+    },
+    {
+      "type": "comment",
+      "text": " 「スペシャル」が選択された",
+      "line": 365
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 367
+    },
+    {
+      "type": "label",
+      "name": "title_menu_special",
+      "line": 369
+    },
+    {
+      "type": "comment",
+      "text": " アルバム画面へ",
+      "line": 371
+    },
+    {
+      "type": "comment",
+      "text": "[emb exp=\"System.shellExecute('http://www.yahoo.co.jp/')\"]",
+      "line": 373
+    },
+    {
+      "type": "comment",
+      "text": "[jump target=*title_menu_loop]",
+      "line": 375
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "time": "1000"
+      },
+      "line": 377,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ウェイト解除",
+      "line": 379
+    },
+    {
+      "type": "command",
+      "name": "delay",
+      "args": {
+        "speed": "user"
+      },
+      "line": 381,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " タイトルメニュー画面用メッセージレイヤを非表示",
+      "line": 383
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.title_message",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 385,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ; 右クリックサブルーチンの設定を変更",
+      "line": 387
+    },
+    {
+      "type": "comment",
+      "text": " [rclick call=true target=\"*rclick_menu\" storage=\"rclick.ks\" enabled=true]",
+      "line": 389
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "call": "false",
+        "jump": "false",
+        "enabled": "true"
+      },
+      "line": 391,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システムボタン群を表示",
+      "line": 393
+    },
+    {
+      "type": "comment",
+      "text": "@sysbtopt forevisible=true backvisible=true left=125 top=416",
+      "line": 395
+    },
+    {
+      "type": "comment",
+      "text": " 栞にはさめるようにする",
+      "line": 397
+    },
+    {
+      "type": "command",
+      "name": "disablestore",
+      "args": {
+        "store": "false",
+        "restore": "false"
+      },
+      "line": 399,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージ履歴への出力を再開、表示可にする",
+      "line": 401
+    },
+    {
+      "type": "command",
+      "name": "history",
+      "args": {
+        "output": "true",
+        "enabled": "true"
+      },
+      "line": 403,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 405
+    },
+    {
+      "type": "comment",
+      "text": " 実際のシナリオへ…",
+      "line": 407
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 409
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "scenario_special.ks"
+      },
+      "line": 411,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[call storage=\"special.ks\" target=*special_menu]",
+      "line": 415
+    },
+    {
+      "type": "comment",
+      "text": "[jump target=*title_menu_loop]",
+      "line": 417
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 425
+    },
+    {
+      "type": "comment",
+      "text": " 「終了」が選択された",
+      "line": 427
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 429
+    },
+    {
+      "type": "label",
+      "name": "title_menu_exit",
+      "line": 431
+    },
+    {
+      "type": "command",
+      "name": "close",
+      "args": {},
+      "line": 433,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*title_menu_loop"
+      },
+      "line": 435,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 441
+    },
+    {
+      "type": "comment",
+      "text": " 「ゲーム開始」が選択された；設定を復帰する",
+      "line": 443
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 445
+    },
+    {
+      "type": "label",
+      "name": "title_menu_start",
+      "line": 447
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "time": "1000"
+      },
+      "line": 449,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ウェイト解除",
+      "line": 451
+    },
+    {
+      "type": "command",
+      "name": "delay",
+      "args": {
+        "speed": "user"
+      },
+      "line": 453,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " タイトルメニュー画面用メッセージレイヤを非表示",
+      "line": 455
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.title_message",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 457,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ; 右クリックサブルーチンの設定を変更",
+      "line": 459
+    },
+    {
+      "type": "comment",
+      "text": " [rclick call=true target=\"*rclick_menu\" storage=\"rclick.ks\" enabled=true]",
+      "line": 461
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "call": "false",
+        "jump": "false",
+        "enabled": "true"
+      },
+      "line": 463,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システムボタン群を表示",
+      "line": 465
+    },
+    {
+      "type": "comment",
+      "text": "@sysbtopt forevisible=true backvisible=true left=125 top=416",
+      "line": 467
+    },
+    {
+      "type": "comment",
+      "text": " 栞にはさめるようにする",
+      "line": 469
+    },
+    {
+      "type": "command",
+      "name": "disablestore",
+      "args": {
+        "store": "false",
+        "restore": "false"
+      },
+      "line": 471,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージ履歴への出力を再開、表示可にする",
+      "line": 473
+    },
+    {
+      "type": "command",
+      "name": "history",
+      "args": {
+        "output": "true",
+        "enabled": "true"
+      },
+      "line": 475,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 実際のシナリオへ…",
+      "line": 477
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "00.ks"
+      },
+      "line": 479,
+      "inline": true
+    }
+  ]
+}

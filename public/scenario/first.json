@@ -1,0 +1,3820 @@
+{
+  "source": "first.ks",
+  "tokens": [
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "drawthumbnail"
+      },
+      "line": 1,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "drawThumbnail(+mp.num, +mp.buttonnum, kag.getLayerFromElm(mp,'work'))"
+      },
+      "line": 3,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 5,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 9
+    },
+    {
+      "type": "text",
+      "text": "//",
+      "line": 11
+    },
+    {
+      "type": "text",
+      "text": "// 機能概要：",
+      "line": 13
+    },
+    {
+      "type": "text",
+      "text": "//   ボタンの中央に文字列を描画する",
+      "line": 15
+    },
+    {
+      "type": "text",
+      "text": "//",
+      "line": 17
+    },
+    {
+      "type": "text",
+      "text": "// 引数：",
+      "line": 19
+    },
+    {
+      "type": "text",
+      "text": "//   num     … グラフィカルボタンの番号（０～）",
+      "line": 21
+    },
+    {
+      "type": "text",
+      "text": "//   caption … 描画する文字列",
+      "line": 23
+    },
+    {
+      "type": "text",
+      "text": "//   size    … フォントの文字高さ（ピクセル）",
+      "line": 25
+    },
+    {
+      "type": "text",
+      "text": "//",
+      "line": 27
+    },
+    {
+      "type": "text",
+      "text": "// 戻り値：",
+      "line": 29
+    },
+    {
+      "type": "text",
+      "text": "//   なし",
+      "line": 31
+    },
+    {
+      "type": "text",
+      "text": "//",
+      "line": 33
+    },
+    {
+      "type": "text",
+      "text": "// 備考：",
+      "line": 35
+    },
+    {
+      "type": "text",
+      "text": "//   ‐エラーチェックは行っていない",
+      "line": 37
+    },
+    {
+      "type": "text",
+      "text": "//",
+      "line": 39
+    },
+    {
+      "type": "text",
+      "text": "function drawButtonCaption(num, caption, size)",
+      "line": 41
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 43
+    },
+    {
+      "type": "text",
+      "text": "with (kag.current.links",
+      "line": 45
+    },
+    {
+      "type": "command",
+      "name": "num",
+      "args": {},
+      "line": 45,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".object)",
+      "line": 45
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 47
+    },
+    {
+      "type": "text",
+      "text": ".font.height = size;\t\t\t\t\t// ボタンのフォントの文字高さを設定",
+      "line": 49
+    },
+    {
+      "type": "text",
+      "text": "var w = .font.getTextWidth(caption);\t// 文字列を描画したときの文字列幅を求める",
+      "line": 53
+    },
+    {
+      "type": "text",
+      "text": "var x = (.width - w) \\ 2;\t\t\t\t// ボタン中央に表示されるよう、文字を",
+      "line": 55
+    },
+    {
+      "type": "text",
+      "text": "var y = (.height - size) \\ 2;\t\t\t//   描画する座標（文字列の左上隅）を逆算する",
+      "line": 57
+    },
+    {
+      "type": "text",
+      "text": "// ボタンの「通常の状態」部分に文字列を描画",
+      "line": 61
+    },
+    {
+      "type": "text",
+      "text": ".drawText(x,               y, caption, 0xffffff);",
+      "line": 63
+    },
+    {
+      "type": "text",
+      "text": "// ボタンの「ボタンが押された状態」部分に文字列を描画",
+      "line": 67
+    },
+    {
+      "type": "text",
+      "text": ".drawText(x+.width,        y, caption, 0xffffff);",
+      "line": 69
+    },
+    {
+      "type": "text",
+      "text": "// ボタンの「ボタンの上にマウスカーソルがある状態」部分に文字列を描画",
+      "line": 73
+    },
+    {
+      "type": "text",
+      "text": ".drawText(x+.width+.width, y, caption, 0xffffff);",
+      "line": 75
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 77
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 79
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 85
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "systembutton.ks"
+      },
+      "line": 87,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "slider_control.ks"
+      },
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "macro.ks"
+      },
+      "line": 91,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[call storage=\"charamacro.ks\"]",
+      "line": 93
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "ExtendedHistoryLayer.ks"
+      },
+      "line": 95,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "loadplugin",
+      "args": {
+        "module": "wuvorbis.dll"
+      },
+      "line": 97,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "album_init.ks",
+        "target": "*album_init"
+      },
+      "line": 101,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "scene_init.ks",
+        "target": "*scene_init"
+      },
+      "line": 103,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "クリック待ち画像の表示        0:非表示、1:表示",
+      "line": 107
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.showpagebreak = 0 if sf.showpagebreak === void"
+      },
+      "line": 109
+    },
+    {
+      "type": "comment",
+      "text": "クリック待ち画像の表示        0:非表示、1:表示",
+      "line": 113
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.showlinkbreak = 0 if sf.showlinkbreak === void"
+      },
+      "line": 115
+    },
+    {
+      "type": "comment",
+      "text": "エフェクト設定        0:非表示、1:表示",
+      "line": 119
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.cskip = 1 if sf.cskip === void"
+      },
+      "line": 121
+    },
+    {
+      "type": "comment",
+      "text": "セーブロードダイアログ        0:非表示、1:表示",
+      "line": 125
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.Asksave = 0 if sf.Asksave === void"
+      },
+      "line": 127
+    },
+    {
+      "type": "comment",
+      "text": "クイックセーブロードダイアログ",
+      "line": 131
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.qsaveAsk = 1 if sf.qsaveAsk === void"
+      },
+      "line": 133
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.qloadAsk = 1 if sf.qloadAsk === void"
+      },
+      "line": 135
+    },
+    {
+      "type": "comment",
+      "text": " 一時変数tf.frame_layer：メッセージ枠（フレーム）画像を読み込ませる前景レイヤ番号を示す",
+      "line": 139
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 3"
+      },
+      "line": 141,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 右クリックサブルーチンを設定",
+      "line": 143
+    },
+    {
+      "type": "comment",
+      "text": "[rclick call=true target=\"*initialize\" storage=\"config.ks\" enabled=true]",
+      "line": 145
+    },
+    {
+      "type": "comment",
+      "text": " KAGプラグインを組み込む",
+      "line": 147
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 149,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " システム変数sf.frame_opacity：メッセージ枠（フレーム）画像を読み込ませる前景レイヤの不透明度を示す",
+      "line": 151
+    },
+    {
+      "type": "comment",
+      "text": "メッセージ枠の透過度の初期値",
+      "line": 155
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity === void"
+      },
+      "line": 157,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.chNoWaitMenuItem.click()"
+      },
+      "line": 159
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.frame_opacity = 200"
+      },
+      "line": 161,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "bgmopt",
+      "args": {
+        "gvolume": "35",
+        "cond": "kag.scflags.bgm === void"
+      },
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "0",
+        "gvolume": "55",
+        "cond": "kag.scflags.se === void"
+      },
+      "line": 165
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "1",
+        "gvolume": "55",
+        "cond": "kag.scflags.se === void"
+      },
+      "line": 167
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "2",
+        "gvolume": "55",
+        "cond": "kag.scflags.se === void"
+      },
+      "line": 169
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "3",
+        "gvolume": "60"
+      },
+      "line": 171
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "4",
+        "gvolume": "60"
+      },
+      "line": 173
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "5",
+        "gvolume": "60"
+      },
+      "line": 175
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "6",
+        "gvolume": "67"
+      },
+      "line": 177
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "7",
+        "gvolume": "60"
+      },
+      "line": 179
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "8",
+        "gvolume": "60"
+      },
+      "line": 181
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "9",
+        "gvolume": "60"
+      },
+      "line": 183
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "10",
+        "gvolume": "60"
+      },
+      "line": 185
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "11",
+        "gvolume": "60"
+      },
+      "line": 187
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_01 = true"
+      },
+      "line": 189,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_02 = true"
+      },
+      "line": 191,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_03 = true"
+      },
+      "line": 193,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_04 = true"
+      },
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_05 = true"
+      },
+      "line": 197,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_06 = true"
+      },
+      "line": 199,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_07 = true"
+      },
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_08 = true"
+      },
+      "line": 203,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.voice_09 = true"
+      },
+      "line": 205,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 207,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 217,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 219,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "（注意）ＢＧＭ、効果音において、volume値はフェードイン．アウトなどの",
+      "line": 225
+    },
+    {
+      "type": "comment",
+      "text": "       システム内部で使いますので、基本的に変更できない仕様です。",
+      "line": 227
+    },
+    {
+      "type": "comment",
+      "text": "       ユーザー．もしくは演出側が変更できるのはgvolumeの値だけです。",
+      "line": 229
+    },
+    {
+      "type": "comment",
+      "text": "初期値。設定の初期化をする時にもこの値を使います。",
+      "line": 231
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"f.init_bgm = 80\"]",
+      "line": 233
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"f.init_se = 100\"]",
+      "line": 235
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"f.init_cv = 100\"]",
+      "line": 237
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"f.init_sysse = 80\"]",
+      "line": 239
+    },
+    {
+      "type": "comment",
+      "text": "ＢＧＭ．効果音関連",
+      "line": 241
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.bgm_fadetime = 4000"
+      },
+      "line": 243,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.bgm_fadetime_fast = 1500"
+      },
+      "line": 245,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.bgm_crossfadetime = 3000"
+      },
+      "line": 247,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.se_fadetime = 2000"
+      },
+      "line": 249,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_fadetime = 200"
+      },
+      "line": 251,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "ボイス再生時の音量減少量",
+      "line": 253
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.voice_bgm_reduce_s = 0"
+      },
+      "line": 255,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "現在再生中のＢＧＭ、効果音（ループのみ）",
+      "line": 257
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_bgm = ''"
+      },
+      "line": 259,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_se_loop = ''"
+      },
+      "line": 261,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "ボイスをボタンで再度再生用の保持する変数",
+      "line": 263
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.pv_char = ''"
+      },
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.pv_voice = ''"
+      },
+      "line": 267,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "ここでは、以下のように割り当てることを想定しています。",
+      "line": 269
+    },
+    {
+      "type": "comment",
+      "text": "必要に応じて、適宜値を調整して下さい。",
+      "line": 271
+    },
+    {
+      "type": "comment",
+      "text": "ループ用効果音バッファに通常効果音を流しても大丈夫です。",
+      "line": 273
+    },
+    {
+      "type": "comment",
+      "text": "ボイス再生中にＢＧＭ音量を下げる設定をしていたら、ループ用効果音バッファも同時に音量が下げられます。",
+      "line": 275
+    },
+    {
+      "type": "comment",
+      "text": "通常効果音のバッファ数を増やす場合、0,1,2...というように",
+      "line": 277
+    },
+    {
+      "type": "comment",
+      "text": "ループ用効果音バッファよりも値が小さくなるようにします。",
+      "line": 279
+    },
+    {
+      "type": "comment",
+      "text": "buf:0          通常効果音",
+      "line": 281
+    },
+    {
+      "type": "comment",
+      "text": "buf:1          ループ用効果音",
+      "line": 283
+    },
+    {
+      "type": "comment",
+      "text": "buf:2          システム用効果音（ボタンの音、決定．キャンセル音などのシステム用）",
+      "line": 285
+    },
+    {
+      "type": "comment",
+      "text": "buf:3～        ボイス用効果音",
+      "line": 287
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.se_loop_buf = 1"
+      },
+      "line": 289,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.se_sys_buf = 2"
+      },
+      "line": 291,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_buf_min = 3"
+      },
+      "line": 293,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_buf_max = 13"
+      },
+      "line": 295,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 301
+    },
+    {
+      "type": "comment",
+      "text": "■変数定義",
+      "line": 303
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 305
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 307
+    },
+    {
+      "type": "text",
+      "text": "//BGM、効果音、ボイスの有無。   1:再生可能、0:再生不可",
+      "line": 309
+    },
+    {
+      "type": "text",
+      "text": "//効果音とシステム効果音を別物として扱うこともできます。",
+      "line": 311
+    },
+    {
+      "type": "text",
+      "text": "//効果音とシステム効果音を分ける場合、\"sf.sysse_on\"で検索して、該当部分をコメントアウトしたり適宜調整願います。",
+      "line": 313
+    },
+    {
+      "type": "text",
+      "text": "sf.bgm_on = 1 if sf.bgm_on === void;",
+      "line": 315
+    },
+    {
+      "type": "text",
+      "text": "sf.se_on = 1 if sf.se_on === void;",
+      "line": 317
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_on = 1 if sf.voice_on === void;",
+      "line": 319
+    },
+    {
+      "type": "text",
+      "text": "//sf.sysse_on = 1 if sf.sysse_on === void;",
+      "line": 321
+    },
+    {
+      "type": "text",
+      "text": "//それぞれ初期値を代入",
+      "line": 325
+    },
+    {
+      "type": "text",
+      "text": "sf.bgm_vol = f.init_bgm if sf.bgm_vol === void;  // BGM 音量用",
+      "line": 327
+    },
+    {
+      "type": "text",
+      "text": "sf.se_vol  = f.init_se if sf.se_vol  === void;  // SE 音量用",
+      "line": 329
+    },
+    {
+      "type": "text",
+      "text": "sf.cv_vol  = f.init_cv if sf.cv_vol  === void;  // ボイス 音量用",
+      "line": 331
+    },
+    {
+      "type": "text",
+      "text": "sf.sysse_vol  = f.init_sysse if sf.sysse_vol  === void;  // システムSE 音量用",
+      "line": 333
+    },
+    {
+      "type": "text",
+      "text": "//ボイス対応：01:止水、02:ユエ、03:暁、04:姐さん、05:右伊．左伊、06:老師、07:以心、08:應帝、09:妖魔、10:その他女性、11:その他男性",
+      "line": 337
+    },
+    {
+      "type": "text",
+      "text": "//設定画面で用いるための変数。各キャラのボイスあり、なしの変数。",
+      "line": 339
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_01 = 1 if sf.voice_01 === void;",
+      "line": 341
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_02 = 1 if sf.voice_02 === void;",
+      "line": 343
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_03 = 1 if sf.voice_03 === void;",
+      "line": 345
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_04 = 1 if sf.voice_04 === void;",
+      "line": 347
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_05 = 1 if sf.voice_05 === void;",
+      "line": 349
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_06 = 1 if sf.voice_06 === void;",
+      "line": 351
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_07 = 1 if sf.voice_07 === void;",
+      "line": 353
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_08 = 1 if sf.voice_08 === void;",
+      "line": 355
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_09 = 1 if sf.voice_09 === void;",
+      "line": 357
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_10 = 1 if sf.voice_10 === void;",
+      "line": 359
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_11 = 1 if sf.voice_11 === void;",
+      "line": 361
+    },
+    {
+      "type": "text",
+      "text": "//各キャラボイス音量変数",
+      "line": 363
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_01 = 100 if sf.voice_vol_01 === void;",
+      "line": 365
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_02 = 100 if sf.voice_vol_02 === void;",
+      "line": 367
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_03 = 100 if sf.voice_vol_03 === void;",
+      "line": 369
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_04 = 100 if sf.voice_vol_04 === void;",
+      "line": 371
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_05 = 100 if sf.voice_vol_05 === void;",
+      "line": 373
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_06 = 100 if sf.voice_vol_06 === void;",
+      "line": 375
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_07 = 100 if sf.voice_vol_07 === void;",
+      "line": 377
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_08 = 100 if sf.voice_vol_08 === void;",
+      "line": 379
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_09 = 100 if sf.voice_vol_09 === void;",
+      "line": 381
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_10 = 100 if sf.voice_vol_10 === void;",
+      "line": 383
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_vol_11 = 100 if sf.voice_vol_11 === void;",
+      "line": 385
+    },
+    {
+      "type": "text",
+      "text": "//文末ボイス終了（次の文に行ってもボイスを止めるかどうか）      0:文末でボイスを終了しない、1:終了する",
+      "line": 389
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_cut = 1 if sf.voice_cut === void;",
+      "line": 391
+    },
+    {
+      "type": "text",
+      "text": "//ＢＧＭ再生時の音量を下げるかどうか    0:下げない、1:下げる",
+      "line": 393
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_bgm_reduce_onoff = 1 if sf.voice_bgm_reduce_onoff === void;",
+      "line": 395
+    },
+    {
+      "type": "text",
+      "text": "//ＢＧＭ再生時の音量を下げる量",
+      "line": 397
+    },
+    {
+      "type": "text",
+      "text": "sf.voice_bgm_reduce = f.voice_bgm_reduce_s if sf.voice_bgm_reduce === void;",
+      "line": 399
+    },
+    {
+      "type": "text",
+      "text": "sf.init_autocontinue = sf.autocontinue = 0; //選択肢後もオートモードを続ける",
+      "line": 403
+    },
+    {
+      "type": "text",
+      "text": "sf.init_skipcontinue = sf.skipcontinue = 0; //選択肢後もスキップモードを続ける",
+      "line": 405
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 409
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 415
+    },
+    {
+      "type": "comment",
+      "text": "■各キャラクター使用サウンドバッファ",
+      "line": 417
+    },
+    {
+      "type": "comment",
+      "text": "個別に、各キャラクター使用サウンドバッファ、各キャラクターセリフのフォント色を割り当てて下さい。",
+      "line": 419
+    },
+    {
+      "type": "comment",
+      "text": "注意：同時に再生されるキャラは、同じバッファを割り当てないようにします。",
+      "line": 421
+    },
+    {
+      "type": "comment",
+      "text": "ここではサンプルを記述しています。キャラごとに修正しておいて下さい。",
+      "line": 423
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 425
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_yoruko = 3"
+      },
+      "line": 427,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_kanata = 4"
+      },
+      "line": 429,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_kisaki = 5"
+      },
+      "line": 431,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_rio = 6"
+      },
+      "line": 433,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_nagisa = 7"
+      },
+      "line": 435,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_yamiko = 8"
+      },
+      "line": 437,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_kanade = 9"
+      },
+      "line": 439,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_misaki = 10"
+      },
+      "line": 441,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_chryso = 11"
+      },
+      "line": 443,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = 3"
+      },
+      "line": 447,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.voicenoend = false"
+      },
+      "line": 451,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 455
+    },
+    {
+      "type": "comment",
+      "text": "■各キャラクターセリフのフォント色",
+      "line": 457
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 459
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_shisui = 0x000000"
+      },
+      "line": 461,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_yue = 0x000000"
+      },
+      "line": 463,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_syao = 0x000000"
+      },
+      "line": 465,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_renfa = 0x000000"
+      },
+      "line": 467,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_ui = 0x000000"
+      },
+      "line": 469,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_sai = 0x000000"
+      },
+      "line": 471,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_roushi = 0x000000"
+      },
+      "line": 473,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_ishin = 0x000000"
+      },
+      "line": 475,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_outei = 0x000000"
+      },
+      "line": 477,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_kyuki = 0x000000"
+      },
+      "line": 479,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_syokuin = 0x000000"
+      },
+      "line": 481,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_kou = 0x000000"
+      },
+      "line": 483,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_byakko = 0x000000"
+      },
+      "line": 485,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_youma = 0x000000"
+      },
+      "line": 487,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_yasai = 0x000000"
+      },
+      "line": 489,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_sakana = 0x000000"
+      },
+      "line": 491,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_saisyou = 0x000000"
+      },
+      "line": 493,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_seiyou = 0x000000"
+      },
+      "line": 495,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_nenpai = 0x000000"
+      },
+      "line": 497,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_sonota_f = 0x000000"
+      },
+      "line": 499,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_color_sonota_m = 0x000000"
+      },
+      "line": 501,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 507
+    },
+    {
+      "type": "comment",
+      "text": "■初期化",
+      "line": 509
+    },
+    {
+      "type": "comment",
+      "text": "使用バッファだけ増やして下さい。",
+      "line": 511
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 513
+    },
+    {
+      "type": "command",
+      "name": "bgmopt",
+      "args": {
+        "gvolume": "&sf.bgm_vol"
+      },
+      "line": 515
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "0",
+        "gvolume": "&sf.se_vol"
+      },
+      "line": 517
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "1",
+        "gvolume": "&sf.se_vol"
+      },
+      "line": 519
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "2",
+        "gvolume": "&sf.se_vol"
+      },
+      "line": 521
+    },
+    {
+      "type": "comment",
+      "text": "sf.sysse_onを用いる場合、以下のものに変更。",
+      "line": 523
+    },
+    {
+      "type": "comment",
+      "text": "@seopt buf=2 gvolume=\"&sf.sysse_vol\"",
+      "line": 525
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "3",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 527
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "4",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 529
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "5",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 531
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "6",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 533
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "7",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 535
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "8",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 537
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "9",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 539
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "10",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 541
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "11",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 543
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "12",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 545
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "13",
+        "gvolume": "&sf.cv_vol"
+      },
+      "line": 547
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 551
+    },
+    {
+      "type": "comment",
+      "text": "■BGM再生                      [splaybgm storage=\"BGMファイル\"]",
+      "line": 553
+    },
+    {
+      "type": "comment",
+      "text": "■BGM再生（クロスフェード）    [sxchgbgm storage=\"BGMファイル\"]",
+      "line": 555
+    },
+    {
+      "type": "comment",
+      "text": "■BGM停止                      [sstopbgm]",
+      "line": 557
+    },
+    {
+      "type": "comment",
+      "text": "■BGMフェードアウト            [sfadeoutbgm]",
+      "line": 559
+    },
+    {
+      "type": "comment",
+      "text": "引数は全て[playbgm][xchgbgm][fadeoutbgm]と同じです。",
+      "line": 561
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 563
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "splaybgm"
+      },
+      "line": 565,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.bgm.userchange = 0"
+      },
+      "line": 567,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "*": true,
+        "cond": "sf.bgm_on"
+      },
+      "line": 569,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "bgmopt",
+      "args": {
+        "volume": "100"
+      },
+      "line": 571,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_bgm = mp.storage"
+      },
+      "line": 573,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 575,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sxchgbgm"
+      },
+      "line": 579,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.bgm.stopFade()"
+      },
+      "line": 581,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.bgm.userchange = 1",
+        "cond": "!kag.skipMode"
+      },
+      "line": 583,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "xchgbgm",
+      "args": {
+        "cond": "sf.bgm_on",
+        "*": true,
+        "time": "&f.bgm_crossfadetime",
+        "overlap": "&f.bgm_crossfadetime"
+      },
+      "line": 585,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_bgm = mp.storage"
+      },
+      "line": 587,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 589,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sstopbgm"
+      },
+      "line": 593,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "stopbgm",
+      "args": {},
+      "line": 595,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_bgm = ''"
+      },
+      "line": 597,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 599,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sfadeoutbgm"
+      },
+      "line": 603,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.bgm.stopFade()"
+      },
+      "line": 605,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.bgm.userchange = 1"
+      },
+      "line": 607,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "*": true
+      },
+      "line": 609,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_bgm = ''"
+      },
+      "line": 611,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 613,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 619
+    },
+    {
+      "type": "comment",
+      "text": "■効果音再生                   [splayse storage=\"SEファイル\" buf=\"再生バッファ\"]",
+      "line": 621
+    },
+    {
+      "type": "comment",
+      "text": "■効果音停止                   [sstopse]",
+      "line": 623
+    },
+    {
+      "type": "comment",
+      "text": "■効果音フェードアウト         [sfadeoutse buf=&f.se_loop_buf time=&f.se_fadetime]",
+      "line": 625
+    },
+    {
+      "type": "comment",
+      "text": "引数は[playse][stopse][fadeoutse]と同じです。",
+      "line": 627
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 629
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "splayse"
+      },
+      "line": 631,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "(mp.buf == f.se_loop_buf) && (mp.loop == true)"
+      },
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"kag.se[f.se_loop_buf"
+      },
+      "line": 635,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".stopFade()\"]",
+      "line": 635
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"kag.se[f.se_loop_buf"
+      },
+      "line": 637,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".userchange = 1\"]",
+      "line": 637
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 639,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "kag.skipMode<=1"
+      },
+      "line": 641,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playse",
+      "args": {
+        "*": true,
+        "cond": "sf.se_on"
+      },
+      "line": 643,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[playse * cond=\"sf.sysse_on && mp.buf == 2\"]",
+      "line": 645
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 647,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "スキップ時はループ音のみ再生する。",
+      "line": 649
+    },
+    {
+      "type": "command",
+      "name": "playse",
+      "args": {
+        "*": true,
+        "cond": "sf.se_on && (mp.buf == f.se_loop_buf) && (mp.loop == 'true')"
+      },
+      "line": 651,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 653,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_se_loop = mp.storage",
+        "cond": "(mp.buf == f.se_loop_buf) && (mp.loop == 'true')"
+      },
+      "line": 655,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 657,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sstopse"
+      },
+      "line": 661,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "stopse",
+      "args": {
+        "*": true
+      },
+      "line": 663,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.buf == f.se_loop_buf"
+      },
+      "line": 665,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_se_loop = ''"
+      },
+      "line": 667,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 669,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 671,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sfadeoutse"
+      },
+      "line": 675,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.buf <= f.se_loop_buf"
+      },
+      "line": 677,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"kag.se[+mp.buf"
+      },
+      "line": 679,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".userchange = 1\"]",
+      "line": 679
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"kag.se[+mp.buf"
+      },
+      "line": 681,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".stopFade()\"]",
+      "line": 681
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 683,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "fadeoutse",
+      "args": {
+        "*": true
+      },
+      "line": 685,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.buf == f.se_loop_buf"
+      },
+      "line": 687,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.now_se_loop = ''"
+      },
+      "line": 689,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 691,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 693,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 699
+    },
+    {
+      "type": "comment",
+      "text": "■ボイス用　[pv b=バッファ s=ファイル名]台詞[sv]",
+      "line": 701
+    },
+    {
+      "type": "comment",
+      "text": "[pv]命令で再生、[sv]命令でボイス終了判定をします。",
+      "line": 703
+    },
+    {
+      "type": "comment",
+      "text": "通常は、[pv char=\"登録キャラ名\" voice=\"ボイスファイル名\"]で使います。",
+      "line": 705
+    },
+    {
+      "type": "comment",
+      "text": "nostop=true：　重複再生用。この属性値があるボイスが再生したとしても、",
+      "line": 707
+    },
+    {
+      "type": "comment",
+      "text": "               再生中のボイス（前の命令のボイス）をストップしません。",
+      "line": 709
+    },
+    {
+      "type": "comment",
+      "text": "               ま、正確にはnostop属性に何か値があれば勝手にtrueと判定します。",
+      "line": 711
+    },
+    {
+      "type": "comment",
+      "text": "（同時再生の使用例）",
+      "line": 713
+    },
+    {
+      "type": "comment",
+      "text": "同時再生時には、delayで文字速度を瞬間表示にして使用します。",
+      "line": 715
+    },
+    {
+      "type": "comment",
+      "text": "[er][delay speed=nowait][pv char=\"ui\" voice=\"ui_syao_a04_008\"]右伊「あ！」[rs]",
+      "line": 717
+    },
+    {
+      "type": "comment",
+      "text": "[pv char=\"sai\" voice=\"sai_syao_a04_009\" nostop=true]左伊「！」[delay speed=user][ps]",
+      "line": 719
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 721
+    },
+    {
+      "type": "comment",
+      "text": "下準備",
+      "line": 723
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 725
+    },
+    {
+      "type": "text",
+      "text": "function stopAllVoices()",
+      "line": 727
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 729
+    },
+    {
+      "type": "text",
+      "text": "// f.cv_buf_min ～ f.cv_buf_max のすべての効果音を停止する",
+      "line": 731
+    },
+    {
+      "type": "text",
+      "text": "for(var i = f.cv_buf_min; i <= f.cv_buf_max; i++) kag.se",
+      "line": 733
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 733,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".stop();",
+      "line": 733
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 735
+    },
+    {
+      "type": "text",
+      "text": "function playVoice(buf, storage)",
+      "line": 739
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 741
+    },
+    {
+      "type": "text",
+      "text": "// 効果音バッファ buf にて storage を再生する",
+      "line": 743
+    },
+    {
+      "type": "text",
+      "text": "// KAG がスキップ処理中の場合は処理を行わない",
+      "line": 745
+    },
+    {
+      "type": "text",
+      "text": "if(!kag.skipMode)",
+      "line": 747
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 749
+    },
+    {
+      "type": "text",
+      "text": "if (!tf.voicenoend)",
+      "line": 751
+    },
+    {
+      "type": "text",
+      "text": "stopAllVoices();",
+      "line": 753
+    },
+    {
+      "type": "text",
+      "text": "else",
+      "line": 755
+    },
+    {
+      "type": "text",
+      "text": "tf.voicenoend = false;",
+      "line": 757
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 759
+    },
+    {
+      "type": "command",
+      "name": "buf",
+      "args": {},
+      "line": 759,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".play(%",
+      "line": 759
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 759
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 761
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 763
+    },
+    {
+      "type": "text",
+      "text": "function createHistoryActionExp(buf, storage)",
+      "line": 767
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 769
+    },
+    {
+      "type": "text",
+      "text": "// メッセージ履歴をクリックしたときに実行する TJS 式を生成する",
+      "line": 771
+    },
+    {
+      "type": "text",
+      "text": "return \"stopAllVoices(), kag.se",
+      "line": 773
+    },
+    {
+      "type": "command",
+      "name": "\"",
+      "args": {},
+      "line": 773,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".play(%",
+      "line": 773
+    },
+    {
+      "type": "text",
+      "text": ")\";",
+      "line": 773
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 775
+    },
+    {
+      "type": "text",
+      "text": "function waitVoiceStop()",
+      "line": 779
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 781
+    },
+    {
+      "type": "text",
+      "text": "for (var i=f.cv_buf_min;i<=f.cv_buf_max;i++)",
+      "line": 783
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 785
+    },
+    {
+      "type": "text",
+      "text": "kag.waitSEStop(%",
+      "line": 787
+    },
+    {
+      "type": "command",
+      "name": "buf:i,canskip:true",
+      "args": {},
+      "line": 787,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 787
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 789
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 791
+    },
+    {
+      "type": "text",
+      "text": "function fadeoutAllVoices()",
+      "line": 795
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 797
+    },
+    {
+      "type": "text",
+      "text": "for (var i=f.cv_buf_min;i<=f.cv_buf_max;i++)",
+      "line": 799
+    },
+    {
+      "type": "text",
+      "text": "{",
+      "line": 801
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 803
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 803,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".fadeOut(%",
+      "line": 803
+    },
+    {
+      "type": "command",
+      "name": "time:1000",
+      "args": {},
+      "line": 803,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 803
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 805
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 807
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 811
+    },
+    {
+      "type": "comment",
+      "text": "ボイス再生",
+      "line": 815
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 817
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "pv"
+      },
+      "line": 819
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.loadp == 1"
+      },
+      "line": 821,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endindent",
+      "args": {},
+      "line": 823,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hr",
+      "args": {},
+      "line": 825,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.loadp = 0"
+      },
+      "line": 827,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 829,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.pv_char = mp.char"
+      },
+      "line": 831,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.pv_voice = mp.voice"
+      },
+      "line": 833,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.voicenoend = true",
+        "cond": "mp.nostop != ''"
+      },
+      "line": 835
+    },
+    {
+      "type": "command",
+      "name": "pv_playpart",
+      "args": {
+        "*": true
+      },
+      "line": 837
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.voice != ''"
+      },
+      "line": 839
+    },
+    {
+      "type": "command",
+      "name": "hact",
+      "args": {
+        "exp": "&createHistoryActionExp(f.cv_sb_hist, mp.voice)"
+      },
+      "line": 841
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 843
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 845
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "pv_playpart"
+      },
+      "line": 849
+    },
+    {
+      "type": "comment",
+      "text": "それぞれのキャラごとに、色やバッファを分けて再生します。",
+      "line": 851
+    },
+    {
+      "type": "comment",
+      "text": "記述形式解説は以下の通り。",
+      "line": 853
+    },
+    {
+      "type": "comment",
+      "text": "@if exp=\"mp.char=='shisui（←キャラ名）' && sf.voice_01（←ボイスオン．オフの番号）==true\"",
+      "line": 855
+    },
+    {
+      "type": "comment",
+      "text": "@font color=&f.cv_color_shisui（←フォントカラー）",
+      "line": 857
+    },
+    {
+      "type": "comment",
+      "text": "@eval exp=\"f.cv_sb_hist = f.cv_sb_shisui（←再生バッファ）\"",
+      "line": 859
+    },
+    {
+      "type": "comment",
+      "text": "@if exp=\"sf.voice_on && mp.voice != ''\"",
+      "line": 861
+    },
+    {
+      "type": "comment",
+      "text": "@seopt buf=&f.cv_sb_shisui（←再生バッファ） volume=&sf.voice_vol_01（←ボリューム）",
+      "line": 863
+    },
+    {
+      "type": "comment",
+      "text": "@eval exp=\"playVoice(f.cv_sb_shisui（←再生バッファ）, mp.voice（←ボイスファイル名）)\"",
+      "line": 865
+    },
+    {
+      "type": "comment",
+      "text": "@reduce_bgmvol",
+      "line": 867
+    },
+    {
+      "type": "comment",
+      "text": "@endif",
+      "line": 869
+    },
+    {
+      "type": "comment",
+      "text": "@endif",
+      "line": 871
+    },
+    {
+      "type": "comment",
+      "text": "（ここでの例）ボイス対応：01:夜子、02:かなた、03:妃、04:理央、05:汀、06:闇子、07:奏、08:岬、09:クリソベリル",
+      "line": 875
+    },
+    {
+      "type": "comment",
+      "text": "以下はキャラごとに個別に修正して下さい。",
+      "line": 877
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='yoruko' && sf.voice_01==true"
+      },
+      "line": 879
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_yoruko"
+      },
+      "line": 881
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 883
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_yoruko",
+        "volume": "&sf.voice_vol_01"
+      },
+      "line": 885
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_yoruko, mp.voice)"
+      },
+      "line": 887
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 889
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 891
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 893
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='kanata' && sf.voice_02==true"
+      },
+      "line": 897
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_kanata"
+      },
+      "line": 899
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 901
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_kanata",
+        "volume": "&sf.voice_vol_02"
+      },
+      "line": 903
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_kanata, mp.voice)"
+      },
+      "line": 905
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 907
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 909
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 911
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='kisaki' && sf.voice_03==true"
+      },
+      "line": 915
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_kisaki"
+      },
+      "line": 917
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 919
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_kisaki",
+        "volume": "&sf.voice_vol_03"
+      },
+      "line": 921
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_kisaki, mp.voice)"
+      },
+      "line": 923
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 925
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 927
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 929
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='rio' && sf.voice_04==true"
+      },
+      "line": 933
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_rio"
+      },
+      "line": 935
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 937
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_rio",
+        "volume": "&sf.voice_vol_04"
+      },
+      "line": 939
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_rio, mp.voice)"
+      },
+      "line": 941
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 943
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 945
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 947
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='nagisa' && sf.voice_05==true"
+      },
+      "line": 951
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_nagisa"
+      },
+      "line": 953
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 955
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_nagisa",
+        "volume": "&sf.voice_vol_05"
+      },
+      "line": 957
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_nagisa, mp.voice)"
+      },
+      "line": 959
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 961
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 963
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 965
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='yamiko' && sf.voice_06==true"
+      },
+      "line": 969
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_yamiko"
+      },
+      "line": 971
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 973
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_yamiko",
+        "volume": "&sf.voice_vol_06"
+      },
+      "line": 975
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_yamiko, mp.voice)"
+      },
+      "line": 977
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 979
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 981
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 983
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='kanade' && sf.voice_07==true"
+      },
+      "line": 987
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_kanade"
+      },
+      "line": 989
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 991
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_kanade",
+        "volume": "&sf.voice_vol_07"
+      },
+      "line": 993
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_kanade, mp.voice)"
+      },
+      "line": 995
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 997
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 999
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1001
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='misaki' && sf.voice_08==true"
+      },
+      "line": 1005
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_misaki"
+      },
+      "line": 1007
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 1009
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_misaki",
+        "volume": "&sf.voice_vol_08"
+      },
+      "line": 1011
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_misaki, mp.voice)"
+      },
+      "line": 1013
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 1015
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1017
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1019
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "mp.char=='chryso' && sf.voice_09==true"
+      },
+      "line": 1023
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.cv_sb_hist = f.cv_sb_chryso"
+      },
+      "line": 1025
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_on && mp.voice != ''"
+      },
+      "line": 1027
+    },
+    {
+      "type": "command",
+      "name": "seopt",
+      "args": {
+        "buf": "&f.cv_sb_chryso",
+        "volume": "&sf.voice_vol_09"
+      },
+      "line": 1029
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "playVoice(f.cv_sb_chryso, mp.voice)"
+      },
+      "line": 1031
+    },
+    {
+      "type": "command",
+      "name": "reduce_bgmvol",
+      "args": {},
+      "line": 1033
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1035
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1037
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 1039
+    },
+    {
+      "type": "comment",
+      "text": "BGM音量を下げる",
+      "line": 1043
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "reduce_bgmvol"
+      },
+      "line": 1045
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_bgm_reduce_onoff"
+      },
+      "line": 1047
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.bgm.fade(%[time:1000,volume:1000-sf.voice_bgm_reduce])",
+        "cond": "!kag.skipMode && (kag.bgm.userchange != 1)"
+      },
+      "line": 1049
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.se[f.se_loop_buf].fade(%[time:1000,volume:1000-sf.voice_bgm_reduce])",
+        "cond": "!kag.skipMode && (kag.se[f.se_loop_buf].userchange != 1)"
+      },
+      "line": 1051
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1053
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 1055
+    },
+    {
+      "type": "comment",
+      "text": "ボイス終了処理",
+      "line": 1059
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "sv"
+      },
+      "line": 1061
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "waitVoiceStop()",
+        "cond": "kag.autoMode"
+      },
+      "line": 1063
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "fadeoutAllVoices()",
+        "cond": "sf.voice_cut"
+      },
+      "line": 1065
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.pv_char = ''"
+      },
+      "line": 1067,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.pv_voice = ''"
+      },
+      "line": 1069,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 1071
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 1079
+    },
+    {
+      "type": "comment",
+      "text": "■ボイス終了兼クリック待ち命令 [ps]",
+      "line": 1081
+    },
+    {
+      "type": "comment",
+      "text": "クリック待ち命令の[p]命令を拡張したもので、[p]命令の代わりに用います。",
+      "line": 1083
+    },
+    {
+      "type": "comment",
+      "text": "■ボイス終了兼改行命令         [rs]",
+      "line": 1085
+    },
+    {
+      "type": "comment",
+      "text": "改行命令の[r]命令を拡張したもので、ボイスの同時再生時に用います。",
+      "line": 1087
+    },
+    {
+      "type": "comment",
+      "text": "-----------------------------------------------------------------------------",
+      "line": 1089
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "ps"
+      },
+      "line": 1091,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "sf.loadp = 0"
+      },
+      "line": 1093,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endhact",
+      "args": {},
+      "line": 1095
+    },
+    {
+      "type": "command",
+      "name": "endindent",
+      "args": {},
+      "line": 1097,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "font",
+      "args": {
+        "color": "default"
+      },
+      "line": 1099
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 1101,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "3",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1103,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "4",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1105,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "5",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1107,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "6",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1109,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "7",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1111,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "8",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1113,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "9",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1115,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "10",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1117,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "11",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1119,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "12",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1121,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "13",
+        "canskip": "true",
+        "cond": "kag.autoMode>=1"
+      },
+      "line": 1123,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hr",
+      "args": {},
+      "line": 1125,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "cm",
+      "args": {},
+      "line": 1127,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sv",
+      "args": {},
+      "line": 1129,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hlocate",
+      "args": {
+        "pos": "409"
+      },
+      "line": 1131,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "indent",
+      "args": {},
+      "line": 1133,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "win",
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "visible": "true"
+      },
+      "line": 1135,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "autohide": "true"
+      },
+      "line": 1137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "win",
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "left": "0",
+        "top": "0",
+        "visible": "true"
+      },
+      "line": 1139,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "autohide": "true"
+      },
+      "line": 1141,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 1143,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "rs"
+      },
+      "line": 1147,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "3",
+        "canskip": "true"
+      },
+      "line": 1149,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "4",
+        "canskip": "true"
+      },
+      "line": 1151,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "5",
+        "canskip": "true"
+      },
+      "line": 1153,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "6",
+        "canskip": "true"
+      },
+      "line": 1155,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "7",
+        "canskip": "true"
+      },
+      "line": 1157,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "8",
+        "canskip": "true"
+      },
+      "line": 1159,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "9",
+        "canskip": "true"
+      },
+      "line": 1161,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "10",
+        "canskip": "true"
+      },
+      "line": 1163,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "11",
+        "canskip": "true"
+      },
+      "line": 1165,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "12",
+        "canskip": "true"
+      },
+      "line": 1167,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {
+        "buf": "13",
+        "canskip": "true"
+      },
+      "line": 1169,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 1171,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "macro",
+      "args": {
+        "name": "mae"
+      },
+      "line": 1175,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hlocate",
+      "args": {
+        "pos": "409"
+      },
+      "line": 1177,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "indent",
+      "args": {},
+      "line": 1179,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endmacro",
+      "args": {},
+      "line": 1181,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "title.ks"
+      },
+      "line": 1185,
+      "inline": true
+    }
+  ]
+}

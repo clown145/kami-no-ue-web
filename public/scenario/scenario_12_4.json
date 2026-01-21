@@ -1,0 +1,4133 @@
+{
+  "source": "scenario_12_4.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "最初に入力",
+      "line": 1
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 2"
+      },
+      "line": 3,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 5,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 7,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 9,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 11,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 13,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "messages": "4"
+      },
+      "line": 15,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "visible": "false",
+        "page": "fore"
+      },
+      "line": 17,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 19,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046880",
+      "line": 23
+    },
+    {
+      "type": "comment",
+      "text": "===================================================",
+      "line": 25
+    },
+    {
+      "type": "label",
+      "name": "label046881",
+      "line": 29
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤ０表画面を表示",
+      "line": 35
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "page": "fore",
+        "visible": "true"
+      },
+      "line": 37,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046882",
+      "line": 41
+    },
+    {
+      "type": "comment",
+      "text": "//背景フェードイン",
+      "line": 45
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "暗転",
+        "tm": "3500"
+      },
+      "line": 47,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046883",
+      "line": 51
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "図書館２階_隠し書庫",
+        "tm": "3500"
+      },
+      "line": 53,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb",
+      "args": {},
+      "line": 55,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "mess",
+      "args": {},
+      "line": 57,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046884",
+      "line": 61
+    },
+    {
+      "type": "text",
+      "text": "后话。",
+      "line": 69
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 69,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 69,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "在旷日持久故事的最后，发生在这座幻想图书馆的事件迎来了解决。",
+      "line": 71
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 71,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046885",
+      "line": 75
+    },
+    {
+      "type": "text",
+      "text": "克服了弱点的夜子不会像之前那样把愿望托付给魔法之书。",
+      "line": 77
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 77,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046886",
+      "line": 81
+    },
+    {
+      "type": "text",
+      "text": "这也代表我们的生活失去魔法之书。",
+      "line": 83
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 83,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046887",
+      "line": 87
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「…………」",
+      "line": 89
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046888",
+      "line": 93
+    },
+    {
+      "type": "text",
+      "text": "失去魔法之书。",
+      "line": 95
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 95,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046889",
+      "line": 99
+    },
+    {
+      "type": "text",
+      "text": "说出这句话心里会有点不安，是因为自己是纸上存在，所以我说不准自己的存在是否可以容许。",
+      "line": 101
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 101,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046890",
+      "line": 105
+    },
+    {
+      "type": "text",
+      "text": "妃说过这样的自己无法原谅。",
+      "line": 107
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 107,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046891",
+      "line": 111
+    },
+    {
+      "type": "text",
+      "text": "理央说过这样的自己有需求。",
+      "line": 113
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 113,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046892",
+      "line": 117
+    },
+    {
+      "type": "text",
+      "text": "那么，我呢？",
+      "line": 119
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 119,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046893",
+      "line": 123
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 125,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「——我只想活着。」",
+      "line": 125
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 125,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046894",
+      "line": 129
+    },
+    {
+      "type": "text",
+      "text": "我会怀着这个愿望心平气和地走上平静的人生。",
+      "line": 131
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 131,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label046895",
+      "line": 135
+    },
+    {
+      "type": "text",
+      "text": "因为我的身旁——对，因为彼方会一直陪伴我左右。",
+      "line": 137
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 145,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 147,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転",
+        "tm": "2000"
+      },
+      "line": 149,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "島_海岸沿いの道",
+        "tm": "3500"
+      },
+      "line": 151,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb",
+      "args": {},
+      "line": 153,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "mess",
+      "args": {},
+      "line": 155,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047080",
+      "line": 163
+    },
+    {
+      "type": "text",
+      "text": "夜子否定克丽索贝莉的存在后，她似乎完全消灭了。",
+      "line": 165
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 165,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047081",
+      "line": 169
+    },
+    {
+      "type": "text",
+      "text": "那天以后再没有人见过她，她从纸上退场了。",
+      "line": 171
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047082",
+      "line": 175
+    },
+    {
+      "type": "command",
+      "name": "bgm",
+      "args": {
+        "fn": "BGM08"
+      },
+      "line": 179,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_aj",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047083",
+      "line": 185
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2415.ogg"
+      },
+      "line": 187,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 189,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「虽然是纸上魔法使，但听说她的根源出自夜子的欲望。」",
+      "line": 189
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 189,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047084",
+      "line": 193
+    },
+    {
+      "type": "text",
+      "text": "与我并肩而走的彼方说道。",
+      "line": 195
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047085",
+      "line": 199
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_aa",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047086",
+      "line": 205
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2416.ogg"
+      },
+      "line": 207,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「既然夜子克服了弱点，她也就失去了存在意义。」",
+      "line": 209
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047087",
+      "line": 213
+    },
+    {
+      "type": "text",
+      "text": "已经没有闭门不出的少女。",
+      "line": 215
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047088",
+      "line": 219
+    },
+    {
+      "type": "text",
+      "text": "在承认弱点之后，少女选择了反抗的生存方式。",
+      "line": 221
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 221,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047089",
+      "line": 225
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 227,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「我没排上什么用场啊。」",
+      "line": 227
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 227,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047090",
+      "line": 231
+    },
+    {
+      "type": "text",
+      "text": "没错，回头一想就是这样。",
+      "line": 233
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 233,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047091",
+      "line": 237
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 239,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「最后的最后也没能帮上那个家伙。」",
+      "line": 239
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 239,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047092",
+      "line": 243
+    },
+    {
+      "type": "text",
+      "text": "在彼方和妃的帮助下，夜子以自己的力量前进。",
+      "line": 245
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 245,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047093",
+      "line": 249
+    },
+    {
+      "type": "text",
+      "text": "我只是看完了整个经过。",
+      "line": 251
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 251,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047094",
+      "line": 255
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_ak",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 257,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047095",
+      "line": 261
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2417.ogg"
+      },
+      "line": 263,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「说什么傻话呢？正是因为琉璃是琉璃，才会有这样的现在。」",
+      "line": 265
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047096",
+      "line": 269
+    },
+    {
+      "type": "text",
+      "text": "彼方坚定地说道。",
+      "line": 271
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047097",
+      "line": 275
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_aj",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 277,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047098",
+      "line": 281
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2418.ogg"
+      },
+      "line": 283,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 285,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「没有因任何事情动摇，一直没有迷失自我，坚持自己。正是因为你一直一直对抗故事，所以才会迎来这样的结尾。」",
+      "line": 285
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 285,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047099",
+      "line": 289
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataB_aa",
+        "left": "340",
+        "tm": "701"
+      },
+      "line": 291,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047100",
+      "line": 295
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2419.ogg"
+      },
+      "line": 297,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 299,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「在那个场面，琉璃没有什么能够做的事。你只能守望夜子作出决断。」",
+      "line": 299
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 299,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047101",
+      "line": 303
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 305,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「或许吧……」",
+      "line": 305
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 305,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047102",
+      "line": 309
+    },
+    {
+      "type": "text",
+      "text": "就像彼方说的一样吗？",
+      "line": 311
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 311,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047103",
+      "line": 315
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 317,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「在这层意义上，这个故事的主人公除夜子以外没有其他人了。」",
+      "line": 317
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 317,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047104",
+      "line": 321
+    },
+    {
+      "type": "text",
+      "text": "直到最后她都是故事的中心。",
+      "line": 323
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 323,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 323,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "最后迫于作出决断的也是她。",
+      "line": 325
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 325,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 329,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「我只是守望她的行动，像讲述者一样的角色。」",
+      "line": 329
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 329,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047105",
+      "line": 333
+    },
+    {
+      "type": "text",
+      "text": "说我是主人公会让人笑掉大牙。",
+      "line": 335
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 335,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047106",
+      "line": 339
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataB_ab",
+        "left": "340",
+        "tm": "701"
+      },
+      "line": 341,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047107",
+      "line": 345
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2420.ogg"
+      },
+      "line": 347,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 349,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「今后，夜子的故事也会继续。对于那个人会在这个广阔的世界里编写出怎样的故事，我非常期待哦。」",
+      "line": 349
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 349,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047108",
+      "line": 353
+    },
+    {
+      "type": "text",
+      "text": "夜子的，她今后的故事。",
+      "line": 355
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 355,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 355,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "那是蕴藏着无数可能性的希望故事吧。",
+      "line": 357
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 357,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047109",
+      "line": 361
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_ao",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 363,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047110",
+      "line": 367
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2421.ogg"
+      },
+      "line": 369,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 371,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「过了这个村就没这个店哦？」",
+      "line": 371
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 371,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047111",
+      "line": 375
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 377,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「别开无聊的玩笑，自己明明没这么想过。」",
+      "line": 377
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 377,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047112",
+      "line": 381
+    },
+    {
+      "type": "text",
+      "text": "不管夜子是多么有魅力的女孩。",
+      "line": 383
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 383,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047113",
+      "line": 387
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 389,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「你对我来说是最特别的存在吧？」",
+      "line": 389
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 389,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047114",
+      "line": 393
+    },
+    {
+      "type": "text",
+      "text": "她一直在我身旁散发光芒。",
+      "line": 395
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 395,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 395,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "而且不忘打磨自己，不忘对我的爱。",
+      "line": 397
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 397,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047115",
+      "line": 401
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_aa",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 403,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047116",
+      "line": 407
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2422.ogg"
+      },
+      "line": 409,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 411,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「嗯！当然！」",
+      "line": 411
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 411,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047117",
+      "line": 415
+    },
+    {
+      "type": "text",
+      "text": "交缠的十指。",
+      "line": 417
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 417,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 417,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "紧紧扣在一起，像如互相贪恋对方的存在一样。",
+      "line": 419
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 419,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047118",
+      "line": 423
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_ab",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 425,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047119",
+      "line": 429
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2423.ogg"
+      },
+      "line": 431,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 433,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「琉璃已经完全给我迷倒了！」",
+      "line": 433
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 433,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047120",
+      "line": 437
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 439,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「彼方才是喜欢我喜欢得不得了吧？」",
+      "line": 439
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 439,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047121",
+      "line": 443
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_ao",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 445,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047122",
+      "line": 449
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2424.ogg"
+      },
+      "line": 451,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 453,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「这不是当然吗！」",
+      "line": 453
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 453,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047123",
+      "line": 457
+    },
+    {
+      "type": "text",
+      "text": "哒哒哒。",
+      "line": 459
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 459,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 459,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "彼方突然停下脚步，然后看向我。",
+      "line": 461
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 461,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047124",
+      "line": 465
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_ab",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 467,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047125",
+      "line": 471
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2425.ogg"
+      },
+      "line": 473,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 475,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「真的真的很喜欢你。」",
+      "line": 475
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 475,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047126",
+      "line": 479
+    },
+    {
+      "type": "text",
+      "text": "彼方快活的样子稍有收敛。",
+      "line": 481
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 481,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 481,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "她以香艳的表情诱惑起我。",
+      "line": 483
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 483,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047127",
+      "line": 487
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 489,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「彼方，我喜欢你。」",
+      "line": 489
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 489,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047128",
+      "line": 493
+    },
+    {
+      "type": "text",
+      "text": "我温柔地，如轻抚般对她低语。",
+      "line": 495
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 495,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047129",
+      "line": 499
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_aq",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 501,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047130",
+      "line": 505
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2426.ogg"
+      },
+      "line": 507,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 509,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「呜——」",
+      "line": 509
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 509,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047131",
+      "line": 513
+    },
+    {
+      "type": "text",
+      "text": "然后释放了两唇的寂寞。",
+      "line": 515
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 515,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2427.ogg"
+      },
+      "line": 519,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 521,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「嗯，嗯嗯……」",
+      "line": 521
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 521,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047132",
+      "line": 525
+    },
+    {
+      "type": "text",
+      "text": "比任何人都要心爱着对方。",
+      "line": 527
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 527,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047133",
+      "line": 531
+    },
+    {
+      "type": "text",
+      "text": "混杂着少许温柔和慈爱，如触碰易碎品的力度控制。",
+      "line": 533
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 533,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047134",
+      "line": 537
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2428.ogg"
+      },
+      "line": 539,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 541,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「啾……啾啾……」",
+      "line": 541
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 541,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047135",
+      "line": 545
+    },
+    {
+      "type": "text",
+      "text": "尽管香艳感无法避免，",
+      "line": 547
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 547,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047136",
+      "line": 551
+    },
+    {
+      "type": "text",
+      "text": "但与彼方亲吻能品味到，比香艳感更多的幸福感。",
+      "line": 553
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 553,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047137",
+      "line": 557
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_ab",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 559,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047138",
+      "line": 563
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2429.ogg"
+      },
+      "line": 565,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 567,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「琉璃……」",
+      "line": 567
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 567,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047139",
+      "line": 571
+    },
+    {
+      "type": "text",
+      "text": "彼方呻吟般说道。",
+      "line": 573
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 573,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047140",
+      "line": 577
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataB_ab",
+        "left": "340",
+        "tm": "701"
+      },
+      "line": 579,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047141",
+      "line": 583
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2430.ogg"
+      },
+      "line": 585,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 587,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「真擅长亲吻呢。」",
+      "line": 587
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 587,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047142",
+      "line": 591
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 593,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「一想到对象是喜欢的女孩子，我就下功夫了。」",
+      "line": 593
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 593,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047143",
+      "line": 597
+    },
+    {
+      "type": "text",
+      "text": "她令人心神飘荡的表情，牢牢记在了我心里。",
+      "line": 599
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 599,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047144",
+      "line": 603
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataB_ae",
+        "left": "340",
+        "tm": "701"
+      },
+      "line": 605,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047145",
+      "line": 609
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2431.ogg"
+      },
+      "line": 611,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 613,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「嘻嘻，嘻嘻嘻。」",
+      "line": 613
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 613,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047146",
+      "line": 617
+    },
+    {
+      "type": "text",
+      "text": "我因她幸福般的微笑而安心。",
+      "line": 619
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 619,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047147",
+      "line": 623
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_ab",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 625,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047148",
+      "line": 629
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2432.ogg"
+      },
+      "line": 631,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「请永远永远给我浇注你的爱哦。」",
+      "line": 633
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047149",
+      "line": 637
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 639,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「这不用说。」",
+      "line": 639
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 639,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047150",
+      "line": 643
+    },
+    {
+      "type": "text",
+      "text": "就算故事结束了，爱也会编织。",
+      "line": 645
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 645,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047151",
+      "line": 649
+    },
+    {
+      "type": "text",
+      "text": "对能看到的未来怀着希望，脚步也会变得轻松。",
+      "line": 651
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 651,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sfadeoutbgm",
+      "args": {
+        "time": "2000"
+      },
+      "line": 655,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047152",
+      "line": 659
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 661,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 663,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転",
+        "tm": "2000"
+      },
+      "line": 665,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "図書館前_門前",
+        "tm": "3500"
+      },
+      "line": 667,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb",
+      "args": {},
+      "line": 669,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "mess",
+      "args": {},
+      "line": 671,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047153",
+      "line": 675
+    },
+    {
+      "type": "text",
+      "text": "该回去的地方。",
+      "line": 677
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 677,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 677,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "我们的栖身之所一直是这座图书馆。",
+      "line": 679
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 679,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047154",
+      "line": 683
+    },
+    {
+      "type": "text",
+      "text": "我喜欢这个地方。",
+      "line": 685
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 685,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 685,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "从知道这个地方起，我发现自己拥有非常幸福的人生。",
+      "line": 687
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 687,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047155",
+      "line": 691
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataB_ae",
+        "left": "340",
+        "tm": "701"
+      },
+      "line": 693,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "bgm",
+      "args": {
+        "fn": "BGM19"
+      },
+      "line": 697,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047156",
+      "line": 701
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2433.ogg"
+      },
+      "line": 703,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 705,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「我们的日常在开始改变。」",
+      "line": 705
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 705,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047157",
+      "line": 709
+    },
+    {
+      "type": "text",
+      "text": "身旁的彼方笑起来。",
+      "line": 711
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 711,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047158",
+      "line": 715
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_ao",
+        "left": "300",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 717,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047159",
+      "line": 721
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2434.ogg"
+      },
+      "line": 723,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 725,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「非常期待今后的日子呢。」",
+      "line": 725
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 725,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047160",
+      "line": 729
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 731,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「对，没错。」",
+      "line": 731
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 731,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047161",
+      "line": 735
+    },
+    {
+      "type": "text",
+      "text": "幻想图书馆前站着一个少女。",
+      "line": 737
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 737,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 737,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "一个布娃娃装束的，白发红眼的美少女。",
+      "line": 739
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 739,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047162",
+      "line": 743
+    },
+    {
+      "type": "text",
+      "text": "她正优雅地拨弄头发，沐浴着阳光。",
+      "line": 745
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 745,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047163",
+      "line": 749
+    },
+    {
+      "type": "text",
+      "text": "不是月光。",
+      "line": 751
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 751,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 751,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "不是深夜。",
+      "line": 753
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 753,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047164",
+      "line": 757
+    },
+    {
+      "type": "text",
+      "text": "而是阳光笼罩的热闹时间。",
+      "line": 759
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 759,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047165",
+      "line": 763
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 765,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 767,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転",
+        "tm": "2000"
+      },
+      "line": 769,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "CG67_0",
+        "tm": "3500"
+      },
+      "line": 771,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb",
+      "args": {},
+      "line": 773,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "mess",
+      "args": {},
+      "line": 775,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047166",
+      "line": 779
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2991.ogg"
+      },
+      "line": 781,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 783,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「——哎，你们回来啦。」",
+      "line": 783
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 783,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047167",
+      "line": 787
+    },
+    {
+      "type": "text",
+      "text": "察觉到我和彼方的少女，高兴地露出了害羞的表情。",
+      "line": 789
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 789,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047168",
+      "line": 793
+    },
+    {
+      "type": "text",
+      "text": "很少见地。",
+      "line": 795
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 795,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 795,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "很少见地——少女出现在外面的世界。",
+      "line": 797
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 797,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047169",
+      "line": 801
+    },
+    {
+      "type": "text",
+      "text": "不是书房，",
+      "line": 803
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 803,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 803,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "而是阳光照耀之处。",
+      "line": 805
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 805,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047170",
+      "line": 809
+    },
+    {
+      "type": "text",
+      "text": "这个事实，这个变化，让我高兴得不得了。",
+      "line": 811
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 811,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "看着不是有人强迫她，而是以自己的意志来到外面的夜子。",
+      "line": 813
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 813,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047171",
+      "line": 817
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 819,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「今天天气不错。」",
+      "line": 819
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 819,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047172",
+      "line": 823
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "CG67_1",
+        "tm": "1000"
+      },
+      "line": 825,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047173",
+      "line": 829
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2992.ogg"
+      },
+      "line": 831,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 833,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「对，非常适合读书的日子呢。」",
+      "line": 833
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 833,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047174",
+      "line": 837
+    },
+    {
+      "type": "text",
+      "text": "就算是这样，她开口说的还是小说。",
+      "line": 839
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 839,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047175",
+      "line": 843
+    },
+    {
+      "type": "text",
+      "text": "不过，这是不改变也没问题的部分。",
+      "line": 845
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 845,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047176",
+      "line": 849
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 851,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「这样的日子，看什么小说好？」",
+      "line": 851
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 851,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047177",
+      "line": 855
+    },
+    {
+      "type": "text",
+      "text": "我面对少女，尝试询问她这个问题。",
+      "line": 857
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 857,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047178",
+      "line": 861
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2993.ogg"
+      },
+      "line": 863,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 865,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「现实，这种当然的故事怎么样？」",
+      "line": 865
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 865,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047179",
+      "line": 869
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 871,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「听起来不错，好像是非常有趣的故事。」",
+      "line": 871
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 871,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047180",
+      "line": 875
+    },
+    {
+      "type": "text",
+      "text": "我们同时看着对方笑起来。",
+      "line": 877
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 877,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 877,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "然后，夜子走起来。",
+      "line": 879
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 879,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047181",
+      "line": 883
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 885,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「你要上哪儿？」",
+      "line": 885
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 885,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047182",
+      "line": 889
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "CG67_2",
+        "tm": "1000"
+      },
+      "line": 891,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047183",
+      "line": 895
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2994.ogg"
+      },
+      "line": 897,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 899,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「散步哦。」",
+      "line": 899
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 899,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047184",
+      "line": 903
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "CG67_1",
+        "tm": "1000"
+      },
+      "line": 905,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047185",
+      "line": 909
+    },
+    {
+      "type": "text",
+      "text": "她回头笑道。",
+      "line": 911
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 911,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047186",
+      "line": 915
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2995.ogg"
+      },
+      "line": 917,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 919,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「你不知道吗？我非常喜欢走路这个行为。」",
+      "line": 919
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 919,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047187",
+      "line": 923
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 925,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「这……我还真不知道。」",
+      "line": 925
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 925,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047188",
+      "line": 929
+    },
+    {
+      "type": "text",
+      "text": "我认为你喜欢黑夜。",
+      "line": 931
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 931,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047189",
+      "line": 935
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2996.ogg"
+      },
+      "line": 937,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 939,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「当然啦。我最近才喜欢上。」",
+      "line": 939
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 939,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047190",
+      "line": 943
+    },
+    {
+      "type": "text",
+      "text": "她高兴地抿起嘴。",
+      "line": 945
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 945,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047191",
+      "line": 949
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "CG67_3",
+        "tm": "1000"
+      },
+      "line": 951,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047192",
+      "line": 955
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2997.ogg"
+      },
+      "line": 957,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 959,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「今后我会有更多喜欢的东西。我会观察各式各样的东西，理解它们，触碰它们——然后喜欢的东西就会增加。我现在对一切充满了期待。」",
+      "line": 959
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 959,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047193",
+      "line": 963
+    },
+    {
+      "type": "text",
+      "text": "在开启了的世界里，夜子走向了明天。",
+      "line": 965
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 965,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 965,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "与她一起走的不只文字，还有其他许许多多的东西。",
+      "line": 967
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 967,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047194",
+      "line": 971
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2998.ogg"
+      },
+      "line": 973,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 975,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「我要你后悔甩了我。」",
+      "line": 975
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 975,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047195",
+      "line": 979
+    },
+    {
+      "type": "text",
+      "text": "说完这句话，她没有露出一丝悲伤的表情。",
+      "line": 981
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 981,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047196",
+      "line": 985
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 987,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「噢，就是这股干劲。」",
+      "line": 987
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 987,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047197",
+      "line": 991
+    },
+    {
+      "type": "text",
+      "text": "相反，她非常充实般笑起来。",
+      "line": 993
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 993,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047198",
+      "line": 997
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 999,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「这才是遊行寺夜子。」",
+      "line": 999
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 999,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047199",
+      "line": 1003
+    },
+    {
+      "type": "text",
+      "text": "我默默守望夜子远去的背影，心中生起暖意。",
+      "line": 1005
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1005,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047200",
+      "line": 1009
+    },
+    {
+      "type": "text",
+      "text": "现在的夜子令人目眩，像宝石一样闪闪发光。",
+      "line": 1011
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1011,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047201",
+      "line": 1015
+    },
+    {
+      "type": "text",
+      "text": "她步子轻快。",
+      "line": 1017
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 1017,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 1017,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "声音有激情。",
+      "line": 1019
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 1019,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 1019,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "人朝着阳光所指的方向勇往前进。",
+      "line": 1021
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1021,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047202",
+      "line": 1025
+    },
+    {
+      "type": "text",
+      "text": "我说过夜子是主人公，我是讲述者。",
+      "line": 1027
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1027,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047203",
+      "line": 1031
+    },
+    {
+      "type": "text",
+      "text": "这样的话，这种时候我该以什么话做庆祝台词呢？",
+      "line": 1033
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1033,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "琉璃"
+      },
+      "line": 1037,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「啊，对了。」",
+      "line": 1037
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1037,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047204",
+      "line": 1041
+    },
+    {
+      "type": "text",
+      "text": "不是有套句吗？",
+      "line": 1043
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 1043,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 1043,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "说出它来为我们的故事画上句号吧。",
+      "line": 1045
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1045,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047205",
+      "line": 1049
+    },
+    {
+      "type": "text",
+      "text": "卷过数不清的书页到达的结尾。",
+      "line": 1051
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1051,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047206",
+      "line": 1055
+    },
+    {
+      "type": "text",
+      "text": "恋情破灭，生死分离，修成正果——就算是这样也努力生存的终点。",
+      "line": 1057
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1057,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047207",
+      "line": 1061
+    },
+    {
+      "type": "text",
+      "text": "夜子回过头。",
+      "line": 1063
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 1063,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 1063,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "她动起嘴唇，就像提前知道我想说什么一样。",
+      "line": 1065
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1065,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047208",
+      "line": 1069
+    },
+    {
+      "type": "text",
+      "text": "远，非常远。",
+      "line": 1071
+    },
+    {
+      "type": "command",
+      "name": "l",
+      "args": {},
+      "line": 1071,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "r",
+      "args": {},
+      "line": 1071,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "微弱，非常微弱。",
+      "line": 1073
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1073,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047209",
+      "line": 1077
+    },
+    {
+      "type": "text",
+      "text": "正常来说不是能听清楚的距离。",
+      "line": 1079
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1079,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "我听到了可爱的声音。",
+      "line": 1083
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1083,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047210",
+      "line": 1087
+    },
+    {
+      "type": "text",
+      "text": "对于故事的落幕，这肯定是适合的话语。",
+      "line": 1089
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1089,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047211",
+      "line": 1093
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "CG67_2",
+        "tm": "1000"
+      },
+      "line": 1095,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047212",
+      "line": 1099
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_2999.ogg"
+      },
+      "line": 1101,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 1103,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「可喜可贺，可喜可贺。」",
+      "line": 1103
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1103,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047213",
+      "line": 1107
+    },
+    {
+      "type": "text",
+      "text": "伴随意味深长的话语，今后的未来会不断发出灿烂的光芒。",
+      "line": 1109
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1109,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047214",
+      "line": 1113
+    },
+    {
+      "type": "text",
+      "text": "一想象宝石般闪闪发光的未来，我就因幸福而掩不住笑容。",
+      "line": 1115
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1115,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047214",
+      "line": 1119
+    },
+    {
+      "type": "text",
+      "text": "＝ 剧终 ＝",
+      "line": 1121
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 1121,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047215",
+      "line": 1125
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[66"
+      },
+      "line": 1127,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = true\"]",
+      "line": 1127
+    },
+    {
+      "type": "command",
+      "name": "sfadeoutbgm",
+      "args": {
+        "time": "2000"
+      },
+      "line": 1129,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 1131,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 1133,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "rs",
+      "args": {},
+      "line": 1135,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転",
+        "tm": "5000"
+      },
+      "line": 1137,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "□□他のファイルへジャンプ",
+      "line": 1141
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "title.ks",
+        "target": "*title_menu"
+      },
+      "line": 1143,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047216",
+      "line": 1147
+    },
+    {
+      "type": "comment",
+      "text": "□□タイトルに戻る",
+      "line": 1155
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "1000",
+        "mode": "normal",
+        "canskip": "false"
+      },
+      "line": 1157,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "title.ks",
+        "target": "*title_menu"
+      },
+      "line": 1159,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label047217",
+      "line": 1163
+    },
+    {
+      "type": "comment",
+      "text": "□□他のファイルへジャンプ",
+      "line": 1169
+    },
+    {
+      "type": "comment",
+      "text": "[jump storage=\"○○.ks\"]",
+      "line": 1171
+    }
+  ]
+}

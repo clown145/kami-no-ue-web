@@ -1,0 +1,3466 @@
+{
+  "source": "sound_test.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1
+    },
+    {
+      "type": "comment",
+      "text": " sound_test.ks…サウンドテスト画面",
+      "line": 3
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 5
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 9
+    },
+    {
+      "type": "comment",
+      "text": " 使い方：",
+      "line": 11
+    },
+    {
+      "type": "comment",
+      "text": "   [call storage=\"sound_test.ks\" target=*sound_menu]",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 15
+    },
+    {
+      "type": "comment",
+      "text": " 使用している変数：",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sound_message   … サウンドテスト画面で使用するメッセージレイヤ名",
+      "line": 19
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sound_layer     … 選択用画像を表示する前景レイヤ番号",
+      "line": 21
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sound_select    … 現在、選択中の曲の番号（-1なら未選択を意味する）",
+      "line": 23
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sound_x         … グラフィカルボタンと選択用画像を表示するＸ座標の配列",
+      "line": 25
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sound_y         … 同、Ｙ座標の配列",
+      "line": 27
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sound_i         … ループカウンタ",
+      "line": 29
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 31
+    },
+    {
+      "type": "comment",
+      "text": "   以下の配列は、sound_init.ksのサブルーチン*sound_initで設定",
+      "line": 33
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sound_caption   … 曲名の配列",
+      "line": 35
+    },
+    {
+      "type": "comment",
+      "text": "   tf.sound_storage   … 実際に再生する音楽ファイル名の配列",
+      "line": 37
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 39
+    },
+    {
+      "type": "label",
+      "name": "sound_menu",
+      "line": 41
+    },
+    {
+      "type": "command",
+      "name": "stopbgm",
+      "args": {},
+      "line": 43,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "sound_menu00",
+      "line": 47
+    },
+    {
+      "type": "comment",
+      "text": " サウンドテスト画面で使用するメッセージレイヤ",
+      "line": 49
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.sound_message = 'message1'"
+      },
+      "line": 51,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 選択用画像を表示する前景レイヤ（表画面）",
+      "line": 53
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.sound_layer = 0"
+      },
+      "line": 55,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " サウンドテスト画面でマウス右クリックされたら、「戻る」と同じ動作をさせる",
+      "line": 57
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "jump": "true",
+        "target": "*sound_return",
+        "storage": "sound_test.ks",
+        "enabled": "true"
+      },
+      "line": 59,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞４に現在の状態を保存",
+      "line": 61
+    },
+    {
+      "type": "command",
+      "name": "tempsave",
+      "args": {
+        "place": "4"
+      },
+      "line": 63,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤの属性を設定",
+      "line": 65
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "&tf.sound_message",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "width": "&kag.scWidth",
+        "height": "&kag.scHeight",
+        "frame": null,
+        "color": "0x000000",
+        "opacity": "0",
+        "marginl": "0",
+        "margint": "0",
+        "marginr": "0",
+        "marginb": "0",
+        "draggable": "false",
+        "visible": "true"
+      },
+      "line": 67,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "&tf.sound_message"
+      },
+      "line": 69,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 背景を背景レイヤ表画面に読み込み",
+      "line": 71
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "soundmode_bg_normal.png",
+        "layer": "base",
+        "page": "fore"
+      },
+      "line": 73,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "sound_menu01",
+      "line": 77
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "&tf.sound_message",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "width": "&kag.scWidth",
+        "height": "&kag.scHeight",
+        "frame": null,
+        "color": "0x000000",
+        "opacity": "0",
+        "marginl": "0",
+        "margint": "0",
+        "marginr": "0",
+        "marginb": "0",
+        "draggable": "false",
+        "visible": "true"
+      },
+      "line": 79,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_01 == true"
+      },
+      "line": 83,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "166"
+      },
+      "line": 85,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_01-2",
+        "target": "*music-start01"
+      },
+      "line": 87,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "166"
+      },
+      "line": 91,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_01",
+        "target": "*music-start01"
+      },
+      "line": 93,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 95,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_02 == true"
+      },
+      "line": 99,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "222"
+      },
+      "line": 101,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_02-2",
+        "target": "*music-start02"
+      },
+      "line": 103,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 105,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "222"
+      },
+      "line": 107,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_02",
+        "target": "*music-start02"
+      },
+      "line": 109,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 111,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_03 == true"
+      },
+      "line": 115,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "278"
+      },
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_03-2",
+        "target": "*music-start03"
+      },
+      "line": 119,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 121,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "278"
+      },
+      "line": 123,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_03",
+        "target": "*music-start03"
+      },
+      "line": 125,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 127,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_04 == true"
+      },
+      "line": 131,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "334"
+      },
+      "line": 133,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_04-2",
+        "target": "*music-start04"
+      },
+      "line": 135,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "334"
+      },
+      "line": 139,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_04",
+        "target": "*music-start04"
+      },
+      "line": 141,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_05 == true"
+      },
+      "line": 147,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "390"
+      },
+      "line": 149,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_05-2",
+        "target": "*music-start05"
+      },
+      "line": 151,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 153,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "390"
+      },
+      "line": 155,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_05",
+        "target": "*music-start05"
+      },
+      "line": 157,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_06 == true"
+      },
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "446"
+      },
+      "line": 165,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_06-2",
+        "target": "*music-start06"
+      },
+      "line": 167,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 169,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "446"
+      },
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_06",
+        "target": "*music-start06"
+      },
+      "line": 173,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 175,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_07 == true"
+      },
+      "line": 179,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "502"
+      },
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_07-2",
+        "target": "*music-start07"
+      },
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 185,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "155",
+        "y": "502"
+      },
+      "line": 187,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_07",
+        "target": "*music-start07"
+      },
+      "line": 189,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 191,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 195
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_08 == true"
+      },
+      "line": 199,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "166"
+      },
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_08-2",
+        "target": "*music-start08"
+      },
+      "line": 203,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 205,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "166"
+      },
+      "line": 207,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_08",
+        "target": "*music-start08"
+      },
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_09 == true"
+      },
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "222"
+      },
+      "line": 217,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_09-2",
+        "target": "*music-start09"
+      },
+      "line": 219,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 221,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "222"
+      },
+      "line": 223,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_09",
+        "target": "*music-start09"
+      },
+      "line": 225,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 227,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_10 == true"
+      },
+      "line": 231,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "278"
+      },
+      "line": 233,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_10-2",
+        "target": "*music-start10"
+      },
+      "line": 235,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 237,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "278"
+      },
+      "line": 239,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_10",
+        "target": "*music-start10"
+      },
+      "line": 241,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 243,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_11 == true"
+      },
+      "line": 247,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "334"
+      },
+      "line": 249,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_11-2",
+        "target": "*music-start11"
+      },
+      "line": 251,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 253,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "334"
+      },
+      "line": 255,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_11",
+        "target": "*music-start11"
+      },
+      "line": 257,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 259,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_12 == true"
+      },
+      "line": 263,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "390"
+      },
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_12-2",
+        "target": "*music-start12"
+      },
+      "line": 267,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 269,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "390"
+      },
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_12",
+        "target": "*music-start12"
+      },
+      "line": 273,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 275,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_13 == true"
+      },
+      "line": 279,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "446"
+      },
+      "line": 281,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_13-2",
+        "target": "*music-start13"
+      },
+      "line": 283,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 285,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "446"
+      },
+      "line": 287,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_13",
+        "target": "*music-start13"
+      },
+      "line": 289,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 291,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_14 == true"
+      },
+      "line": 295,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "502"
+      },
+      "line": 297,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_14-2",
+        "target": "*music-start14"
+      },
+      "line": 299,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 301,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "495",
+        "y": "502"
+      },
+      "line": 303,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_14",
+        "target": "*music-start14"
+      },
+      "line": 305,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 307,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 311
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_15 == true"
+      },
+      "line": 317,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "166"
+      },
+      "line": 319,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_15-2",
+        "target": "*music-start15"
+      },
+      "line": 321,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 323,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "166"
+      },
+      "line": 325,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_15",
+        "target": "*music-start15"
+      },
+      "line": 327,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 329,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_16 == true"
+      },
+      "line": 333,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "222"
+      },
+      "line": 335,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_16-2",
+        "target": "*music-start16"
+      },
+      "line": 337,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 339,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "222"
+      },
+      "line": 341,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_16",
+        "target": "*music-start16"
+      },
+      "line": 343,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 345,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_17 == true"
+      },
+      "line": 349,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "278"
+      },
+      "line": 351,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_17-2",
+        "target": "*music-start17"
+      },
+      "line": 353,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 355,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "278"
+      },
+      "line": 357,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_17",
+        "target": "*music-start17"
+      },
+      "line": 359,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 361,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_18 == true"
+      },
+      "line": 365,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "334"
+      },
+      "line": 367,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_18-2",
+        "target": "*music-start18"
+      },
+      "line": 369,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 371,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "334"
+      },
+      "line": 373,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_18",
+        "target": "*music-start18"
+      },
+      "line": 375,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 377,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_19 == true"
+      },
+      "line": 381,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "390"
+      },
+      "line": 383,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_19-2",
+        "target": "*music-start19"
+      },
+      "line": 385,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 387,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "390"
+      },
+      "line": 389,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_19",
+        "target": "*music-start19"
+      },
+      "line": 391,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 393,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_20 == true"
+      },
+      "line": 397,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "446"
+      },
+      "line": 399,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_20-2",
+        "target": "*music-start20"
+      },
+      "line": 401,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 403,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "825",
+        "y": "446"
+      },
+      "line": 405,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "music_20",
+        "target": "*music-start20"
+      },
+      "line": 407,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 409,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 413
+    },
+    {
+      "type": "comment",
+      "text": " 「戻る」用ボタンを配置",
+      "line": 415
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "713",
+        "y": "683"
+      },
+      "line": 417,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-back.png",
+        "storage": "sound_test.ks",
+        "target": "*sound_return",
+        "recthit": "false"
+      },
+      "line": 419,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「終了」用ボタンを配置",
+      "line": 423
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "583",
+        "y": "683"
+      },
+      "line": 425,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-exit.png",
+        "exp": "kag.close()"
+      },
+      "line": 427,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトル」用ボタンを配置",
+      "line": 431
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "453",
+        "y": "683"
+      },
+      "line": 433,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-title.png",
+        "storage": "sound_test.ks",
+        "target": "*sound_title",
+        "recthit": "false"
+      },
+      "line": 435,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 437,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start01",
+      "line": 441
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_01 == true"
+      },
+      "line": 443,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false"
+      },
+      "line": 445,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 447,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 449,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 451,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = true"
+      },
+      "line": 453,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM01",
+        "loop": "true"
+      },
+      "line": 455,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 457,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 459,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start02",
+      "line": 463
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_02 == true"
+      },
+      "line": 465,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_02 = false"
+      },
+      "line": 467,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 469,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 471,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 473,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_02 = true"
+      },
+      "line": 475,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM02",
+        "loop": "true"
+      },
+      "line": 477,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 479,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 481,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start03",
+      "line": 485
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_03 == true"
+      },
+      "line": 487,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_03 = false"
+      },
+      "line": 489,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 491,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 493,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 495,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_03 = true"
+      },
+      "line": 497,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM03",
+        "loop": "true"
+      },
+      "line": 499,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 501,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 503,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start04",
+      "line": 507
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_04 == true"
+      },
+      "line": 509,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_04 = false"
+      },
+      "line": 511,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 513,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 515,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 517,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_04 = true"
+      },
+      "line": 519,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM04",
+        "loop": "true"
+      },
+      "line": 521,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 523,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 525,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start05",
+      "line": 529
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_05 == true"
+      },
+      "line": 531,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_05 = false"
+      },
+      "line": 533,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 535,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 537,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 539,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_05 = true"
+      },
+      "line": 541,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM05",
+        "loop": "true"
+      },
+      "line": 543,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 545,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 547,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start06",
+      "line": 551
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_06 == true"
+      },
+      "line": 553,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_06 = false"
+      },
+      "line": 555,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 557,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 559,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 561,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_06 = true"
+      },
+      "line": 563,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM06",
+        "loop": "true"
+      },
+      "line": 565,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 567,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 569,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start07",
+      "line": 573
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_07 == true"
+      },
+      "line": 575,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_07 = false"
+      },
+      "line": 577,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 579,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 581,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 583,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_07 = true"
+      },
+      "line": 585,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM07",
+        "loop": "true"
+      },
+      "line": 587,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 589,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 591,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start08",
+      "line": 595
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_08 == true"
+      },
+      "line": 597,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_08 = false"
+      },
+      "line": 599,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 601,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 603,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 605,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_08 = true"
+      },
+      "line": 607,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM08",
+        "loop": "true"
+      },
+      "line": 609,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 611,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 613,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start09",
+      "line": 617
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_09 == true"
+      },
+      "line": 619,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_09 = false"
+      },
+      "line": 621,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 623,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 625,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 627,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_09 = true"
+      },
+      "line": 629,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM09",
+        "loop": "true"
+      },
+      "line": 631,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 635,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start10",
+      "line": 639
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_10 == true"
+      },
+      "line": 641,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_10 = false"
+      },
+      "line": 643,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 645,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 647,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 649,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_10 = true"
+      },
+      "line": 651,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM10",
+        "loop": "true"
+      },
+      "line": 653,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 655,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 657,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start11",
+      "line": 661
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_11 == true"
+      },
+      "line": 663,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_11 = false"
+      },
+      "line": 665,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 667,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 669,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 671,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_11 = true"
+      },
+      "line": 673,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM11",
+        "loop": "true"
+      },
+      "line": 675,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 677,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 679,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start12",
+      "line": 683
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_12 == true"
+      },
+      "line": 685,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_12 = false"
+      },
+      "line": 687,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 689,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 691,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 693,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_12 = true"
+      },
+      "line": 695,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM12",
+        "loop": "true"
+      },
+      "line": 697,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 699,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 701,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start13",
+      "line": 705
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_13 == true"
+      },
+      "line": 707,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_13 = false"
+      },
+      "line": 709,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 711,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 713,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 715,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_13 = true"
+      },
+      "line": 717,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM13",
+        "loop": "true"
+      },
+      "line": 719,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 721,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 723,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start14",
+      "line": 727
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_14 == true"
+      },
+      "line": 729,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_14 = false"
+      },
+      "line": 731,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 733,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 735,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 737,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_14 = true"
+      },
+      "line": 739,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM14",
+        "loop": "true"
+      },
+      "line": 741,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 743,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 745,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start15",
+      "line": 749
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_15 == true"
+      },
+      "line": 751,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_15 = false"
+      },
+      "line": 753,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 755,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 757,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 759,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_15 = true"
+      },
+      "line": 761,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM15",
+        "loop": "true"
+      },
+      "line": 763,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 765,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 767,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start16",
+      "line": 771
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_16 == true"
+      },
+      "line": 773,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_16 = false"
+      },
+      "line": 775,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 777,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 779,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 781,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_16 = true"
+      },
+      "line": 783,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM16",
+        "loop": "true"
+      },
+      "line": 785,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 787,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 789,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start17",
+      "line": 793
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_17 == true"
+      },
+      "line": 795,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_17 = false"
+      },
+      "line": 797,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 799,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 801,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 803,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_17 = true"
+      },
+      "line": 805,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM17",
+        "loop": "true"
+      },
+      "line": 807,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 809,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 811,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start18",
+      "line": 815
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_18 == true"
+      },
+      "line": 817,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_18 = false"
+      },
+      "line": 819,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 821,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 823,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 825,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_18 = true"
+      },
+      "line": 827,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM18",
+        "loop": "true"
+      },
+      "line": 829,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 831,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 833,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start19",
+      "line": 837
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_19 == true"
+      },
+      "line": 839,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_19 = false"
+      },
+      "line": 841,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 843,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 845,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 847,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_19 = true"
+      },
+      "line": 849,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM19",
+        "loop": "true"
+      },
+      "line": 851,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 853,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 855,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-start20",
+      "line": 859
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "tf.music_20 == true"
+      },
+      "line": 861,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_20 = false"
+      },
+      "line": 863,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*music-stop"
+      },
+      "line": 865,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 867,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 869,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_20 = true"
+      },
+      "line": 871,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "playbgm",
+      "args": {
+        "storage": "BGM20",
+        "loop": "true"
+      },
+      "line": 873,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 875,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 877,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "music-stop",
+      "line": 881
+    },
+    {
+      "type": "command",
+      "name": "stopbgm",
+      "args": {},
+      "line": 883,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 885,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 887,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 891
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトルへ戻る」が選択された",
+      "line": 893
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 895
+    },
+    {
+      "type": "label",
+      "name": "sound_title",
+      "line": 897
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.noStoreCurrentMessage = 0"
+      },
+      "line": 899
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!askYesNo('回到标题画面？')"
+      },
+      "line": 901
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*sound_menu01"
+      },
+      "line": 903,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 905
+    },
+    {
+      "type": "command",
+      "name": "stopbgm",
+      "args": {},
+      "line": 907,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 909,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "title.ks",
+        "target": "*title_menu_loop00"
+      },
+      "line": 911,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 913,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 917
+    },
+    {
+      "type": "comment",
+      "text": " 「戻る」が選択された",
+      "line": 919
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 921
+    },
+    {
+      "type": "label",
+      "name": "sound_return",
+      "line": 923
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞４を読み込み、状態復帰",
+      "line": 925
+    },
+    {
+      "type": "command",
+      "name": "tempload",
+      "args": {
+        "place": "4"
+      },
+      "line": 927,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す",
+      "line": 929
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 931,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.music_01 = false, tf.music_02 = false, tf.music_03 = false, tf.music_04 = false, tf.music_05 = false, tf.music_06 = false, tf.music_07 = false, tf.music_08 = false, tf.music_09 = false, tf.music_10 = false, tf.music_11 = false, tf.music_12 = false, tf.music_13 = false, tf.music_14 = false, tf.music_15 = false, tf.music_16 = false, tf.music_17 = false, tf.music_18 = false, tf.music_19 = false, tf.music_20 = false"
+      },
+      "line": 933,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "title.ks",
+        "target": "*title_menu_loop00"
+      },
+      "line": 935,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 937,
+      "inline": true
+    }
+  ]
+}

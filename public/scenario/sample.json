@@ -1,0 +1,3553 @@
+{
+  "source": "sample.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "最初に入力",
+      "line": 1
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 2"
+      },
+      "line": 3,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 5,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clickskip",
+      "args": {
+        "enabled": "false"
+      },
+      "line": 7,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 9,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 11,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 13,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 15,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "messages": "4"
+      },
+      "line": 17,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "visible": "false",
+        "page": "fore"
+      },
+      "line": 19,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 21,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===================================================",
+      "line": 25
+    },
+    {
+      "type": "comment",
+      "text": "ここから記入",
+      "line": 27
+    },
+    {
+      "type": "comment",
+      "text": "注意",
+      "line": 31
+    },
+    {
+      "type": "comment",
+      "text": "「*label002416|」等はセーブする際の目印。",
+      "line": 33
+    },
+    {
+      "type": "comment",
+      "text": "最後にツールを使ってまとめて入力しますので、一行あけて下さると助かります。",
+      "line": 35
+    },
+    {
+      "type": "comment",
+      "text": "わからない場合にはそのままで結構です。",
+      "line": 37
+    },
+    {
+      "type": "comment",
+      "text": "ラベル",
+      "line": 41
+    },
+    {
+      "type": "label",
+      "name": "charapter01",
+      "line": 43
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤ０表画面を表示",
+      "line": 47
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "page": "fore",
+        "visible": "true"
+      },
+      "line": 49,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "//背景フェードイン",
+      "line": 53
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "暗転",
+        "tm": "3500"
+      },
+      "line": 55,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "白",
+        "tm": "3500"
+      },
+      "line": 57,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "ＢＧＭ再生",
+      "line": 61
+    },
+    {
+      "type": "command",
+      "name": "bgm",
+      "args": {
+        "fn": "BGM02"
+      },
+      "line": 63,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "メッセージウィンドウ表示",
+      "line": 67
+    },
+    {
+      "type": "command",
+      "name": "mess",
+      "args": {},
+      "line": 69,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "システムボタン表示",
+      "line": 73
+    },
+    {
+      "type": "command",
+      "name": "sysb",
+      "args": {},
+      "line": 75,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "名前表示 fn=（キャラの名前）",
+      "line": 79
+    },
+    {
+      "type": "comment",
+      "text": "[name fn=あかさたなあかさたな]",
+      "line": 81
+    },
+    {
+      "type": "comment",
+      "text": "[r]は改行",
+      "line": 85
+    },
+    {
+      "type": "comment",
+      "text": "[l]はクリック待ち",
+      "line": 87
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ",
+      "line": 89
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ",
+      "line": 91
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ",
+      "line": 93
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 93,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002416",
+      "line": 97
+    },
+    {
+      "type": "text",
+      "text": "立ち絵を順番に表示します",
+      "line": 99
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 99,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "立ち絵順番に表示",
+      "line": 103
+    },
+    {
+      "type": "comment",
+      "text": "キャラ　fn=（画像の名前） top=（上からの距離） left=（左からの距離）　tm=（表示する時間　未記入の場合は０）",
+      "line": 105
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 107
+    },
+    {
+      "type": "comment",
+      "text": "☆☆クリソベリル",
+      "line": 109
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "chrysoA_a",
+        "left": "300",
+        "top": "20"
+      },
+      "line": 111,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 111,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "chrysoB_a",
+        "left": "340"
+      },
+      "line": 113,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 113,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 115,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "chrysoA_b",
+        "left": "580",
+        "top": "20"
+      },
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "chrysoB_b",
+        "left": "40"
+      },
+      "line": 119,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 119,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "chrysoB_b",
+        "left": "600"
+      },
+      "line": 121,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 121,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "chrysoA_b",
+        "left": "30",
+        "top": "20"
+      },
+      "line": 123,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 123,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 125,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 127
+    },
+    {
+      "type": "comment",
+      "text": "☆☆岬",
+      "line": 129
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "misakiA_a",
+        "left": "400"
+      },
+      "line": 131,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 131,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "misakiB_a",
+        "left": "320"
+      },
+      "line": 133,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 133,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 135,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "misakiA_b",
+        "left": "650"
+      },
+      "line": 137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "misakiB_b",
+        "left": "40"
+      },
+      "line": 139,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 139,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "misakiB_b",
+        "left": "600"
+      },
+      "line": 141,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 141,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "misakiA_b",
+        "left": "100"
+      },
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 145,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 147
+    },
+    {
+      "type": "comment",
+      "text": "☆☆奏",
+      "line": 149
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanadeA_a",
+        "left": "450",
+        "top": "20"
+      },
+      "line": 151,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 151,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanadeB_a",
+        "left": "390"
+      },
+      "line": 153,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 153,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 155,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kanadeA_b",
+        "left": "650",
+        "top": "20"
+      },
+      "line": 157,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 157,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanadeB_b",
+        "left": "100"
+      },
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kanadeB_b",
+        "left": "600"
+      },
+      "line": 161,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 161,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanadeA_b",
+        "left": "150",
+        "top": "20"
+      },
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 165,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 167
+    },
+    {
+      "type": "comment",
+      "text": "☆☆闇子",
+      "line": 169
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "yamikoA_a",
+        "left": "310",
+        "top": "10"
+      },
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "yamikoB_a",
+        "left": "340"
+      },
+      "line": 173,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 173,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 175,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yamikoA_b",
+        "left": "580",
+        "top": "10"
+      },
+      "line": 177,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 177,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "yamikoB_b",
+        "left": "80"
+      },
+      "line": 179,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 179,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yamikoB_b",
+        "left": "600"
+      },
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "yamikoA_b",
+        "left": "60",
+        "top": "10"
+      },
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 185,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 187
+    },
+    {
+      "type": "comment",
+      "text": "☆☆汀",
+      "line": 189
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "nagisaA_a",
+        "left": "340"
+      },
+      "line": 191,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 191,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 193,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "nagisaA_a",
+        "left": "600"
+      },
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "nagisaA_a",
+        "left": "100"
+      },
+      "line": 197,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 197,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 199,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 201
+    },
+    {
+      "type": "comment",
+      "text": "☆☆理央",
+      "line": 203
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "rioA_aa",
+        "left": "320"
+      },
+      "line": 205,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 205,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "rioB_aa",
+        "left": "340",
+        "top": "20"
+      },
+      "line": 207,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 207,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "rioA_ba",
+        "left": "600"
+      },
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "rioB_ba",
+        "left": "100",
+        "top": "20"
+      },
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "rioB_ba",
+        "left": "620",
+        "top": "20"
+      },
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "rioA_ba",
+        "left": "60"
+      },
+      "line": 217,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 217,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 219,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 221
+    },
+    {
+      "type": "comment",
+      "text": "☆☆妃",
+      "line": 223
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kisakiA_aa",
+        "left": "300"
+      },
+      "line": 225,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 225,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kisakiB_aa",
+        "left": "250",
+        "top": "-40"
+      },
+      "line": 227,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 227,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 229,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kisakiA_ba",
+        "left": "510"
+      },
+      "line": 231,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 231,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kisakiB_ba",
+        "left": "0",
+        "top": "-40"
+      },
+      "line": 233,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 233,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kisakiB_ba",
+        "left": "500",
+        "top": "-40"
+      },
+      "line": 235,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 235,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kisakiA_ba",
+        "left": "0"
+      },
+      "line": 237,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 237,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 239,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 241
+    },
+    {
+      "type": "comment",
+      "text": "☆☆かなた",
+      "line": 243
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataA_aa",
+        "left": "300"
+      },
+      "line": 245,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 245,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "kanataB_aa",
+        "left": "340"
+      },
+      "line": 247,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 247,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 249,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kanataA_ba",
+        "left": "510"
+      },
+      "line": 251,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 251,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataB_ba",
+        "left": "100"
+      },
+      "line": 253,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 253,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kanataB_ba",
+        "left": "600"
+      },
+      "line": 255,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 255,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataA_ba",
+        "left": "60"
+      },
+      "line": 257,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 257,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 259,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "===========================================",
+      "line": 261
+    },
+    {
+      "type": "comment",
+      "text": "☆☆夜子",
+      "line": 263
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "yorukoA_aa",
+        "left": "300"
+      },
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 265,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara",
+      "args": {
+        "fn": "yorukoB_aa",
+        "left": "340"
+      },
+      "line": 267,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 267,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 269,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yorukoA_ba",
+        "left": "550"
+      },
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 271,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "yorukoB_ba",
+        "left": "50"
+      },
+      "line": 273,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 273,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yorukoB_ba",
+        "left": "580"
+      },
+      "line": 275,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 275,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "yorukoA_ba",
+        "left": "0"
+      },
+      "line": 277,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "p",
+      "args": {},
+      "line": 277,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 279,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002416-1",
+      "line": 283
+    },
+    {
+      "type": "text",
+      "text": "次音鳴ります（夜子の声、音量試し）",
+      "line": 285
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 285,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "ボイス　char=（キャラのボイス名）　voice=（ファイル名）",
+      "line": 289
+    },
+    {
+      "type": "comment",
+      "text": "ボイス名",
+      "line": 291
+    },
+    {
+      "type": "comment",
+      "text": "夜子＝yoruko、かなた＝kanata、妃＝kisaki、理央＝rio、汀＝nagisa、闇子＝yamiko、奏＝kanade、岬＝misaki、クリソベリル＝chryso",
+      "line": 293
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "enter01.ogg"
+      },
+      "line": 295
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 297,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ",
+      "line": 299
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 299,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002416-2",
+      "line": 303
+    },
+    {
+      "type": "command",
+      "name": "charakie",
+      "args": {},
+      "line": 305,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "次音鳴ります（りおの声、音量試し）",
+      "line": 307
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 307,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002417",
+      "line": 311
+    },
+    {
+      "type": "comment",
+      "text": "キャラ右　fn=（画像の名前） top=（上からの距離） left=（左からの距離）　tm=（表示する時間　未記入の場合は０）",
+      "line": 313
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "rioA_ba",
+        "left": "600"
+      },
+      "line": 315,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラ左　fn=（画像の名前） top=（上からの距離） left=（左からの距離）　tm=（表示する時間　未記入の場合は０）",
+      "line": 317
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanadeA_a",
+        "left": "150",
+        "top": "20"
+      },
+      "line": 319,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "理央"
+      },
+      "line": 321,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "rio",
+        "voice": "enter01.ogg"
+      },
+      "line": 323
+    },
+    {
+      "type": "text",
+      "text": "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ",
+      "line": 325
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 325,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002422-0",
+      "line": 329
+    },
+    {
+      "type": "text",
+      "text": "二つの立ち絵消えます。",
+      "line": 331
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 331,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "hutakie",
+      "args": {},
+      "line": 333,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラ中央（フェードイン）　fn=（背景の名前） chara=（画像の名前） tm=（表示される時間．未記入の場合は500） top=（上からの距離） left=（左からの距離）",
+      "line": 337
+    },
+    {
+      "type": "text",
+      "text": "立ち絵を背景と一緒にフェードインさせます。",
+      "line": 339
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 339,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara-c",
+      "args": {
+        "fn": "暗転",
+        "chara": "chrysoA_a",
+        "left": "300",
+        "top": "20"
+      },
+      "line": 341,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002422",
+      "line": 345
+    },
+    {
+      "type": "comment",
+      "text": "ＢＧＭのフェードアウト time=（フェードアウトする時間）",
+      "line": 347
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "time": "2000"
+      },
+      "line": 349,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "次ＢＧＭ変わります",
+      "line": 351
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 351,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002423",
+      "line": 355
+    },
+    {
+      "type": "command",
+      "name": "fadeinbgm",
+      "args": {
+        "storage": "BGM04",
+        "time": "2000"
+      },
+      "line": 357,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "ＢＧＭのフェードイン",
+      "line": 359
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 359,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002424",
+      "line": 363
+    },
+    {
+      "type": "text",
+      "text": "効果音を出します",
+      "line": 365
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 365,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002425",
+      "line": 369
+    },
+    {
+      "type": "comment",
+      "text": "効果音を鳴らす",
+      "line": 371
+    },
+    {
+      "type": "command",
+      "name": "se",
+      "args": {
+        "fn": "がらっと扉を開く音"
+      },
+      "line": 373,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "キャラ立ち絵を背景と一緒にフェードアウトします",
+      "line": 375
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 375,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002426",
+      "line": 379
+    },
+    {
+      "type": "comment",
+      "text": "立ち絵を背景と一緒にフェードアウトします",
+      "line": 381
+    },
+    {
+      "type": "comment",
+      "text": "fn=背景の名前　tm=フェードアウトする時間",
+      "line": 383
+    },
+    {
+      "type": "command",
+      "name": "chara-ckie",
+      "args": {
+        "fn": "白"
+      },
+      "line": 385,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "てすと",
+      "line": 387
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 387,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "立ち絵右側を背景と一緒にフェードイン",
+      "line": 391
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 391,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラ右　fn=（背景） chara=（画像） top=（上からの距離） left=（左からの距離）　tm=（表示する時間　未記入の場合は５００）",
+      "line": 393
+    },
+    {
+      "type": "command",
+      "name": "charar-c",
+      "args": {
+        "fn": "暗転",
+        "chara": "kanataA_aa",
+        "left": "510"
+      },
+      "line": 395,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "立ち絵左側を背景と一緒にフェードインさせます。",
+      "line": 397
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 397,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラ左　fn=（背景） chara=（画像） top=（上からの距離） left=（左からの距離）　tm=（表示する時間　未記入の場合は５００）",
+      "line": 399
+    },
+    {
+      "type": "command",
+      "name": "charal-c",
+      "args": {
+        "fn": "白",
+        "chara": "kisakiA_aa",
+        "left": "60"
+      },
+      "line": 401,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "フェードアウト（左側が消える）",
+      "line": 405
+    },
+    {
+      "type": "text",
+      "text": "左側の立ち絵を背景と一緒にフェードアウト",
+      "line": 407
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 407,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "chara-ckie",
+      "args": {
+        "fn": "暗転"
+      },
+      "line": 409,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "フェードアウト（左側が消える）",
+      "line": 413
+    },
+    {
+      "type": "text",
+      "text": "右側の立ち絵を背景と一緒にフェードアウト",
+      "line": 415
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 415,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charar-ckie",
+      "args": {
+        "fn": "暗転"
+      },
+      "line": 417,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "二つの立ち絵を同時にフェードイン",
+      "line": 421
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 421,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "キャラ左右　fn=（背景） charal=（立ち絵左） leftl=（立ち絵左の距離） charar=（立ち絵右） leftr=（立ち絵右の距離）　tm=（表示する時間　未記入の場合は５００）",
+      "line": 423
+    },
+    {
+      "type": "command",
+      "name": "charalr-c",
+      "args": {
+        "fn": "白",
+        "charal": "misakiA_a",
+        "leftl": "100",
+        "charar": "nagisaA_a",
+        "leftr": "600"
+      },
+      "line": 425,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "立ち絵を同時にフェードアウト",
+      "line": 429
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 429,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "フェードアウト（左右両方が消える）",
+      "line": 431
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転"
+      },
+      "line": 433,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000060",
+      "line": 437
+    },
+    {
+      "type": "text",
+      "text": "次選択肢",
+      "line": 439
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 439,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label000060-1",
+      "line": 443
+    },
+    {
+      "type": "comment",
+      "text": "選択肢を出す場所で使う",
+      "line": 445
+    },
+    {
+      "type": "comment",
+      "text": "[sentakusi01 fn=（選択肢の画像） tr=（飛ぶラベルの名前）]",
+      "line": 447
+    },
+    {
+      "type": "command",
+      "name": "sentakusi",
+      "args": {},
+      "line": 449,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "選択肢（上側）",
+      "line": 451
+    },
+    {
+      "type": "command",
+      "name": "sentakusi01",
+      "args": {
+        "fn": "select_1a",
+        "tr": "*label002431"
+      },
+      "line": 453,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "選択肢（下側）",
+      "line": 455
+    },
+    {
+      "type": "command",
+      "name": "sentakusi02",
+      "args": {
+        "fn": "select_1b",
+        "tr": "*label002431"
+      },
+      "line": 457,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 459,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002431",
+      "line": 463
+    },
+    {
+      "type": "comment",
+      "text": "選択肢の画像を消すためのマクロ",
+      "line": 465
+    },
+    {
+      "type": "command",
+      "name": "sentakusi-off",
+      "args": {},
+      "line": 467,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "タイトルに戻るとギャラリーと回想に画像が追加されています",
+      "line": 469
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 469,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002432",
+      "line": 473
+    },
+    {
+      "type": "comment",
+      "text": "メッセージウィンドウを消す",
+      "line": 475
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 477,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "システムボタンを消す",
+      "line": 481
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 483,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "暗転",
+        "tm": "1500"
+      },
+      "line": 487,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label002433",
+      "line": 491
+    },
+    {
+      "type": "comment",
+      "text": "□□ＢＧＭフェードアウト",
+      "line": 493
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "time": "2000"
+      },
+      "line": 495,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "□□アルバムフラグ",
+      "line": 499
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[0"
+      },
+      "line": 501,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 501
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[1"
+      },
+      "line": 503,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 503
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[2"
+      },
+      "line": 505,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 505
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[3"
+      },
+      "line": 507,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 507
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[4"
+      },
+      "line": 509,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 509
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[5"
+      },
+      "line": 511,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 511
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[6"
+      },
+      "line": 513,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 513
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[7"
+      },
+      "line": 515,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 515
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[8"
+      },
+      "line": 517,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 517
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[9"
+      },
+      "line": 519,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 519
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[10"
+      },
+      "line": 521,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 521
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[11"
+      },
+      "line": 523,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 523
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[12"
+      },
+      "line": 525,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 525
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[13"
+      },
+      "line": 527,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 527
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[14"
+      },
+      "line": 529,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 529
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[15"
+      },
+      "line": 531,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 531
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[16"
+      },
+      "line": 533,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 533
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[17"
+      },
+      "line": 535,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 535
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[18"
+      },
+      "line": 537,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 537
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[19"
+      },
+      "line": 539,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 539
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[20"
+      },
+      "line": 541,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 541
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[21"
+      },
+      "line": 543,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 543
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[22"
+      },
+      "line": 545,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 545
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[23"
+      },
+      "line": 547,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 547
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[24"
+      },
+      "line": 549,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 549
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[25"
+      },
+      "line": 551,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 551
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[26"
+      },
+      "line": 553,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 553
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[27"
+      },
+      "line": 555,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 555
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[28"
+      },
+      "line": 557,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 557
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[29"
+      },
+      "line": 559,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 559
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[30"
+      },
+      "line": 561,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 561
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[31"
+      },
+      "line": 563,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 563
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[32"
+      },
+      "line": 565,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 565
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[33"
+      },
+      "line": 567,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 567
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[34"
+      },
+      "line": 569,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 569
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[35"
+      },
+      "line": 571,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 571
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[36"
+      },
+      "line": 573,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 573
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[37"
+      },
+      "line": 575,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 575
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[38"
+      },
+      "line": 577,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 577
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[39"
+      },
+      "line": 579,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 579
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[40"
+      },
+      "line": 581,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 581
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[41"
+      },
+      "line": 583,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 583
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[42"
+      },
+      "line": 585,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 585
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[43"
+      },
+      "line": 587,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 587
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[44"
+      },
+      "line": 589,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 589
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[45"
+      },
+      "line": 591,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 591
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[46"
+      },
+      "line": 593,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 593
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[47"
+      },
+      "line": 595,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 595
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[48"
+      },
+      "line": 597,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 597
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[49"
+      },
+      "line": 599,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 599
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[50"
+      },
+      "line": 601,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 601
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[51"
+      },
+      "line": 603,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 603
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[52"
+      },
+      "line": 605,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 605
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[53"
+      },
+      "line": 607,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 607
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[54"
+      },
+      "line": 609,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 609
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[55"
+      },
+      "line": 611,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 611
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[56"
+      },
+      "line": 613,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 613
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[57"
+      },
+      "line": 615,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 615
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[58"
+      },
+      "line": 617,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 617
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[59"
+      },
+      "line": 619,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 619
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[60"
+      },
+      "line": 621,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 621
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[61"
+      },
+      "line": 623,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 623
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[62"
+      },
+      "line": 625,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 625
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[63"
+      },
+      "line": 627,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 627
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[64"
+      },
+      "line": 629,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 629
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[65"
+      },
+      "line": 631,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 631
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[66"
+      },
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 633
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[67"
+      },
+      "line": 635,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 635
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[68"
+      },
+      "line": 637,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 637
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[69"
+      },
+      "line": 639,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 639
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[70"
+      },
+      "line": 641,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 641
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[71"
+      },
+      "line": 643,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 643
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[72"
+      },
+      "line": 645,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 645
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[73"
+      },
+      "line": 647,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 647
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[74"
+      },
+      "line": 649,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 649
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[75"
+      },
+      "line": 651,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 651
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[76"
+      },
+      "line": 653,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 653
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[77"
+      },
+      "line": 655,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 655
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[78"
+      },
+      "line": 657,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 657
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[79"
+      },
+      "line": 659,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 659
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[80"
+      },
+      "line": 661,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 661
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[81"
+      },
+      "line": 663,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 663
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[82"
+      },
+      "line": 665,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 665
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[83"
+      },
+      "line": 667,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 667
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[84"
+      },
+      "line": 669,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 669
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[85"
+      },
+      "line": 671,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 671
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[86"
+      },
+      "line": 673,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 673
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[87"
+      },
+      "line": 675,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 675
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[88"
+      },
+      "line": 677,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 677
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.album_flag[89"
+      },
+      "line": 679,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 679
+    },
+    {
+      "type": "comment",
+      "text": "□□シーンイベントフラグ",
+      "line": 683
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[0"
+      },
+      "line": 685,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 685
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[1"
+      },
+      "line": 687,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 687
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[2"
+      },
+      "line": 689,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 689
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[3"
+      },
+      "line": 691,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 691
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[4"
+      },
+      "line": 693,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 693
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[5"
+      },
+      "line": 695,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 695
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[6"
+      },
+      "line": 697,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 697
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[7"
+      },
+      "line": 699,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 699
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[8"
+      },
+      "line": 701,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 701
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[9"
+      },
+      "line": 703,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 703
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[10"
+      },
+      "line": 705,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 705
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[11"
+      },
+      "line": 707,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 707
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.scene_flag[12"
+      },
+      "line": 709,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "  = true\"]",
+      "line": 709
+    },
+    {
+      "type": "comment",
+      "text": "□□タイトルに戻る",
+      "line": 713
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "1000",
+        "mode": "normal",
+        "canskip": "false"
+      },
+      "line": 715,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "title.ks",
+        "target": "*title_menu"
+      },
+      "line": 717,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "□□他のファイルへジャンプ",
+      "line": 723
+    },
+    {
+      "type": "comment",
+      "text": "[jump storage=\"○○.ks\"]",
+      "line": 725
+    }
+  ]
+}

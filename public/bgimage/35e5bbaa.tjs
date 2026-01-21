@@ -1,0 +1,30 @@
+//
+// スライダーコントロールの各種パラメータを設定する
+//
+function SliderControl_config()
+{
+
+// ☆ここから…
+
+;sliderControlImage = "opt_slider_base.png";	// スライダーコントロール（土台部分）の画像ファイル名
+;tabImage = "opt_slider_pin.png";				// ツマミの画像ファイル名
+;tabOffsetY = -2;								// スライダーコントロール上におけるツマミのＹ座標（ピクセル）
+;tabLeftMin = 0;								// 同、ツマミの可動範囲下限Ｘ座標（ピクセル）
+;tabLeftMax = 260;								// 同、ツマミの可動範囲上限Ｘ座標（ピクセル）
+
+;valueOffsetX = 250;							// 現在値表示用レイヤのＸ座標オフセット（ピクセル）
+;valueOffsetY = 26;								// 同、Ｙ座標オフセット（ピクセル）
+;valueFormat = "%4d%s";							// 書式（４桁右寄せ＋単位）
+;valueFontFace = "ＭＳ ゴシック";				// フォント名（等幅フォントであること）
+;valueFontHeight = 0;							// フォントサイズ（ピクセル）
+;valueFontBold = true;							// 太字にする場合はtrue
+;valueFontColor = 0xffffff;						// 文字の色（0xRRGGBB形式/色定数）
+;valueShadowLevel = 512;						// 影の不透明度（0:影なし）
+;valueShadowColor = 0x000000;					// 影の色（0xRRGGBB形式/色定数）
+;valueShadowWidth = 1;							// 影の幅（0:シャープ～ぼける）
+;valueShadowOffsetX = 0;						// 影の位置のＸ座標（0:真下）
+;valueShadowOffsetY = 0;						// 同、Ｙ座標（0:真下）
+
+// ☆ここまでの間のパラメータを修正してください
+
+}

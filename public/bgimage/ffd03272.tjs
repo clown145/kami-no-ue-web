@@ -1,0 +1,149 @@
+if(Storages.isExistentStorage("Config_YesNoDialog.tjs"))
+	KAGLoadScript("Config_YesNoDialog.tjs");
+if(Storages.isExistentStorage("Config_MyHistoryLayer.tjs"))
+	KAGLoadScript("Config_MyHistoryLayer.tjs");
+
+
+//
+// HistoryLayerオブジェクトの各メンバ変数の値を設定する
+//
+// ‐これらの値はConfig.tjsのHistoryLayer_config()で設定しても構わない
+//   （その場合は [start-historylayer-additionals] ～ [end-historylayer-additionals] の間に記述する）
+//
+function HistoryLayer_config_override()
+{
+;controlHeight = 12;		// スクロール用コントロールの高さを０にする；上マージンはmarginTのみで辻褄合わせする
+;marginR = 246;			// スクロール用コントロールの幅（ピクセル）を加える
+}
+
+// (拡張履歴レイヤで使うので)スクロールバークラス(GraphicalScrollBarクラス)の定義を読み込みます
+KAGLoadScript("GraphicalScrollBar.tjs");
+// 拡張履歴レイヤ(ExtendedHistoryLayerクラス)の定義を読み込みます
+KAGLoadScript("ExtendedHistoryLayer.tjs");
+
+// 拡張履歴レイヤを使用するために KAGWindow クラスを継承して
+// KAGWindowEx クラスを作成します
+class KAGWindowEx extends KAGWindow
+{
+	// コンストラクタ
+	function KAGWindowEx()
+	{
+		// スーパークラスのコンストラクタを呼び出します
+		super.KAGWindow(...);
+
+		// スーパークラスのコンストラクタ内で普通の履歴レイヤが作られているので
+		// 拡張履歴レイヤに差し替える前に無効化しておきます
+
+		// 普通の履歴レイヤはウィンドウ(kagオブジェクト)が管理しているので
+		// まず普通の履歴レイヤのオブジェクトを管理対象から外します
+		remove(historyLayer);
+		// 普通の履歴レイヤのオブジェクトを無効化します
+		invalidate historyLayer;
+
+		// 拡張履歴レイヤオブジェクトを作成します
+		historyLayer = new ExtendedHistoryLayer(this, fore.base);
+
+		// 拡張履歴レイヤオブジェクトをウィンドウに管理してもらいます
+		add(historyLayer);
+	}
+
+	// デストラクタ
+	function finalize()
+	{
+		// スーパークラスのデストラクタを呼び出します
+		super.finalize();
+	}
+}
+
+//---------------------------------------- 拡張版メッセージ履歴の設定 -----
+
+function ExtendedHistoryLayer_config()
+{
+// ◆ 履歴レイヤの背景に表示する画像
+// 履歴レイヤ背景用の画像ファイル名を指定します
+// 空文字列("")を指定すると背景に画像を表示せず
+// デフォルトの背景(黒色で半透明の背景)を表示します
+//;backgroundStorage = "bl_baseH";
+;backgroundStorage = "backlog_base";
+
+// ◆ メッセージ履歴アクションボタン用画像
+// メッセージ履歴アクションボタン用の画像ファイル名を指定します
+// 空文字列("")を指定するとメッセージ履歴アクションボタンを表示せず
+// デフォルトのメッセージ履歴アクションシステム(リンク形式)を使用します
+;actionButtonStorage = "opt_test";
+
+
+// ◆ メッセージ履歴アクションボタン配置時のマージン
+// メッセージ履歴アクションボタンの左端(縦書き時は上端)と
+// 画面の左端(縦書き時は上端)の間の距離をピクセル単位で指定します
+;actionButtonMargin = 136;
+
+
+// ◆ メッセージ履歴画面を閉じるボタン用画像ファイル名
+// 空文字列("")を指定すると画像を表示せず
+// closeButtonCaption で指定されたテキストを表示します
+;closeButtonStorage = "config-back";
+
+
+// ◆ メッセージ履歴画面を閉じるボタンのサイズと位置
+// ※画像を使う場合(closeButtonStorage が "" でない場合)は幅と高さは無視されます
+// 　また verticalView は縦書きの時に真(true)になります
+;closeButtonWidth = 114; // 幅
+;closeButtonHeight = 30; // 高さ
+;closeButtonLeft = verticalView ? 0 : 583; // 左端位置
+;closeButtonTop = verticalView ? height - closeButtonHeight : 683; // 上端位置
+
+
+// ◆ メッセージ履歴画面を閉じるボタンの色
+// ボタンの色を 0xRRGGBB 形式で指定します
+// ※画像を使う場合(closeButtonStorage が "" でない場合)は無視されます
+;closeButtonColor = 0xCCCCCC;
+
+
+// ◆ メッセージ履歴画面を閉じるボタンに表示するテキストとその色
+// ※画像を使う場合(closeButtonStorage が "" でない場合)はどちらも無視されます
+;closeButtonCaption = "×";
+;closeButtonCaptionColor = 0xFF0000;
+
+
+// ◆ メッセージ履歴画面を閉じるボタンのヒント
+// ※ button タグの hint 属性に相当します
+;closeButtonHint = "メッセージ履歴を閉じます。";
+
+
+if(!verticalView)
+{
+// ◆ スクロールバーの画像(横書き表示用)
+// ※横書き表示しない場合は変更不要です(この部分を削除しても構いません)
+;scrollBarBase = "vscrollbar_base"; // 背景画像
+;scrollBarBaseKey = void; // 背景画像のカラーキー(使用しない場合は void)
+;scrollBarBaseMask = "vscrollbar_base_mask00"; // 背景画像のクリック可能領域を表す画像(使用しない(背景画像のどこでもクリックできるようにする)場合は void)
+;scrollBarUpButton = "vscrollbar_up"; // 上側のボタン画像
+;scrollBarUpButtonKey = void; // 上側のボタン画像のカラーキー(使用しない場合は void)
+;scrollBarDownButton = "vscrollbar_down"; // 下側のボタン画像
+;scrollBarDownButtonKey = void; // 下側のボタン画像のカラーキー(使用しない場合は void)
+;scrollBarSliderTop = "vscrollbar_slider_top"; // スライダー上端の画像
+;scrollBarSliderTopKey = void; // スライダー上端の画像のカラーキー(使用しない場合は void)
+;scrollBarSliderMiddle = "vscrollbar_slider_middle"; // スライダー中央部の画像
+;scrollBarSliderMiddleKey = void; // スライダー中央部の画像のカラーキー(使用しない場合は void)
+;scrollBarSliderBottom = "vscrollbar_slider_bottom"; // スライダー下端の画像
+;scrollBarSliderBottomKey = void; // スライダー下端の画像のカラーキー(使用しない場合は void)
+// ※「カラーキー」は image タグの key 属性に指定する値のことです
+}
+
+// ◆ スクロールバーの位置
+;scrollBarLeft = verticalView ? closeButtonWidth : width - 144; // 左端位置
+;scrollBarTop = verticalView ? height - 48 : 78; // 上端位置
+
+// ◆ スクロールバーの当たり判定設定(値の意味は button タグの hitrect 属性と同じです)
+;scrollBarBaseRectHit = true; // 背景画像
+;scrollBarUpButtonRectHit = true; // 上側(右側)のボタン画像
+;scrollBarDownButtonRectHit = true; // 下側(左側)のボタン画像
+;scrollBarSliderRectHit = true; // スライダー上端(右端)・中央部・下端(左端)
+}
+
+// KAGWindowEx クラスのオブジェクトとして kag オブジェクトを作成します
+global.kag = new KAGWindowEx() if typeof global.kag == "undefined";
+
+// 設定のためのメソッドはこれ以後使わないので削除しておきます
+delete ExtendedHistoryLayer_config;

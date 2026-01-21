@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纸上的魔法使</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <!-- 背景层 -->
+        <div id="background-layer" class="layer"></div>
+
+        <!-- 立绘层 -->
+        <div id="character-layer" class="layer">
+            <img id="chara-left" class="character" data-position="left">
+            <img id="chara-center" class="character" data-position="center">
+            <img id="chara-right" class="character" data-position="right">
+        </div>
+
+        <!-- 对话框层 -->
+        <div id="message-layer" class="layer">
+            <div id="message-box">
+                <div id="name-box"></div>
+                <div id="text-box"></div>
+                <div id="click-indicator">▼</div>
+            </div>
+        </div>
+
+        <!-- 选择支层 -->
+        <div id="choice-layer" class="layer hidden"></div>
+
+        <!-- Overlays -->
+        <div id="title-screen" class="overlay hidden">
+            <div class="title-menu">
+                <button class="title-btn" data-action="start" aria-label="Start"></button>
+                <button class="title-btn" data-action="load" aria-label="Load"></button>
+                <button class="title-btn" data-action="config" aria-label="Config"></button>
+                <button class="title-btn" data-action="gallery" aria-label="Gallery"></button>
+                <button class="title-btn" data-action="music" aria-label="Music"></button>
+                <button class="title-btn" data-action="scene" aria-label="Scene"></button>
+                <button class="title-btn" data-action="special" aria-label="Special"></button>
+                <button class="title-btn" data-action="exit" aria-label="Exit"></button>
+            </div>
+        </div>
+
+        <div id="save-load-screen" class="overlay hidden">
+            <div class="overlay-header">
+                <div id="save-load-title" class="overlay-title">SAVE</div>
+                <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
+            </div>
+            <div id="save-load-list" class="save-load-list"></div>
+        </div>
+
+        <div id="log-screen" class="overlay hidden">
+            <div class="overlay-header">
+                <div class="overlay-title">HISTORY</div>
+                <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
+            </div>
+            <div id="log-entries" class="log-entries"></div>
+        </div>
+
+        <div id="ui-toast" class="ui-toast hidden"></div>
+
+        <!-- UI控制层 -->
+        <div id="ui-layer" class="layer">
+            <div id="system-buttons">
+                <button id="btn-auto" class="sys-btn">AUTO</button>
+                <button id="btn-skip" class="sys-btn">SKIP</button>
+                <button id="btn-log" class="sys-btn">LOG</button>
+                <button id="btn-save" class="sys-btn">SAVE</button>
+                <button id="btn-load" class="sys-btn">LOAD</button>
+                <button id="btn-config" class="sys-btn">CONFIG</button>
+            </div>
+        </div>
+
+        <!-- 加载画面 -->
+        <div id="loading-screen">
+            <div id="loading-text">Loading...</div>
+            <div id="loading-bar">
+                <div id="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 按正确顺序加载JS模块 -->
+    <script src="js/bgimage_mapping.js"></script>
+    <script src="js/lookup.js"></script>
+    <script src="js/tokenizer.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/interpreter.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>

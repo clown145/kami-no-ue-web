@@ -1,0 +1,69 @@
+//
+// loadThumbnail(num, place, work=void)
+//
+// 機能概要：
+//   グラフィカルボタンにセーブデータのサムネイル画像を描画する
+//     通常の状態：セピア調にする
+//     ボタンが押された状態：ガンマを上げる
+//     ボタン上にマウスがある状態：加工なし
+//   グラフィカルボタンの元々の画像データはサムネイル画像の上にαブレンドされる
+//
+// 引数：
+//   num   … グラフィカルボタンの番号（０オリジン；備考を参照）
+//   place … 栞の番号（０オリジン）
+//   work  … 作業用レイヤオブジェクト。省略するとKAGの作業用一時レイヤ（kag.temporaryLayer）を使用する
+//
+// 戻り値：
+//   なし
+//
+// 備考：
+//   ‐numに指定する値は、カレントのメッセージレイヤのクリア後、作成したグラフィカルボタンの順番であること。
+//     この値は、ハイパーリンク、チェックボックス、エディットボックスもカウントの対象となっているので注意
+//   ‐workに指定するレイヤで動作実績があるのは、LayerまたはKAGLayerオブジェクトのみ
+//   ‐グラフィカルボタンのサイズは幅kag.thumbnailWidth*3×高さkag.thumbnailWidth*kag.scHeight\kag.scWidth
+//     ピクセルであること
+//       画面サイズ800×600ピクセルなら、デフォルトのグラフィカルボタンは399×99ピクセルとなる
+//   ‐Config.tjsのsaveThumbnailがtrueであること
+//
+function loadThumbnail(num, place, work=void)
+{
+	if (kag.current.links[num].type != kag.current.ltButton)
+		throw new Exception(@"loadThumbnail() : 第一引数の値が間違っています。kag.current.links[${num}]はグラフィカルボタンではありません");
+
+	if (kag.getBookMarkPageName(place) == "(未設定)")	// セーブデータがないなら何もしない
+		return;
+
+	var st = kag.getBookMarkFileNameAtNum(place);					// サムネイル画像のローカルストレージ名
+	var tw = kag.thumbnailWidth;									// サムネイル画像の幅（ピクセル）
+	var th = (int)(kag.thumbnailWidth*kag.scHeight/kag.scWidth);	// 同、高さ（ピクセル）
+
+	// 作業用レイヤが指定されていなければ、KAGの作業用一時レイヤを使用する
+	if (work == void)
+		work = kag.temporaryLayer;
+
+	// グラフィカルボタンの左側・中央・右側に、それぞれ以下の画像処理を行う
+	// ①loadImages()メソッドで作業用レイヤにサムネイル画像を読み込み
+	// ②必要があれば加工（セピアにする、ガンマを上げる）
+	// ③operateRect()メソッドで、グラフィカルボタンの該当部分の画像データをコピーし、作業用レイヤに重ね合わせる
+	// ④copyRect()メソッドで、作業用レイヤの画像データをグラフィカルボタンの該当部分にコピーする
+	with (work)
+	{
+		// グラフィカルボタンの左側（通常の状態）にサムネイル画像をコピー（セピア）
+		.loadImages(st);
+		.doGrayScale();
+//		.adjustGamma(1.3, , , 1.1, , , , , );
+		.operateRect(0, 0, kag.current.links[num].object, 0, 0, tw, th, omAlpha);
+		kag.current.links[num].object.copyRect(0, 0, work, 0, 0, tw, th);
+
+		// グラフィカルボタンの中央（ボタンが押された状態）にサムネイル画像をコピー（ガンマを上げる）
+		.loadImages(st);
+		.adjustGamma(1.5, , , 1.5, , , 1.5, , );
+		.operateRect(0, 0, kag.current.links[num].object, tw, 0, tw, th, omAlpha);
+		kag.current.links[num].object.copyRect(tw, 0, work, 0, 0, tw, th);
+
+		// グラフィカルボタンの右側（ボタン上にマウスがある状態）にサムネイル画像をコピー
+		.loadImages(st);
+		.operateRect(0, 0, kag.current.links[num].object, tw*2, 0, tw, th, omAlpha);
+		kag.current.links[num].object.copyRect(tw*2, 0, work, 0, 0, tw, th);
+	}
+}

@@ -1,0 +1,2276 @@
+{
+  "source": "scenario_taiken.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "最初に入力",
+      "line": 1
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.frame_layer = 2"
+      },
+      "line": 2,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "layer_opacity_plugin.ks"
+      },
+      "line": 3,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.frame_opacity !== void"
+      },
+      "line": 4,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 5,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 6,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 7,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "messages": "4"
+      },
+      "line": 8,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "visible": "false",
+        "page": "fore"
+      },
+      "line": 9,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "message0",
+        "page": "fore"
+      },
+      "line": 10,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012879",
+      "line": 12
+    },
+    {
+      "type": "comment",
+      "text": "===================================================",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "ここから記入",
+      "line": 14
+    },
+    {
+      "type": "label",
+      "name": "label012880",
+      "line": 16
+    },
+    {
+      "type": "comment",
+      "text": "注意",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": "「*label002416|」[ps][ps][ps]等はセーブする際の目印。[l][l]",
+      "line": 18
+    },
+    {
+      "type": "comment",
+      "text": "最後にツールを使ってまとめて入力しますので、一行あけて下さると助かります。[l][l]",
+      "line": 19
+    },
+    {
+      "type": "comment",
+      "text": "わからない場合にはそのままで結構です。[l][l]",
+      "line": 20
+    },
+    {
+      "type": "label",
+      "name": "label012881",
+      "line": 22
+    },
+    {
+      "type": "comment",
+      "text": "ラベル",
+      "line": 23
+    },
+    {
+      "type": "label",
+      "name": "charapter01",
+      "line": 24
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 25,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 26,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メッセージレイヤ０表画面を表示",
+      "line": 27
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "message0",
+        "page": "fore",
+        "visible": "true"
+      },
+      "line": 28,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012882",
+      "line": 30
+    },
+    {
+      "type": "comment",
+      "text": "//背景フェードイン",
+      "line": 31
+    },
+    {
+      "type": "label",
+      "name": "label012883",
+      "line": 33
+    },
+    {
+      "type": "command",
+      "name": "haikei-c",
+      "args": {
+        "fn": "暗転",
+        "tm": "2500"
+      },
+      "line": 34,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012884",
+      "line": 37
+    },
+    {
+      "type": "comment",
+      "text": "メッセージウィンドウ表示",
+      "line": 38
+    },
+    {
+      "type": "command",
+      "name": "mess",
+      "args": {},
+      "line": 39,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012885",
+      "line": 41
+    },
+    {
+      "type": "comment",
+      "text": "システムボタン表示",
+      "line": 42
+    },
+    {
+      "type": "command",
+      "name": "sysb",
+      "args": {},
+      "line": 43,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012886",
+      "line": 45
+    },
+    {
+      "type": "comment",
+      "text": "名前表示 fn=（キャラの名前）",
+      "line": 46
+    },
+    {
+      "type": "label",
+      "name": "label012887",
+      "line": 48
+    },
+    {
+      "type": "comment",
+      "text": "（提醒内容？）",
+      "line": 49
+    },
+    {
+      "type": "comment",
+      "text": "[r]は改行",
+      "line": 50
+    },
+    {
+      "type": "comment",
+      "text": "[l]はクリック待ち",
+      "line": 51
+    },
+    {
+      "type": "label",
+      "name": "label012888",
+      "line": 53
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 54,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 55,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転",
+        "tm": "2000"
+      },
+      "line": 56,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charalr-c",
+      "args": {
+        "fn": "図書館１階_広間",
+        "charal": "kanataA_bo",
+        "leftl": "60",
+        "topl": "-10",
+        "charar": "kisakiA_aa",
+        "leftr": "510",
+        "tm": "2500"
+      },
+      "line": 57,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb",
+      "args": {},
+      "line": 58,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "mess",
+      "args": {},
+      "line": 59,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "bgm",
+      "args": {
+        "fn": "BGM20"
+      },
+      "line": 60,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012889",
+      "line": 62
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2550.ogg"
+      },
+      "line": 63,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 64,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「感谢你阅读纸上魔法使的体验版！」",
+      "line": 64
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 64,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012890",
+      "line": 66
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1738.ogg"
+      },
+      "line": 67,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 68,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「那个。」",
+      "line": 68
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 68,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012891",
+      "line": 70
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataA_ba",
+        "left": "60",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 71,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012892",
+      "line": 73
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2551.ogg"
+      },
+      "line": 74,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 75,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「后续究竟会如何发展呢！还有彼方的可爱度会如何上升呢！」",
+      "line": 75
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 75,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012893",
+      "line": 77
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1739.ogg"
+      },
+      "line": 78,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 79,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「那，那个。」",
+      "line": 79
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 79,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012894",
+      "line": 81
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataB_be",
+        "left": "100",
+        "tm": "701"
+      },
+      "line": 82,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012895",
+      "line": 84
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2552.ogg"
+      },
+      "line": 85,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 86,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「这些敬请诸位来亲眼确认！」",
+      "line": 86
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 86,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012896",
+      "line": 88
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kisakiA_aa",
+        "left": "510",
+        "tm": "701"
+      },
+      "line": 89,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1740.ogg"
+      },
+      "line": 90,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 91,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「那，那个……导演好像把我开除了？」",
+      "line": 91
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 91,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012897",
+      "line": 93
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataA_bg",
+        "left": "60",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 94,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012898",
+      "line": 96
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2553.ogg"
+      },
+      "line": 98,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 99,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「什么？」",
+      "line": 99
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 99,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012899",
+      "line": 101
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kisakiB_af",
+        "left": "500",
+        "top": "-50",
+        "tm": "701"
+      },
+      "line": 102,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1741.ogg"
+      },
+      "line": 103,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 104,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「所以说……我没有出场机会了？」",
+      "line": 104
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 104,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012900",
+      "line": 106
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataB_bf",
+        "left": "100",
+        "tm": "701"
+      },
+      "line": 107,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2554.ogg"
+      },
+      "line": 108,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 109,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「放心吧！导演说月社是可推倒角色，不赚够人气不会让她下场！」",
+      "line": 109
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 109,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012901",
+      "line": 111
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "rioA_bi",
+        "left": "600",
+        "tm": "701"
+      },
+      "line": 112,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012902",
+      "line": 114
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "rio",
+        "voice": "rio_2073.ogg"
+      },
+      "line": 116,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "理央"
+      },
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「不，不是约好不能剧透吗……」",
+      "line": 117
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 117,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012903",
+      "line": 119
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "yorukoA_bb",
+        "left": "60",
+        "tm": "701"
+      },
+      "line": 120,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_3161.ogg"
+      },
+      "line": 121,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 122,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「放心，官网和杂志还会相继公布与她相关的ＣＧ。」",
+      "line": 122
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 122,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012904",
+      "line": 124
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataB_bi",
+        "left": "100",
+        "tm": "701"
+      },
+      "line": 125,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012905",
+      "line": 127
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2555.ogg"
+      },
+      "line": 128,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 129,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「宣传领便当的妹子不是找死嘛！」",
+      "line": 129
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 129,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012906",
+      "line": 131
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kisakiB_ad",
+        "left": "500",
+        "top": "-50",
+        "tm": "701"
+      },
+      "line": 132,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1742.ogg"
+      },
+      "line": 133,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 134,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「呼，没遭媒体封杀就好，谢天谢地！」",
+      "line": 134
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 134,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012907",
+      "line": 136
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "rioB_bc",
+        "left": "100",
+        "top": "20",
+        "tm": "701"
+      },
+      "line": 137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "rio",
+        "voice": "rio_2074.ogg"
+      },
+      "line": 138,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "理央"
+      },
+      "line": 139,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「说不定全是过去回忆哦～」",
+      "line": 139
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 139,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012908",
+      "line": 141
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yorukoB_bj",
+        "left": "550",
+        "tm": "701"
+      },
+      "line": 142,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_3162.ogg"
+      },
+      "line": 143,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 144,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「剧透程度突破天际了……」",
+      "line": 144
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 144,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012909",
+      "line": 146
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataA_bo",
+        "left": "60",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 147,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012910",
+      "line": 149
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2556.ogg"
+      },
+      "line": 150,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 151,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「好啦好啦，是时候介绍预约特典了！」",
+      "line": 151
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 151,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012911",
+      "line": 153
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "rioA_bg",
+        "left": "600",
+        "tm": "701"
+      },
+      "line": 154,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "rio",
+        "voice": "rio_2075.ogg"
+      },
+      "line": 155,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "理央"
+      },
+      "line": 156,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「预约特典是神马？」",
+      "line": 156
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 156,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012912",
+      "line": 158
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kisakiA_al",
+        "left": "510",
+        "tm": "701"
+      },
+      "line": 159,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1743.ogg"
+      },
+      "line": 160,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 161,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「在发售日之前预付款才能获赠的礼品。」",
+      "line": 161
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 161,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012913",
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataA_bk",
+        "left": "60",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 164,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2557.ogg"
+      },
+      "line": 165,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 166,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「本作的预约特典，将是通关本篇后的追加剧本！」",
+      "line": 166
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 166,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012914",
+      "line": 168
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "yorukoA_bg",
+        "left": "60",
+        "tm": "701"
+      },
+      "line": 169,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_3163.ogg"
+      },
+      "line": 170,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「听说内容是我们一起回顾剧情并进行点评，类似座谈会的东西。」",
+      "line": 171
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012915",
+      "line": 173
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "rioA_bb",
+        "left": "600",
+        "tm": "701"
+      },
+      "line": 174,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "rio",
+        "voice": "rio_2076.ogg"
+      },
+      "line": 175,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "理央"
+      },
+      "line": 176,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「总之，就是像现在这样乱扯一通吧？」",
+      "line": 176
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 176,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012916",
+      "line": 178
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataA_bk",
+        "left": "60",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 179,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2558.ogg"
+      },
+      "line": 180,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「对的！而且，不只限揭露舞台后不为人知部分的讨论会，内容还包括以某角色为中心的小故事。分量十足，绝对好评！」",
+      "line": 181
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012917",
+      "line": 183
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yorukoB_ba",
+        "left": "550",
+        "tm": "701"
+      },
+      "line": 184,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_3164.ogg"
+      },
+      "line": 185,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 186,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「故事标题是？」",
+      "line": 186
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 186,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012918",
+      "line": 188
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kisakiA_ai",
+        "left": "60",
+        "tm": "701"
+      },
+      "line": 189,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1744.ogg"
+      },
+      "line": 190,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 191,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「《萤色光景》。」",
+      "line": 191
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 191,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012919",
+      "line": 193
+    },
+    {
+      "type": "text",
+      "text": "泛着萤色光泽的故事，述说着不为人知的深深思念。",
+      "line": 194
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 194,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012920",
+      "line": 196
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataA_bn",
+        "left": "60",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 197,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2559.ogg"
+      },
+      "line": 198,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 199,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「一次投入，终生受益！抓紧时间预约吧！」",
+      "line": 199
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 199,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012921",
+      "line": 201
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yorukoB_bd",
+        "left": "550",
+        "tm": "701"
+      },
+      "line": 202,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_3165.ogg"
+      },
+      "line": 203,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 204,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「变成电视购物频道了……」",
+      "line": 204
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 204,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012922",
+      "line": 206
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataB_bf",
+        "left": "100",
+        "tm": "701"
+      },
+      "line": 207,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012923",
+      "line": 209
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2560.ogg"
+      },
+      "line": 210,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「一份满足全读者需求的特典！一次投入，终生受益！彼方郑重向你承诺！」",
+      "line": 211
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012924",
+      "line": 213
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "kisakiA_ak",
+        "left": "510",
+        "tm": "701"
+      },
+      "line": 214,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1745.ogg"
+      },
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 216,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「也请你预约来慰我在天之灵。」",
+      "line": 216
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 216,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012925",
+      "line": 218
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "rioA_bi",
+        "left": "60",
+        "tm": "701"
+      },
+      "line": 219,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "rio",
+        "voice": "rio_2077.ogg"
+      },
+      "line": 220,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "理央"
+      },
+      "line": 221,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「打感情牌搏死宅眼泪也太诈啦！」",
+      "line": 221
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 221,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012926",
+      "line": 223
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yorukoB_be",
+        "left": "550",
+        "tm": "701"
+      },
+      "line": 224,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_3166.ogg"
+      },
+      "line": 225,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 226,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「特典的介绍就到这里。」",
+      "line": 226
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 226,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012927",
+      "line": 228
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataB_ba",
+        "left": "100",
+        "tm": "701"
+      },
+      "line": 229,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012928",
+      "line": 231
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2561.ogg"
+      },
+      "line": 232,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 233,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「衷心感谢你阅读体验版！第四章起剧情会更加精彩，请务必不要扔书！」",
+      "line": 233
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 233,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012929",
+      "line": 235
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "rioB_bc",
+        "left": "620",
+        "top": "20",
+        "tm": "701"
+      },
+      "line": 236,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "rio",
+        "voice": "rio_2078.ogg"
+      },
+      "line": 237,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "理央"
+      },
+      "line": 238,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「连在体验版里打酱油的理央，在正篇里也大出风头哦！真的！」",
+      "line": 238
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 238,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012930",
+      "line": 240
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kisakiB_ac",
+        "left": "0",
+        "top": "-50",
+        "tm": "701"
+      },
+      "line": 241,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kisaki",
+        "voice": "kisaki_1746.ogg"
+      },
+      "line": 242,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "妃"
+      },
+      "line": 243,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「在，在正篇里……琉璃也一定会救我吧。」",
+      "line": 243
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 243,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012931",
+      "line": 245
+    },
+    {
+      "type": "command",
+      "name": "charar",
+      "args": {
+        "fn": "yorukoA_ba",
+        "left": "510",
+        "tm": "701"
+      },
+      "line": 246,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "yoruko",
+        "voice": "yoruko_3167.ogg"
+      },
+      "line": 247,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "夜子"
+      },
+      "line": 248,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「我……我的话，那个，我会加油！」",
+      "line": 248
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 248,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012932",
+      "line": 250
+    },
+    {
+      "type": "command",
+      "name": "charal",
+      "args": {
+        "fn": "kanataA_bo",
+        "left": "60",
+        "top": "-10",
+        "tm": "701"
+      },
+      "line": 251,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "pv",
+      "args": {
+        "char": "kanata",
+        "voice": "kanata_2562.ogg"
+      },
+      "line": 252,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "name",
+      "args": {
+        "fn": "彼方"
+      },
+      "line": 253,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "「就这样，我们正篇再见！」",
+      "line": 253
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 253,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012933",
+      "line": 255
+    },
+    {
+      "type": "text",
+      "text": "未翻阅正篇的读者，请相信彼方的推荐。已翻阅正篇的读者，请会心一笑。",
+      "line": 256
+    },
+    {
+      "type": "command",
+      "name": "ps",
+      "args": {},
+      "line": 256,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "fadeoutbgm",
+      "args": {
+        "time": "2000"
+      },
+      "line": 259,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "mess-off",
+      "args": {},
+      "line": 260,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "sysb-off",
+      "args": {},
+      "line": 261,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "ws",
+      "args": {},
+      "line": 262,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転",
+        "tm": "5000"
+      },
+      "line": 263,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012935",
+      "line": 265
+    },
+    {
+      "type": "command",
+      "name": "charalr-ckie",
+      "args": {
+        "fn": "暗転",
+        "tm": "2000"
+      },
+      "line": 267,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label048673",
+      "line": 269
+    },
+    {
+      "type": "comment",
+      "text": ";PV",
+      "line": 271
+    },
+    {
+      "type": "comment",
+      "text": "↓ムービー準備",
+      "line": 272
+    },
+    {
+      "type": "command",
+      "name": "video",
+      "args": {
+        "visible": "true",
+        "left": "0",
+        "top": "0",
+        "width": "1280",
+        "height": "720"
+      },
+      "line": 273,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "0",
+        "page": "fore",
+        "visible": "false",
+        "left": "0",
+        "top": "0"
+      },
+      "line": 274,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[videolayer layer=\"3\" page=\"fore\" channel=\"1\"]",
+      "line": 275
+    },
+    {
+      "type": "command",
+      "name": "openvideo",
+      "args": {
+        "storage": "pv.mpg"
+      },
+      "line": 276,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "[preparevideo][wp]",
+      "line": 277
+    },
+    {
+      "type": "comment",
+      "text": "[layopt layer=\"0\" page=\"fore\" visible=\"true\"]",
+      "line": 278
+    },
+    {
+      "type": "comment",
+      "text": "↓ムービー再生",
+      "line": 279
+    },
+    {
+      "type": "command",
+      "name": "playvideo",
+      "args": {},
+      "line": 280,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "video",
+      "args": {
+        "volume": "&sf.movie_volume"
+      },
+      "line": 281
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.pv == 1"
+      },
+      "line": 282,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wv",
+      "args": {
+        "canskip": "true"
+      },
+      "line": 283,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 284,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "wv",
+      "args": {
+        "canskip": "false"
+      },
+      "line": 285,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "↓ムービー停止",
+      "line": 287
+    },
+    {
+      "type": "command",
+      "name": "stopvideo",
+      "args": {},
+      "line": 288,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "clearvideolayer",
+      "args": {
+        "channel": "1"
+      },
+      "line": 289,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012936",
+      "line": 291
+    },
+    {
+      "type": "comment",
+      "text": "□□タイトルに戻る",
+      "line": 294
+    },
+    {
+      "type": "command",
+      "name": "wait",
+      "args": {
+        "time": "1000",
+        "mode": "normal",
+        "canskip": "false"
+      },
+      "line": 295,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "title.ks",
+        "target": "*title_menu"
+      },
+      "line": 296,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "label012937",
+      "line": 298
+    },
+    {
+      "type": "comment",
+      "text": "□□他のファイルへジャンプ",
+      "line": 300
+    },
+    {
+      "type": "comment",
+      "text": "[jump storage=\"○○.ks\"]",
+      "line": 301
+    }
+  ]
+}

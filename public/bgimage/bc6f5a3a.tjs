@@ -1,0 +1,894 @@
+
+// メッセージ履歴画面を閉じるボタン用のクラス
+
+class HistoryButtonLayer extends ScrollBarButtonBaseLayer
+{
+	// コンストラクタ
+	function HistoryButtonLayer(window, parent)
+	{
+		// スーパークラスのコンストラクタを呼び出します
+		super.ScrollBarButtonBaseLayer(window, parent);
+	}
+
+	// デストラクタ
+	function finalize()
+	{
+		// スーパークラスのデストラクタを呼び出します
+		super.finalize(...);
+	}
+
+	// マウスの左ボタンが離された時に呼び出されるメソッド(オーバーライド)
+	function onMouseUp(x, y, button, shift)
+	{
+		if(enabled && button == mbLeft)
+			parent.onButtonClick(this);	// 親レイヤ(＝履歴レイヤ)の onButtonClick メソッドを呼び出します
+		super.onMouseUp(...);
+	}
+}
+
+
+// メッセージ履歴レイヤを拡張するためのクラス (2010/03/30 修正版)
+
+class ExtendedHistoryLayer extends HistoryLayer
+{
+	var enableLinks = true; // メッセージ履歴リンク(デフォルトのメッセージ履歴アクション機能)を有効にするか
+	var enableActionButtons = false; // メッセージ履歴アクションボタンを有効にするか
+	var actionButtonStorage; // メッセージ履歴アクションボタン用画像ファイル名
+	var hasBackgroundImage = false; // メッセージ履歴に背景画像を表示するか
+	var messageLayer; // メッセージ履歴を表示するためのレイヤ(背景画像表示時のみ使用)
+	var scrollBar; // スクロールバーオブジェクト
+	var actionButtons = []; // メッセージ履歴アクションボタンオブジェクトを格納する配列
+	var actions = []; // メッセージ履歴アクションを格納する配列
+
+	// 以下各種設定のためのメンバ変数
+	// ※これらの値は ExtendedHistoryLayer_config メソッドを通じて設定されます(Override.tjs参照)
+	var backgroundStorage; // 履歴レイヤの背景に表示する画像
+	var actionButtonStorage; // メッセージ履歴アクションボタン用画像
+	var actionButtonMargin; // メッセージ履歴アクションボタン配置時のマージン
+	var closeButtonWidth; // 閉じるボタンの幅
+	var closeButtonHeight; // 閉じるボタンの高さ
+	var closeButtonLeft; // 閉じるボタンの左端位置
+	var closeButtonTop; // 閉じるボタンの上端位置
+	var closeButtonStorage; // 閉じるボタンの画像(画像を使わない時は空文字列)
+	var closeButtonColor; // 閉じるボタンの色(closeButtonStorage が空文字列でない場合は無視されます)
+	var closeButtonCaption; // 閉じるボタンに表示する文字(closeButtonStorage が空文字列でない場合は無視されます)
+	var closeButtonCaptionColor; // 閉じるボタンに表示する文字の色
+	var closeButtonHint; // 閉じるボタンのヒント(button タグの hint 属性に相当)
+//	var scrollBarWidth; // スクロールバーの幅
+//	var scrollBarHeight; // スクロールバーの高さ
+	var scrollBarLeft; // スクロールバーの左端位置
+	var scrollBarTop; // スクロールバーの上端位置
+//	var scrollBarBaseColor; // スクロールバーの背景色
+//	var scrollBarButtonColor; // スクロールバーの上下(左右)のボタンの色
+//	var scrollBarButtonCaptionColor; // スクロールバーの上下(左右)のボタンの文字色
+//	var scrollBarSliderColor; // スクロールバーのスライダーの色
+	var scrollBarBase; // スクロールバーの背景画像
+	var scrollBarBaseKey; // スクロールバーの背景画像のカラーキー
+	var scrollBarBaseMask; // スクロールバーの背景のクリック可能領域を表す画像
+	var scrollBarUpButton; // スクロールバーの上側(左側)のボタン画像
+	var scrollBarUpButtonKey; // スクロールバーの上側(左側)のボタン画像のカラーキー
+	var scrollBarDownButton; // スクロールバーの下側(右側)のボタン画像
+	var scrollBarDownButtonKey; // スクロールバーの下側(右側)のボタン画像のカラーキー
+	var scrollBarSliderTop; // スクロールバーのスライダー上端の画像
+	var scrollBarSliderTopKey; // スクロールバーのスライダー上端の画像のカラーキー
+	var scrollBarSliderMiddle; // スクロールバーのスライダー中央部の画像
+	var scrollBarSliderMiddleKey; // スクロールバーのスライダー中央部の画像のカラーキー
+	var scrollBarSliderBottom; // スクロールバーのスライダー下端の画像
+	var scrollBarSliderBottomKey; // スクロールバーのスライダー下端の画像のカラーキー
+	var scrollBarBaseRectHit; // 背景画像の recthit
+	var scrollBarUpButtonRectHit; // 上側(右側)のボタン画像の recthit
+	var scrollBarDownButtonRectHit; // 下側(左側)のボタン画像の recthit
+	var scrollBarSliderRectHit; // スライダー上端(右端)・中央部・下端(左端)の recthit
+
+
+	// コンストラクタ
+	function ExtendedHistoryLayer(window, parent)
+	{
+		// スーパークラスのコンストラクタを呼び出します
+		super.HistoryLayer(window, parent);
+		// Override.tjs で定義されている設定を適用します
+		(ExtendedHistoryLayer_config incontextof this)();
+		// 背景画像が指定されていれば読み込みます
+		loadBackgroundImage(backgroundStorage) if backgroundStorage != "";
+		// メッセージ履歴アクションボタン用画像が指定されていれば設定します
+		loadActionButtonImage(actionButtonStorage) if actionButtonStorage != "";
+	}
+
+	// デストラクタ
+	function finalize()
+	{
+		deleteActionButtons(); // メッセージ履歴アクションボタンを削除(無効化)します
+		deleteMessageLayer(); // メッセージ履歴表示用レイヤを削除(無効化)します
+		invalidate scrollBar if scrollBar !== void; // スクロールバーを無効化します
+		super.finalize(); // スーパークラスのデストラクタを呼び出します(closeButton はここで無効化されます)
+	}
+
+	// メッセージ履歴を初期化するメソッド(オーバーライド)
+	function dispInit()
+	{
+		if(hasBackgroundImage)
+		{
+			// 背景画像を表示する場合は
+			// 本来のメッセージ履歴レイヤ(this)には
+			// 背景画像だけを表示する(メッセージ履歴は表示しない)ので
+			// メッセージ履歴表示用にレイヤを作成します
+			if(messageLayer === void)
+			{
+				// メッセージ履歴表示用レイヤがまだ作られていなければ
+				// 本来のメッセージ履歴レイヤの子レイヤとして作成します
+				messageLayer = new global.Layer(window, this);
+				// 表示位置とサイズは本来のメッセージ履歴レイヤに合わせます
+				messageLayer.setPos(0, 0);
+				messageLayer.setSize(width, height);
+				messageLayer.hitThreshold = 256; // マウスメッセージは受け取りません
+				messageLayer.absolute = 1000;
+				messageLayer.visible = true;
+
+				// 本来のメッセージ履歴レイヤと同じフォント設定にします
+				var mFont = messageLayer.font;
+				mFont.angle = font.angle;
+				mFont.bold = font.bold;
+				mFont.face = font.face;
+				mFont.height = font.height;
+				mFont.italic = font.italic;
+				mFont.strikeout = font.strikeout;
+				mFont.underline = font.underline;
+			}
+		}
+
+		// スーパークラスの dispInit メソッドを呼び出します
+		// (メッセージ履歴テキストの書き込みなどはここで実行されます)
+		super.dispInit();
+
+		// スクロールバーの設定をします
+		if(canScroll && dispStart > 0)
+		{
+			// スクロールバーが必要な場合は canScroll が true になります
+			// ただし、dispStart が 0 の場合は履歴メッセージ全体が表示できるため
+			// canScroll が true になっていてもスクロールバーは不要なので
+			// canScroll が true かつ dispStart > 0 の時のみスクロールバーを表示します
+			scrollBar.maxVal = dispStart; // 最大値を設定します
+			// スライダー(ドラッグして動かせる部分)の長さを設定します
+			scrollBar.visibleAmountRatio = everypage ? (1 / dataPages) : (dispLines / dataLines);
+			// 背景の部分をクリックした時にスクロールする量を設定します
+			scrollBar.blockIncrement = everypage ? 1 : dispLines - 1;
+			scrollBar.value = dispStart; // 現在値を設定します
+			scrollBar.visible = true; // スクロールバーを表示します
+		}
+		else
+		{
+			// canScroll が false または dispStart が 0 の場合はスクロールバーは不要なので
+			scrollBar.visible = false; // スクロールバーを非表示にします
+		}
+	}
+
+	// メッセージ履歴画面を閉じた時に呼び出されるメソッド(オーバーライド)
+	function dispUninit()
+	{
+		deleteActionButtons(); // メッセージ履歴アクションボタンを削除します
+		deleteMessageLayer(); // メッセージ履歴表示用レイヤを削除します
+		super.dispUninit(); // スーパークラスの dispUninit メソッドを呼び出します
+	}
+
+	// スクロールバー＆閉じる(×)ボタンの作成を行うメソッド(オーバーライド)
+	// ※オーバーライドしていますがスーパークラスの
+	// 　makeButtons メソッドは使いませんので呼び出していません
+	function makeButtons()
+	{
+		if(scrollBar !== void)
+			return; // すでにスクロールバーが作成されている場合は何もしません
+
+		// verticalView は HistoryLayer クラス(スーパークラス)のメンバ変数で
+		// Config.tjs の HistoryLayer_config メソッド内で設定できます
+		var settings = %[];
+		with(settings)
+		{
+			.base = scrollBarBase;
+			.baseKey = scrollBarBaseKey;
+			.baseMask = scrollBarBaseMask;
+			.upButton = scrollBarUpButton;
+			.upButtonKey = scrollBarUpButtonKey;
+			.downButton = scrollBarDownButton;
+			.downButtonKey = scrollBarDownButtonKey;
+			.sliderTop = scrollBarSliderTop;
+			.sliderTopKey = scrollBarSliderTopKey;
+			.sliderMiddle = scrollBarSliderMiddle;
+			.sliderMiddleKey = scrollBarSliderMiddleKey;
+			.sliderBottom = scrollBarSliderBottom;
+			.sliderBottomKey = scrollBarSliderBottomKey;
+			.baseRectHit = scrollBarBaseRectHit;
+			.upRectHit = scrollBarUpButtonRectHit;
+			.downRectHit = scrollBarDownButtonRectHit;
+			.sliderRectHit = scrollBarSliderRectHit;
+		}
+		if(verticalView)
+		{
+			// 縦書き(verticalView が true)なら水平スクロールバーを作ります
+			scrollBar = new HorizontalGraphicalScrollBar(window, this, onValueChanged, settings);
+		}
+		else
+		{
+			// 横書き(verticalView が false)なら垂直スクロールバーを作ります
+			scrollBar = new VerticalGraphicalScrollBar(window, this, onValueChanged, settings);
+		}
+		scrollBar.setPos(scrollBarLeft, scrollBarTop);
+		scrollBar.absolute = 2000;
+		scrollBar.minVal = 0; // スクロールバーの値の下限を 0 に設定します(下限は常に 0 です)
+
+		// 閉じるボタンを作成します
+		closeButton = new HistoryButtonLayer(window, this);
+		if(closeButtonStorage != "")
+		{
+			// 閉じるボタン用の画像が指定されていれば読み込みます
+			closeButton.loadImages(closeButtonStorage);
+		}
+		else
+		{
+			// 画像が指定されていなければ caption, color, captionColor, width, height プロパティを設定します
+			closeButton.caption = closeButtonCaption;
+			closeButton.color = closeButtonColor;
+			closeButton.captionColor = closeButtonCaptionColor;
+			closeButton.setSize(closeButtonWidth, closeButtonHeight);
+		}
+		closeButton.setPos(closeButtonLeft, closeButtonTop);
+		closeButton.absolute = 3000;
+		closeButton.hint = closeButtonHint;
+		closeButton.visible = true;
+	}
+
+	// メッセージ履歴アクションボタンの状態を更新するメソッド(オーバーライド)
+	// ※オーバーライドしていますがスーパークラスの
+	// 　updateButtonState メソッドは使いませんので呼び出していません
+	function updateButtonState()
+	{
+		if(enableActionButtons) // ボタンを表示する設定にしている場合は...
+		{
+			// 一旦ボタンを全部削除して...
+			clearActionButtons();
+			// 改めて必要な位置にボタンを配置します
+			if(everypage)
+			{
+				for(var i=0;i<repageLine;i++)
+					drawActionButton(i);
+			}
+			else
+			{
+				for(var i=0;i<dispLines;i++)
+					drawActionButton(i);
+			}
+		}
+	}
+
+	// メッセージ履歴アクションボタンの画像を設定するメソッド
+	// ※メッセージ履歴表示中に呼び出さないでください！
+	function loadActionButtonImage(storage)
+	{
+		actionButtonStorage = storage;
+		enableActionButtons = true; // メッセージ履歴アクションボタン機能を有効にします
+		enableLinks = false; // 通常のメッセージ履歴アクション機能は無効にします
+	}
+
+	// メッセージ履歴アクションボタンの画像の設定を解除するメソッド
+	// このメソッドを呼び出すと以後メッセージ履歴アクションボタンは使用不可になります
+	// ※メッセージ履歴表示中に呼び出さないでください！
+	function freeActionButtonImage()
+	{
+		actionButtonStorage = void;
+		enableActionButtons = false; // メッセージ履歴アクションボタン機能を無効にします
+		enableLinks = true; // 通常のメッセージ履歴アクション機能を有効にします
+	}
+
+	// メッセージ履歴画面の背景を設定するメソッド
+	// ※メッセージ履歴表示中に呼び出さないでください！
+	function loadBackgroundImage(storage)
+	{
+		loadImages(storage); // 本来のメッセージ履歴レイヤに背景画像を読み込みます
+		hasBackgroundImage = true;
+	}
+
+	// メッセージ履歴画面の背景設定を解除するメソッド
+	// ※メッセージ履歴表示中に呼び出さないでください！
+	function freeBackgroundImage()
+	{
+		if(messageLayer !== void)
+		{
+			// メッセージ履歴表示用レイヤを使用している場合は無効化します
+			invalidate messageLayer;
+			messageLayer = void;
+			// 本来のメッセージ履歴レイヤをデフォルトの色で塗りつぶします
+			super.fillRect(0, 0, width, height, 0xc8000000);
+		}
+		hasBackgroundImage = false;
+	}
+
+	// メッセージ履歴レイヤを塗りつぶします(オーバーライド)
+	// ※メッセージ履歴テキストを消去するために使用します
+	function fillRect()
+	{
+		// 背景に画像を表示しているときはメッセージ履歴表示用レイヤ(messageLayer)を
+		// 表示していないときは本来のメッセージ履歴レイヤ(this)を塗りつぶします
+		if(messageLayer !== void)
+			messageLayer.fillRect(...);
+		else
+			super.fillRect(...);
+	}
+
+	// メッセージ履歴レイヤの一部をコピーします(オーバーライド)
+	// ※メッセージ履歴テキストをコピーするために使用します
+	function copyRect(dleft, dtop, src, sleft, stop, swidth, sheight)
+	{
+		// 背景に画像を表示しているときはメッセージ履歴表示用レイヤ(messageLayer)の内容を
+		// 表示していないときは本来のメッセージ履歴レイヤ(this)の内容をコピーします
+		if(messageLayer !== void)
+			messageLayer.copyRect(dleft, dtop, messageLayer, sleft, stop, swidth, sheight);
+		else
+			super.copyRect(...);
+	}
+
+	// メッセージ履歴レイヤにテキストを書き込むメソッド(オーバーライド)
+	function drawText(x, y, text, color, opa, aa, shadowlevel, shadowcolor, shadowwidth, shadowofsx, shadowofsy)
+	{
+		// 背景に画像を表示しているときはメッセージ履歴表示用レイヤ(messageLayer)に
+		// 表示していないときは本来のメッセージ履歴レイヤ(this)に書き込みます
+		var initx = x;
+		while(true)
+		{
+			var pos = text.indexOf(marker);
+			var t;
+			var nextx;
+			do
+			{
+				if(pos > -1)
+				{
+					var pos2 = text.indexOf(marker, pos + 1);
+					if(pos2 > pos + 1)
+					{
+						nextx = initx + +text.substring(pos + 1, pos2 - pos - 1);
+						t = text.substring(0, pos);
+						text = text.substring(pos2 + 1);
+						break;
+					}
+				}
+				t = text;
+				text = "";
+			}while(false);
+			if(messageLayer !== void)
+				messageLayer.drawText(x, y, t, color, opa, aa, shadowlevel, shadowcolor, shadowwidth, shadowofsx, shadowofsy);
+			else
+				super.drawText(x, y, t, color, opa, aa, shadowlevel, shadowcolor, shadowwidth, shadowofsx, shadowofsy);
+			if(text == "")
+				break;
+			if(nextx !== void)
+			{
+				x = nextx;
+				nextx = void;
+			}
+			else
+				x += font.getTextWidth(t);
+		}
+	}
+
+	function store(ch)
+	{
+		if(!autoReturn)
+		{
+			// 自動改行を行わない場合
+			currentLine += ch;
+		}
+		else
+		{
+			// 自動改行を行う場合
+			var len;
+			currentLine += ch;
+			var _currentLine = getActualCurrentLine();
+			if((len = getActualCurrentLinePtrPos()) >= relinePos)
+			{
+				var curlen = _currentLine.length;
+				var lastch = curlen >= 2 ? _currentLine[curlen - 2] : '';
+
+				if(((lastch=='' || wwLeading.indexOf(lastch)==-1) &&
+					wwFollowing.indexOf(ch)==-1) ||
+					(lastch!='' && wwFollowingWeak.indexOf(lastch)!=-1 &&
+						wwFollowingWeak.indexOf(ch)!=-1) || len > limitPos)
+				{
+					// 最後に描画したのが行末禁則文字でない場合
+					// しかもこれから描画するのが行頭禁則文字でない
+					// 場合
+					// または弱禁則文字が連続していない場合
+					// はたまたこれから描画するのが強禁則文字ではなくて、
+					// 確実に 右端を越える場合
+					// ( この場合は余白は考えない )
+					currentLine=
+						currentLine.substring(0, currentLine.length - ch.length);	//	追加した文字を取り除く
+					if(indentPos)
+					{
+						reline();
+						currentLine = ch;
+					}
+					else
+					{
+						var ox = getCurrentHorizontalOffset();
+						reline();
+						currentLine = marker + ox + marker + ch;
+					}
+				}
+			}
+		}
+	}
+
+	function setHorizontalOffset(mp)
+	{
+		if(mp.pos !== void)
+			addHorizontalOffset(mp.pos, false);
+		else if(mp.ipos !== void)
+			addHorizontalOffset(mp.ipos, true);
+	}
+
+	function addHorizontalOffset(offset, relative)
+	{
+		if(relative)
+			currentLine += marker + (getActualCurrentLinePtrPos() + +offset) + marker;
+		else
+			currentLine += marker + offset + marker;
+	}
+
+	function getActualCurrentLine()
+	{
+		var acl = "";
+		var tmp = currentLine;
+		while(tmp != "")
+		{
+			do
+			{
+				var pos = tmp.indexOf(marker);
+				if(pos > -1)
+				{
+					var pos2 = tmp.indexOf(marker, pos + 1);
+					if(pos2 > pos + 1)
+					{
+						acl += tmp.substring(0, pos);
+						tmp = tmp.substring(pos2 + 1);
+						break;
+					}
+				}
+				acl += tmp;
+				tmp = "";
+			}while(false);
+		}
+		return acl;
+	}
+
+	// メッセージ履歴レイヤの内容をクリアする(テキストを消去する)メソッド(オーバーライド)
+	// ※オーバーライドしていますがスーパークラスの
+	// 　clearBack メソッドは使いませんので呼び出していません
+	function clearBack(n)
+	{
+		// メッセージ履歴レイヤを塗りつぶす色を設定します
+		var color = messageLayer !== void ? 0x00000000 : 0xc8000000;
+		// レイヤの描画形式をアルファチャンネルつき画像用の形式に設定します
+		face = dfAlpha;
+		if(n === void)
+		{
+			// n が void の時はレイヤ全体をクリアします
+			fillRect(0, 0, width, height, color);
+		}
+		else
+		{
+			// n が指定されている場合は...
+			if(verticalView)
+			{
+				// 縦書きなら n 列目をクリアします
+				fillRect(width - marginR - (n + 1) * lineHeight, controlHeight, 
+					lineHeight, height - controlHeight, color);
+			}
+			else
+			{
+				// 横書きなら n 行目をクリアします
+				fillRect(0, n * lineHeight + controlHeight + marginT, 
+					width, lineHeight, color);
+			}
+		}
+	}
+
+	// 表示するページを設定します
+	function setPage(page)
+	{
+		if(dispStart == page)
+			return; // 既に表示されているので何もしません
+		clearActionHighlights(); // メッセージ履歴アクションのハイライト表示を消去します
+		dispStart = page; // 表示開始位置を更新します
+		clearBack(); // 背景をクリアします
+		drawPage(); // このページの内容(メッセージ履歴テキスト)を書き込みます
+	}
+
+	// 表示する行(列)を設定します
+	function setLine(line)
+	{
+		if(dispStart == line)
+			return; // 既に表示されているので何もしません
+		// 何行(列)分更新する必要があるかを計算します
+		var diff = line - dispStart;
+		if(diff <= -dispLines || diff >= dispLines)
+		{
+			// (テキストをスクロールする量が多くて)画面全体を更新する必要がある場合は
+			// 画面全体をクリアして全ての行(列)のテキストを書き込みます
+			clearBack();
+			dispStart = line;
+			for(var i=0;i<dispLines;i++)
+				drawLine(i);
+		}
+		else if(diff > 0)
+		{
+			// テキストを上方向(縦書きの場合右方向)にスクロールする場合は...
+			clearActionHighlights(); // メッセージ履歴アクションのハイライト表示を消去
+
+			// 画面内に表示されているテキストのうち
+			// スクロールしても画面外に出ない部分はスクロール後の位置にコピーします
+			if(verticalView)
+			{
+				copyRect(width - marginR - lineHeight * (dispLines - diff), controlHeight, this,
+					width - marginR - lineHeight * dispLines, controlHeight,
+					lineHeight * (dispLines - diff), height - controlHeight);
+			}
+			else
+			{
+				copyRect(0, controlHeight + marginT, this,
+					0, controlHeight + lineHeight * diff + marginT, 
+					width, lineHeight * (dispLines - diff));
+			}
+
+			// スクロールすると画面外に出てしまうテキストを消去します
+			var i;
+			for(i=1;i<=diff;i++)
+				clearBack(dispLines - i);
+			dispStart = line; // 表示開始位置を更新します
+			// 新たに表示されるテキスト(スクロール前は
+			// 表示されていなかったテキスト)を書き足します
+			for(i=1;i<=diff;i++)
+				drawLine(dispLines - i);
+		}
+		else if(diff < 0)
+		{
+			// テキストを下方向(縦書きの場合左方向)にスクロールする場合も
+			// 基本的に手順は同じです
+			diff = -diff;
+			clearActionHighlights();
+			if(verticalView)
+			{
+				copyRect(width - marginR - lineHeight * dispLines, controlHeight, this,
+					width - marginR - lineHeight * (dispLines - diff), controlHeight, 
+					lineHeight * (dispLines - diff), height - controlHeight);
+			}
+			else
+			{
+				copyRect(0, controlHeight + lineHeight * diff + marginT, this,
+					0, controlHeight + marginT, 
+					width, lineHeight * (dispLines - diff));
+			}
+			var i;
+			for(i=0;i<diff;i++)
+				clearBack(i);
+			dispStart = line;
+			for(i=0;i<diff;i++)
+				drawLine(i);
+		}
+		// メッセージ履歴アクションボタンの表示を更新します
+		updateButtonState();
+	}
+
+	// 前ページに移動するメソッド(オーバーライド)
+	function prevPage()
+	{
+		super.prevPage(); // スーパークラスの prevPage メソッドを呼び出します
+		// スクロールバーが表示されている場合は表示を更新します
+		scrollBar.value = dispStart if canScroll;
+	}
+
+	// 次ページに移動するメソッド(オーバーライド)
+	function nextPage()
+	{
+		super.nextPage(); // スーパークラスの nextPage メソッドを呼び出します
+		// スクロールバーが表示されている場合は表示を更新します
+		scrollBar.value = dispStart if canScroll;
+	}
+
+	// 上方向(横書きの場合は右方向)に１行スクロールするメソッド(オーバーライド)
+	function scrollUp()
+	{
+		super.scrollUp(); // スーパークラスの scrollUp メソッドを呼び出します
+		// スクロールバーが表示されている場合は表示を更新します
+		scrollBar.value = dispStart if canScroll;
+	}
+
+	// 下方向(横書きの場合は左方向)に１行スクロールするメソッド(オーバーライド)
+	function scrollDown()
+	{
+		super.scrollDown(); // スーパークラスの scrollDown メソッドを呼び出します
+		// スクロールバーが表示されている場合は表示を更新します
+		scrollBar.value = dispStart if canScroll;
+	}
+
+	// スクロールバーのボタンが押された時や
+	// スライダーがドラッグされた時に呼び出されるメソッド
+	function onValueChanged(value)
+	{
+		if(everypage)
+			setPage(value); // ページ毎の表示の場合は表示するページを設定します
+		else
+			setLine(value); // そうでない場合は表示する行(列)を設定します
+	}
+
+	// 指定された位置に指定されたアクションを持つ
+	// メッセージ履歴アクションボタンを配置するメソッド
+	function addActionButton(x, y, action)
+	{
+		// 現在使われていないボタンを探します
+		var i;
+		for(i=0;i<actionButtons.count;i++)
+		{
+			if(!actionButtons[i].visible)
+				break;
+		}
+		var actionButton;
+		if(i < actionButtons.count)
+		{
+			// 見つかった場合はそのボタンを使います
+			actionButton = actionButtons[i];
+			actions[i] = action;
+		}
+		else
+		{
+			// 見つからなかった場合は新しくボタンを作ります
+			actionButtons.add(actionButton = new LButtonLayer(window, this));
+			actionButton.loadImages(actionButtonStorage);
+			actions.add(action);
+		}
+		// ボタンの位置を設定します
+		// ※フォントの高さに合わせてボタンの位置を調整しています
+		if(verticalView)
+			actionButton.setPos(x + (fontHeight - actionButton.width) \ 2, y);
+		else
+			actionButton.setPos(x, y + (fontHeight - actionButton.height) \ 2);
+		// ボタンを表示状態にします
+		actionButton.visible = true;
+	}
+
+	// メッセージ履歴アクションボタンを消去するメソッド
+	function clearActionButtons()
+	{
+		for(var i=0;i<actionButtons.count;i++)
+		{
+			// 後で再利用するので見えなくするだけで無効化はしません
+			actionButtons[i].visible = false;
+			actions[i] = void;
+		}
+	}
+
+	// メッセージ履歴アクションボタンを削除するメソッド
+	function deleteActionButtons()
+	{
+		// すべてのメッセージ履歴アクションボタンを無効化します
+		for(var i=0;i<actionButtons.count;i++)
+			invalidate actionButtons[i];
+		actionButtons.clear();
+		actions.clear();
+	}
+
+	// メッセージ履歴表示用レイヤを削除するメソッド
+	function deleteMessageLayer()
+	{
+		if(messageLayer !== void)
+		{
+			invalidate messageLayer;
+			messageLayer = void;
+		}
+	}
+
+	// 閉じるボタンやメッセージ履歴アクションボタンが
+	// 押された時に呼び出されるメソッド
+	function onButtonClick(button)
+	{
+		if(button == closeButton)
+		{
+			// 閉じるボタンが押された時は
+			// メッセージ履歴画面を閉じます(非表示にします)
+			hide();
+		}
+		else
+		{
+			// メッセージ履歴アクションボタンが押された時は
+			// そのアクションを実行します
+			Scripts.eval(actions[actionButtons.find(button)]);
+		}
+	}
+
+	// メッセージ履歴アクションのハイライト表示を行うメソッド(オーバーライド)
+	function highlightAction()
+	{
+		if(enableLinks)
+		{
+			// デフォルトのメッセージ履歴アクション機能を有効にしている場合のみ
+			// スーパークラスの highlightAction メソッドを呼び出してハイライト表示します
+			super.highlightAction(...);
+		}
+	}
+
+	// 指定された位置のメッセージ履歴アクションを取得するメソッド(オーバーライド)
+	function getActionInfoFromPos()
+	{
+		// デフォルトのメッセージ履歴アクション機能を有効にしている場合のみ
+		// スーパークラスの getActionInfoFromPos メソッドを呼び出します
+		// 無効にしている場合は取得する必要がないので常に void を返します
+		return enableLinks ? super.getActionInfoFromPos(...) : void;
+	}
+
+	// n 行目(n 列目)のテキストをメッセージ履歴レイヤに書き込みます(オーバーライド)
+	function drawLine(n)
+	{
+		// スーパークラスの drawLine メソッドを呼び出して
+		// テキストをレイヤに書き込みます
+		super.drawLine(...);
+		// メッセージ履歴アクションボタンを有効にしている場合は
+		// (アクションが設定されていれば)そのテキストの位置にボタンを表示します
+		if(enableActionButtons)
+			drawActionButton(n);
+	}
+
+	// 現在のページの内容(履歴テキスト)をメッセージ履歴レイヤに書き込みます(オーバーライド)
+	function drawPage()
+	{
+		// スーパークラスの drawPage メソッドを呼び出して
+		// テキストをレイヤに書き込みます
+		super.drawPage(...);
+		// メッセージ履歴アクションボタンの表示を更新します
+		updateButtonState();
+	}
+
+	// n 行目(n 列目)のメッセージ履歴アクションボタンを表示します
+	function drawActionButton(n)
+	{
+		// n 行目(n 列目)に設定されているアクションを取得します
+		var ai = everypage ? getActionInfo2(dispStart, n) : getActionInfo(dispStart + n);
+		if(ai !== void)
+		{
+			// アクションが設定されている(ai が void でない)場合は
+			// １行(１列)前のアクションも取得します
+			var prev_ai = n > 0 ? (everypage ? getActionInfo2(dispStart, n - 1) : getActionInfo(dispStart + n - 1)) : void;
+			if(prev_ai === void || ai[0].id != prev_ai[0].id)
+			{
+				// (n - 1)行目((n - 1)列目)にアクションが設定されていないか
+				// もしくは n 行目(n 列目)とは別のアクションが設定されていれば
+				// n 行目(n 列目)にボタンを表示します
+				// ※１文が２行以上になった時に同じボタンを２つ以上表示するのを防ぐための処理です
+				if(verticalView)
+					addActionButton(width - marginR - n * lineHeight - fontHeight, actionButtonMargin, ai[0].action);
+				else
+					addActionButton(actionButtonMargin, n * lineHeight + controlHeight + marginT, ai[0].action);
+			}
+		}
+	}
+
+	function getActualCurrentLinePtrPos()
+	{
+		var text = currentLine;
+		var x = 0;
+		while(text != "")
+		{
+			var pos = text.indexOf(marker);
+			var t;
+			var nextx;
+			do
+			{
+				if(pos > -1)
+				{
+					var pos2 = text.indexOf(marker, pos + 1);
+					if(pos2 > pos + 1)
+					{
+						nextx = +text.substring(pos + 1, pos2 - pos - 1);
+						t = text.substring(0, pos);
+						text = text.substring(pos2 + 1);
+						break;
+					}
+				}
+				t = text;
+				text = "";
+			}while(false);
+			if(nextx !== void)
+			{
+				x = nextx;
+				nextx = void;
+			}
+			else
+				x += font.getTextWidth(t);
+		}
+		return x;
+	}
+
+	function getCurrentHorizontalOffset()
+	{
+		var ox = 0;
+		var pos = 0;
+		while(true)
+		{
+			var p = currentLine.indexOf(marker, pos);
+			if(p < 0)
+				break;
+			var q = currentLine.indexOf(marker, p + 1);
+			if(q <= p + 1)
+				break;
+			ox = +currentLine.substring(p + 1, q - p - 1);
+			pos = q + 1;
+		}
+		return ox;
+	}
+
+	function endAction()
+	{
+		if(currentAction !== void)
+		{
+			// 現在のアクションがすでにある場合
+			var ca = currentAction;
+			var last = ca[ca.count - 1];
+			last.end = getActualCurrentLinePtrPos();
+		}
+	}
+
+	function setNewAction(action)
+	{
+		// アクションを新規に設定する
+		if(action == "") action = void;
+		if(action === void) return;
+		endAction();
+		currentActionExp = action;
+		if(currentAction == void) currentAction = [];
+		var last = currentAction[currentAction.count] = %[];
+		last.start = getActualCurrentLinePtrPos();
+		last.action = action;
+		last.id = ++currentActionID;
+	}
+
+	function continueAction()
+	{
+		if(currentActionExp === void) return;
+		if(currentAction == void) currentAction = [];
+		var last = currentAction[currentAction.count] = %[];
+		last.start = getActualCurrentLinePtrPos();
+		last.action = currentActionExp;
+		last.id = currentActionID;
+	}
+
+	function beginIndent()
+	{
+		// 現在位置にインデントを設定
+		indentPos = getActualCurrentLinePtrPos();
+	}
+
+	// face プロパティ(レイヤの描画形式)のオーバーライド
+	property face
+	{
+		// 背景画像を表示している場合はメッセージ履歴表示用レイヤ(messageLayer)が
+		// 表示していない場合は本来のメッセージ履歴レイヤ(this)が
+		// 値の設定／取得の対象になります
+		setter(val)
+		{
+			if(messageLayer !== void)
+				messageLayer.face = val;
+			else
+				super.face = val;
+		}
+		getter()
+		{
+			if(messageLayer !== void)
+				return messageLayer.face;
+			return super.face;
+		}
+	}
+
+	property marker
+	{
+		getter()
+		{
+			return "\a";
+		}
+	}
+}

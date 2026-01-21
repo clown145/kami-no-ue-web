@@ -1,0 +1,8493 @@
+{
+  "source": "r_click_config.ks",
+  "tokens": [
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1
+    },
+    {
+      "type": "comment",
+      "text": " r_click_config.ks",
+      "line": 3
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 5
+    },
+    {
+      "type": "comment",
+      "text": " 右クリックサブルーチンのコンフィグ画面",
+      "line": 7
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 9
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 11
+    },
+    {
+      "type": "comment",
+      "text": " (1) コンフィグ画面の開始",
+      "line": 13
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 15
+    },
+    {
+      "type": "label",
+      "name": "config_menu",
+      "line": 17
+    },
+    {
+      "type": "comment",
+      "text": " スライダーオブジェクトを定義；右クリックサブルーチンが呼び出されるたびに作り直す",
+      "line": 19
+    },
+    {
+      "type": "comment",
+      "text": " コンフィグ画面でマウス右クリックされたら、前の画面に戻る",
+      "line": 21
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "jump": "true",
+        "target": "*close",
+        "storage": "r_click_config.ks",
+        "enabled": "true"
+      },
+      "line": 23
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞１に現在の状態を保存",
+      "line": 25
+    },
+    {
+      "type": "command",
+      "name": "tempsave",
+      "args": {
+        "place": "1"
+      },
+      "line": 27
+    },
+    {
+      "type": "comment",
+      "text": " 全メッセージレイヤ表画面を非表示",
+      "line": 29
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.i=0"
+      },
+      "line": 31
+    },
+    {
+      "type": "label",
+      "name": "config_menu_loop0",
+      "line": 35
+    },
+    {
+      "type": "comment",
+      "text": "@layopt layer=\"&'message'+tf.i\" page=fore visible=false",
+      "line": 37
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*config_menu_loop0",
+        "cond": "++tf.i<kag.numMessageLayers"
+      },
+      "line": 39
+    },
+    {
+      "type": "comment",
+      "text": " 全前景レイヤ表画面を非表示",
+      "line": 41
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.i=0"
+      },
+      "line": 43
+    },
+    {
+      "type": "label",
+      "name": "config_menu_loop1",
+      "line": 47
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.i",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 49
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*config_menu_loop1",
+        "cond": "++tf.i<kag.numCharacterLayers"
+      },
+      "line": 51
+    },
+    {
+      "type": "comment",
+      "text": " 前景レイヤが足りなければ追加（予めConfig.tjsのnumCharacterLayersを10以上にしておく方が良い）",
+      "line": 53
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "layers": "10",
+        "cond": "kag.numCharacterLayers<10"
+      },
+      "line": 55
+    },
+    {
+      "type": "comment",
+      "text": " 現在の前景レイヤ２の不透明度をsf.frame_opacityに代入しておく",
+      "line": 57
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"sf.frame_opacity"
+      },
+      "line": 59,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".opacity\"]",
+      "line": 59
+    },
+    {
+      "type": "label",
+      "name": "voice-back",
+      "line": 63
+    },
+    {
+      "type": "comment",
+      "text": " コンフィグ画面を背景レイヤに表示",
+      "line": 67
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "config_bg",
+        "layer": "base",
+        "page": "fore"
+      },
+      "line": 69
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 73
+    },
+    {
+      "type": "text",
+      "text": "// 背景レイヤ表画面上にスライダーを４個作成",
+      "line": 77
+    },
+    {
+      "type": "text",
+      "text": "tf.sliders = new Array();",
+      "line": 79
+    },
+    {
+      "type": "text",
+      "text": "for (var i = 0; i < 9; i++) {",
+      "line": 81
+    },
+    {
+      "type": "text",
+      "text": "tf.sliders",
+      "line": 83
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 83,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = new SliderLayer(kag, kag.fore.base);",
+      "line": 83
+    },
+    {
+      "type": "text",
+      "text": "//\twith (tf.sliders",
+      "line": 85
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 85,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 85
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.left = 50;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 87
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.top = 50*(i+1);\t// 同、Ｙ座標（ピクセル）",
+      "line": 89
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.width = 300;\t\t// スライダーの幅（ピクセル）",
+      "line": 91
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.height = 12;\t\t// 同、高さ（ピクセル）",
+      "line": 93
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.visible = true;\t// true時、スライダーを表示",
+      "line": 95
+    },
+    {
+      "type": "text",
+      "text": "//\t}",
+      "line": 97
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 99
+    },
+    {
+      "type": "text",
+      "text": "// ０番目のスライダーはメッセージ表示速度を調節する",
+      "line": 103
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 105
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 105,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 105
+    },
+    {
+      "type": "text",
+      "text": ".left = 136;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 109
+    },
+    {
+      "type": "text",
+      "text": ".top = 176;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 111
+    },
+    {
+      "type": "text",
+      "text": ".width = 430;\t\t// スライダーの幅（ピクセル）",
+      "line": 113
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 115
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 117
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 121
+    },
+    {
+      "type": "text",
+      "text": ".max = 60;\t\t// 同、最大値",
+      "line": 123
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.userChSpeed;\t// スライダーの初期値",
+      "line": 125
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 127
+    },
+    {
+      "type": "text",
+      "text": "kag.userChSpeed = pos;\t// スライダーを動かしたらメッセージ表示速度を変更",
+      "line": 129
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 131
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 133
+    },
+    {
+      "type": "text",
+      "text": "// １番目のスライダーは全体ポリュームを調節する",
+      "line": 137
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 139
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 139,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 139
+    },
+    {
+      "type": "text",
+      "text": ".left = 716;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 143
+    },
+    {
+      "type": "text",
+      "text": ".top = 176;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 145
+    },
+    {
+      "type": "text",
+      "text": ".width = 430;\t\t// スライダーの幅（ピクセル）",
+      "line": 147
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 149
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 151
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 155
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 157
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 159
+    },
+    {
+      "type": "text",
+      "text": "kag.bgm.currentBuffer.volume2 \\ 1000;",
+      "line": 161
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 163
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 163,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 163
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 165
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 165,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 165
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 167
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 167,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 167
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 169
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 169,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 169
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 171
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 171,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 171
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 173
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 173,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 173
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 175
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 175,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 175
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 177
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 177,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 177
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 179
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 179,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 179
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 181
+    },
+    {
+      "type": "command",
+      "name": "9",
+      "args": {},
+      "line": 181,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 181
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 183
+    },
+    {
+      "type": "command",
+      "name": "10",
+      "args": {},
+      "line": 183,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 183
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 185
+    },
+    {
+      "type": "command",
+      "name": "11",
+      "args": {},
+      "line": 185,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 185
+    },
+    {
+      "type": "text",
+      "text": "// スライダーの初期値",
+      "line": 187
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 189
+    },
+    {
+      "type": "text",
+      "text": "kag.bgm.setOptions(%",
+      "line": 191
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 191,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 191
+    },
+    {
+      "type": "text",
+      "text": "// スライダーを動かしたらBGMの大域音量を変更",
+      "line": 193
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 195
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 195
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 195,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 195
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 197
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 197,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 197
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 197,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 197
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 199
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 199,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 199
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 199,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 199
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 201
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 201
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 201,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 201
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 203
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 203,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 203
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 203,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 203
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 205
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 205,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 205
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 205,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 205
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 207
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 207,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 207
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 207,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 207
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 209
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 209
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 209,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 209
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 211
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 211
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 211,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 211
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 213
+    },
+    {
+      "type": "command",
+      "name": "9",
+      "args": {},
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 213
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 213,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 213
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 215
+    },
+    {
+      "type": "command",
+      "name": "10",
+      "args": {},
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 215
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 215,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 215
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 217
+    },
+    {
+      "type": "command",
+      "name": "11",
+      "args": {},
+      "line": 217,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 217
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 217,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 217
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 219
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 221
+    },
+    {
+      "type": "text",
+      "text": "// ２番目のスライダーはBGM大域音量を調節する",
+      "line": 225
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 227
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 227,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 227
+    },
+    {
+      "type": "text",
+      "text": ".left = 716;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 231
+    },
+    {
+      "type": "text",
+      "text": ".top = 267;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 233
+    },
+    {
+      "type": "text",
+      "text": ".width = 430;\t\t// スライダーの幅（ピクセル）",
+      "line": 235
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 237
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 239
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 243
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 245
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.bgm.currentBuffer.volume2 \\ 1000;\t// スライダーの初期値",
+      "line": 247
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 249
+    },
+    {
+      "type": "text",
+      "text": "kag.bgm.setOptions(%",
+      "line": 251
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 251,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");\t// スライダーを動かしたらBGMの大域音量を変更",
+      "line": 251
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 253
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 255
+    },
+    {
+      "type": "text",
+      "text": "// ３番目のスライダーは全効果音バッファの大域音量を調節する",
+      "line": 259
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 261
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 261,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 261
+    },
+    {
+      "type": "text",
+      "text": ".left = 716;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 265
+    },
+    {
+      "type": "text",
+      "text": ".top = 357;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 267
+    },
+    {
+      "type": "text",
+      "text": ".width = 430;\t\t// スライダーの幅（ピクセル）",
+      "line": 269
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 271
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 273
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 277
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 279
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 281
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 283
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 283,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 283
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 285
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 285,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 285
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 287
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 287,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 287
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 289
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 291
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 291,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 291
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 291,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 291
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 293
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 293,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 293
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 293,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 293
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 295
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 295,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 295
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 295,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 295
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 297
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 299
+    },
+    {
+      "type": "text",
+      "text": "// ４番目のスライダーはボイス",
+      "line": 303
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 305
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 305,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 305
+    },
+    {
+      "type": "text",
+      "text": ".left = 716;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 309
+    },
+    {
+      "type": "text",
+      "text": ".top = 447;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 311
+    },
+    {
+      "type": "text",
+      "text": ".width = 430;\t\t// スライダーの幅（ピクセル）",
+      "line": 313
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 315
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 317
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 321
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 323
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 325
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 327
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 327,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 327
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 329
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 329,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 329
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 331
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 331,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 331
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 333
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 333,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 333
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 335
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 335,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 335
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 337
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 337,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 337
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 339
+    },
+    {
+      "type": "command",
+      "name": "9",
+      "args": {},
+      "line": 339,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 339
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 341
+    },
+    {
+      "type": "command",
+      "name": "10",
+      "args": {},
+      "line": 341,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 341
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 343
+    },
+    {
+      "type": "command",
+      "name": "11",
+      "args": {},
+      "line": 343,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 343
+    },
+    {
+      "type": "text",
+      "text": "// スライダーの初期値",
+      "line": 347
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 349
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 351
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 351,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 351
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 351,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 351
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 353
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 353,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 353
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 353,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 353
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 355
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 355,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 355
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 355,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 355
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 357
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 357,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 357
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 357,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 357
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 359
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 359,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 359
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 359,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 359
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 361
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 361,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 361
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 361,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 361
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 363
+    },
+    {
+      "type": "command",
+      "name": "9",
+      "args": {},
+      "line": 363,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 363
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 363,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 363
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 365
+    },
+    {
+      "type": "command",
+      "name": "10",
+      "args": {},
+      "line": 365,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 365
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 365,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 365
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 367
+    },
+    {
+      "type": "command",
+      "name": "11",
+      "args": {},
+      "line": 367,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 367
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 367,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 367
+    },
+    {
+      "type": "text",
+      "text": "// スライダーを動かしたら効果音バッファ０の大域音量を変更",
+      "line": 369
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 371
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 373
+    },
+    {
+      "type": "text",
+      "text": "//オート速度",
+      "line": 377
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 381
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 381,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 381
+    },
+    {
+      "type": "text",
+      "text": ".left = 136;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 385
+    },
+    {
+      "type": "text",
+      "text": ".top = 267;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 387
+    },
+    {
+      "type": "text",
+      "text": ".width = 430;\t\t// スライダーの幅（ピクセル）",
+      "line": 389
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 391
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 393
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 397
+    },
+    {
+      "type": "text",
+      "text": ".max = 4000;\t\t// 同、最大値",
+      "line": 399
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.autoModePageWait;",
+      "line": 401
+    },
+    {
+      "type": "text",
+      "text": "kag.autoModeLineWait;",
+      "line": 403
+    },
+    {
+      "type": "text",
+      "text": "// スライダーの初期値",
+      "line": 405
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 407
+    },
+    {
+      "type": "text",
+      "text": "kag.autoModePageWait = pos;",
+      "line": 409
+    },
+    {
+      "type": "text",
+      "text": "kag.autoModeLineWait = pos;",
+      "line": 411
+    },
+    {
+      "type": "text",
+      "text": "// スライダーを動かしたらメッセージ表示速度を変更",
+      "line": 413
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 415
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 417
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 421
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 421,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 421
+    },
+    {
+      "type": "text",
+      "text": ".left = 136;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 423
+    },
+    {
+      "type": "text",
+      "text": ".top = 587;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 425
+    },
+    {
+      "type": "text",
+      "text": ".width = 430;\t\t// スライダーの幅（ピクセル）",
+      "line": 427
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 429
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 431
+    },
+    {
+      "type": "text",
+      "text": "// 前景レイヤ２表裏の不透明度を調節する",
+      "line": 435
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t\t// スライダーが扱う値の最小値",
+      "line": 437
+    },
+    {
+      "type": "text",
+      "text": ".max = 255;\t\t\t// 同、最大値",
+      "line": 439
+    },
+    {
+      "type": "text",
+      "text": ".position = sf.frame_opacity;\t// スライダーの現在値",
+      "line": 441
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 443
+    },
+    {
+      "type": "text",
+      "text": "sf.frame_opacity = pos;",
+      "line": 445
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 447
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 449
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 453
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 457,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "// 背景レイヤ表画面上にスライダーを作成",
+      "line": 459
+    },
+    {
+      "type": "text",
+      "text": "//tf.slider = new SliderLayer(kag, kag.fore.base);",
+      "line": 461
+    },
+    {
+      "type": "text",
+      "text": "//with (tf.slider) {",
+      "line": 463
+    },
+    {
+      "type": "text",
+      "text": "//\t.left = 123;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 465
+    },
+    {
+      "type": "text",
+      "text": "//\t.top = 318;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 467
+    },
+    {
+      "type": "text",
+      "text": "//\t.width = 335;\t\t// スライダーの幅（ピクセル）",
+      "line": 469
+    },
+    {
+      "type": "text",
+      "text": "//\t.height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 471
+    },
+    {
+      "type": "text",
+      "text": "//\t.visible = true;\t// true時、スライダーを表示",
+      "line": 473
+    },
+    {
+      "type": "text",
+      "text": "// 前景レイヤ２表裏の不透明度を調節する",
+      "line": 477
+    },
+    {
+      "type": "text",
+      "text": "//\t.min = 0;\t\t\t// スライダーが扱う値の最小値",
+      "line": 479
+    },
+    {
+      "type": "text",
+      "text": "//\t.max = 255;\t\t\t// 同、最大値",
+      "line": 481
+    },
+    {
+      "type": "text",
+      "text": "//\t.position = sf.frame_opacity;\t// スライダーの現在値",
+      "line": 483
+    },
+    {
+      "type": "text",
+      "text": "//\t.onChange = function(pos) {",
+      "line": 485
+    },
+    {
+      "type": "text",
+      "text": "//\t\tsf.frame_opacity = pos;",
+      "line": 487
+    },
+    {
+      "type": "text",
+      "text": "//\t} incontextof tf.slider;",
+      "line": 489
+    },
+    {
+      "type": "text",
+      "text": "//}",
+      "line": 491
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 493,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " セーブ画面で使用するメッセージレイヤ１つ目（グラフィカルボタンを配置するのに使用）",
+      "line": 499
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.config_message = 'message1'"
+      },
+      "line": 501,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ウィンドウ／フルスクリーン選択用マーカーの座標を配列で用意",
+      "line": 503
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.conf_scr_x"
+      },
+      "line": 505,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" cond=\"tf.conf_scr_x === void\"]",
+      "line": 505
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "\"tf.conf_scr_y"
+      },
+      "line": 507,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "\" cond=\"tf.conf_scr_y === void\"]",
+      "line": 507
+    },
+    {
+      "type": "comment",
+      "text": " 文字表示速度‐ページ末まで送るマーカーの座標を用意",
+      "line": 509
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.conf_spdopt_x = 621"
+      },
+      "line": 511,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.conf_spdopt_y = 136"
+      },
+      "line": 513,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 既読文字表示速度‐ページ末まで送るマーカーの座標を用意",
+      "line": 515
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.conf_spd2opt_x = 621"
+      },
+      "line": 517,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.conf_spd2opt_y = 216"
+      },
+      "line": 519,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 履歴レイヤを抑止",
+      "line": 523
+    },
+    {
+      "type": "command",
+      "name": "history",
+      "args": {
+        "output": "false",
+        "enabled": "false"
+      },
+      "line": 525,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 全メッセージレイヤ表画面、全前景レイヤ表画面を非表示にする",
+      "line": 527
+    },
+    {
+      "type": "command",
+      "name": "call",
+      "args": {
+        "storage": "system_subroutine.ks",
+        "target": "*sub_layernoshow"
+      },
+      "line": 529,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " カレントのメッセージレイヤをグラフィカルボタン表示用レイヤに変更",
+      "line": 533
+    },
+    {
+      "type": "command",
+      "name": "current",
+      "args": {
+        "layer": "&tf.config_message",
+        "page": "fore"
+      },
+      "line": 535,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタン表示用レイヤの属性を設定",
+      "line": 539
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "&tf.config_message",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "width": "&kag.scWidth",
+        "height": "&kag.scHeight",
+        "frame": null,
+        "color": "0x000000",
+        "opacity": "0",
+        "marginl": "0",
+        "margint": "0",
+        "marginr": "0",
+        "marginb": "0",
+        "draggable": "false",
+        "visible": "true"
+      },
+      "line": 541,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 文字表示速度‐ページ末まで送るのチェックマーク用ボタンを配置",
+      "line": 547
+    },
+    {
+      "type": "comment",
+      "text": "[locate x=354 y=273]",
+      "line": 549
+    },
+    {
+      "type": "comment",
+      "text": "[checkbox name=\"sf.allskip\" color=0x667fff num=0]",
+      "line": 551
+    },
+    {
+      "type": "comment",
+      "text": "[locate x=354 y=347]",
+      "line": 555
+    },
+    {
+      "type": "comment",
+      "text": "[checkbox name=\"sf.cskip\" color=0x667fff num=1]",
+      "line": 557
+    },
+    {
+      "type": "comment",
+      "text": "未読既読スキップ",
+      "line": 561
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.allskip"
+      },
+      "line": 563,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "261",
+        "y": "353"
+      },
+      "line": 565,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "kidoku-skip01.png",
+        "target": "*midoku-skip"
+      },
+      "line": 567,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "81",
+        "y": "353"
+      },
+      "line": 569,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "midoku-skip02.png",
+        "target": "*kidoku-skip"
+      },
+      "line": 571,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 573,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "261",
+        "y": "353"
+      },
+      "line": 575,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "kidoku-skip02.png",
+        "target": "*midoku-skip"
+      },
+      "line": 577,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "81",
+        "y": "353"
+      },
+      "line": 579,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "midoku-skip01.png",
+        "target": "*kidoku-skip"
+      },
+      "line": 581,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 583,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ウィンドウ／フルスクリーン状態のチェックマーク用ボタンを配置",
+      "line": 587
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "kag.fullScreen"
+      },
+      "line": 589,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "81",
+        "y": "493"
+      },
+      "line": 591,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "win01.png",
+        "target": "*config_window"
+      },
+      "line": 593,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "261",
+        "y": "493"
+      },
+      "line": 595,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "full02.png",
+        "target": "*config_fullscreen"
+      },
+      "line": 597,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 599,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "81",
+        "y": "493"
+      },
+      "line": 601,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "win02.png",
+        "target": "*config_window"
+      },
+      "line": 603,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "261",
+        "y": "493"
+      },
+      "line": 605,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "full01.png",
+        "target": "*config_fullscreen"
+      },
+      "line": 607,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 609,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "エフェクトスキップ",
+      "line": 613
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "676",
+        "y": "555"
+      },
+      "line": 615,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip"
+      },
+      "line": 617,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "checkbox02.png",
+        "target": "*cskip"
+      },
+      "line": 619,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 621,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "checkbox01.png",
+        "target": "*cskip"
+      },
+      "line": 623,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 625,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "セーブロード確認オンオフ",
+      "line": 629
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "676",
+        "y": "584"
+      },
+      "line": 631,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.Asksave"
+      },
+      "line": 633,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "checkbox01.png",
+        "target": "*Asksave"
+      },
+      "line": 635,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 637,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "checkbox02.png",
+        "target": "*Asksave"
+      },
+      "line": 639,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 641,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "ボイス再生中にスキップオンオフ",
+      "line": 645
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "676",
+        "y": "615"
+      },
+      "line": 647,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_cut"
+      },
+      "line": 649,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "checkbox01.png",
+        "target": "*voice_cut"
+      },
+      "line": 651,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 653,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "checkbox02.png",
+        "target": "*voice_cut"
+      },
+      "line": 655,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 657,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「戻る」用ボタンを配置",
+      "line": 661
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "713",
+        "y": "683"
+      },
+      "line": 663,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-back.png",
+        "storage": "r_click_config.ks",
+        "target": "*close",
+        "recthit": "false"
+      },
+      "line": 665,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「終了」用ボタンを配置",
+      "line": 669
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "583",
+        "y": "683"
+      },
+      "line": 671,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-exit.png",
+        "exp": "kag.close()"
+      },
+      "line": 673,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトル」用ボタンを配置",
+      "line": 677
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "453",
+        "y": "683"
+      },
+      "line": 679,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-title.png",
+        "storage": "r_click_config.ks",
+        "target": "*config_title",
+        "recthit": "false"
+      },
+      "line": 681,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「デフォルト」用ボタンを配置",
+      "line": 685
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "1096",
+        "y": "662"
+      },
+      "line": 687,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "system-default.png",
+        "storage": "r_click_config.ks",
+        "target": "*config_default",
+        "recthit": "false"
+      },
+      "line": 689,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「システムページ」用ボタンを配置",
+      "line": 693
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "987",
+        "y": "0"
+      },
+      "line": 695,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "systempage02.png",
+        "storage": "r_click_config.ks",
+        "target": "*systempage",
+        "recthit": "false"
+      },
+      "line": 697,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ボイス」用ボタンを配置",
+      "line": 701
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "1097",
+        "y": "0"
+      },
+      "line": 703,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "voicepage01.png",
+        "storage": "r_click_config.ks",
+        "target": "*config_voicepage",
+        "recthit": "false"
+      },
+      "line": 705,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 709
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 713
+    },
+    {
+      "type": "comment",
+      "text": " 「デフォルト」が選択された",
+      "line": 715
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 717
+    },
+    {
+      "type": "label",
+      "name": "config_default",
+      "line": 719
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 721,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 文字表示速度を初期値（普通）に変更",
+      "line": 723
+    },
+    {
+      "type": "comment",
+      "text": "@slider_setopt name=chspeed position=\"&kag.chSpeeds.normal\"",
+      "line": 725
+    },
+    {
+      "type": "comment",
+      "text": " 文字表示速度の「ページ末まで一気に」がチェックされていたら…",
+      "line": 727
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 731,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 733
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 733,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 733
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.chSpeeds.fast = 0;\t// スライダーの初期値",
+      "line": 735
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 737
+    },
+    {
+      "type": "text",
+      "text": "// マスター音量",
+      "line": 741
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 743
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 743,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 743
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.bgm.currentBuffer.volume2 = 35;",
+      "line": 745
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 747
+    },
+    {
+      "type": "text",
+      "text": "// ２番目のスライダーはBGM大域音量を調節する",
+      "line": 751
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 753
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 753,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 753
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.bgm.currentBuffer.volume2 = 35;\t// スライダーの初期値",
+      "line": 755
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 757
+    },
+    {
+      "type": "text",
+      "text": "// ３番目のスライダーは全効果音バッファの大域音量を調節する",
+      "line": 761
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 763
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 763,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 763
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 765
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 765,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 55;",
+      "line": 765
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 767
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 767,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 55;",
+      "line": 767
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 769
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 769,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 55;",
+      "line": 769
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 771
+    },
+    {
+      "type": "text",
+      "text": "//ボイスのマスター音量",
+      "line": 773
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 777
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 777,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 777
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 779
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 779,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 779
+    },
+    {
+      "type": "text",
+      "text": ".position =\tkag.se",
+      "line": 781
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 781,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 781
+    },
+    {
+      "type": "text",
+      "text": ".position =\tkag.se",
+      "line": 783
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 783,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 783
+    },
+    {
+      "type": "text",
+      "text": ".position =\tkag.se",
+      "line": 785
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 785,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 67;",
+      "line": 785
+    },
+    {
+      "type": "text",
+      "text": ".position =\tkag.se",
+      "line": 787
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 787,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 787
+    },
+    {
+      "type": "text",
+      "text": ".position =\tkag.se",
+      "line": 789
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 789,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 789
+    },
+    {
+      "type": "text",
+      "text": ".position =\tkag.se",
+      "line": 791
+    },
+    {
+      "type": "command",
+      "name": "9",
+      "args": {},
+      "line": 791,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 791
+    },
+    {
+      "type": "text",
+      "text": ".position =\tkag.se",
+      "line": 793
+    },
+    {
+      "type": "command",
+      "name": "10",
+      "args": {},
+      "line": 793,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 793
+    },
+    {
+      "type": "text",
+      "text": ".position =\tkag.se",
+      "line": 795
+    },
+    {
+      "type": "command",
+      "name": "11",
+      "args": {},
+      "line": 795,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 795
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 797
+    },
+    {
+      "type": "text",
+      "text": "//オート速度",
+      "line": 799
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 801
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 801,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 801
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.autoModePageWaits.medium = 1000;",
+      "line": 803
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 805
+    },
+    {
+      "type": "text",
+      "text": "// 透明度",
+      "line": 807
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 809
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 809,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 809
+    },
+    {
+      "type": "text",
+      "text": ".position = sf.frame_opacity = 200;",
+      "line": 811
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 813
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 815,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.allskip"
+      },
+      "line": 819,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " チェックマークをオフに変更",
+      "line": 821
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "1",
+        "graphic": "midoku-skip01.png"
+      },
+      "line": 823
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "0",
+        "graphic": "kidoku-skip02.png"
+      },
+      "line": 825
+    },
+    {
+      "type": "comment",
+      "text": " 未読スキップのチェックを解除",
+      "line": 827
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onAllSkipClick(kag)"
+      },
+      "line": 829,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 831,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " フルスクリーンなら…",
+      "line": 833
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "kag.fullScreen"
+      },
+      "line": 835,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " チェックマークのオン／オフを変更",
+      "line": 837
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "3",
+        "graphic": "full01.png"
+      },
+      "line": 839
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "2",
+        "graphic": "win02.png"
+      },
+      "line": 841
+    },
+    {
+      "type": "comment",
+      "text": " ウィンドウ表示にする",
+      "line": 843
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onWindowedMenuItemClick(kag)"
+      },
+      "line": 845,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 847,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.cskip"
+      },
+      "line": 851,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "4",
+        "graphic": "checkbox02.png"
+      },
+      "line": 853
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 855
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.oncSkipClick(kag)"
+      },
+      "line": 857,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 859,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.Asksave"
+      },
+      "line": 863,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " チェックマークをオフに変更",
+      "line": 865
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "5",
+        "graphic": "checkbox02.png"
+      },
+      "line": 867
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 869
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onAsksaveClick(kag)"
+      },
+      "line": 871,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 873,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_cut"
+      },
+      "line": 877,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " チェックマークをオフに変更",
+      "line": 879
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "6",
+        "graphic": "checkbox02.png"
+      },
+      "line": 881
+    },
+    {
+      "type": "comment",
+      "text": " 未読スキップのチェックを解除",
+      "line": 883
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_cutClick(kag)"
+      },
+      "line": 885,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 887,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 893,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 899
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 901
+    },
+    {
+      "type": "comment",
+      "text": " 「既読オフ」が選択された",
+      "line": 903
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 905
+    },
+    {
+      "type": "label",
+      "name": "kidoku-skip",
+      "line": 907
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 909,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " オンなら…",
+      "line": 911
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.allskip"
+      },
+      "line": 913,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " チェックマークのオン／オフを変更",
+      "line": 915
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "1",
+        "graphic": "midoku-skip02.png"
+      },
+      "line": 917
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "0",
+        "graphic": "kidoku-skip01.png"
+      },
+      "line": 919
+    },
+    {
+      "type": "comment",
+      "text": " オフ表示にする",
+      "line": 921
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 923,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "sf.allskip = true;",
+      "line": 925
+    },
+    {
+      "type": "text",
+      "text": "if(typeof kag.allSkipMenuItem != \"undefined\")",
+      "line": 927
+    },
+    {
+      "type": "text",
+      "text": "kag.allSkipMenuItem.checked = sf.allskip;",
+      "line": 929
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 931,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 933,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 935,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 941
+    },
+    {
+      "type": "comment",
+      "text": " 「未読オン」が選択された",
+      "line": 943
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 945
+    },
+    {
+      "type": "label",
+      "name": "midoku-skip",
+      "line": 947
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 949,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " オフ表示状態なら…",
+      "line": 951
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.allskip"
+      },
+      "line": 953,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " チェックマークのオン／オフを変更",
+      "line": 955
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "1",
+        "graphic": "midoku-skip01.png"
+      },
+      "line": 957
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "0",
+        "graphic": "kidoku-skip02.png"
+      },
+      "line": 959
+    },
+    {
+      "type": "comment",
+      "text": " オンにする",
+      "line": 961
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 963,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "sf.allskip = false;",
+      "line": 965
+    },
+    {
+      "type": "text",
+      "text": "if(typeof kag.allSkipMenuItem != \"undefined\")",
+      "line": 967
+    },
+    {
+      "type": "text",
+      "text": "kag.allSkipMenuItem.checked = sf.allskip;",
+      "line": 969
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 971,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 973,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 975,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 979
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 983
+    },
+    {
+      "type": "comment",
+      "text": " 「ウィンドウ」が選択された",
+      "line": 985
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 987
+    },
+    {
+      "type": "label",
+      "name": "config_window",
+      "line": 989
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 991,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " フルスクリーンなら…",
+      "line": 993
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "kag.fullScreen"
+      },
+      "line": 995,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " チェックマークのオン／オフを変更",
+      "line": 997
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "3",
+        "graphic": "full01.png"
+      },
+      "line": 999
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "2",
+        "graphic": "win02.png"
+      },
+      "line": 1001
+    },
+    {
+      "type": "comment",
+      "text": " ウィンドウ表示にする",
+      "line": 1003
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onWindowedMenuItemClick(kag)"
+      },
+      "line": 1005,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1007,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1009,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1013
+    },
+    {
+      "type": "comment",
+      "text": " 「フルスクリーン」が選択された",
+      "line": 1015
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1017
+    },
+    {
+      "type": "label",
+      "name": "config_fullscreen",
+      "line": 1019
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1021,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " ウィンドウ表示状態なら…",
+      "line": 1023
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!kag.fullScreen"
+      },
+      "line": 1025,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " チェックマークのオン／オフを変更",
+      "line": 1027
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "3",
+        "graphic": "full02.png"
+      },
+      "line": 1029
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "2",
+        "graphic": "win01.png"
+      },
+      "line": 1031
+    },
+    {
+      "type": "comment",
+      "text": " フルスクリーンにする",
+      "line": 1033
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onFullScreenMenuItemClick(kag)"
+      },
+      "line": 1035,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1037,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1039,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================;",
+      "line": 1041
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1043
+    },
+    {
+      "type": "comment",
+      "text": " 「エフェクトオン/オフ」が選択された",
+      "line": 1045
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1047
+    },
+    {
+      "type": "label",
+      "name": "cskip",
+      "line": 1049
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1051,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1053
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.cskip"
+      },
+      "line": 1055,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "4",
+        "graphic": "checkbox01.png"
+      },
+      "line": 1057
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1059,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "4",
+        "graphic": "checkbox02.png"
+      },
+      "line": 1061
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1063,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1065
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.oncSkipClick(kag)"
+      },
+      "line": 1067,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1069,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1073
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1077
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1079
+    },
+    {
+      "type": "comment",
+      "text": " 「セーブロード確認のオンオフが選択された",
+      "line": 1081
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1083
+    },
+    {
+      "type": "label",
+      "name": "Asksave",
+      "line": 1085
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1087,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1089
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.Asksave"
+      },
+      "line": 1091,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "5",
+        "graphic": "checkbox02.png"
+      },
+      "line": 1093
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1095,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "5",
+        "graphic": "checkbox01.png"
+      },
+      "line": 1097
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1099,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1101
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onAsksaveClick(kag)"
+      },
+      "line": 1103,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1105,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1109
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1111
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1113
+    },
+    {
+      "type": "comment",
+      "text": " 「セーブロード確認のオンオフが選択された",
+      "line": 1115
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1117
+    },
+    {
+      "type": "label",
+      "name": "voice_cut",
+      "line": 1119
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1121,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1123
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_cut"
+      },
+      "line": 1125,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "6",
+        "graphic": "checkbox02.png"
+      },
+      "line": 1127
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1129,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "6",
+        "graphic": "checkbox01.png"
+      },
+      "line": 1131
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1133,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1135
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_cutClick(kag)"
+      },
+      "line": 1137,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1139,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1143
+    },
+    {
+      "type": "comment",
+      "text": "----------------------------------------------------------------------------",
+      "line": 1145
+    },
+    {
+      "type": "label",
+      "name": "config_voicepage",
+      "line": 1147
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 1149,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "// スライダーオブジェクトを無効化",
+      "line": 1151
+    },
+    {
+      "type": "text",
+      "text": "for (var i = 0; i < tf.sliders.count; i++)",
+      "line": 1153
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders",
+      "line": 1155
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 1155,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 1155
+    },
+    {
+      "type": "text",
+      "text": "// 配列を無効化",
+      "line": 1157
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders;",
+      "line": 1159
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 1161,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "commit",
+      "args": {},
+      "line": 1163,
+      "inline": true
+    },
+    {
+      "type": "label",
+      "name": "voice_menu_loop0",
+      "line": 1167
+    },
+    {
+      "type": "comment",
+      "text": "@layopt layer=\"&'message'+tf.i\" page=fore visible=false",
+      "line": 1169
+    },
+    {
+      "type": "comment",
+      "text": "@jump target=*voice_menu_loop0 cond=\"++tf.i<kag.numMessageLayers\"",
+      "line": 1171
+    },
+    {
+      "type": "comment",
+      "text": " 全前景レイヤ表画面を非表示",
+      "line": 1173
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "tf.i=0"
+      },
+      "line": 1175
+    },
+    {
+      "type": "label",
+      "name": "voice_menu_loop1",
+      "line": 1179
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.i",
+        "page": "fore",
+        "visible": "false"
+      },
+      "line": 1181
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*voice_menu_loop1",
+        "cond": "++tf.i<kag.numCharacterLayers"
+      },
+      "line": 1183
+    },
+    {
+      "type": "comment",
+      "text": " 前景レイヤが足りなければ追加（予めConfig.tjsのnumCharacterLayersを10以上にしておく方が良い）",
+      "line": 1185
+    },
+    {
+      "type": "command",
+      "name": "laycount",
+      "args": {
+        "layers": "10",
+        "cond": "kag.numCharacterLayers<10"
+      },
+      "line": 1187
+    },
+    {
+      "type": "comment",
+      "text": " コンフィグ画面を背景レイヤに表示",
+      "line": 1189
+    },
+    {
+      "type": "command",
+      "name": "image",
+      "args": {
+        "storage": "voice_bg",
+        "layer": "base",
+        "page": "fore"
+      },
+      "line": 1191
+    },
+    {
+      "type": "comment",
+      "text": " グラフィカルボタン表示用レイヤの属性を設定",
+      "line": 1195
+    },
+    {
+      "type": "command",
+      "name": "position",
+      "args": {
+        "layer": "&tf.config_message",
+        "page": "fore",
+        "left": "0",
+        "top": "0",
+        "width": "&kag.scWidth",
+        "height": "&kag.scHeight",
+        "frame": null,
+        "color": "0x000000",
+        "opacity": "0",
+        "marginl": "0",
+        "margint": "0",
+        "marginr": "0",
+        "marginb": "0",
+        "draggable": "false",
+        "visible": "true"
+      },
+      "line": 1197,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " スライダーオブジェクトを定義；右クリックサブルーチンが呼び出されるたびに作り直す",
+      "line": 1201
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 1203
+    },
+    {
+      "type": "text",
+      "text": "// 背景レイヤ表画面上にスライダーを４個作成",
+      "line": 1207
+    },
+    {
+      "type": "text",
+      "text": "tf.sliders = new Array();",
+      "line": 1209
+    },
+    {
+      "type": "text",
+      "text": "for (var i = 0; i < 9; i++) {",
+      "line": 1211
+    },
+    {
+      "type": "text",
+      "text": "tf.sliders",
+      "line": 1213
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 1213,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": " = new SliderLayer(kag, kag.fore.base);",
+      "line": 1213
+    },
+    {
+      "type": "text",
+      "text": "//\twith (tf.sliders",
+      "line": 1215
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 1215,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1215
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.left = 50;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1217
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.top = 50*(i+1);\t// 同、Ｙ座標（ピクセル）",
+      "line": 1219
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.width = 300;\t\t// スライダーの幅（ピクセル）",
+      "line": 1221
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.height = 12;\t\t// 同、高さ（ピクセル）",
+      "line": 1223
+    },
+    {
+      "type": "text",
+      "text": "//\t\t.visible = true;\t// true時、スライダーを表示",
+      "line": 1225
+    },
+    {
+      "type": "text",
+      "text": "//\t}",
+      "line": 1227
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1229
+    },
+    {
+      "type": "text",
+      "text": "// 夜子",
+      "line": 1233
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1235
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 1235,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1235
+    },
+    {
+      "type": "text",
+      "text": ".left = 250;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1239
+    },
+    {
+      "type": "text",
+      "text": ".top = 186;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1241
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1243
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1245
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1247
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1251
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1253
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1255
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 1255,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 1255
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1257
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1259
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 1259,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1259
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1259,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "); \t// スライダーを動かしたらメッセージ表示速度を変更",
+      "line": 1259
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1261
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1263
+    },
+    {
+      "type": "text",
+      "text": "// かなた",
+      "line": 1267
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1269
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 1269,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1269
+    },
+    {
+      "type": "text",
+      "text": ".left = 250;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1273
+    },
+    {
+      "type": "text",
+      "text": ".top = 286;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1275
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1277
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1279
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1281
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1285
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1287
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1289
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 1289,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 1289
+    },
+    {
+      "type": "text",
+      "text": "// スライダーの初期値",
+      "line": 1293
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1295
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1297
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 1297,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1297
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1297,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 1297
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1299
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1301
+    },
+    {
+      "type": "text",
+      "text": "// 妃",
+      "line": 1305
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1307
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 1307,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1307
+    },
+    {
+      "type": "text",
+      "text": ".left = 250;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1311
+    },
+    {
+      "type": "text",
+      "text": ".top = 386;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1313
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1315
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1317
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1319
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1323
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1325
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1327
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 1327,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;\t// スライダーの初期値",
+      "line": 1327
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1329
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1331
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 1331,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1331
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1331,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "); \t// スライダーを動かしたらBGMの大域音量を変更",
+      "line": 1331
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1333
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1335
+    },
+    {
+      "type": "text",
+      "text": "// 理央",
+      "line": 1339
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1341
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 1341,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1341
+    },
+    {
+      "type": "text",
+      "text": ".left = 250;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1345
+    },
+    {
+      "type": "text",
+      "text": ".top = 486;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1347
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1349
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1351
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1353
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1357
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1359
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1361
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 1361,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 1361
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1363
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1365
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 1365,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1365
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1365,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 1365
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1367
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1369
+    },
+    {
+      "type": "text",
+      "text": "//汀",
+      "line": 1371
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1375
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 1375,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1375
+    },
+    {
+      "type": "text",
+      "text": ".left = 250;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1379
+    },
+    {
+      "type": "text",
+      "text": ".top = 586;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1381
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1383
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1385
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1387
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1391
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1393
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1395
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 1395,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;",
+      "line": 1395
+    },
+    {
+      "type": "text",
+      "text": "// スライダーの初期値",
+      "line": 1399
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1401
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1403
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 1403,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1403
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1403,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ");",
+      "line": 1403
+    },
+    {
+      "type": "text",
+      "text": "// スライダーを動かしたら効果音バッファ０の大域音量を変更",
+      "line": 1405
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1407
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1409
+    },
+    {
+      "type": "text",
+      "text": "//闇子",
+      "line": 1413
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1417
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 1417,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1417
+    },
+    {
+      "type": "text",
+      "text": ".left = 830;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1421
+    },
+    {
+      "type": "text",
+      "text": ".top = 186;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1423
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1425
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1427
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1429
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1433
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1435
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1439
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 1439,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;\t// スライダーの初期値",
+      "line": 1439
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1441
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1443
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 1443,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1443
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1443,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "); \t// スライダーを動かしたらメッセージ表示速度を変更",
+      "line": 1443
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1445
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1447
+    },
+    {
+      "type": "text",
+      "text": "//奏",
+      "line": 1449
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1451
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 1451,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1451
+    },
+    {
+      "type": "text",
+      "text": ".left = 830;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1455
+    },
+    {
+      "type": "text",
+      "text": ".top = 286;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1457
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1459
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1461
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1463
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1467
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1469
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1471
+    },
+    {
+      "type": "command",
+      "name": "9",
+      "args": {},
+      "line": 1471,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;\t// スライダーの初期値",
+      "line": 1471
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1473
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1475
+    },
+    {
+      "type": "command",
+      "name": "9",
+      "args": {},
+      "line": 1475,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1475
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1475,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "); \t// スライダーを動かしたらメッセージ表示速度を変更",
+      "line": 1475
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1477
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1479
+    },
+    {
+      "type": "text",
+      "text": "//岬",
+      "line": 1481
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1483
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 1483,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1483
+    },
+    {
+      "type": "text",
+      "text": ".left = 830;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1487
+    },
+    {
+      "type": "text",
+      "text": ".top = 386;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1489
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1491
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1493
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1495
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1499
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1501
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1503
+    },
+    {
+      "type": "command",
+      "name": "10",
+      "args": {},
+      "line": 1503,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;\t// スライダーの初期値",
+      "line": 1503
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1505
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1507
+    },
+    {
+      "type": "command",
+      "name": "10",
+      "args": {},
+      "line": 1507,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1507
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1507,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "); \t// スライダーを動かしたらメッセージ表示速度を変更",
+      "line": 1507
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1509
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1511
+    },
+    {
+      "type": "text",
+      "text": "//クリソベリル",
+      "line": 1513
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 1515
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 1515,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 1515
+    },
+    {
+      "type": "text",
+      "text": ".left = 830;\t\t\t// スライダーのＸ座標（ピクセル）",
+      "line": 1519
+    },
+    {
+      "type": "text",
+      "text": ".top = 486;\t\t\t// 同、Ｙ座標（ピクセル）",
+      "line": 1521
+    },
+    {
+      "type": "text",
+      "text": ".width = 310;\t\t// スライダーの幅（ピクセル）",
+      "line": 1523
+    },
+    {
+      "type": "text",
+      "text": ".height = 24;\t\t// 同、高さ（ピクセル）",
+      "line": 1525
+    },
+    {
+      "type": "text",
+      "text": ".visible = true;\t// true時、スライダーを表示",
+      "line": 1527
+    },
+    {
+      "type": "text",
+      "text": ".min = 0;\t\t// スライダーが扱う値の最小値",
+      "line": 1531
+    },
+    {
+      "type": "text",
+      "text": ".max = 100;\t\t// 同、最大値",
+      "line": 1533
+    },
+    {
+      "type": "text",
+      "text": ".position = kag.se",
+      "line": 1535
+    },
+    {
+      "type": "command",
+      "name": "11",
+      "args": {},
+      "line": 1535,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 \\ 1000;\t// スライダーの初期値",
+      "line": 1535
+    },
+    {
+      "type": "text",
+      "text": ".onChange = function(pos) {",
+      "line": 1537
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 1539
+    },
+    {
+      "type": "command",
+      "name": "11",
+      "args": {},
+      "line": 1539,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".setOptions(%",
+      "line": 1539
+    },
+    {
+      "type": "command",
+      "name": "\"gvolume\"=>pos",
+      "args": {},
+      "line": 1539,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "); \t// スライダーを動かしたらメッセージ表示速度を変更",
+      "line": 1539
+    },
+    {
+      "type": "text",
+      "text": "};",
+      "line": 1541
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 1543
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 1545
+    },
+    {
+      "type": "comment",
+      "text": "夜子ボイス/オンオフ",
+      "line": 1553
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "80",
+        "y": "146"
+      },
+      "line": 1555,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_01"
+      },
+      "line": 1557,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "yoruko-voice01",
+        "target": "*yoruko-onoff"
+      },
+      "line": 1559,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1561,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "yoruko-voice02",
+        "target": "*yoruko-onoff"
+      },
+      "line": 1563,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1565,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "かなたボイス/オンオフ",
+      "line": 1569
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "80",
+        "y": "246"
+      },
+      "line": 1571,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_02"
+      },
+      "line": 1573,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "kanata-voice01",
+        "target": "*kanata-onoff"
+      },
+      "line": 1575,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1577,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "kanata-voice02",
+        "target": "*kanata-onoff"
+      },
+      "line": 1579,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1581,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "妃ボイス/オンオフ",
+      "line": 1585
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "80",
+        "y": "346"
+      },
+      "line": 1587,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_03"
+      },
+      "line": 1589,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "kisaki-voice01",
+        "target": "*kisaki-onoff"
+      },
+      "line": 1591,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1593,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "kisaki-voice02",
+        "target": "*kisaki-onoff"
+      },
+      "line": 1595,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1597,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "理央ボイス/オンオフ",
+      "line": 1601
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "80",
+        "y": "446"
+      },
+      "line": 1603,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_04"
+      },
+      "line": 1605,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "rio-voice01",
+        "target": "*rio-onoff"
+      },
+      "line": 1607,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1609,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "rio-voice02",
+        "target": "*rio-onoff"
+      },
+      "line": 1611,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1613,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "汀ボイス/オンオフ",
+      "line": 1617
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "80",
+        "y": "546"
+      },
+      "line": 1619,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_05"
+      },
+      "line": 1621,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "nagisa-voice01",
+        "target": "*nagisa-onoff"
+      },
+      "line": 1623,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1625,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "nagisa-voice02",
+        "target": "*nagisa-onoff"
+      },
+      "line": 1627,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1629,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "闇子ボイス/オンオフ",
+      "line": 1633
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "661",
+        "y": "146"
+      },
+      "line": 1635,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_06"
+      },
+      "line": 1637,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "yamiko-voice01",
+        "target": "*yamiko-onoff"
+      },
+      "line": 1639,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1641,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "yamiko-voice02",
+        "target": "*yamiko-onoff"
+      },
+      "line": 1643,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1645,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "奏ボイス/オンオフ",
+      "line": 1649
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "661",
+        "y": "246"
+      },
+      "line": 1651,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_07"
+      },
+      "line": 1653,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "kanade-voice01",
+        "target": "*kanade-onoff"
+      },
+      "line": 1655,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1657,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "kanade-voice02",
+        "target": "*kanade-onoff"
+      },
+      "line": 1659,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1661,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "岬ボイス/オンオフ",
+      "line": 1665
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "661",
+        "y": "346"
+      },
+      "line": 1667,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_08"
+      },
+      "line": 1669,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "misaki-voice01",
+        "target": "*misaki-onoff"
+      },
+      "line": 1671,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1673,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "misaki-voice02",
+        "target": "*misaki-onoff"
+      },
+      "line": 1675,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1677,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "クリソベリルボイス/オンオフ",
+      "line": 1681
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "661",
+        "y": "446"
+      },
+      "line": 1683,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_09"
+      },
+      "line": 1685,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "chryso-voice01",
+        "target": "*chryso-onoff"
+      },
+      "line": 1687,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1689,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "chryso-voice02",
+        "target": "*chryso-onoff"
+      },
+      "line": 1691,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1693,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「戻る」用ボタンを配置",
+      "line": 1699
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "713",
+        "y": "683"
+      },
+      "line": 1701,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-back.png",
+        "storage": "r_click_config.ks",
+        "target": "*close",
+        "recthit": "false"
+      },
+      "line": 1703,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「終了」用ボタンを配置",
+      "line": 1707
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "583",
+        "y": "683"
+      },
+      "line": 1709,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-exit.png",
+        "exp": "kag.close()"
+      },
+      "line": 1711,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトル」用ボタンを配置",
+      "line": 1715
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "453",
+        "y": "683"
+      },
+      "line": 1717,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "config-title.png",
+        "storage": "r_click_config.ks",
+        "target": "*voice_title",
+        "recthit": "false"
+      },
+      "line": 1719,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ボイスデフォルト」用ボタンを配置",
+      "line": 1723
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "1096",
+        "y": "662"
+      },
+      "line": 1725,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "system-default.png",
+        "storage": "r_click_config.ks",
+        "target": "*voice_default",
+        "recthit": "false"
+      },
+      "line": 1727,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「システムページ」用ボタンを配置",
+      "line": 1731
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "987",
+        "y": "0"
+      },
+      "line": 1733,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "systempage01.png",
+        "storage": "r_click_config.ks",
+        "target": "*systempage",
+        "recthit": "false"
+      },
+      "line": 1735,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ボイス」用ボタンを配置",
+      "line": 1739
+    },
+    {
+      "type": "command",
+      "name": "locate",
+      "args": {
+        "x": "1097",
+        "y": "0"
+      },
+      "line": 1741,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button",
+      "args": {
+        "graphic": "voicepage02.png",
+        "storage": "r_click_config.ks",
+        "target": "*config_voicepage",
+        "recthit": "false"
+      },
+      "line": 1743,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1747,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1751
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1753
+    },
+    {
+      "type": "comment",
+      "text": " 「夜子ボイスオン/オフ」が選択された",
+      "line": 1755
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1757
+    },
+    {
+      "type": "label",
+      "name": "yoruko-onoff",
+      "line": 1759
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1761,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1763
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_01"
+      },
+      "line": 1765,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "0",
+        "graphic": "yoruko-voice02"
+      },
+      "line": 1767
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1769,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "0",
+        "graphic": "yoruko-voice01"
+      },
+      "line": 1771
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1773,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1775
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_01Click(kag)"
+      },
+      "line": 1777,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1779,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1783
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1785
+    },
+    {
+      "type": "comment",
+      "text": " 「かなたボイスオン/オフ」が選択された",
+      "line": 1787
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1789
+    },
+    {
+      "type": "label",
+      "name": "kanata-onoff",
+      "line": 1791
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1793,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1795
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_02"
+      },
+      "line": 1797,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "1",
+        "graphic": "kanata-voice02"
+      },
+      "line": 1799
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1801,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "1",
+        "graphic": "kanata-voice01"
+      },
+      "line": 1803
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1805,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1807
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_02Click(kag)"
+      },
+      "line": 1809,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1811,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1815
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1817
+    },
+    {
+      "type": "comment",
+      "text": " 「妃ボイスオン/オフ」が選択された",
+      "line": 1819
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1821
+    },
+    {
+      "type": "label",
+      "name": "kisaki-onoff",
+      "line": 1823
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1825,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1827
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_03"
+      },
+      "line": 1829,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "2",
+        "graphic": "kisaki-voice02"
+      },
+      "line": 1831
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1833,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "2",
+        "graphic": "kisaki-voice01"
+      },
+      "line": 1835
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1837,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1839
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_03Click(kag)"
+      },
+      "line": 1841,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1843,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1847
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1849
+    },
+    {
+      "type": "comment",
+      "text": " 「理央ボイスオン/オフ」が選択された",
+      "line": 1851
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1853
+    },
+    {
+      "type": "label",
+      "name": "rio-onoff",
+      "line": 1855
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1857,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1859
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_04"
+      },
+      "line": 1861,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "3",
+        "graphic": "rio-voice02"
+      },
+      "line": 1863
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1865,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "3",
+        "graphic": "rio-voice01"
+      },
+      "line": 1867
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1869,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1871
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_04Click(kag)"
+      },
+      "line": 1873,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1875,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1879
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1881
+    },
+    {
+      "type": "comment",
+      "text": " 「汀ボイスオン/オフ」が選択された",
+      "line": 1883
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1885
+    },
+    {
+      "type": "label",
+      "name": "nagisa-onoff",
+      "line": 1887
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1889,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1891
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_05"
+      },
+      "line": 1893,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "4",
+        "graphic": "nagisa-voice02"
+      },
+      "line": 1895
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1897,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "4",
+        "graphic": "nagisa-voice01"
+      },
+      "line": 1899
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1901,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1903
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_05Click(kag)"
+      },
+      "line": 1905,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1907,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1911
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1913
+    },
+    {
+      "type": "comment",
+      "text": " 「闇子ボイスオン/オフ」が選択された",
+      "line": 1915
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1917
+    },
+    {
+      "type": "label",
+      "name": "yamiko-onoff",
+      "line": 1919
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1921,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1923
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_06"
+      },
+      "line": 1925,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "5",
+        "graphic": "yamiko-voice02"
+      },
+      "line": 1927
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1929,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "5",
+        "graphic": "yamiko-voice01"
+      },
+      "line": 1931
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1933,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1935
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_06Click(kag)"
+      },
+      "line": 1937,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1939,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1943
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1945
+    },
+    {
+      "type": "comment",
+      "text": " 「奏ボイスオン/オフ」が選択された",
+      "line": 1947
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1949
+    },
+    {
+      "type": "label",
+      "name": "kanade-onoff",
+      "line": 1951
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1953,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1955
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_07"
+      },
+      "line": 1957,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "6",
+        "graphic": "kanade-voice02"
+      },
+      "line": 1959
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1961,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "6",
+        "graphic": "kanade-voice01"
+      },
+      "line": 1963
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1965,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1967
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_07Click(kag)"
+      },
+      "line": 1969,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 1971,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 1975
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1977
+    },
+    {
+      "type": "comment",
+      "text": " 「岬ボイスオン/オフ」が選択された",
+      "line": 1979
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 1981
+    },
+    {
+      "type": "label",
+      "name": "misaki-onoff",
+      "line": 1983
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 1985,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 1987
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_08"
+      },
+      "line": 1989,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "7",
+        "graphic": "misaki-voice02"
+      },
+      "line": 1991
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 1993,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "7",
+        "graphic": "misaki-voice01"
+      },
+      "line": 1995
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 1997,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 1999
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_08Click(kag)"
+      },
+      "line": 2001,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 2003,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 2007
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2009
+    },
+    {
+      "type": "comment",
+      "text": " 「クリソベリルボイスオン/オフ」が選択された",
+      "line": 2011
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2013
+    },
+    {
+      "type": "label",
+      "name": "chryso-onoff",
+      "line": 2015
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 2017,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 現在の状態に従って、チェックマークのオン／オフを切り替え",
+      "line": 2019
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "sf.voice_09"
+      },
+      "line": 2021,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "8",
+        "graphic": "chryso-voice02"
+      },
+      "line": 2023
+    },
+    {
+      "type": "command",
+      "name": "else",
+      "args": {},
+      "line": 2025,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "8",
+        "graphic": "chryso-voice01"
+      },
+      "line": 2027
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2029,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 「ページ末まで一気に」の設定を変更",
+      "line": 2031
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_09Click(kag)"
+      },
+      "line": 2033,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 2035,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "=========================================================",
+      "line": 2039
+    },
+    {
+      "type": "label",
+      "name": "systempage",
+      "line": 2043
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 2045,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "// スライダーオブジェクトを無効化",
+      "line": 2047
+    },
+    {
+      "type": "text",
+      "text": "for (var i = 0; i < tf.sliders.count; i++)",
+      "line": 2049
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders",
+      "line": 2051
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 2051,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 2051
+    },
+    {
+      "type": "text",
+      "text": "// 配列を無効化",
+      "line": 2053
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders;",
+      "line": 2055
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 2057,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "storage": "r_click_config.ks",
+        "target": "*voice-back"
+      },
+      "line": 2059
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2065
+    },
+    {
+      "type": "comment",
+      "text": " 「デフォルト」が選択された",
+      "line": 2067
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2069
+    },
+    {
+      "type": "label",
+      "name": "voice_default",
+      "line": 2071
+    },
+    {
+      "type": "command",
+      "name": "unlocklink",
+      "args": {},
+      "line": 2073,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " 文字表示速度を初期値（普通）に変更",
+      "line": 2075
+    },
+    {
+      "type": "comment",
+      "text": "@slider_setopt name=chspeed position=\"&kag.chSpeeds.normal\"",
+      "line": 2077
+    },
+    {
+      "type": "comment",
+      "text": " 文字表示速度の「ページ末まで一気に」がチェックされていたら…",
+      "line": 2079
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 2083,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "// 夜子",
+      "line": 2085
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2087
+    },
+    {
+      "type": "command",
+      "name": "0",
+      "args": {},
+      "line": 2087,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2087
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2089
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2091
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 2091,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 2091
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2093
+    },
+    {
+      "type": "text",
+      "text": "// かなた",
+      "line": 2095
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2097
+    },
+    {
+      "type": "command",
+      "name": "1",
+      "args": {},
+      "line": 2097,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2097
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2099
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2101
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 2101,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 2101
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2103
+    },
+    {
+      "type": "text",
+      "text": "// 妃",
+      "line": 2105
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2107
+    },
+    {
+      "type": "command",
+      "name": "2",
+      "args": {},
+      "line": 2107,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2107
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2109
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2111
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 2111,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 2111
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2113
+    },
+    {
+      "type": "text",
+      "text": "// 理央",
+      "line": 2115
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2117
+    },
+    {
+      "type": "command",
+      "name": "3",
+      "args": {},
+      "line": 2117,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2117
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2119
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2121
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 2121,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 67;",
+      "line": 2121
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2123
+    },
+    {
+      "type": "text",
+      "text": "//汀",
+      "line": 2125
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2127
+    },
+    {
+      "type": "command",
+      "name": "4",
+      "args": {},
+      "line": 2127,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2127
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2129
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2131
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 2131,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 2131
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2133
+    },
+    {
+      "type": "text",
+      "text": "//闇子",
+      "line": 2135
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2137
+    },
+    {
+      "type": "command",
+      "name": "5",
+      "args": {},
+      "line": 2137,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2137
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2139
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2141
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 2141,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 2141
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2143
+    },
+    {
+      "type": "text",
+      "text": "//奏",
+      "line": 2145
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2147
+    },
+    {
+      "type": "command",
+      "name": "6",
+      "args": {},
+      "line": 2147,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2147
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2149
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2151
+    },
+    {
+      "type": "command",
+      "name": "9",
+      "args": {},
+      "line": 2151,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 2151
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2153
+    },
+    {
+      "type": "text",
+      "text": "//岬",
+      "line": 2155
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2157
+    },
+    {
+      "type": "command",
+      "name": "7",
+      "args": {},
+      "line": 2157,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2157
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2159
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2161
+    },
+    {
+      "type": "command",
+      "name": "10",
+      "args": {},
+      "line": 2161,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 2161
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2163
+    },
+    {
+      "type": "text",
+      "text": "//クリソベリル",
+      "line": 2165
+    },
+    {
+      "type": "text",
+      "text": "with (tf.sliders",
+      "line": 2167
+    },
+    {
+      "type": "command",
+      "name": "8",
+      "args": {},
+      "line": 2167,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ") {",
+      "line": 2167
+    },
+    {
+      "type": "text",
+      "text": ".position =",
+      "line": 2169
+    },
+    {
+      "type": "text",
+      "text": "kag.se",
+      "line": 2171
+    },
+    {
+      "type": "command",
+      "name": "11",
+      "args": {},
+      "line": 2171,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ".volume2 = 60;",
+      "line": 2171
+    },
+    {
+      "type": "text",
+      "text": "}",
+      "line": 2173
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 2175,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_01"
+      },
+      "line": 2179,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "0",
+        "graphic": "yoruko-voice01"
+      },
+      "line": 2181
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_01Click(kag)"
+      },
+      "line": 2183,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2185,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_02"
+      },
+      "line": 2189,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "1",
+        "graphic": "kanata-voice01"
+      },
+      "line": 2191
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_02Click(kag)"
+      },
+      "line": 2193,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2195,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_03"
+      },
+      "line": 2199,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "2",
+        "graphic": "kisaki-voice01"
+      },
+      "line": 2201
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_03Click(kag)"
+      },
+      "line": 2203,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2205,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_04"
+      },
+      "line": 2209,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "3",
+        "graphic": "rio-voice01"
+      },
+      "line": 2211
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_04Click(kag)"
+      },
+      "line": 2213,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2215,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_05"
+      },
+      "line": 2219,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "4",
+        "graphic": "nagisa-voice01"
+      },
+      "line": 2221
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_05Click(kag)"
+      },
+      "line": 2223,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2225,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_06"
+      },
+      "line": 2229,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "5",
+        "graphic": "yamiko-voice01"
+      },
+      "line": 2231
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_06Click(kag)"
+      },
+      "line": 2233,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2235,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_07"
+      },
+      "line": 2239,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "6",
+        "graphic": "kanade-voice01"
+      },
+      "line": 2241
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_07Click(kag)"
+      },
+      "line": 2243,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2245,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_08"
+      },
+      "line": 2249,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "7",
+        "graphic": "misaki-voice01"
+      },
+      "line": 2251
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_08Click(kag)"
+      },
+      "line": 2253,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2255,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "if",
+      "args": {
+        "exp": "!sf.voice_09"
+      },
+      "line": 2259,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "button_chgimage",
+      "args": {
+        "num": "8",
+        "graphic": "chryso-voice01"
+      },
+      "line": 2261
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "kag.onvoice_09Click(kag)"
+      },
+      "line": 2263,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "endif",
+      "args": {},
+      "line": 2265,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "s",
+      "args": {},
+      "line": 2269,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2273
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトルへ戻る」が選択された",
+      "line": 2275
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2277
+    },
+    {
+      "type": "label",
+      "name": "config_title",
+      "line": 2279
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 2281,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "// スライダーオブジェクトを無効化",
+      "line": 2283
+    },
+    {
+      "type": "text",
+      "text": "for (var i = 0; i < tf.sliders.count; i++)",
+      "line": 2285
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders",
+      "line": 2287
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 2287,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 2287
+    },
+    {
+      "type": "text",
+      "text": "// 配列を無効化",
+      "line": 2289
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders;",
+      "line": 2291
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 2293,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.noStoreCurrentMessage = 0"
+      },
+      "line": 2295
+    },
+    {
+      "type": "command",
+      "name": "gotostart",
+      "args": {
+        "ask": "true"
+      },
+      "line": 2297,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*config_menu_loop0"
+      },
+      "line": 2299,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2303
+    },
+    {
+      "type": "comment",
+      "text": " 「タイトルへ戻る」が選択された",
+      "line": 2305
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2307
+    },
+    {
+      "type": "label",
+      "name": "voice_title",
+      "line": 2309
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 2311,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "// スライダーオブジェクトを無効化",
+      "line": 2313
+    },
+    {
+      "type": "text",
+      "text": "for (var i = 0; i < tf.sliders.count; i++)",
+      "line": 2315
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders",
+      "line": 2317
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 2317,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 2317
+    },
+    {
+      "type": "text",
+      "text": "// 配列を無効化",
+      "line": 2319
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders;",
+      "line": 2321
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 2323,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "eval",
+      "args": {
+        "exp": "f.noStoreCurrentMessage = 0"
+      },
+      "line": 2325
+    },
+    {
+      "type": "command",
+      "name": "gotostart",
+      "args": {
+        "ask": "true"
+      },
+      "line": 2327,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "jump",
+      "args": {
+        "target": "*voice_menu_loop0"
+      },
+      "line": 2329,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2333
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされた",
+      "line": 2335
+    },
+    {
+      "type": "comment",
+      "text": "",
+      "line": 2337
+    },
+    {
+      "type": "label",
+      "name": "close",
+      "line": 2339
+    },
+    {
+      "type": "command",
+      "name": "er",
+      "args": {},
+      "line": 2341,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " スライダーを非表示＆無効化",
+      "line": 2343
+    },
+    {
+      "type": "comment",
+      "text": "[eval exp=\"tf.slider.visible = false, invalidate tf.slider\"]",
+      "line": 2345
+    },
+    {
+      "type": "command",
+      "name": "iscript",
+      "args": {},
+      "line": 2347,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": "// スライダーオブジェクトを無効化",
+      "line": 2349
+    },
+    {
+      "type": "text",
+      "text": "for (var i = 0; i < tf.sliders.count; i++)",
+      "line": 2351
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders",
+      "line": 2353
+    },
+    {
+      "type": "command",
+      "name": "i",
+      "args": {},
+      "line": 2353,
+      "inline": true
+    },
+    {
+      "type": "text",
+      "text": ";",
+      "line": 2353
+    },
+    {
+      "type": "text",
+      "text": "// 配列を無効化",
+      "line": 2355
+    },
+    {
+      "type": "text",
+      "text": "invalidate tf.sliders;",
+      "line": 2357
+    },
+    {
+      "type": "command",
+      "name": "endscript",
+      "args": {},
+      "line": 2359,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " メモリ上の栞１を読み込み、状態復帰",
+      "line": 2361
+    },
+    {
+      "type": "command",
+      "name": "commit",
+      "args": {},
+      "line": 2363,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "tempload",
+      "args": {
+        "place": "1",
+        "bgm": "false",
+        "se": "false"
+      },
+      "line": 2365
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "fore",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 2367,
+      "inline": true
+    },
+    {
+      "type": "command",
+      "name": "layopt",
+      "args": {
+        "layer": "&tf.frame_layer",
+        "page": "back",
+        "opacity": "&sf.frame_opacity"
+      },
+      "line": 2369,
+      "inline": true
+    },
+    {
+      "type": "comment",
+      "text": " マウス右クリックされたときの動作を元に戻す",
+      "line": 2373
+    },
+    {
+      "type": "command",
+      "name": "rclick",
+      "args": {
+        "jump": "true",
+        "target": "*rclick_exit",
+        "storage": "r_click.ks",
+        "enabled": "true"
+      },
+      "line": 2375
+    },
+    {
+      "type": "comment",
+      "text": " メニュー画面（r_click.ksの）に戻る",
+      "line": 2377
+    },
+    {
+      "type": "command",
+      "name": "return",
+      "args": {},
+      "line": 2379,
+      "inline": true
+    }
+  ]
+}
