@@ -33,6 +33,8 @@ const Renderer = {
      */
     init() {
         this.elements = {
+            stage: document.getElementById('game-stage'),
+            scale: document.getElementById('game-scale'),
             container: document.getElementById('game-container'),
             messageLayer: document.getElementById('message-layer'),
             messageBox: document.getElementById('message-box'),
@@ -47,6 +49,10 @@ const Renderer = {
         // 初始化图层渲染器
         LayerRenderer.init();
         this.applyMessageSkin();
+        this.applyViewportScale();
+        window.addEventListener('resize', () => {
+            this.applyViewportScale();
+        });
 
         // 绑定点击事件
         this.elements.container.addEventListener('click', (e) => {
@@ -75,6 +81,24 @@ const Renderer = {
                 }
             }
         });
+    },
+
+    applyViewportScale() {
+        const base = LayerRenderer.baseSize || { width: 1280, height: 720 };
+        const width = window.innerWidth || document.documentElement.clientWidth;
+        const height = window.innerHeight || document.documentElement.clientHeight;
+        if (!width || !height) {
+            return;
+        }
+        const scale = Math.min(width / base.width, height / base.height);
+        const clamped = Math.max(scale, 0.1);
+        document.documentElement.style.setProperty('--game-scale', clamped.toFixed(5));
+        if (this.elements.scale) {
+            const scaledWidth = Math.round(base.width * clamped);
+            const scaledHeight = Math.round(base.height * clamped);
+            this.elements.scale.style.width = `${scaledWidth}px`;
+            this.elements.scale.style.height = `${scaledHeight}px`;
+        }
     },
 
     applyMessageSkin() {

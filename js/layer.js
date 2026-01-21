@@ -36,13 +36,14 @@ const LayerRenderer = {
         if (!holder) {
             return { x: 1, y: 1 };
         }
-        const rect = holder.getBoundingClientRect();
-        if (!rect.width || !rect.height) {
+        const width = holder.offsetWidth || holder.clientWidth;
+        const height = holder.offsetHeight || holder.clientHeight;
+        if (!width || !height) {
             return { x: 1, y: 1 };
         }
         return {
-            x: rect.width / this.baseSize.width,
-            y: rect.height / this.baseSize.height
+            x: width / this.baseSize.width,
+            y: height / this.baseSize.height
         };
     },
 
@@ -141,6 +142,30 @@ const LayerRenderer = {
             elementKey = useLeft ? 'left' : 'center';
         }
         const layerIndex = (layer === 1 || layer === 'right') ? 1 : 0;
+        const prevRecord = this.state.characters[layerIndex];
+        const prevKey = prevRecord ? prevRecord.element : null;
+        let prevElement = null;
+        if (prevKey === 'right') {
+            prevElement = this.elements.charaRight;
+        } else if (prevKey === 'center') {
+            prevElement = this.elements.charaCenter;
+        } else if (prevKey === 'left') {
+            prevElement = this.elements.charaLeft;
+        }
+        const prevSnapshot = (prevElement && prevElement.src)
+            ? (() => {
+                const cs = getComputedStyle(prevElement);
+                return {
+                    src: prevElement.src,
+                    opacity: cs.opacity || '1',
+                    left: cs.left,
+                    right: cs.right,
+                    top: cs.top,
+                    bottom: cs.bottom,
+                    transform: cs.transform
+                };
+            })()
+            : null;
         const scale = this.getScale();
 
         // Position
@@ -183,16 +208,47 @@ const LayerRenderer = {
         element.style.visibility = 'visible';
 
         if (shouldFade) {
+            let ghost = null;
+            if (prevElement && prevElement === element && prevSnapshot) {
+                ghost = prevElement.cloneNode();
+                ghost.removeAttribute('id');
+                ghost.style.opacity = prevSnapshot.opacity;
+                ghost.style.left = prevSnapshot.left;
+                ghost.style.right = prevSnapshot.right;
+                ghost.style.top = prevSnapshot.top;
+                ghost.style.bottom = prevSnapshot.bottom;
+                ghost.style.transform = prevSnapshot.transform;
+                ghost.style.transition = `opacity ${duration}ms ease-in-out`;
+                ghost.style.zIndex = '1';
+                ghost.style.display = 'block';
+                ghost.style.visibility = 'visible';
+                ghost.src = prevSnapshot.src;
+                prevElement.parentElement.appendChild(ghost);
+            } else if (prevElement && prevElement !== element) {
+                prevElement.style.transition = `opacity ${duration}ms ease-in-out`;
+                prevElement.style.opacity = '0';
+            }
+
             element.style.transition = 'none';
             element.style.opacity = '0';
+            element.style.zIndex = '2';
             element.src = src;
             void element.offsetWidth;
-            element.style.transition = `opacity ${duration}ms linear`;
+            element.style.transition = `opacity ${duration}ms ease-in-out`;
             requestAnimationFrame(() => {
                 element.style.opacity = '1';
+                if (ghost) {
+                    ghost.style.opacity = '0';
+                }
             });
             await this.delay(duration);
+            if (ghost) {
+                ghost.remove();
+            }
         } else {
+            if (prevElement && prevElement !== element) {
+                prevElement.style.opacity = '0';
+            }
             element.src = src;
             element.style.opacity = '1';
         }
