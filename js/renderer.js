@@ -68,6 +68,9 @@ const Renderer = {
             if (!this.inputEnabled) {
                 return;
             }
+            if (e.target && e.target.closest && e.target.closest('#ui-layer, .overlay')) {
+                return;
+            }
             if (e.target && e.target.closest && e.target.closest('button, input, select, textarea')) {
                 return;
             }

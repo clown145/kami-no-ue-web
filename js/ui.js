@@ -280,7 +280,8 @@
             return;
         }
         const state = this.config.state;
-        Renderer.textSpeed = state.textSpeed;
+        const textSpeed = Number(state.textSpeed) || 0;
+        Renderer.textSpeed = Math.round(textSpeed * 2);
         Renderer.autoWait = state.autoSpeed;
         Renderer.setMessageOpacity(state.frameOpacity / 255);
 
@@ -492,7 +493,7 @@
             width: 25,
             height: 24,
             image: 'checkbox01.png',
-            className: 'config-checkbox',
+            className: 'config-checkbox config-check',
             onClick: () => this.updateConfigState({ cskip: !this.config.state.cskip })
         });
         toggles.askSave = this.createConfigButton(container, {
@@ -501,7 +502,7 @@
             width: 25,
             height: 24,
             image: 'checkbox01.png',
-            className: 'config-checkbox',
+            className: 'config-checkbox config-check',
             onClick: () => this.updateConfigState({ askSave: !this.config.state.askSave })
         });
         toggles.voiceCut = this.createConfigButton(container, {
@@ -510,7 +511,7 @@
             width: 25,
             height: 24,
             image: 'checkbox01.png',
-            className: 'config-checkbox',
+            className: 'config-checkbox config-check',
             onClick: () => this.updateConfigState({ voiceCut: !this.config.state.voiceCut })
         });
     },
