@@ -168,92 +168,151 @@ const LayerRenderer = {
             : null;
         const scale = this.getScale();
 
-        // Position
+        // Position (apply after fade prep to avoid flash)
         const hasLeft = left !== null && !Number.isNaN(left);
+        const storedLeft = hasLeft ? Number(left) : null;
+        const storedTop = top !== null && !Number.isNaN(top) ? Number(top) : null;
+        const position = {
+            left: '',
+            right: '',
+            top: '',
+            bottom: '',
+            transform: ''
+        };
         if (hasLeft) {
-            element.style.left = (left * scale.x) + 'px';
-            if (elementKey === 'right') {
-                element.style.right = 'auto';
-            }
+            position.left = (left * scale.x) + 'px';
+            position.right = elementKey === 'right' ? 'auto' : '';
         } else {
             if (elementKey === 'right') {
-                element.style.left = 'auto';
-                element.style.right = '100px';
+                position.left = 'auto';
+                position.right = '100px';
             } else if (elementKey === 'left') {
-                element.style.left = '100px';
-                element.style.right = 'auto';
+                position.left = '100px';
+                position.right = 'auto';
             } else {
-                element.style.left = '50%';
-                element.style.right = 'auto';
+                position.left = '50%';
+                position.right = 'auto';
             }
         }
         if (top !== null && !Number.isNaN(top)) {
-            element.style.top = (top * scale.y) + 'px';
-            element.style.bottom = 'auto';
+            position.top = (top * scale.y) + 'px';
+            position.bottom = 'auto';
         } else {
-            element.style.top = 'auto';
-            element.style.bottom = '0';
+            position.top = 'auto';
+            position.bottom = '0';
         }
-        element.style.transform = elementKey === 'center' && !hasLeft
+        position.transform = elementKey === 'center' && !hasLeft
             ? 'translateX(-50%)'
             : 'none';
+        const applyPosition = (target = element) => {
+            target.style.left = position.left;
+            target.style.right = position.right;
+            target.style.top = position.top;
+            target.style.bottom = position.bottom;
+            target.style.transform = position.transform;
+        };
 
-        const shouldFade = duration > 0;
+        const fadeDuration = Number.isFinite(duration)
+            ? duration
+            : (parseInt(duration, 10) || 0);
+        const shouldFade = fadeDuration > 0;
         if (!shouldFade) {
             element.style.transition = 'opacity 0.3s ease';
         }
 
-        // Show image
-        element.style.display = 'block';
-        element.style.visibility = 'visible';
-
         if (shouldFade) {
-            let ghost = null;
-            if (prevElement && prevElement === element && prevSnapshot) {
-                ghost = prevElement.cloneNode();
+            const sameElement = prevElement && prevElement === element;
+            if (sameElement && prevSnapshot) {
+                const parent = element.parentElement;
+                const ghostFor = element.id || '';
+                if (parent && ghostFor) {
+                    parent
+                        .querySelectorAll(`[data-ghost-for="${ghostFor}"]`)
+                        .forEach((node) => node.remove());
+                }
+                const ghost = element.cloneNode();
                 ghost.removeAttribute('id');
-                ghost.style.opacity = prevSnapshot.opacity;
+                if (ghostFor) {
+                    ghost.dataset.ghostFor = ghostFor;
+                }
+                ghost.style.opacity = prevSnapshot.opacity || '1';
                 ghost.style.left = prevSnapshot.left;
                 ghost.style.right = prevSnapshot.right;
                 ghost.style.top = prevSnapshot.top;
                 ghost.style.bottom = prevSnapshot.bottom;
                 ghost.style.transform = prevSnapshot.transform;
-                ghost.style.transition = `opacity ${duration}ms ease-in-out`;
+                ghost.style.transition = `opacity ${fadeDuration}ms ease-in-out`;
                 ghost.style.zIndex = '1';
                 ghost.style.display = 'block';
                 ghost.style.visibility = 'visible';
                 ghost.src = prevSnapshot.src;
-                prevElement.parentElement.appendChild(ghost);
-            } else if (prevElement && prevElement !== element) {
-                prevElement.style.transition = `opacity ${duration}ms ease-in-out`;
-                prevElement.style.opacity = '0';
-            }
-
-            element.style.transition = 'none';
-            element.style.opacity = '0';
-            element.style.zIndex = '2';
-            element.src = src;
-            void element.offsetWidth;
-            element.style.transition = `opacity ${duration}ms ease-in-out`;
-            requestAnimationFrame(() => {
-                element.style.opacity = '1';
-                if (ghost) {
-                    ghost.style.opacity = '0';
+                if (parent) {
+                    parent.appendChild(ghost);
                 }
-            });
-            await this.delay(duration);
-            if (ghost) {
+
+                if (!ghost.complete) {
+                    await new Promise(resolve => {
+                        ghost.addEventListener('load', resolve, { once: true });
+                        ghost.addEventListener('error', resolve, { once: true });
+                    });
+                }
+
+                element.style.transition = 'none';
+                element.style.opacity = '0';
+                element.style.zIndex = '2';
+                applyPosition();
+                element.src = src;
+                element.style.display = 'block';
+                element.style.visibility = 'visible';
+                void element.offsetWidth;
+                element.style.transition = `opacity ${fadeDuration}ms ease-in-out`;
+
+                requestAnimationFrame(() => {
+                    element.style.opacity = '1';
+                    ghost.style.opacity = '0';
+                });
+
+                await this.delay(fadeDuration);
                 ghost.remove();
+                element.style.transition = '';
+            } else {
+                if (prevElement && prevElement !== element) {
+                    prevElement.style.transition = `opacity ${fadeDuration}ms ease-in-out`;
+                    prevElement.style.opacity = '0';
+                }
+
+                element.style.transition = 'none';
+                element.style.opacity = '0';
+                element.style.zIndex = '2';
+                applyPosition();
+                element.src = src;
+                element.style.display = 'block';
+                element.style.visibility = 'visible';
+                void element.offsetWidth;
+                element.style.transition = `opacity ${fadeDuration}ms ease-in-out`;
+                requestAnimationFrame(() => {
+                    element.style.opacity = '1';
+                });
+                await this.delay(fadeDuration);
+                element.style.transition = '';
             }
         } else {
             if (prevElement && prevElement !== element) {
                 prevElement.style.opacity = '0';
             }
+            applyPosition();
             element.src = src;
+            element.style.display = 'block';
             element.style.opacity = '1';
+            element.style.visibility = 'visible';
         }
 
-        this.state.characters[layerIndex] = { name, element: elementKey };
+        this.state.characters[layerIndex] = {
+            name,
+            element: elementKey,
+            left: storedLeft,
+            top: storedTop
+        };
     },
 
     /**
@@ -284,7 +343,7 @@ const LayerRenderer = {
         }
 
         const layerIndex = isRight ? 1 : 0;
-        this.state.characters[layerIndex] = { name: null, element: null };
+        this.state.characters[layerIndex] = { name: null, element: null, left: null, top: null };
     },
 
     /**
@@ -301,8 +360,8 @@ const LayerRenderer = {
         }
 
         this.state.characters = {
-            0: { name: null, element: null },
-            1: { name: null, element: null }
+            0: { name: null, element: null, left: null, top: null },
+            1: { name: null, element: null, left: null, top: null }
         };
     },
 

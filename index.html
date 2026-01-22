@@ -54,6 +54,8 @@
                 <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
             </div>
             <div id="save-load-list" class="save-load-list"></div>
+            <div id="save-load-pages" class="save-load-pages"></div>
+            <div id="save-load-actions" class="save-load-actions"></div>
         </div>
 
         <div id="log-screen" class="overlay hidden">
@@ -62,6 +64,14 @@
                 <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
             </div>
             <div id="log-entries" class="log-entries"></div>
+        </div>
+
+        <div id="confirm-screen" class="overlay hidden">
+            <div id="confirm-dialog" class="confirm-dialog">
+                <div id="confirm-text" class="confirm-text"></div>
+                <button id="confirm-yes" class="confirm-btn confirm-yes" type="button"></button>
+                <button id="confirm-no" class="confirm-btn confirm-no" type="button"></button>
+            </div>
         </div>
 
         <div id="ui-toast" class="ui-toast hidden"></div>
@@ -75,6 +85,7 @@
                 <button id="btn-save" class="sys-btn">SAVE</button>
                 <button id="btn-load" class="sys-btn">LOAD</button>
                 <button id="btn-config" class="sys-btn">CONFIG</button>
+                <button id="btn-win" class="sys-btn">WIN</button>
             </div>
         </div>
 

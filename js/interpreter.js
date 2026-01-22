@@ -407,7 +407,7 @@ const Interpreter = {
             if (Number.isNaN(top)) {
                 top = 0;
             }
-            await Renderer.showCharacter('center', args.chara, left, top, 0);
+            await Renderer.showCharacter('center', args.chara, left, top, time);
         }
     },
 
@@ -423,7 +423,7 @@ const Interpreter = {
             if (Number.isNaN(top)) {
                 top = 0;
             }
-            await Renderer.showCharacter('left', args.chara, left, top, 0);
+            await Renderer.showCharacter('left', args.chara, left, top, time);
         }
     },
 
@@ -439,7 +439,7 @@ const Interpreter = {
             if (Number.isNaN(top)) {
                 top = 0;
             }
-            await Renderer.showCharacter('right', args.chara, left, top, 0);
+            await Renderer.showCharacter('right', args.chara, left, top, time);
         }
     },
 
@@ -455,7 +455,7 @@ const Interpreter = {
             if (Number.isNaN(top)) {
                 top = 0;
             }
-            await Renderer.showCharacter('left', args.charal, left, top, 0);
+            await Renderer.showCharacter('left', args.charal, left, top, time);
         }
         if (args.charar) {
             let left = args.leftr !== undefined ? parseInt(args.leftr, 10) : 550;
@@ -466,7 +466,7 @@ const Interpreter = {
             if (Number.isNaN(top)) {
                 top = 0;
             }
-            await Renderer.showCharacter('right', args.charar, left, top, 0);
+            await Renderer.showCharacter('right', args.charar, left, top, time);
         }
     },
 

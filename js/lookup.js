@@ -11,7 +11,7 @@ const IMAGE_ALIASES = {
 const AUDIO_EXTENSIONS = ['.ogg', '.wav', '.mp3', '.m4a'];
 
 const ResourceLookup = {
-    BASE_PATH: './public/',
+    BASE_PATH: '/public/',
 
     _normalizeName(name) {
         if (!name) return name;
@@ -118,6 +118,7 @@ const ResourceLookup = {
             : (looksLikeCg ? ['cg', 'bgimage', 'image'] : ['bgimage', 'cg', 'image']);
         const addMapped = () => {
             if (mappedImage) {
+                push(this.BASE_PATH + 'bgimage/' + mappedImage);
                 push(this.BASE_PATH + 'image/' + mappedImage);
             }
             if (mappedBg) {
@@ -131,16 +132,11 @@ const ResourceLookup = {
             }
         };
 
-        if (!looksLikeUi) {
-            addMapped();
-        }
+        addMapped();
         for (const folder of folderOrder) {
             for (const ext of extensions) {
                 push(this.BASE_PATH + folder + '/' + resolvedBaseName + ext);
             }
-        }
-        if (looksLikeUi) {
-            addMapped();
         }
 
         return candidates;

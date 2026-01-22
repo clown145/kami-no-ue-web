@@ -17,6 +17,8 @@ const Renderer = {
         base: null,
         named: null
     },
+    messageBoxVisible: true,
+    messageWindowHidden: false,
 
     // 点击等待
     clickResolver: null,
@@ -59,6 +61,10 @@ const Renderer = {
             if (!this.inputEnabled) {
                 return;
             }
+            if (this.messageWindowHidden) {
+                this.showMessageWindow();
+                return;
+            }
             if (this.textState.isTyping) {
                 this.finishTyping();
             } else if (this.clickResolver) {
@@ -73,6 +79,10 @@ const Renderer = {
                 return;
             }
             if (e.key === 'Enter' || e.key === ' ') {
+                if (this.messageWindowHidden) {
+                    this.showMessageWindow();
+                    return;
+                }
                 if (this.textState.isTyping) {
                     this.finishTyping();
                 } else if (this.clickResolver) {
@@ -115,6 +125,16 @@ const Renderer = {
         this.elements.nameBox.style.backgroundImage = 'none';
     },
 
+    updateMessageVisibility() {
+        const visible = this.messageBoxVisible && !this.messageWindowHidden;
+        if (this.elements.messageBox) {
+            this.elements.messageBox.style.display = visible ? 'block' : 'none';
+        }
+        if (this.elements.container) {
+            this.elements.container.classList.toggle('ui-visible', visible);
+        }
+    },
+
     // ========== 背景和立绘 - 代理到LayerRenderer ==========
 
     async showBackground(name, duration = 500) {
@@ -140,13 +160,32 @@ const Renderer = {
     // ========== 对话框 ==========
 
     showMessageBox() {
-        this.elements.messageBox.style.display = 'block';
+        this.messageBoxVisible = true;
+        this.messageWindowHidden = false;
+        this.updateMessageVisibility();
     },
 
     hideMessageBox() {
-        this.elements.messageBox.style.display = 'none';
+        this.messageBoxVisible = false;
+        this.messageWindowHidden = false;
+        this.updateMessageVisibility();
         this.hideName();
         this.clearText();
+    },
+
+    showMessageWindow() {
+        this.messageWindowHidden = false;
+        this.updateMessageVisibility();
+    },
+
+    hideMessageWindow() {
+        this.messageWindowHidden = true;
+        this.updateMessageVisibility();
+    },
+
+    toggleMessageWindow() {
+        this.messageWindowHidden = !this.messageWindowHidden;
+        this.updateMessageVisibility();
     },
 
     showName(name) {
@@ -171,9 +210,7 @@ const Renderer = {
     async showText(text, skipMode = false) {
         if (!text) return;
 
-        if (this.elements.messageBox && this.elements.messageBox.style.display === 'none') {
-            this.showMessageBox();
-        }
+        this.showMessageBox();
 
         this.textState.isTyping = true;
         this.textState.currentText = text;
@@ -253,8 +290,33 @@ const Renderer = {
         return this.currentSpeaker || '';
     },
 
+    setTextImmediate(text) {
+        this.clearText();
+        if (text) {
+            this.elements.textBox.textContent = text;
+        }
+        this.textState.currentText = text || '';
+        this.textState.charIndex = this.textState.currentText.length;
+        this.textState.isTyping = false;
+    },
+
+    setHistory(entries) {
+        if (!Array.isArray(entries)) {
+            this.history = [];
+            return;
+        }
+        this.history = entries.slice(-this.historyLimit);
+    },
+
     setInputEnabled(enabled) {
         this.inputEnabled = !!enabled;
+    },
+
+    setOverlayActive(active) {
+        if (!this.elements.container) {
+            return;
+        }
+        this.elements.container.classList.toggle('overlay-active', !!active);
     },
 
     // ========== 点击等待 ==========

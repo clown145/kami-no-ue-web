@@ -109,6 +109,17 @@ const Game = {
         this.start();
     },
 
+    returnToTitle() {
+        Interpreter.state.runId += 1;
+        Renderer.cancelWait();
+        AudioPlayer.stopBgm();
+        Renderer.hideMessageBox();
+        Renderer.hideClickIndicator();
+        if (window.UI) {
+            UI.showTitle();
+        }
+    },
+
     /**
      * 跳转场景
      */
@@ -129,7 +140,24 @@ const Game = {
         }
     },
 
+    deleteSave(slot = 0) {
+        localStorage.removeItem(`save_${slot}`);
+    },
+
     save(slot = 0) {
+        const messageVisible = Renderer.elements.messageBox
+            ? Renderer.elements.messageBox.style.display !== 'none'
+            : false;
+        const nameVisible = Renderer.elements.nameBox
+            ? Renderer.elements.nameBox.classList.contains('visible')
+            : false;
+        const characters = {};
+        if (LayerRenderer && LayerRenderer.state && LayerRenderer.state.characters) {
+            Object.keys(LayerRenderer.state.characters).forEach((key) => {
+                const entry = LayerRenderer.state.characters[key];
+                characters[key] = entry ? { ...entry } : null;
+            });
+        }
         const saveData = {
             scenario: this.state.currentScenario,
             index: Interpreter.state.currentIndex,
@@ -138,6 +166,21 @@ const Game = {
             preview: {
                 name: Renderer.getCurrentSpeaker(),
                 text: Renderer.getCurrentText()
+            },
+            render: {
+                background: LayerRenderer.state.background || null,
+                characters,
+                messageVisible,
+                nameVisible,
+                name: Renderer.getCurrentSpeaker(),
+                text: Renderer.getCurrentText(),
+                history: Renderer.getHistory(),
+                snapshot: this.captureVisualSnapshot()
+            },
+            audio: {
+                bgm: AudioPlayer.currentBgm || null,
+                bgmTime: AudioPlayer.bgmPlayer ? AudioPlayer.bgmPlayer.currentTime : 0,
+                bgmVolume: AudioPlayer.volume ? AudioPlayer.volume.bgm : 0.7
             }
         };
 
@@ -167,6 +210,10 @@ const Game = {
             const data = await response.json();
             this.state.currentScenario = saveData.scenario;
 
+            this.resetRenderState();
+            await this.restoreRenderState(saveData.render);
+            this.restoreAudioState(saveData.audio);
+
             Interpreter.runFromIndex(data.tokens, saveData.index);
 
             console.log(`Game loaded from slot ${slot}`);
@@ -174,6 +221,184 @@ const Game = {
         } catch (e) {
             console.error('Failed to load save:', e);
             return false;
+        }
+    },
+
+    resetRenderState() {
+        Interpreter.state.render = {
+            currentPage: 'fore',
+            pending: {
+                base: null,
+                characters: {
+                    0: null,
+                    1: null
+                }
+            },
+            lastTransition: null
+        };
+    },
+
+    async restoreRenderState(render) {
+        if (!render) {
+            return;
+        }
+
+        const snapshot = render.snapshot || null;
+        const backgroundHolder = LayerRenderer && LayerRenderer.elements
+            ? LayerRenderer.elements.backgroundHolder
+            : null;
+        if (snapshot && backgroundHolder && snapshot.backgroundImage) {
+            backgroundHolder.style.backgroundImage = snapshot.backgroundImage;
+            LayerRenderer.state.background = render.background || null;
+        } else if (backgroundHolder) {
+            if (render.background) {
+                await Renderer.showBackground(render.background, 0);
+            } else {
+                backgroundHolder.style.backgroundImage = '';
+                LayerRenderer.state.background = null;
+            }
+        }
+
+        if (snapshot && snapshot.characters) {
+            this.restoreCharacterSnapshot(snapshot.characters);
+        } else {
+            await Renderer.hideAllCharacters(0);
+            const characters = render.characters || {};
+            const tasks = [];
+            [0, 1].forEach((layer) => {
+                const info = characters[layer];
+                if (info && info.name) {
+                    tasks.push(Renderer.showCharacter(layer, info.name, info.left ?? null, info.top ?? null, 0));
+                }
+            });
+            if (tasks.length) {
+                await Promise.all(tasks);
+            }
+        }
+
+        if (render.characters) {
+            const nextState = {
+                0: { name: null, element: null, left: null, top: null },
+                1: { name: null, element: null, left: null, top: null }
+            };
+            Object.keys(render.characters).forEach((key) => {
+                const info = render.characters[key];
+                if (!info) return;
+                nextState[key] = {
+                    name: info.name || null,
+                    element: info.element || null,
+                    left: info.left ?? null,
+                    top: info.top ?? null
+                };
+            });
+            LayerRenderer.state.characters = nextState;
+        }
+
+        if (render.messageVisible) {
+            Renderer.showMessageBox();
+            if (render.nameVisible && render.name) {
+                Renderer.showName(render.name);
+            } else {
+                Renderer.hideName();
+            }
+            Renderer.setTextImmediate(render.text || '');
+        } else {
+            Renderer.hideMessageBox();
+        }
+
+        if (render.history) {
+            Renderer.setHistory(render.history);
+        }
+    },
+
+    captureVisualSnapshot() {
+        const snapshot = {
+            backgroundImage: '',
+            characters: {}
+        };
+        if (LayerRenderer && LayerRenderer.elements && LayerRenderer.elements.backgroundHolder) {
+            snapshot.backgroundImage = LayerRenderer.elements.backgroundHolder.style.backgroundImage || '';
+        }
+        const elements = LayerRenderer ? LayerRenderer.elements : null;
+        const map = {
+            left: elements ? elements.charaLeft : null,
+            center: elements ? elements.charaCenter : null,
+            right: elements ? elements.charaRight : null
+        };
+        Object.keys(map).forEach((key) => {
+            const el = map[key];
+            if (!el) return;
+            const cs = getComputedStyle(el);
+            snapshot.characters[key] = {
+                src: el.src || '',
+                opacity: cs.opacity,
+                left: cs.left,
+                right: cs.right,
+                top: cs.top,
+                bottom: cs.bottom,
+                transform: cs.transform,
+                display: cs.display
+            };
+        });
+        return snapshot;
+    },
+
+    restoreCharacterSnapshot(characters) {
+        const elements = LayerRenderer ? LayerRenderer.elements : null;
+        if (!elements) return;
+        const map = {
+            left: elements.charaLeft,
+            center: elements.charaCenter,
+            right: elements.charaRight
+        };
+        Object.keys(map).forEach((key) => {
+            const el = map[key];
+            const data = characters[key];
+            if (!el) return;
+            if (!data) {
+                el.style.opacity = '0';
+                el.style.visibility = 'hidden';
+                el.src = '';
+                return;
+            }
+            el.style.transition = 'none';
+            el.src = data.src || '';
+            el.style.opacity = data.opacity ?? '0';
+            el.style.left = data.left ?? '';
+            el.style.right = data.right ?? '';
+            el.style.top = data.top ?? '';
+            el.style.bottom = data.bottom ?? '';
+            el.style.transform = data.transform ?? '';
+            el.style.display = data.display ?? 'block';
+            el.style.visibility = parseFloat(data.opacity) > 0 ? 'visible' : 'hidden';
+            requestAnimationFrame(() => {
+                el.style.transition = '';
+            });
+        });
+    },
+
+    restoreAudioState(audio) {
+        if (!audio) {
+            return;
+        }
+        AudioPlayer.stopBgm();
+        if (audio.bgm) {
+            if (typeof audio.bgmVolume === 'number') {
+                AudioPlayer.volume.bgm = audio.bgmVolume;
+            }
+            AudioPlayer.playBgm(audio.bgm);
+            if (audio.bgmTime && AudioPlayer.bgmPlayer) {
+                const targetTime = audio.bgmTime;
+                if (AudioPlayer.bgmPlayer.readyState >= 1) {
+                    AudioPlayer.bgmPlayer.currentTime = targetTime;
+                } else {
+                    const onReady = () => {
+                        AudioPlayer.bgmPlayer.currentTime = targetTime;
+                        AudioPlayer.bgmPlayer.removeEventListener('loadedmetadata', onReady);
+                    };
+                    AudioPlayer.bgmPlayer.addEventListener('loadedmetadata', onReady);
+                }
+            }
         }
     },
 
@@ -261,6 +486,24 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             if (window.UI) {
                 UI.showLog();
+            }
+        });
+    }
+
+    // Window toggle
+    const btnWin = document.getElementById('btn-win');
+    if (btnWin) {
+        btnWin.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (Renderer.toggleMessageWindow) {
+                Renderer.toggleMessageWindow();
+                return;
+            }
+            const box = Renderer.elements.messageBox;
+            if (box && box.style.display === 'none') {
+                Renderer.showMessageBox();
+            } else {
+                Renderer.hideMessageBox();
             }
         });
     }
