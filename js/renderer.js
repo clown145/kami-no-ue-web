@@ -22,6 +22,7 @@ const Renderer = {
 
     // 点击等待
     clickResolver: null,
+    clickTimer: null,
 
     // 文字显示状态
     textState: {
@@ -76,6 +77,14 @@ const Renderer = {
             }
             if (this.textState.isTyping) {
                 this.finishTyping();
+                return;
+            }
+            const sf = Interpreter && Interpreter.state && Interpreter.state.variables
+                ? Interpreter.state.variables.sf
+                : null;
+            if (sf && sf.cskip && LayerRenderer && LayerRenderer.hasActiveTransition && LayerRenderer.hasActiveTransition()) {
+                LayerRenderer.skipTransitions();
+                return;
             } else if (this.clickResolver) {
                 this.clickResolver();
                 this.clickResolver = null;
@@ -94,6 +103,14 @@ const Renderer = {
                 }
                 if (this.textState.isTyping) {
                     this.finishTyping();
+                    return;
+                }
+                const sf = Interpreter && Interpreter.state && Interpreter.state.variables
+                    ? Interpreter.state.variables.sf
+                    : null;
+                if (sf && sf.cskip && LayerRenderer && LayerRenderer.hasActiveTransition && LayerRenderer.hasActiveTransition()) {
+                    LayerRenderer.skipTransitions();
+                    return;
                 } else if (this.clickResolver) {
                     this.clickResolver();
                     this.clickResolver = null;
@@ -353,11 +370,33 @@ const Renderer = {
 
     waitForClick() {
         return new Promise(resolve => {
+            const sf = Interpreter && Interpreter.state && Interpreter.state.variables
+                ? Interpreter.state.variables.sf
+                : null;
+            const resolveOnce = () => {
+                if (!this.clickResolver) {
+                    return;
+                }
+                if (this.clickTimer) {
+                    clearTimeout(this.clickTimer);
+                    this.clickTimer = null;
+                }
+                this.clickResolver = null;
+                if (sf && sf.voice_cut) {
+                    AudioPlayer.stopVoice();
+                }
+                resolve();
+            };
+            if (Interpreter.state.skipMode) {
+                if (sf && sf.voice_cut) {
+                    AudioPlayer.stopVoice();
+                }
+                resolve();
+                return;
+            }
+            this.clickResolver = resolveOnce;
             if (Interpreter.state.autoMode) {
-                setTimeout(resolve, this.autoWait);
-                this.clickResolver = resolve;
-            } else {
-                this.clickResolver = resolve;
+                this.clickTimer = setTimeout(resolveOnce, this.autoWait);
             }
         });
     },
@@ -366,6 +405,10 @@ const Renderer = {
         if (this.clickResolver) {
             this.clickResolver();
             this.clickResolver = null;
+        }
+        if (this.clickTimer) {
+            clearTimeout(this.clickTimer);
+            this.clickTimer = null;
         }
     },
 

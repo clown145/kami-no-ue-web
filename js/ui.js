@@ -396,12 +396,13 @@
         const screen = this.elements.configScreen;
         if (!screen) return;
         const fromTitle = !!(this.elements.titleScreen && !this.elements.titleScreen.classList.contains('hidden'));
-        this.state.configFromTitle = fromTitle;
         this.state.configPage = page === 'voice' ? 'voice' : 'system';
         this.updateConfigBackground();
         this.updateConfigPage();
         this.updateConfigUI();
         this.showOverlay(screen);
+        this.state.configFromTitle = fromTitle;
+        this.state.configReturnToTitle = fromTitle;
     },
 
     updateConfigBackground() {
@@ -615,9 +616,9 @@
             image: 'config-back.png',
             className: 'config-action',
             onClick: () => {
-                if (this.state.configFromTitle) {
+                if (this.state.configReturnToTitle) {
                     this.showTitle();
-                    this.state.configFromTitle = false;
+                    this.state.configReturnToTitle = false;
                 } else {
                     this.hideAll();
                 }
@@ -869,6 +870,7 @@
         }
         this.state.saveLoadFromTitle = false;
         this.state.configFromTitle = false;
+        this.state.configReturnToTitle = false;
         this.state.active = null;
         if (Renderer.setOverlayActive) {
             Renderer.setOverlayActive(false);
@@ -990,6 +992,7 @@
         for (let i = 0; i < this.saveSlots; i += 1) {
             const slotIndex = slotBase + i;
             const data = Game.getSaveData(slotIndex);
+            const hasData = !!data;
             const btn = document.createElement('button');
             btn.className = 'save-slot';
             btn.type = 'button';
@@ -1056,14 +1059,27 @@
                 if (this.state.saveMode === 'save') {
                     const shouldAsk = !!(Interpreter && Interpreter.state && Interpreter.state.variables
                         && Interpreter.state.variables.sf && Interpreter.state.variables.sf.Asksave);
-                    if (data || shouldAsk) {
-                        const ok = await this.confirm('覆盖这个存档？');
-                        if (!ok) return;
+                    if (shouldAsk) {
+                        const message = hasData ? '覆盖存档？' : '保存记录？';
+                        const ok = await this.confirm(message);
+                        if (!ok) {
+                            return;
+                        }
                     }
                     Game.save(slotIndex);
                     this.renderSaveSlots();
                 } else {
-                    if (!data) return;
+                    if (!data) {
+                        return;
+                    }
+                    const shouldAsk = !!(Interpreter && Interpreter.state && Interpreter.state.variables
+                        && Interpreter.state.variables.sf && Interpreter.state.variables.sf.Asksave);
+                    if (shouldAsk) {
+                        const ok = await this.confirm('读取记录？');
+                        if (!ok) {
+                            return;
+                        }
+                    }
                     const ok = await Game.load(slotIndex);
                     if (ok) {
                         this.hideAll();
@@ -1138,8 +1154,12 @@
         if (!this.elements.confirmScreen || !this.elements.confirmText) {
             return Promise.resolve(window.confirm(message));
         }
+        clearTimeout(this.confirmHideTimer);
         this.elements.confirmText.textContent = message;
         this.elements.confirmScreen.classList.remove('hidden');
+        requestAnimationFrame(() => {
+            this.elements.confirmScreen.classList.add('is-visible');
+        });
         if (Renderer.setInputEnabled) {
             Renderer.setInputEnabled(false);
         }
@@ -1155,7 +1175,11 @@
         if (!this.confirmResolver) {
             return;
         }
-        this.elements.confirmScreen.classList.add('hidden');
+        this.elements.confirmScreen.classList.remove('is-visible');
+        clearTimeout(this.confirmHideTimer);
+        this.confirmHideTimer = setTimeout(() => {
+            this.elements.confirmScreen.classList.add('hidden');
+        }, 200);
         if (Renderer.setInputEnabled) {
             Renderer.setInputEnabled(true);
         }

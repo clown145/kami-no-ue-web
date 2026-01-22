@@ -436,6 +436,14 @@ body {
 #confirm-screen {
     z-index: 220;
     background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+#confirm-screen.is-visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .title-menu {
@@ -721,9 +729,14 @@ body {
     top: 50%;
     width: 574px;
     height: 175px;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.98);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    transition: transform 0.2s ease;
+}
+
+#confirm-screen.is-visible .confirm-dialog {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .confirm-text {

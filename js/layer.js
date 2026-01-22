@@ -17,6 +17,7 @@ const LayerRenderer = {
             1: { name: null, element: null }
         }
     },
+    transitions: new Set(),
     baseSize: {
         width: 1280,
         height: 720
@@ -45,6 +46,47 @@ const LayerRenderer = {
             x: width / this.baseSize.width,
             y: height / this.baseSize.height
         };
+    },
+    hasActiveTransition() {
+        return this.transitions && this.transitions.size > 0;
+    },
+    skipTransitions() {
+        if (!this.transitions || this.transitions.size === 0) {
+            return;
+        }
+        Array.from(this.transitions).forEach((entry) => {
+            if (entry && entry.skip) {
+                entry.skip();
+            }
+        });
+    },
+    waitForTransition(duration) {
+        const ms = Math.max(0, Number(duration) || 0);
+        if (ms <= 0) {
+            return Promise.resolve();
+        }
+        return new Promise((resolve) => {
+            const entry = {};
+            let done = false;
+            const finish = () => {
+                if (done) {
+                    return;
+                }
+                done = true;
+                if (this.transitions) {
+                    this.transitions.delete(entry);
+                }
+                resolve();
+            };
+            const timer = setTimeout(finish, ms);
+            entry.skip = () => {
+                clearTimeout(timer);
+                finish();
+            };
+            if (this.transitions) {
+                this.transitions.add(entry);
+            }
+        });
     },
 
     /**
@@ -107,7 +149,7 @@ const LayerRenderer = {
             newBg.style.opacity = '1';
 
             // 等待动画完成
-            await this.delay(duration);
+            await this.waitForTransition(duration);
 
             // 设置主背景并移除临时层
             bgEl.style.backgroundImage = `url("${src}")`;
@@ -272,7 +314,9 @@ const LayerRenderer = {
                     ghost.style.opacity = '0';
                 });
 
-                await this.delay(fadeDuration);
+                await this.waitForTransition(fadeDuration);
+                element.style.opacity = '1';
+                ghost.style.opacity = '0';
                 ghost.remove();
                 element.style.transition = '';
             } else {
@@ -293,7 +337,11 @@ const LayerRenderer = {
                 requestAnimationFrame(() => {
                     element.style.opacity = '1';
                 });
-                await this.delay(fadeDuration);
+                await this.waitForTransition(fadeDuration);
+                element.style.opacity = '1';
+                if (prevElement) {
+                    prevElement.style.opacity = '0';
+                }
                 element.style.transition = '';
             }
         } else {
@@ -339,7 +387,7 @@ const LayerRenderer = {
         element.style.opacity = '0';
 
         if (duration > 0) {
-            await this.delay(duration);
+            await this.waitForTransition(duration);
         }
 
         const layerIndex = isRight ? 1 : 0;
@@ -356,7 +404,7 @@ const LayerRenderer = {
         this.elements.charaRight.style.opacity = '0';
 
         if (duration > 0) {
-            await this.delay(duration);
+            await this.waitForTransition(duration);
         }
 
         this.state.characters = {

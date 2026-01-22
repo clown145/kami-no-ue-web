@@ -231,6 +231,11 @@ const Interpreter = {
     delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     },
+    getTransitionTime(raw, fallback = 0) {
+        const parsed = parseInt(raw, 10);
+        const base = Number.isFinite(parsed) ? parsed : fallback;
+        return this.state.skipMode ? 0 : base;
+    },
 
     resolveLayer(layer) {
         if (layer === undefined || layer === null || layer === '') {
@@ -315,7 +320,7 @@ const Interpreter = {
     },
 
     async cmdBackground(args) {
-        const time = parseInt(args.tm) || 500;
+        const time = this.getTransitionTime(args.tm, 500);
         await Renderer.showBackground(args.fn, time);
     },
 
@@ -360,7 +365,7 @@ const Interpreter = {
     },
 
     async cmdCharacter(args) {
-        const time = parseInt(args.tm) || 300;
+        const time = this.getTransitionTime(args.tm, 300);
         let left = args.left !== undefined ? parseInt(args.left, 10) : 300;
         if (Number.isNaN(left)) {
             left = 300;
@@ -373,7 +378,7 @@ const Interpreter = {
     },
 
     async cmdCharacterLeft(args) {
-        const time = parseInt(args.tm) || 300;
+        const time = this.getTransitionTime(args.tm, 300);
         let left = args.left !== undefined ? parseInt(args.left, 10) : 100;
         if (Number.isNaN(left)) {
             left = 100;
@@ -386,7 +391,7 @@ const Interpreter = {
     },
 
     async cmdCharacterRight(args) {
-        const time = parseInt(args.tm) || 300;
+        const time = this.getTransitionTime(args.tm, 300);
         let left = args.left !== undefined ? parseInt(args.left, 10) : 550;
         if (Number.isNaN(left)) {
             left = 550;
@@ -399,7 +404,7 @@ const Interpreter = {
     },
 
     async cmdCharaWithBg(args) {
-        const time = parseInt(args.tm) || 500;
+        const time = this.getTransitionTime(args.tm, 500);
         await Renderer.showBackground(args.fn, time);
         if (args.chara) {
             let left = args.left !== undefined ? parseInt(args.left, 10) : 300;
@@ -415,7 +420,7 @@ const Interpreter = {
     },
 
     async cmdCharaLeftWithBg(args) {
-        const time = parseInt(args.tm) || 500;
+        const time = this.getTransitionTime(args.tm, 500);
         await Renderer.showBackground(args.fn, time);
         if (args.chara) {
             let left = args.left !== undefined ? parseInt(args.left, 10) : 100;
@@ -431,7 +436,7 @@ const Interpreter = {
     },
 
     async cmdCharaRightWithBg(args) {
-        const time = parseInt(args.tm) || 500;
+        const time = this.getTransitionTime(args.tm, 500);
         await Renderer.showBackground(args.fn, time);
         if (args.chara) {
             let left = args.left !== undefined ? parseInt(args.left, 10) : 550;
@@ -447,7 +452,7 @@ const Interpreter = {
     },
 
     async cmdCharaLRWithBg(args) {
-        const time = parseInt(args.tm) || 500;
+        const time = this.getTransitionTime(args.tm, 500);
         await Renderer.showBackground(args.fn, time);
         if (args.charal) {
             let left = args.leftl !== undefined ? parseInt(args.leftl, 10) : 100;
@@ -474,23 +479,23 @@ const Interpreter = {
     },
 
     async cmdCharaClear(args) {
-        const time = parseInt(args.tm) || 300;
+        const time = this.getTransitionTime(args.tm, 300);
         await Renderer.hideCharacter('left', time);
         await Renderer.hideCharacter('center', time);
     },
 
     async cmdCharaClearRight(args) {
-        const time = parseInt(args.tm) || 300;
+        const time = this.getTransitionTime(args.tm, 300);
         await Renderer.hideCharacter('right', time);
     },
 
     async cmdCharaClearBoth(args) {
-        const time = parseInt(args.tm) || 300;
+        const time = this.getTransitionTime(args.tm, 300);
         await Renderer.hideAllCharacters(time);
     },
 
     async cmdCharaClearWithBg(args) {
-        const time = parseInt(args.tm) || 500;
+        const time = this.getTransitionTime(args.tm, 500);
         await Renderer.hideAllCharacters(0);
         if (args.fn) {
             await Renderer.showBackground(args.fn, time);
@@ -559,7 +564,7 @@ const Interpreter = {
     },
 
     async cmdTrans(args) {
-        const time = parseInt(args.time || args.tm) || 0;
+        const time = this.getTransitionTime(args.time || args.tm, 0);
         const pending = this.state.render.pending;
         const tasks = [];
 

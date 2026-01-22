@@ -6,7 +6,9 @@ const Game = {
     state: {
         initialized: false,
         currentScenario: null,
-        macrosLoaded: false
+        macrosLoaded: false,
+        skipHold: false,
+        skipManual: false
     },
 
     /**
@@ -407,20 +409,48 @@ const Game = {
      */
     setAutoMode(enabled) {
         Interpreter.state.autoMode = enabled;
+        if (enabled) {
+            this.state.skipManual = false;
+            this.state.skipHold = false;
+            this.updateSkipMode();
+        }
         const btn = document.getElementById('btn-auto');
         if (btn) {
             btn.classList.toggle('active', enabled);
         }
+        Renderer.cancelWait();
     },
 
     /**
      * 设置跳过模式
      */
     setSkipMode(enabled) {
-        Interpreter.state.skipMode = enabled;
+        this.state.skipManual = enabled;
+        if (enabled) {
+            Interpreter.state.autoMode = false;
+            const btnAuto = document.getElementById('btn-auto');
+            if (btnAuto) {
+                btnAuto.classList.remove('active');
+            }
+        }
+        this.updateSkipMode();
+        Renderer.cancelWait();
+    },
+
+    setSkipHold(enabled) {
+        this.state.skipHold = enabled;
+        this.updateSkipMode();
+        if (enabled) {
+            Renderer.cancelWait();
+        }
+    },
+
+    updateSkipMode() {
+        const next = !!(this.state.skipManual || this.state.skipHold);
+        Interpreter.state.skipMode = next;
         const btn = document.getElementById('btn-skip');
         if (btn) {
-            btn.classList.toggle('active', enabled);
+            btn.classList.toggle('active', next);
         }
     },
 
@@ -518,6 +548,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Ctrl 快进
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Control' || e.repeat) {
+            return;
+        }
+        if (!Renderer.inputEnabled) {
+            return;
+        }
+        Game.setSkipHold(true);
+    });
+    document.addEventListener('keyup', (e) => {
+        if (e.key !== 'Control') {
+            return;
+        }
+        Game.setSkipHold(false);
+    });
 
     // Init
     Renderer.init();
