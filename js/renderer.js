@@ -61,6 +61,9 @@ const Renderer = {
             if (!this.inputEnabled) {
                 return;
             }
+            if (e.target && e.target.closest && e.target.closest('button')) {
+                return;
+            }
             if (this.messageWindowHidden) {
                 this.showMessageWindow();
                 return;

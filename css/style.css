@@ -147,7 +147,7 @@ body {
 
 #name-box {
     position: absolute;
-    top: 532px;
+    top: 527px;
     left: 182px;
     width: 350px;
     height: 100px;
@@ -175,7 +175,7 @@ body {
 #text-box {
     position: absolute;
     left: 276px;
-    top: 590px;
+    top: 600px;
     width: 654px;
     color: #514610;
     font-size: 24px;
@@ -477,6 +477,16 @@ body {
     display: none;
 }
 
+#log-screen .overlay-header {
+    top: auto;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #save-load-screen .overlay-title,
 #log-screen .overlay-title {
     display: none;
@@ -530,12 +540,14 @@ body {
 }
 
 .save-slot {
+    --slot-frame-width: 208px;
+    --slot-frame-height: 240px;
     position: absolute;
-    width: 228px;
-    height: 254px;
+    width: var(--slot-frame-width);
+    height: var(--slot-frame-height);
     --thumb-width: 170px;
     --thumb-height: 96px;
-    background-size: calc(var(--thumb-width) * 3) var(--thumb-height);
+    background-size: calc(var(--slot-frame-width) * 3) var(--slot-frame-height);
     background-repeat: no-repeat;
     background-position: 0 0;
     border: 0;
@@ -548,22 +560,26 @@ body {
 }
 
 .save-slot:hover {
-    background-position: calc(-1 * var(--thumb-width)) 0;
 }
 
 .save-slot:active {
-    background-position: calc(-2 * var(--thumb-width)) 0;
 }
 
 .save-slot-thumb {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 19px;
+    top: 16px;
     width: var(--thumb-width);
     height: var(--thumb-height);
     background-size: cover;
     background-position: center;
     pointer-events: none;
+    filter: saturate(0) brightness(0.85);
+    transition: filter 0.2s ease;
+}
+
+.save-slot:hover .save-slot-thumb {
+    filter: saturate(1) brightness(1);
 }
 
 .save-slot-index {
@@ -572,27 +588,50 @@ body {
 
 .save-slot-meta {
     position: absolute;
-    left: 3px;
-    top: 92px;
-    width: 160px;
-    height: 170px;
+    left: 22px;
+    top: 146px;
+    width: 164px;
+    height: 80px;
     display: flex;
     flex-direction: column;
     gap: 4px;
     overflow: hidden;
 }
 
+.save-slot-hover {
+    position: absolute;
+    left: 19px;
+    top: 16px;
+    width: var(--thumb-width);
+    height: var(--thumb-height);
+    background-repeat: no-repeat;
+    background-size: calc(var(--thumb-width) * 3) var(--thumb-height);
+    background-position: 0 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.save-slot:hover .save-slot-hover {
+    opacity: 1;
+    background-position: calc(-1 * var(--thumb-width)) 0;
+}
+
+.save-slot:active .save-slot-hover {
+    background-position: calc(-2 * var(--thumb-width)) 0;
+}
+
 .save-slot-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 20px;
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .save-slot-time {
-    font-size: 15px;
+    font-size: 14px;
     opacity: 0.9;
 }
 

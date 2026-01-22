@@ -10,8 +10,8 @@
     saveSlots: 10,
     savePages: 10,
     saveSlotLayout: {
-        originX: 99,
-        originY: 111,
+        originX: 80,
+        originY: 90,
         colGap: 228,
         rowGap: 254,
         cols: 5
@@ -205,6 +205,7 @@
         this.state.saveMode = mode === 'load' ? 'load' : 'save';
         const screen = this.elements.saveLoadScreen;
         if (!screen) return;
+        const fromTitle = !!(this.elements.titleScreen && !this.elements.titleScreen.classList.contains('hidden'));
 
         const bgName = this.state.saveMode === 'save' ? 'save_bg' : 'load_bg';
         const bg = ResourceLookup.locateImage(bgName + '.png');
@@ -230,6 +231,7 @@
         this.renderSaveActions();
         this.renderSaveSlots();
         this.showOverlay(screen);
+        this.state.saveLoadFromTitle = fromTitle;
     },
 
     showLog() {
@@ -277,6 +279,7 @@
         if (!keepInput) {
             Renderer.setInputEnabled(true);
         }
+        this.state.saveLoadFromTitle = false;
         this.state.active = null;
         if (Renderer.setOverlayActive) {
             Renderer.setOverlayActive(false);
@@ -359,7 +362,14 @@
                 image: 'config-back.png',
                 left: 713,
                 top: 683,
-                onClick: () => this.hideAll()
+                onClick: () => {
+                    if (this.state.saveLoadFromTitle) {
+                        this.showTitle();
+                        this.state.saveLoadFromTitle = false;
+                    } else {
+                        this.hideAll();
+                    }
+                }
             }
         ];
 
@@ -386,8 +396,8 @@
         list.innerHTML = '';
         const page = this.getCurrentPage();
         const slotBase = page * this.saveSlots;
-        const frameImage = ResourceLookup.locateImage('savamode_prev_mo.png');
         const slotFallback = this.state.slotBg;
+        const hoverOverlay = ResourceLookup.locateImage('savamode_prev_mo.png');
         for (let i = 0; i < this.saveSlots; i += 1) {
             const slotIndex = slotBase + i;
             const data = Game.getSaveData(slotIndex);
@@ -395,9 +405,7 @@
             btn.className = 'save-slot';
             btn.type = 'button';
             btn.dataset.slot = String(slotIndex);
-            if (frameImage) {
-                btn.style.backgroundImage = `url("${frameImage}")`;
-            } else if (slotFallback) {
+            if (slotFallback) {
                 btn.style.backgroundImage = `url("${slotFallback}")`;
             }
 
@@ -418,6 +426,12 @@
                 if (bg) {
                     thumb.style.backgroundImage = `url("${bg}")`;
                 }
+            }
+
+            const hoverMask = document.createElement('div');
+            hoverMask.className = 'save-slot-hover';
+            if (hoverOverlay) {
+                hoverMask.style.backgroundImage = `url("${hoverOverlay}")`;
             }
 
             const index = document.createElement('div');
@@ -444,6 +458,7 @@
             meta.appendChild(time);
 
             btn.appendChild(thumb);
+            btn.appendChild(hoverMask);
             btn.appendChild(index);
             btn.appendChild(meta);
 
