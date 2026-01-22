@@ -356,24 +356,28 @@
         const toggles = this.config.elements.toggles || {};
         if (toggles.kidoku) {
             this.setButtonImage(toggles.kidoku, state.allSkip ? 'kidoku-skip01.png' : 'kidoku-skip02.png');
+            toggles.kidoku.classList.toggle('is-selected', !state.allSkip);
         }
         if (toggles.midoku) {
             this.setButtonImage(toggles.midoku, state.allSkip ? 'midoku-skip02.png' : 'midoku-skip01.png');
+            toggles.midoku.classList.toggle('is-selected', !!state.allSkip);
         }
         if (toggles.win) {
             this.setButtonImage(toggles.win, state.fullscreen ? 'win01.png' : 'win02.png');
+            toggles.win.classList.toggle('is-selected', !state.fullscreen);
         }
         if (toggles.full) {
             this.setButtonImage(toggles.full, state.fullscreen ? 'full02.png' : 'full01.png');
+            toggles.full.classList.toggle('is-selected', !!state.fullscreen);
         }
         if (toggles.cskip) {
             this.setButtonImage(toggles.cskip, state.cskip ? 'checkbox02.png' : 'checkbox01.png');
         }
         if (toggles.askSave) {
-            this.setButtonImage(toggles.askSave, state.askSave ? 'checkbox01.png' : 'checkbox02.png');
+            this.setButtonImage(toggles.askSave, state.askSave ? 'checkbox02.png' : 'checkbox01.png');
         }
         if (toggles.voiceCut) {
-            this.setButtonImage(toggles.voiceCut, state.voiceCut ? 'checkbox01.png' : 'checkbox02.png');
+            this.setButtonImage(toggles.voiceCut, state.voiceCut ? 'checkbox02.png' : 'checkbox01.png');
         }
 
         const tabs = this.config.elements.tabs || {};
@@ -458,7 +462,7 @@
             height: 38,
             image: 'midoku-skip01.png',
             className: 'config-skip',
-            onClick: () => this.updateConfigState({ allSkip: false })
+            onClick: () => this.updateConfigState({ allSkip: true })
         });
         toggles.kidoku = this.createConfigButton(container, {
             left: 261,
@@ -467,7 +471,7 @@
             height: 38,
             image: 'kidoku-skip01.png',
             className: 'config-skip',
-            onClick: () => this.updateConfigState({ allSkip: true })
+            onClick: () => this.updateConfigState({ allSkip: false })
         });
         toggles.win = this.createConfigButton(container, {
             left: 81,
@@ -493,7 +497,7 @@
             width: 25,
             height: 24,
             image: 'checkbox01.png',
-            className: 'config-checkbox config-check',
+            className: 'config-checkbox',
             onClick: () => this.updateConfigState({ cskip: !this.config.state.cskip })
         });
         toggles.askSave = this.createConfigButton(container, {
@@ -502,7 +506,7 @@
             width: 25,
             height: 24,
             image: 'checkbox01.png',
-            className: 'config-checkbox config-check',
+            className: 'config-checkbox',
             onClick: () => this.updateConfigState({ askSave: !this.config.state.askSave })
         });
         toggles.voiceCut = this.createConfigButton(container, {
@@ -511,7 +515,7 @@
             width: 25,
             height: 24,
             image: 'checkbox01.png',
-            className: 'config-checkbox config-check',
+            className: 'config-checkbox',
             onClick: () => this.updateConfigState({ voiceCut: !this.config.state.voiceCut })
         });
     },

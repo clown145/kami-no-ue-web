@@ -879,13 +879,42 @@ body {
     background-position: calc(-2 * var(--frame-width)) 0;
 }
 
-.config-btn.config-check {
-    background-size: 100% 100%;
+.config-btn.config-checkbox {
+    background-position: 0 0;
 }
 
-.config-btn.config-check:hover,
-.config-btn.config-check:active {
+.config-btn.config-checkbox:hover,
+.config-btn.config-checkbox:active {
     background-position: 0 0;
+    filter: none;
+    transform: none;
+}
+
+.config-btn.config-skip,
+.config-btn.config-window {
+    transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.config-btn.config-skip:hover,
+.config-btn.config-window:hover {
+    background-position: 0 0;
+    transform: translateY(-1px);
+}
+
+.config-btn.config-skip.is-selected:hover,
+.config-btn.config-window.is-selected:hover {
+    filter: none;
+}
+
+.config-btn.config-skip:not(.is-selected):hover,
+.config-btn.config-window:not(.is-selected):hover {
+    filter: brightness(1.08);
+}
+
+.config-btn.config-skip:active,
+.config-btn.config-window:active {
+    background-position: 0 0;
+    transform: translateY(0);
 }
 
 .config-slider {
