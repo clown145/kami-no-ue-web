@@ -29,6 +29,9 @@ const Renderer = {
         currentText: '',
         charIndex: 0
     },
+    textSpeed: 30,
+    autoWait: 2000,
+    messageOpacity: 1,
 
     /**
      * 初始化
@@ -40,7 +43,10 @@ const Renderer = {
             container: document.getElementById('game-container'),
             messageLayer: document.getElementById('message-layer'),
             messageBox: document.getElementById('message-box'),
+            messageBg: document.getElementById('message-bg'),
             nameBox: document.getElementById('name-box'),
+            nameBg: document.getElementById('name-bg'),
+            nameText: document.getElementById('name-text'),
             textBox: document.getElementById('text-box'),
             clickIndicator: document.getElementById('click-indicator'),
             choiceLayer: document.getElementById('choice-layer'),
@@ -61,7 +67,7 @@ const Renderer = {
             if (!this.inputEnabled) {
                 return;
             }
-            if (e.target && e.target.closest && e.target.closest('button')) {
+            if (e.target && e.target.closest && e.target.closest('button, input, select, textarea')) {
                 return;
             }
             if (this.messageWindowHidden) {
@@ -115,7 +121,7 @@ const Renderer = {
     },
 
     applyMessageSkin() {
-        if (!this.elements.messageBox || !this.elements.nameBox) {
+        if (!this.elements.messageBox || !this.elements.messageBg || !this.elements.nameBg) {
             return;
         }
         const base = ResourceLookup.locateImage('win.png');
@@ -123,9 +129,9 @@ const Renderer = {
         this.messageSkins.base = base;
         this.messageSkins.named = named;
         if (base) {
-            this.elements.messageBox.style.backgroundImage = `url("${base}")`;
+            this.elements.messageBg.style.backgroundImage = `url("${base}")`;
         }
-        this.elements.nameBox.style.backgroundImage = 'none';
+        this.elements.nameBg.style.backgroundImage = 'none';
     },
 
     updateMessageVisibility() {
@@ -192,19 +198,24 @@ const Renderer = {
     },
 
     showName(name) {
-        this.elements.nameBox.textContent = name;
+        if (this.elements.nameText) {
+            this.elements.nameText.textContent = name;
+        }
         this.elements.nameBox.classList.add('visible');
         this.currentSpeaker = name || '';
         if (this.messageSkins.named) {
-            this.elements.messageBox.style.backgroundImage = `url("${this.messageSkins.named}")`;
+            this.elements.messageBg.style.backgroundImage = `url("${this.messageSkins.named}")`;
         }
     },
 
     hideName() {
         this.elements.nameBox.classList.remove('visible');
+        if (this.elements.nameText) {
+            this.elements.nameText.textContent = '';
+        }
         this.currentSpeaker = '';
         if (this.messageSkins.base) {
-            this.elements.messageBox.style.backgroundImage = `url("${this.messageSkins.base}")`;
+            this.elements.messageBg.style.backgroundImage = `url("${this.messageSkins.base}")`;
         }
     },
 
@@ -219,7 +230,7 @@ const Renderer = {
         this.textState.currentText = text;
         this.textState.charIndex = 0;
 
-        const speed = skipMode ? 0 : 30;
+        const speed = skipMode ? 0 : this.textSpeed;
 
         for (let i = 0; i < text.length; i++) {
             if (!this.textState.isTyping) break;
@@ -311,6 +322,14 @@ const Renderer = {
         this.history = entries.slice(-this.historyLimit);
     },
 
+    setMessageOpacity(value) {
+        const clamped = Math.max(0, Math.min(1, value));
+        this.messageOpacity = clamped;
+        if (this.elements.messageBox) {
+            this.elements.messageBox.style.setProperty('--message-window-opacity', clamped.toFixed(3));
+        }
+    },
+
     setInputEnabled(enabled) {
         this.inputEnabled = !!enabled;
     },
@@ -335,7 +354,7 @@ const Renderer = {
     waitForClick() {
         return new Promise(resolve => {
             if (Interpreter.state.autoMode) {
-                setTimeout(resolve, 2000);
+                setTimeout(resolve, this.autoWait);
                 this.clickResolver = resolve;
             } else {
                 this.clickResolver = resolve;

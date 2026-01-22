@@ -25,7 +25,11 @@
         <!-- 对话框层 -->
         <div id="message-layer" class="layer">
             <div id="message-box">
-                <div id="name-box"></div>
+                <div id="message-bg"></div>
+                <div id="name-box">
+                    <div id="name-bg"></div>
+                    <div id="name-text"></div>
+                </div>
                 <div id="text-box"></div>
                 <div id="click-indicator">▼</div>
             </div>
@@ -64,6 +68,13 @@
                 <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
             </div>
             <div id="log-entries" class="log-entries"></div>
+        </div>
+
+        <div id="config-screen" class="overlay hidden">
+            <div id="config-main" class="config-page"></div>
+            <div id="config-voice" class="config-page hidden"></div>
+            <div id="config-tabs" class="config-tabs"></div>
+            <div id="config-actions" class="config-actions"></div>
         </div>
 
         <div id="confirm-screen" class="overlay hidden">

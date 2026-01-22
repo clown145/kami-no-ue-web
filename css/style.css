@@ -137,12 +137,19 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
+    padding: 0;
+    pointer-events: auto;
+}
+
+#message-bg {
+    position: absolute;
+    inset: 0;
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: 100% 100%;
-    padding: 0;
-    pointer-events: auto;
+    opacity: var(--message-window-opacity, 1);
+    pointer-events: none;
 }
 
 #name-box {
@@ -151,10 +158,6 @@ body {
     left: 182px;
     width: 350px;
     height: 100px;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100% 100%;
     color: #514610;
     font-size: 24px;
     font-weight: 600;
@@ -166,6 +169,23 @@ body {
     opacity: 0;
     transition: opacity 0.2s ease;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+#name-bg {
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    opacity: var(--message-window-opacity, 1);
+    pointer-events: none;
+}
+
+#name-text {
+    position: relative;
+    z-index: 1;
+    width: 100%;
 }
 
 #name-box.visible {
@@ -799,4 +819,104 @@ body {
 
 .ui-toast.hidden {
     display: none;
+}
+
+/* Config */
+#config-screen {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+.config-page,
+.config-tabs,
+.config-actions {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.config-page.hidden {
+    display: none;
+}
+
+.config-btn {
+    --frame-width: 100px;
+    --frame-height: 30px;
+    position: absolute;
+    width: var(--frame-width);
+    height: var(--frame-height);
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: calc(var(--frame-width) * 3) var(--frame-height);
+    color: transparent;
+    font-size: 0;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.config-btn:hover {
+    background-position: calc(-1 * var(--frame-width)) 0;
+}
+
+.config-btn:active {
+    background-position: calc(-2 * var(--frame-width)) 0;
+}
+
+.config-slider {
+    --thumb-image: none;
+    position: absolute;
+    background: transparent;
+    border: 0;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.config-slider::-webkit-slider-runnable-track {
+    height: 24px;
+    background: transparent;
+}
+
+.config-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 23px;
+    height: 23px;
+    background-image: var(--thumb-image);
+    background-repeat: no-repeat;
+    background-size: 69px 23px;
+    background-position: 0 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.config-slider:hover::-webkit-slider-thumb {
+    background-position: -23px 0;
+}
+
+.config-slider:active::-webkit-slider-thumb {
+    background-position: -46px 0;
+}
+
+.config-slider::-moz-range-track {
+    height: 24px;
+    background: transparent;
+    border: 0;
+}
+
+.config-slider::-moz-range-thumb {
+    width: 23px;
+    height: 23px;
+    border: 0;
+    background-color: transparent;
+    background-image: var(--thumb-image);
+    background-repeat: no-repeat;
+    background-size: 69px 23px;
+    background-position: 0 0;
+    cursor: pointer;
 }

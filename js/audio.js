@@ -10,6 +10,7 @@ const AudioPlayer = {
 
     // 当前状态
     currentBgm: null,
+    currentVoiceGroup: null,
 
     // 音量设置
     volume: {
@@ -17,6 +18,21 @@ const AudioPlayer = {
         se: 0.8,
         voice: 1.0
     },
+    masterVolume: 1,
+    voiceGroups: {
+        yoruko: ['yoruko_'],
+        kanata: ['kanata_'],
+        kisaki: ['kisaki_'],
+        rio: ['rio_'],
+        nagisa: ['nagisa_'],
+        yamiko: ['yamiko_'],
+        kanade: ['kanade_'],
+        misaki: ['misaki_'],
+        chryso: ['chryso_']
+    },
+    voiceGroupVolumes: {},
+    voiceGroupEnabled: {},
+    voiceCut: false,
 
     /**
      * 初始化
@@ -41,6 +57,8 @@ const AudioPlayer = {
         this.voicePlayer.preload = 'auto';
         document.body.appendChild(this.voicePlayer);
 
+        this.initVoiceGroups();
+
         // 用户交互后启用音频
         const enableAudio = () => {
             if (this.bgmPlayer.paused && this.currentBgm) {
@@ -49,6 +67,62 @@ const AudioPlayer = {
             document.removeEventListener('click', enableAudio);
         };
         document.addEventListener('click', enableAudio);
+    },
+
+    initVoiceGroups() {
+        Object.keys(this.voiceGroups).forEach((group) => {
+            if (this.voiceGroupVolumes[group] === undefined) {
+                this.voiceGroupVolumes[group] = 1;
+            }
+            if (this.voiceGroupEnabled[group] === undefined) {
+                this.voiceGroupEnabled[group] = true;
+            }
+        });
+    },
+    getVoiceGroup(name) {
+        if (!name) return null;
+        const base = String(name).split(/[\\/]/).pop();
+        const lower = base.toLowerCase();
+        const groups = Object.keys(this.voiceGroups);
+        for (const group of groups) {
+            const prefixes = this.voiceGroups[group] || [];
+            for (const prefix of prefixes) {
+                if (lower.startsWith(prefix)) {
+                    return group;
+                }
+            }
+        }
+        return null;
+    },
+    getEffectiveVolume(type) {
+        const base = this.volume[type] ?? 1;
+        const master = this.masterVolume ?? 1;
+        return Math.max(0, Math.min(1, base * master));
+    },
+    applyVolumes() {
+        if (this.bgmPlayer) {
+            this.bgmPlayer.volume = this.getEffectiveVolume('bgm');
+        }
+        if (this.sePlayer) {
+            this.sePlayer.volume = this.getEffectiveVolume('se');
+        }
+        if (this.voicePlayer) {
+            const group = this.currentVoiceGroup;
+            const groupVolume = group ? (this.voiceGroupVolumes[group] ?? 1) : 1;
+            this.voicePlayer.volume = Math.max(0, Math.min(1, this.getEffectiveVolume('voice') * groupVolume));
+        }
+    },
+    setMasterVolume(value) {
+        this.masterVolume = Math.max(0, Math.min(1, value));
+        this.applyVolumes();
+    },
+    setVoiceGroupVolume(group, value) {
+        if (!group) return;
+        this.voiceGroupVolumes[group] = Math.max(0, Math.min(1, value));
+    },
+    setVoiceGroupEnabled(group, enabled) {
+        if (!group) return;
+        this.voiceGroupEnabled[group] = !!enabled;
     },
 
     /**
@@ -91,11 +165,11 @@ const AudioPlayer = {
 
         this.currentBgm = name;
         this.setAudioSource(this.bgmPlayer, path);
-        this.bgmPlayer.volume = this.volume.bgm;
+        this.bgmPlayer.volume = this.getEffectiveVolume('bgm');
 
         if (fadeTime > 0) {
             this.bgmPlayer.volume = 0;
-            this.fadeIn(this.bgmPlayer, fadeTime, this.volume.bgm);
+            this.fadeIn(this.bgmPlayer, fadeTime, this.getEffectiveVolume('bgm'));
         }
 
         this.bgmPlayer.play().catch(e => {
@@ -130,7 +204,7 @@ const AudioPlayer = {
         if (!path) return;
 
         this.setAudioSource(this.sePlayer, path);
-        this.sePlayer.volume = this.volume.se;
+        this.sePlayer.volume = this.getEffectiveVolume('se');
         this.sePlayer.play().catch(() => { });
     },
 
@@ -152,6 +226,12 @@ const AudioPlayer = {
         let path = ResourceLookup.locateVoice(name);
         if (!path) return;
 
+        const group = this.getVoiceGroup(name);
+        if (group && this.voiceGroupEnabled[group] === false) {
+            return;
+        }
+        this.currentVoiceGroup = group;
+
         // 如果有扩展名，直接设置src
         if (name.includes('.')) {
             this.voicePlayer.src = path;
@@ -159,7 +239,9 @@ const AudioPlayer = {
             this.setAudioSource(this.voicePlayer, path);
         }
 
-        this.voicePlayer.volume = this.volume.voice;
+        const groupVolume = group ? (this.voiceGroupVolumes[group] ?? 1) : 1;
+        const effective = this.getEffectiveVolume('voice') * groupVolume;
+        this.voicePlayer.volume = Math.max(0, Math.min(1, effective));
         this.voicePlayer.play().catch(() => { });
     },
 
@@ -168,6 +250,7 @@ const AudioPlayer = {
      */
     stopVoice() {
         this.voicePlayer.pause();
+        this.currentVoiceGroup = null;
     },
 
     /**
@@ -219,18 +302,7 @@ const AudioPlayer = {
      */
     setVolume(type, value) {
         this.volume[type] = Math.max(0, Math.min(1, value));
-
-        switch (type) {
-            case 'bgm':
-                this.bgmPlayer.volume = this.volume.bgm;
-                break;
-            case 'se':
-                this.sePlayer.volume = this.volume.se;
-                break;
-            case 'voice':
-                this.voicePlayer.volume = this.volume.voice;
-                break;
-        }
+        this.applyVolumes();
     }
 };
 

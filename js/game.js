@@ -479,6 +479,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Config
+    const btnConfig = document.getElementById('btn-config');
+    if (btnConfig) {
+        btnConfig.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (window.UI) {
+                UI.showConfig('system');
+            }
+        });
+    }
+
     // Log
     const btnLog = document.getElementById('btn-log');
     if (btnLog) {

@@ -213,6 +213,9 @@ const Interpreter = {
     },
 
     async displayText(text) {
+        if (this.state.variables && this.state.variables.sf && this.state.variables.sf.voice_cut) {
+            AudioPlayer.stopVoice();
+        }
         await Renderer.showText(text, this.state.skipMode);
     },
 
