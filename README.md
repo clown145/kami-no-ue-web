@@ -1,3 +1,3 @@
 # 纸上的魔法使 - Web版
 
-[纸上的魔法使](https://kisaki.love/)
+<a href="https://kisaki.love/" target="_blank">纸上的魔法使</a>
