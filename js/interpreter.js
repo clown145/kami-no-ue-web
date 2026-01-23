@@ -21,6 +21,14 @@ const Interpreter = {
                 }
             },
             lastTransition: null
+        },
+        choice: {
+            active: false,
+            cursor: { x: 0, y: 0 },
+            buttons: [],
+            hidden: false,
+            promise: null,
+            resolve: null
         }
     },
 
@@ -287,6 +295,98 @@ const Interpreter = {
 
     // ============ 命令处理器 ============
 
+    ensureChoiceLayer() {
+        if (!Renderer || !Renderer.elements || !Renderer.elements.choiceLayer) {
+            return null;
+        }
+        Renderer.showChoiceLayer();
+        const layer = Renderer.elements.choiceLayer;
+        layer.classList.remove('hidden');
+        layer.style.background = 'transparent';
+        layer.style.pointerEvents = 'auto';
+        if (!this.state.choice.active) {
+            layer.innerHTML = '';
+            this.state.choice.active = true;
+        }
+        this.state.choice.hidden = false;
+        if (!this.state.choice.promise) {
+            this.state.choice.promise = new Promise(resolve => {
+                this.state.choice.resolve = resolve;
+            });
+        }
+        return layer;
+    },
+
+    suspendChoiceLayer() {
+        if (!this.state.choice.active) {
+            return;
+        }
+        if (Renderer && Renderer.elements && Renderer.elements.choiceLayer) {
+            Renderer.elements.choiceLayer.classList.add('hidden');
+        }
+        this.state.choice.hidden = true;
+    },
+
+    resumeChoiceLayer() {
+        if (!this.state.choice.active) {
+            return;
+        }
+        if (Renderer && Renderer.elements && Renderer.elements.choiceLayer) {
+            Renderer.elements.choiceLayer.classList.remove('hidden');
+        }
+        this.state.choice.hidden = false;
+    },
+
+    resolveChoice() {
+        if (this.state.choice.resolve) {
+            this.state.choice.resolve();
+            this.state.choice.resolve = null;
+            this.state.choice.promise = null;
+        }
+    },
+
+    clearChoiceLayer() {
+        if (Renderer && Renderer.elements && Renderer.elements.choiceLayer) {
+            Renderer.hideChoiceLayer();
+            Renderer.elements.choiceLayer.style.background = '';
+        }
+        this.state.choice.active = false;
+        this.state.choice.cursor = { x: 0, y: 0 };
+        this.state.choice.buttons = [];
+        this.state.choice.hidden = false;
+        this.resolveChoice();
+    },
+
+    getChoiceState() {
+        const choice = this.state.choice;
+        if (!choice || !choice.active || !choice.buttons || choice.buttons.length === 0) {
+            return null;
+        }
+        return {
+            active: true,
+            cursor: { x: choice.cursor.x, y: choice.cursor.y },
+            buttons: choice.buttons.map(btn => ({ ...btn }))
+        };
+    },
+
+    async restoreChoiceState(state) {
+        this.clearChoiceLayer();
+        if (!state || !state.buttons || state.buttons.length === 0) {
+            return;
+        }
+        this.state.choice.active = true;
+        this.state.choice.cursor = { x: 0, y: 0 };
+        this.state.choice.buttons = [];
+        for (const btn of state.buttons) {
+            if (btn && typeof btn.x === 'number' && typeof btn.y === 'number') {
+                this.state.choice.cursor = { x: btn.x, y: btn.y };
+            }
+            await this.cmdButton({ ...btn, __record: false });
+        }
+        this.state.choice.buttons = state.buttons.map(btn => ({ ...btn }));
+        this.resumeChoiceLayer();
+    },
+
     async cmdMess(args) {
         Renderer.showMessageBox();
     },
@@ -550,6 +650,27 @@ const Interpreter = {
 
     // 流程
     async cmdJump(args) {
+        if (args.storage) {
+            const scenarioName = String(args.storage).replace(/\.ks$/i, '');
+            const target = args.target ? args.target.replace(/^\*/, '') : null;
+            try {
+                const response = await fetch(ResourceLookup.locateScript(scenarioName));
+                if (!response.ok) {
+                    throw new Error(`Failed to load scenario: ${scenarioName}`);
+                }
+                const data = await response.json();
+                Game.state.currentScenario = scenarioName;
+                if (target) {
+                    const index = data.tokens.findIndex(t => t.type === 'label' && t.name === target);
+                    Interpreter.runFromIndex(data.tokens, index >= 0 ? index : 0);
+                } else {
+                    Interpreter.runFromIndex(data.tokens, 0);
+                }
+            } catch (e) {
+                console.error('Jump failed:', e);
+            }
+            return;
+        }
         if (args.target) {
             const target = args.target.replace(/^\*/, '');
             this.jumpToLabel(target);
@@ -670,18 +791,144 @@ const Interpreter = {
     },
 
     async cmdChoiceSetup(args) {
-        Renderer.showChoiceLayer();
+        this.ensureChoiceLayer();
     },
 
-    async cmdChoice(args) { },
-    async cmdChoiceClear(args) {
-        Renderer.hideChoiceLayer();
+    async cmdChoice(args) {
+        const graphic = args.graphic || args.fn;
+        const target = args.target || args.tr;
+        await this.cmdButton({ ...args, graphic, target });
     },
-    async cmdButton(args) { },
-    async cmdLocate(args) { },
+    async cmdChoiceClear(args) {
+        this.clearChoiceLayer();
+    },
+    async cmdButton(args) {
+        const graphic = args.graphic || args.fn;
+        if (!graphic) return;
+
+        const layer = this.ensureChoiceLayer();
+        if (!layer) return;
+
+        const normalized = String(graphic).replace(/^[./]+/, '');
+        const extMatch = normalized.match(/\.(png|jpg|jpeg|webp)$/i);
+        const baseName = extMatch ? normalized.slice(0, -extMatch[0].length) : normalized;
+        const isSelectSprite = /^select_/i.test(baseName);
+        const directExt = extMatch ? extMatch[0] : '.png';
+        const directSrc = ResourceLookup.BASE_PATH + 'image/' + baseName + directExt;
+        let src = isSelectSprite ? directSrc : ResourceLookup.locateImage(graphic);
+        if (!src) return;
+        const record = args.__record !== false;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'choice-image-button';
+        const posX = this.state.choice.cursor.x;
+        const posY = this.state.choice.cursor.y;
+        btn.style.left = `${posX}px`;
+        btn.style.top = `${posY}px`;
+
+        const loader = new Image();
+        const setSpriteState = (frameWidth, frameIndex) => {
+            btn.style.backgroundPosition = `${-frameWidth * frameIndex}px 0px`;
+        };
+        const applySprite = () => {
+            const frameWidth = Math.max(1, Math.floor(loader.naturalWidth / 3));
+            const frameHeight = loader.naturalHeight || 1;
+            btn.style.width = `${frameWidth}px`;
+            btn.style.height = `${frameHeight}px`;
+            btn.style.backgroundImage = `url('${src}')`;
+            btn.style.backgroundRepeat = 'no-repeat';
+            btn.style.backgroundSize = `${loader.naturalWidth}px ${loader.naturalHeight}px`;
+            setSpriteState(frameWidth, 0);
+            btn.addEventListener('mouseenter', () => setSpriteState(frameWidth, 1));
+            btn.addEventListener('mouseleave', () => setSpriteState(frameWidth, 0));
+            btn.addEventListener('mousedown', () => setSpriteState(frameWidth, 2));
+            btn.addEventListener('mouseup', () => setSpriteState(frameWidth, btn.matches(':hover') ? 1 : 0));
+        };
+        const applyImage = () => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = '';
+            img.draggable = false;
+            img.onload = () => {
+                btn.style.width = `${img.naturalWidth}px`;
+                btn.style.height = `${img.naturalHeight}px`;
+            };
+            btn.appendChild(img);
+        };
+
+        loader.onload = () => {
+            if (isSelectSprite) {
+                applySprite();
+            } else {
+                applyImage();
+            }
+        };
+        loader.onerror = () => {
+            if (isSelectSprite && src === directSrc) {
+                const fallback = ResourceLookup.locateImage(graphic);
+                if (fallback && fallback !== src) {
+                    src = fallback;
+                    loader.src = src;
+                    return;
+                }
+            }
+        };
+        loader.src = src;
+
+        if (record) {
+            this.state.choice.buttons.push({
+                graphic,
+                target: args.target || args.tr,
+                storage: args.storage,
+                clickse: args.clickse,
+                enterse: args.enterse,
+                x: posX,
+                y: posY
+            });
+        }
+
+        if (args.enterse) {
+            btn.addEventListener('mouseenter', () => {
+                AudioPlayer.playSe(args.enterse);
+            });
+        }
+
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (args.clickse) {
+                AudioPlayer.playSe(args.clickse);
+            }
+            const target = args.target || args.tr;
+            const storage = args.storage;
+            if (storage) {
+                this.cmdJump({ storage, target });
+            } else if (target) {
+                const label = String(target).replace(/^\*/, '');
+                Interpreter.jumpToLabel(label);
+            }
+            this.clearChoiceLayer();
+        });
+
+        layer.appendChild(btn);
+    },
+    async cmdLocate(args) {
+        const x = parseInt(args.x, 10);
+        const y = parseInt(args.y, 10);
+        if (!Number.isNaN(x)) {
+            this.state.choice.cursor.x = x;
+        }
+        if (!Number.isNaN(y)) {
+            this.state.choice.cursor.y = y;
+        }
+    },
 
     async cmdStop(args) {
-        this.state.waiting = true;
+        if (this.state.choice.promise) {
+            await this.state.choice.promise;
+            return;
+        }
+        await Renderer.waitForClick();
     }
 };
 

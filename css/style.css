@@ -250,6 +250,19 @@ body {
     border-radius: 8px;
 }
 
+.choice-image-button {
+    position: absolute;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.choice-image-button img {
+    display: block;
+    pointer-events: none;
+}
+
 .choice-button:hover {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(109, 40, 217, 0.6));
     transform: scale(1.02);

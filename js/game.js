@@ -84,6 +84,9 @@ const Game = {
         console.log(`Loading scenario: ${scenario}`);
 
         try {
+            if (window.Interpreter && Interpreter.clearChoiceLayer) {
+                Interpreter.clearChoiceLayer();
+            }
             const response = await fetch(ResourceLookup.locateScript(scenario));
             if (!response.ok) {
                 throw new Error(`Failed to load scenario: ${scenario}`);
@@ -189,7 +192,10 @@ const Game = {
                 bgm: AudioPlayer.currentBgm || null,
                 bgmTime: AudioPlayer.bgmPlayer ? AudioPlayer.bgmPlayer.currentTime : 0,
                 bgmVolume: AudioPlayer.volume ? AudioPlayer.volume.bgm : 0.7
-            }
+            },
+            choice: (window.Interpreter && Interpreter.getChoiceState)
+                ? Interpreter.getChoiceState()
+                : null
         };
 
         localStorage.setItem(`save_${slot}`, JSON.stringify(saveData));
@@ -207,6 +213,9 @@ const Game = {
         }
 
         try {
+            if (window.Interpreter && Interpreter.clearChoiceLayer) {
+                Interpreter.clearChoiceLayer();
+            }
             Renderer.cancelWait();
             AudioPlayer.stopBgm();
             Interpreter.state.variables = saveData.variables || { tf: {}, sf: {}, f: {} };
@@ -221,6 +230,9 @@ const Game = {
             this.resetRenderState();
             await this.restoreRenderState(saveData.render);
             this.restoreAudioState(saveData.audio);
+            if (window.Interpreter && Interpreter.restoreChoiceState) {
+                await Interpreter.restoreChoiceState(saveData.choice);
+            }
 
             Interpreter.runFromIndex(data.tokens, saveData.index);
 

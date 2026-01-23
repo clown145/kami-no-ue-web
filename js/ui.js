@@ -873,6 +873,9 @@
         if (!overlay) return;
         Renderer.cancelWait();
         this.hideAll(true);
+        if (window.Interpreter && Interpreter.suspendChoiceLayer) {
+            Interpreter.suspendChoiceLayer();
+        }
         overlay.classList.remove('hidden');
         this.state.active = overlay.id || null;
         Renderer.setInputEnabled(false);
@@ -896,6 +899,9 @@
         });
         if (!keepInput) {
             Renderer.setInputEnabled(true);
+        }
+        if (!keepInput && window.Interpreter && Interpreter.resumeChoiceLayer) {
+            Interpreter.resumeChoiceLayer();
         }
         this.state.saveLoadFromTitle = false;
         this.state.configFromTitle = false;
