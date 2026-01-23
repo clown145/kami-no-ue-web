@@ -9,9 +9,17 @@ const IMAGE_ALIASES = {
     'sc_title_bt_gallery': 'sc_title_bt_Gallery'
 };
 const AUDIO_EXTENSIONS = ['.ogg', '.wav', '.mp3', '.m4a'];
+const resolveBasePath = () => {
+    const base = window.RESOURCE_BASE || '/public/';
+    return base.endsWith('/') ? base : base + '/';
+};
 
 const ResourceLookup = {
-    BASE_PATH: '/public/',
+    BASE_PATH: resolveBasePath(),
+
+    setBasePath(path) {
+        this.BASE_PATH = path ? (path.endsWith('/') ? path : path + '/') : '/public/';
+    },
 
     _normalizeName(name) {
         if (!name) return name;

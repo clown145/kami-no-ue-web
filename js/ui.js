@@ -121,6 +121,9 @@
             const titleBg = ResourceLookup.locateImage('title_bg.jpg');
             if (titleBg) {
                 this.elements.titleScreen.style.backgroundImage = `url("${titleBg}")`;
+                if (window.PreloadManager) {
+                    PreloadManager.pinImage(titleBg);
+                }
             }
         }
 
@@ -163,6 +166,9 @@
             const dialogBg = ResourceLookup.locateImage('dialog_base.png');
             if (dialogBg) {
                 this.elements.confirmDialog.style.backgroundImage = `url("${dialogBg}")`;
+                if (window.PreloadManager) {
+                    PreloadManager.pinImage(dialogBg);
+                }
             }
         }
         if (this.elements.confirmYes) {
@@ -417,6 +423,9 @@
         const bg = ResourceLookup.locateImage(name + '.png');
         if (bg) {
             screen.style.backgroundImage = `url("${bg}")`;
+            if (window.PreloadManager) {
+                PreloadManager.pinImage(bg);
+            }
         }
     },
 
@@ -674,6 +683,9 @@
         const thumb = ResourceLookup.locateImage('opt_slider_pin.png');
         if (thumb) {
             input.style.setProperty('--thumb-image', `url("${thumb}")`);
+            if (window.PreloadManager) {
+                PreloadManager.pinImage(thumb);
+            }
         }
         const stop = (e) => e.stopPropagation();
         input.addEventListener('click', stop);
@@ -751,6 +763,9 @@
         const src = ResourceLookup.locateImage(imageName);
         if (src) {
             btn.style.backgroundImage = `url("${src}")`;
+            if (window.PreloadManager) {
+                PreloadManager.pinImage(src);
+            }
         } else {
             btn.textContent = imageName;
         }
@@ -804,11 +819,17 @@
         const bg = ResourceLookup.locateImage(bgName + '.png');
         if (bg) {
             screen.style.backgroundImage = `url("${bg}")`;
+            if (window.PreloadManager) {
+                PreloadManager.pinImage(bg);
+            }
         }
 
         const slotBgName = this.state.saveMode === 'save' ? 'save-data' : 'load-data';
         const slotBg = ResourceLookup.locateImage(slotBgName + '.png');
         this.state.slotBg = slotBg || null;
+        if (slotBg && window.PreloadManager) {
+            PreloadManager.pinImage(slotBg);
+        }
 
         if (this.elements.saveLoadTitle) {
             this.elements.saveLoadTitle.textContent = this.state.saveMode.toUpperCase();
@@ -834,6 +855,9 @@
         const bg = ResourceLookup.locateImage('backlog_base.png');
         if (bg) {
             screen.style.backgroundImage = `url("${bg}")`;
+            if (window.PreloadManager) {
+                PreloadManager.pinImage(bg);
+            }
         }
 
         this.renderLog();
@@ -1062,8 +1086,10 @@
             btn.addEventListener('click', async (e) => {
                 e.stopPropagation();
                 if (this.state.saveMode === 'save') {
-                    const shouldAsk = !!(Interpreter && Interpreter.state && Interpreter.state.variables
-                        && Interpreter.state.variables.sf && Interpreter.state.variables.sf.Asksave);
+                    const shouldAsk = this.config.state
+                        ? !!this.config.state.askSave
+                        : !!(Interpreter && Interpreter.state && Interpreter.state.variables
+                            && Interpreter.state.variables.sf && Interpreter.state.variables.sf.Asksave);
                     if (shouldAsk) {
                         const message = hasData ? '覆盖存档？' : '保存记录？';
                         const ok = await this.confirm(message);
@@ -1077,8 +1103,10 @@
                     if (!data) {
                         return;
                     }
-                    const shouldAsk = !!(Interpreter && Interpreter.state && Interpreter.state.variables
-                        && Interpreter.state.variables.sf && Interpreter.state.variables.sf.Asksave);
+                    const shouldAsk = this.config.state
+                        ? !!this.config.state.askSave
+                        : !!(Interpreter && Interpreter.state && Interpreter.state.variables
+                            && Interpreter.state.variables.sf && Interpreter.state.variables.sf.Asksave);
                     if (shouldAsk) {
                         const ok = await this.confirm('读取记录？');
                         if (!ok) {

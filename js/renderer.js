@@ -150,6 +150,12 @@ const Renderer = {
         this.messageSkins.named = named;
         if (base) {
             this.elements.messageBg.style.backgroundImage = `url("${base}")`;
+            if (window.PreloadManager) {
+                PreloadManager.pinImage(base);
+            }
+        }
+        if (named && window.PreloadManager) {
+            PreloadManager.pinImage(named);
         }
         this.elements.nameBg.style.backgroundImage = 'none';
     },

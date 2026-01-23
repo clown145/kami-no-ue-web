@@ -131,6 +131,9 @@ const LayerRenderer = {
             console.warn('Failed to load image:', candidates[0]);
             return;
         }
+        if (window.PreloadManager) {
+            PreloadManager.useImage(src);
+        }
 
         const bgEl = this.elements.backgroundHolder;
 
@@ -171,6 +174,9 @@ const LayerRenderer = {
         // Preload
         const img = await this.preloadImage(src);
         if (!img) return;
+        if (window.PreloadManager) {
+            PreloadManager.useImage(src);
+        }
 
         // Pick target element
         let element;

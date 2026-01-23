@@ -150,6 +150,9 @@ const Interpreter = {
         if (startLabel) {
             this.jumpToLabel(startLabel);
         }
+        if (window.PreloadManager) {
+            PreloadManager.setTokens(tokens, this.state.currentIndex);
+        }
 
         await this.execute(runId);
     },
@@ -158,6 +161,9 @@ const Interpreter = {
         this.state.tokens = tokens;
         this.state.currentIndex = Math.max(0, index || 0);
         const runId = ++this.state.runId;
+        if (window.PreloadManager) {
+            PreloadManager.setTokens(tokens, this.state.currentIndex);
+        }
         await this.execute(runId);
     },
 
@@ -175,6 +181,10 @@ const Interpreter = {
             }
 
             this.state.currentIndex++;
+
+            if (window.PreloadManager) {
+                PreloadManager.schedule(this.state.currentIndex);
+            }
 
             if (this.state.skipMode) {
                 await this.delay(50);

@@ -117,6 +117,9 @@ const Game = {
         AudioPlayer.stopBgm();
         Renderer.hideMessageBox();
         Renderer.hideClickIndicator();
+        if (window.PreloadManager) {
+            PreloadManager.clearAudioCache();
+        }
         if (window.UI) {
             UI.showTitle();
         }

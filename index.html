@@ -112,8 +112,12 @@
     </div>
 
     <!-- 按正确顺序加载JS模块 -->
+    <script>
+        window.RESOURCE_BASE = window.RESOURCE_BASE || '/public/';
+    </script>
     <script src="js/bgimage_mapping.js"></script>
     <script src="js/lookup.js"></script>
+    <script src="js/preload.js"></script>
     <script src="js/tokenizer.js"></script>
     <script src="js/audio.js"></script>
     <script src="js/layer.js"></script>

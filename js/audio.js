@@ -56,6 +56,10 @@ const AudioPlayer = {
         this.voicePlayer.id = 'voice-player';
         this.voicePlayer.preload = 'auto';
         document.body.appendChild(this.voicePlayer);
+        this.voicePlayer.addEventListener('ended', () => {
+            this.clearVoiceSource();
+            this.currentVoiceGroup = null;
+        });
 
         this.initVoiceGroups();
 
@@ -166,6 +170,9 @@ const AudioPlayer = {
         this.currentBgm = name;
         this.setAudioSource(this.bgmPlayer, path);
         this.bgmPlayer.volume = this.getEffectiveVolume('bgm');
+        if (window.PreloadManager) {
+            PreloadManager.useAudio(path + '.ogg');
+        }
 
         if (fadeTime > 0) {
             this.bgmPlayer.volume = 0;
@@ -206,6 +213,9 @@ const AudioPlayer = {
         this.setAudioSource(this.sePlayer, path);
         this.sePlayer.volume = this.getEffectiveVolume('se');
         this.sePlayer.play().catch(() => { });
+        if (window.PreloadManager) {
+            PreloadManager.useAudio(path + '.ogg');
+        }
     },
 
     /**
@@ -243,6 +253,9 @@ const AudioPlayer = {
         const effective = this.getEffectiveVolume('voice') * groupVolume;
         this.voicePlayer.volume = Math.max(0, Math.min(1, effective));
         this.voicePlayer.play().catch(() => { });
+        if (window.PreloadManager) {
+            PreloadManager.useAudio(path);
+        }
     },
 
     /**
@@ -250,7 +263,16 @@ const AudioPlayer = {
      */
     stopVoice() {
         this.voicePlayer.pause();
+        this.clearVoiceSource();
         this.currentVoiceGroup = null;
+    },
+    clearVoiceSource() {
+        if (!this.voicePlayer) {
+            return;
+        }
+        this.voicePlayer.removeAttribute('src');
+        this.voicePlayer.innerHTML = '';
+        this.voicePlayer.load();
     },
 
     /**
