@@ -7,7 +7,6 @@ public/fgimage/
 public/image/
 public/sound/
 public/voice/
-public/*.json
 # 保留 scenario 文件夹用于版本控制（如果脚本需要变动）
 # public/scenario/
 
