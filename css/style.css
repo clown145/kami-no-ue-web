@@ -12,6 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -580,11 +581,9 @@ body {
     overflow: hidden;
 }
 
-.save-slot:hover {
-}
+.save-slot:hover {}
 
-.save-slot:active {
-}
+.save-slot:active {}
 
 .save-slot-thumb {
     position: absolute;
