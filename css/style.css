@@ -206,14 +206,7 @@ body {
 }
 
 #click-indicator {
-    position: absolute;
-    bottom: 25px;
-    right: 60px;
-    color: var(--accent-color);
-    font-size: 18px;
-    animation: bounce 1s infinite;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    display: none;
 }
 
 #click-indicator.visible {
