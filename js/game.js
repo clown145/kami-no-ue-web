@@ -24,6 +24,9 @@ const Game = {
         try {
             // 加载资源映射表
             await ResourceLookup.loadMapping();
+            if (ResourceLookup.loadResourceMapping) {
+                await ResourceLookup.loadResourceMapping();
+            }
             Renderer.applyMessageSkin();
             if (window.UI) {
                 UI.applyAssets();

@@ -16,6 +16,8 @@ const resolveBasePath = () => {
 
 const ResourceLookup = {
     BASE_PATH: resolveBasePath(),
+    resourceMapping: null,
+    voiceMapLower: null,
 
     setBasePath(path) {
         this.BASE_PATH = path ? (path.endsWith('/') ? path : path + '/') : '/public/';
@@ -67,6 +69,29 @@ const ResourceLookup = {
     /**
      * 查找脚本路径
      */
+    async loadResourceMapping() {
+        if (this.resourceMapping) {
+            return;
+        }
+        try {
+            const response = await fetch(this.BASE_PATH + 'resource_mapping.json');
+            if (!response.ok) {
+                return;
+            }
+            const data = await response.json();
+            this.resourceMapping = data;
+            if (data && data.voice) {
+                const lowerMap = {};
+                Object.keys(data.voice).forEach((key) => {
+                    lowerMap[key.toLowerCase()] = data.voice[key];
+                });
+                this.voiceMapLower = lowerMap;
+            }
+        } catch (e) {
+            // ignore
+        }
+    },
+
     locateScript(name) {
         name = name.toLowerCase().split('.')[0];
         return this.BASE_PATH + 'scenario/' + name + '.json';
@@ -187,6 +212,25 @@ const ResourceLookup = {
     locateVoice(name) {
         if (!name) return null;
         const normalized = this._normalizeName(name);
+        const candidates = [normalized];
+        if (!normalized.includes('.')) {
+            candidates.push(normalized + '.ogg');
+        }
+        if (this.resourceMapping && this.resourceMapping.voice) {
+            for (const key of candidates) {
+                if (this.resourceMapping.voice[key]) {
+                    return this.BASE_PATH + 'voice/' + this.resourceMapping.voice[key];
+                }
+            }
+        }
+        if (this.voiceMapLower) {
+            for (const key of candidates) {
+                const mapped = this.voiceMapLower[key.toLowerCase()];
+                if (mapped) {
+                    return this.BASE_PATH + 'voice/' + mapped;
+                }
+            }
+        }
         return this.BASE_PATH + 'voice/' + normalized;
     }
 };

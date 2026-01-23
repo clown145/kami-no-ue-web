@@ -1,9 +1,19 @@
 # 忽略大型资源文件
-*.ogg
-*.png
-*.jpg
-*.wav
-*.asd
+# 忽略大型资源文件
+public/bgimage/
+public/bgm/
+public/cg/
+public/fgimage/
+public/image/
+public/sound/
+public/voice/
+public/*.json
+# 保留 scenario 文件夹用于版本控制（如果脚本需要变动）
+# public/scenario/
+
+# 忽略IDE/系统文件
+*.log
+
 
 # 忽略临时文件
 .DS_Store
