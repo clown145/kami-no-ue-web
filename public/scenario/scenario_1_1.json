@@ -6714,15 +6714,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[52"
+        "exp": "sf.album_flag[52] = true"
       },
       "line": 1843,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 1843
     },
     {
       "type": "label",
@@ -16678,15 +16673,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[0"
+        "exp": "sf.album_flag[0] = true"
       },
       "line": 4509,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 4509
     },
     {
       "type": "command",
@@ -29810,15 +29800,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[29"
+        "exp": "sf.album_flag[29] = true"
       },
       "line": 8023,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 8023
     },
     {
       "type": "label",

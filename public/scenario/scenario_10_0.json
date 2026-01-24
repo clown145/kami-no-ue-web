@@ -7724,15 +7724,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[50"
+        "exp": "sf.album_flag[50] = true"
       },
       "line": 2205,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 2205
     },
     {
       "type": "command",
@@ -19273,15 +19268,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[51"
+        "exp": "sf.album_flag[51] = true"
       },
       "line": 5295,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 5295
     },
     {
       "type": "command",

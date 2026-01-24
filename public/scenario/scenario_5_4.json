@@ -16284,15 +16284,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[15"
+        "exp": "sf.album_flag[15] = true"
       },
       "line": 4665,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 4665
     },
     {
       "type": "command",

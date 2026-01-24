@@ -1933,29 +1933,19 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"kag.se[f.se_loop_buf"
+        "exp": "kag.se[f.se_loop_buf].stopFade()"
       },
       "line": 635,
       "inline": true
     },
     {
-      "type": "text",
-      "text": ".stopFade()\"]",
-      "line": 635
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"kag.se[f.se_loop_buf"
+        "exp": "kag.se[f.se_loop_buf].userchange = 1"
       },
       "line": 637,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ".userchange = 1\"]",
-      "line": 637
     },
     {
       "type": "command",
@@ -2106,29 +2096,19 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"kag.se[+mp.buf"
+        "exp": "kag.se[+mp.buf].userchange = 1"
       },
       "line": 679,
       "inline": true
     },
     {
-      "type": "text",
-      "text": ".userchange = 1\"]",
-      "line": 679
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"kag.se[+mp.buf"
+        "exp": "kag.se[+mp.buf].stopFade()"
       },
       "line": 681,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ".stopFade()\"]",
-      "line": 681
     },
     {
       "type": "command",

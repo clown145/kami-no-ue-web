@@ -25599,15 +25599,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[9"
+        "exp": "sf.album_flag[9] = true"
       },
       "line": 6915,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 6915
     },
     {
       "type": "label",

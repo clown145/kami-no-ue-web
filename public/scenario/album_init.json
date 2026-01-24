@@ -124,15 +124,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage"
+        "exp": "tf.album_storage = []"
       },
       "line": 55,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 55
     },
     {
       "type": "comment",
@@ -143,1121 +138,721 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[0"
+        "exp": "tf.album_storage[0]  = '*001'"
       },
       "line": 59,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*001'\"]",
-      "line": 59
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[1"
+        "exp": "tf.album_storage[1]  = '*002'"
       },
       "line": 61,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*002'\"]",
-      "line": 61
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[2"
+        "exp": "tf.album_storage[2]  = '*003'"
       },
       "line": 63,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*003'\"]",
-      "line": 63
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[3"
+        "exp": "tf.album_storage[3]  = '*004'"
       },
       "line": 65,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*004'\"]",
-      "line": 65
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[4"
+        "exp": "tf.album_storage[4]  = '*005'"
       },
       "line": 67,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*005'\"]",
-      "line": 67
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[5"
+        "exp": "tf.album_storage[5]  = '*006'"
       },
       "line": 69,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*006'\"]",
-      "line": 69
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[6"
+        "exp": "tf.album_storage[6]  = '*007'"
       },
       "line": 71,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*007'\"]",
-      "line": 71
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[7"
+        "exp": "tf.album_storage[7]  = '*008'"
       },
       "line": 73,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*008'\"]",
-      "line": 73
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[8"
+        "exp": "tf.album_storage[8]  = '*009'"
       },
       "line": 75,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*009'\"]",
-      "line": 75
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[9"
+        "exp": "tf.album_storage[9]  = '*010'"
       },
       "line": 77,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*010'\"]",
-      "line": 77
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[10"
+        "exp": "tf.album_storage[10]  = '*011'"
       },
       "line": 79,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*011'\"]",
-      "line": 79
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[11"
+        "exp": "tf.album_storage[11]  = '*012'"
       },
       "line": 81,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*012'\"]",
-      "line": 81
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[12"
+        "exp": "tf.album_storage[12]  = '*013'"
       },
       "line": 83,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*013'\"]",
-      "line": 83
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[13"
+        "exp": "tf.album_storage[13]  = '*014'"
       },
       "line": 85,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*014'\"]",
-      "line": 85
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[14"
+        "exp": "tf.album_storage[14]  = '*015'"
       },
       "line": 87,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*015'\"]",
-      "line": 87
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[15"
+        "exp": "tf.album_storage[15]  = '*016'"
       },
       "line": 89,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*016'\"]",
-      "line": 89
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[16"
+        "exp": "tf.album_storage[16]  = '*017'"
       },
       "line": 91,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*017'\"]",
-      "line": 91
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[17"
+        "exp": "tf.album_storage[17]  = '*018'"
       },
       "line": 93,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*018'\"]",
-      "line": 93
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[18"
+        "exp": "tf.album_storage[18]  = '*019'"
       },
       "line": 95,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*019'\"]",
-      "line": 95
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[19"
+        "exp": "tf.album_storage[19]  = '*020'"
       },
       "line": 97,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*020'\"]",
-      "line": 97
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[20"
+        "exp": "tf.album_storage[20]  = '*021'"
       },
       "line": 99,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*021'\"]",
-      "line": 99
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[21"
+        "exp": "tf.album_storage[21]  = '*022'"
       },
       "line": 101,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*022'\"]",
-      "line": 101
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[22"
+        "exp": "tf.album_storage[22]  = '*023'"
       },
       "line": 103,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*023'\"]",
-      "line": 103
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[23"
+        "exp": "tf.album_storage[23]  = '*024'"
       },
       "line": 105,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*024'\"]",
-      "line": 105
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[24"
+        "exp": "tf.album_storage[24]  = '*025'"
       },
       "line": 107,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*025'\"]",
-      "line": 107
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[25"
+        "exp": "tf.album_storage[25]  = '*026'"
       },
       "line": 109,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*026'\"]",
-      "line": 109
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[26"
+        "exp": "tf.album_storage[26]  = '*027'"
       },
       "line": 111,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*027'\"]",
-      "line": 111
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[27"
+        "exp": "tf.album_storage[27]  = '*028'"
       },
       "line": 113,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*028'\"]",
-      "line": 113
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[28"
+        "exp": "tf.album_storage[28]  = '*029'"
       },
       "line": 115,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*029'\"]",
-      "line": 115
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[29"
+        "exp": "tf.album_storage[29]  = '*030'"
       },
       "line": 117,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*030'\"]",
-      "line": 117
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[30"
+        "exp": "tf.album_storage[30]  = '*031'"
       },
       "line": 119,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*031'\"]",
-      "line": 119
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[31"
+        "exp": "tf.album_storage[31]  = '*032'"
       },
       "line": 121,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*032'\"]",
-      "line": 121
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[32"
+        "exp": "tf.album_storage[32]  = '*033'"
       },
       "line": 123,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*033'\"]",
-      "line": 123
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[33"
+        "exp": "tf.album_storage[33]  = '*034'"
       },
       "line": 125,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*034'\"]",
-      "line": 125
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[34"
+        "exp": "tf.album_storage[34]  = '*035'"
       },
       "line": 127,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*035'\"]",
-      "line": 127
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[35"
+        "exp": "tf.album_storage[35]  = '*036'"
       },
       "line": 129,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*036'\"]",
-      "line": 129
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[36"
+        "exp": "tf.album_storage[36]  = '*037'"
       },
       "line": 131,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*037'\"]",
-      "line": 131
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[37"
+        "exp": "tf.album_storage[37]  = '*038'"
       },
       "line": 133,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*038'\"]",
-      "line": 133
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[38"
+        "exp": "tf.album_storage[38]  = '*039'"
       },
       "line": 135,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*039'\"]",
-      "line": 135
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[39"
+        "exp": "tf.album_storage[39]  = '*040'"
       },
       "line": 137,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*040'\"]",
-      "line": 137
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[40"
+        "exp": "tf.album_storage[40]  = '*041'"
       },
       "line": 139,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*041'\"]",
-      "line": 139
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[41"
+        "exp": "tf.album_storage[41]  = '*042'"
       },
       "line": 141,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*042'\"]",
-      "line": 141
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[42"
+        "exp": "tf.album_storage[42]  = '*043'"
       },
       "line": 143,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*043'\"]",
-      "line": 143
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[43"
+        "exp": "tf.album_storage[43]  = '*044'"
       },
       "line": 145,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*044'\"]",
-      "line": 145
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[44"
+        "exp": "tf.album_storage[44]  = '*045'"
       },
       "line": 147,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*045'\"]",
-      "line": 147
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[45"
+        "exp": "tf.album_storage[45]  = '*046'"
       },
       "line": 149,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*046'\"]",
-      "line": 149
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[46"
+        "exp": "tf.album_storage[46]  = '*047'"
       },
       "line": 151,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*047'\"]",
-      "line": 151
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[47"
+        "exp": "tf.album_storage[47]  = '*048'"
       },
       "line": 153,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*048'\"]",
-      "line": 153
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[48"
+        "exp": "tf.album_storage[48]  = '*049'"
       },
       "line": 155,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*049'\"]",
-      "line": 155
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[49"
+        "exp": "tf.album_storage[49]  = '*050'"
       },
       "line": 157,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*050'\"]",
-      "line": 157
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[50"
+        "exp": "tf.album_storage[50]  = '*051'"
       },
       "line": 159,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*051'\"]",
-      "line": 159
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[51"
+        "exp": "tf.album_storage[51]  = '*052'"
       },
       "line": 161,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*052'\"]",
-      "line": 161
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[52"
+        "exp": "tf.album_storage[52]  = '*053'"
       },
       "line": 163,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*053'\"]",
-      "line": 163
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[53"
+        "exp": "tf.album_storage[53]  = '*054'"
       },
       "line": 165,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*054'\"]",
-      "line": 165
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[54"
+        "exp": "tf.album_storage[54]  = '*055'"
       },
       "line": 167,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*055'\"]",
-      "line": 167
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[55"
+        "exp": "tf.album_storage[55]  = '*056'"
       },
       "line": 169,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*056'\"]",
-      "line": 169
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[56"
+        "exp": "tf.album_storage[56]  = '*057'"
       },
       "line": 171,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*057'\"]",
-      "line": 171
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[57"
+        "exp": "tf.album_storage[57]  = '*058'"
       },
       "line": 173,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*058'\"]",
-      "line": 173
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[58"
+        "exp": "tf.album_storage[58]  = '*059'"
       },
       "line": 175,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*059'\"]",
-      "line": 175
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[59"
+        "exp": "tf.album_storage[59]  = '*060'"
       },
       "line": 177,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*060'\"]",
-      "line": 177
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[60"
+        "exp": "tf.album_storage[60]  = '*061'"
       },
       "line": 179,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*061'\"]",
-      "line": 179
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[61"
+        "exp": "tf.album_storage[61]  = '*062'"
       },
       "line": 181,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*062'\"]",
-      "line": 181
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[62"
+        "exp": "tf.album_storage[62]  = '*063'"
       },
       "line": 183,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*063'\"]",
-      "line": 183
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[63"
+        "exp": "tf.album_storage[63]  = '*064'"
       },
       "line": 185,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*064'\"]",
-      "line": 185
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[64"
+        "exp": "tf.album_storage[64]  = '*065'"
       },
       "line": 187,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*065'\"]",
-      "line": 187
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[65"
+        "exp": "tf.album_storage[65]  = '*066'"
       },
       "line": 189,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*066'\"]",
-      "line": 189
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[66"
+        "exp": "tf.album_storage[66]  = '*067'"
       },
       "line": 191,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*067'\"]",
-      "line": 191
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[67"
+        "exp": "tf.album_storage[67]  = '*068'"
       },
       "line": 193,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*068'\"]",
-      "line": 193
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[68"
+        "exp": "tf.album_storage[68]  = '*069'"
       },
       "line": 195,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*069'\"]",
-      "line": 195
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[69"
+        "exp": "tf.album_storage[69]  = '*070'"
       },
       "line": 197,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*070'\"]",
-      "line": 197
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[70"
+        "exp": "tf.album_storage[70]  = '*071'"
       },
       "line": 199,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*071'\"]",
-      "line": 199
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[71"
+        "exp": "tf.album_storage[71]  = '*072'"
       },
       "line": 201,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*072'\"]",
-      "line": 201
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[72"
+        "exp": "tf.album_storage[72]  = '*073'"
       },
       "line": 203,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*073'\"]",
-      "line": 203
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[73"
+        "exp": "tf.album_storage[73]  = '*074'"
       },
       "line": 205,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*074'\"]",
-      "line": 205
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[74"
+        "exp": "tf.album_storage[74]  = '*075'"
       },
       "line": 207,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*075'\"]",
-      "line": 207
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[75"
+        "exp": "tf.album_storage[75]  = '*076'"
       },
       "line": 209,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*076'\"]",
-      "line": 209
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[76"
+        "exp": "tf.album_storage[76]  = '*077'"
       },
       "line": 211,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*077'\"]",
-      "line": 211
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[77"
+        "exp": "tf.album_storage[77]  = '*078'"
       },
       "line": 213,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*078'\"]",
-      "line": 213
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[78"
+        "exp": "tf.album_storage[78]  = '*079'"
       },
       "line": 215,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*079'\"]",
-      "line": 215
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_storage[79"
+        "exp": "tf.album_storage[79]  = '*080'"
       },
       "line": 217,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = '*080'\"]",
-      "line": 217
     },
     {
       "type": "command",
@@ -1289,15 +884,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail"
+        "exp": "tf.album_thumbnail = []"
       },
       "line": 231,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 231
     },
     {
       "type": "comment",
@@ -1308,1135 +898,730 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[0"
+        "exp": "tf.album_thumbnail[0]  = 'cg01_m.png'"
       },
       "line": 235,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg01_m.png'\"]",
-      "line": 235
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[1"
+        "exp": "tf.album_thumbnail[1]  = 'cg02_m.png'"
       },
       "line": 237,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg02_m.png'\"]",
-      "line": 237
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[2"
+        "exp": "tf.album_thumbnail[2]  = 'cg03_m.png'"
       },
       "line": 239,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg03_m.png'\"]",
-      "line": 239
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[3"
+        "exp": "tf.album_thumbnail[3]  = 'cg04_m.png'"
       },
       "line": 241,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg04_m.png'\"]",
-      "line": 241
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[4"
+        "exp": "tf.album_thumbnail[4]  = 'cg05_m.png'"
       },
       "line": 243,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg05_m.png'\"]",
-      "line": 243
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[5"
+        "exp": "tf.album_thumbnail[5]  = 'cg06_m.png'"
       },
       "line": 245,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg06_m.png'\"]",
-      "line": 245
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[6"
+        "exp": "tf.album_thumbnail[6]  = 'cg07_m.png'"
       },
       "line": 247,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg07_m.png'\"]",
-      "line": 247
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[7"
+        "exp": "tf.album_thumbnail[7]  = 'cg08_m.png'"
       },
       "line": 249,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg08_m.png'\"]",
-      "line": 249
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[8"
+        "exp": "tf.album_thumbnail[8]  = 'cg09_m.png'"
       },
       "line": 251,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg09_m.png'\"]",
-      "line": 251
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[9"
+        "exp": "tf.album_thumbnail[9]  = 'cg10_m.png'"
       },
       "line": 253,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg10_m.png'\"]",
-      "line": 253
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[10"
+        "exp": "tf.album_thumbnail[10]  = 'cg11_m.png'"
       },
       "line": 255,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg11_m.png'\"]",
-      "line": 255
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[11"
+        "exp": "tf.album_thumbnail[11]  = 'cg12_m.png'"
       },
       "line": 257,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg12_m.png'\"]",
-      "line": 257
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[12"
+        "exp": "tf.album_thumbnail[12]  = 'cg13_m.png'"
       },
       "line": 259,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg13_m.png'\"]",
-      "line": 259
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[13"
+        "exp": "tf.album_thumbnail[13]  = 'cg14_m.png'"
       },
       "line": 261,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg14_m.png'\"]",
-      "line": 261
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[14"
+        "exp": "tf.album_thumbnail[14]  = 'cg15_m.png'"
       },
       "line": 263,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg15_m.png'\"]",
-      "line": 263
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[15"
+        "exp": "tf.album_thumbnail[15]  = 'cg16_m.png'"
       },
       "line": 265,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg16_m.png'\"]",
-      "line": 265
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[16"
+        "exp": "tf.album_thumbnail[16]  = 'cg17_m.png'"
       },
       "line": 267,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg17_m.png'\"]",
-      "line": 267
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[17"
+        "exp": "tf.album_thumbnail[17]  = 'cg18_m.png'"
       },
       "line": 269,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg18_m.png'\"]",
-      "line": 269
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[18"
+        "exp": "tf.album_thumbnail[18]  = 'cg19_m.png'"
       },
       "line": 271,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg19_m.png'\"]",
-      "line": 271
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[19"
+        "exp": "tf.album_thumbnail[19]  = 'cg20_m.png'"
       },
       "line": 273,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg20_m.png'\"]",
-      "line": 273
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[20"
+        "exp": "tf.album_thumbnail[20]  = 'cg21_m.png'"
       },
       "line": 275,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg21_m.png'\"]",
-      "line": 275
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[21"
+        "exp": "tf.album_thumbnail[21]  = 'cg22_m.png'"
       },
       "line": 277,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg22_m.png'\"]",
-      "line": 277
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[22"
+        "exp": "tf.album_thumbnail[22]  = 'cg23_m.png'"
       },
       "line": 279,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg23_m.png'\"]",
-      "line": 279
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[23"
+        "exp": "tf.album_thumbnail[23]  = 'cg24_m.png'"
       },
       "line": 281,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg24_m.png'\"]",
-      "line": 281
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[24"
+        "exp": "tf.album_thumbnail[24]  = 'cg25_m.png'"
       },
       "line": 283,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg25_m.png'\"]",
-      "line": 283
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[25"
+        "exp": "tf.album_thumbnail[25]  = 'cg26_m.png'"
       },
       "line": 285,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg26_m.png'\"]",
-      "line": 285
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[26"
+        "exp": "tf.album_thumbnail[26]  = 'cg27_m.png'"
       },
       "line": 287,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg27_m.png'\"]",
-      "line": 287
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[27"
+        "exp": "tf.album_thumbnail[27]  = 'cg28_m.png'"
       },
       "line": 289,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg28_m.png'\"]",
-      "line": 289
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[28"
+        "exp": "tf.album_thumbnail[28]  = 'cg29_m.png'"
       },
       "line": 291,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg29_m.png'\"]",
-      "line": 291
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[29"
+        "exp": "tf.album_thumbnail[29]  = 'cg30_m.png'"
       },
       "line": 293,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg30_m.png'\"]",
-      "line": 293
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[30"
+        "exp": "tf.album_thumbnail[30]  = 'cg31_m.png'"
       },
       "line": 295,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg31_m.png'\"]",
-      "line": 295
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[31"
+        "exp": "tf.album_thumbnail[31]  = 'cg32_m.png'"
       },
       "line": 297,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg32_m.png'\"]",
-      "line": 297
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[32"
+        "exp": "tf.album_thumbnail[32]  = 'cg33_m.png'"
       },
       "line": 299,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg33_m.png'\"]",
-      "line": 299
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[33"
+        "exp": "tf.album_thumbnail[33]  = 'cg34_m.png'"
       },
       "line": 301,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg34_m.png'\"]",
-      "line": 301
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[34"
+        "exp": "tf.album_thumbnail[34]  = 'cg35_m.png'"
       },
       "line": 303,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg35_m.png'\"]",
-      "line": 303
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[35"
+        "exp": "tf.album_thumbnail[35]  = 'cg36_m.png'"
       },
       "line": 305,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg36_m.png'\"]",
-      "line": 305
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[36"
+        "exp": "tf.album_thumbnail[36]  = 'cg37_m.png'"
       },
       "line": 307,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg37_m.png'\"]",
-      "line": 307
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[37"
+        "exp": "tf.album_thumbnail[37]  = 'cg38_m.png'"
       },
       "line": 309,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg38_m.png'\"]",
-      "line": 309
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[38"
+        "exp": "tf.album_thumbnail[38]  = 'cg39_m.png'"
       },
       "line": 311,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg39_m.png'\"]",
-      "line": 311
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[39"
+        "exp": "tf.album_thumbnail[39]  = 'cg40_m.png'"
       },
       "line": 313,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg40_m.png'\"]",
-      "line": 313
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[40"
+        "exp": "tf.album_thumbnail[40]  = 'cg41_m.png'"
       },
       "line": 315,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg41_m.png'\"]",
-      "line": 315
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[41"
+        "exp": "tf.album_thumbnail[41]  = 'cg42_m.png'"
       },
       "line": 317,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg42_m.png'\"]",
-      "line": 317
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[42"
+        "exp": "tf.album_thumbnail[42]  = 'cg43_m.png'"
       },
       "line": 319,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg43_m.png'\"]",
-      "line": 319
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[43"
+        "exp": "tf.album_thumbnail[43]  = 'cg44_m.png'"
       },
       "line": 321,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg44_m.png'\"]",
-      "line": 321
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[44"
+        "exp": "tf.album_thumbnail[44]  = 'cg45_m.png'"
       },
       "line": 323,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg45_m.png'\"]",
-      "line": 323
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[45"
+        "exp": "tf.album_thumbnail[45]  = 'cg46_m.png'"
       },
       "line": 325,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg46_m.png'\"]",
-      "line": 325
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[46"
+        "exp": "tf.album_thumbnail[46]  = 'cg47_m.png'"
       },
       "line": 327,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg47_m.png'\"]",
-      "line": 327
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[47"
+        "exp": "tf.album_thumbnail[47]  = 'cg48_m.png'"
       },
       "line": 329,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg48_m.png'\"]",
-      "line": 329
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[48"
+        "exp": "tf.album_thumbnail[48]  = 'cg49_m.png'"
       },
       "line": 331,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg49_m.png'\"]",
-      "line": 331
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[49"
+        "exp": "tf.album_thumbnail[49]  = 'cg50_m.png'"
       },
       "line": 333,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg50_m.png'\"]",
-      "line": 333
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[50"
+        "exp": "tf.album_thumbnail[50]  = 'cg51_m.png'"
       },
       "line": 335,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg51_m.png'\"]",
-      "line": 335
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[51"
+        "exp": "tf.album_thumbnail[51]  = 'cg52_m.png'"
       },
       "line": 337,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg52_m.png'\"]",
-      "line": 337
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[52"
+        "exp": "tf.album_thumbnail[52]  = 'cg53_m.png'"
       },
       "line": 339,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg53_m.png'\"]",
-      "line": 339
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[53"
+        "exp": "tf.album_thumbnail[53]  = 'cg54_m.png'"
       },
       "line": 341,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg54_m.png'\"]",
-      "line": 341
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[54"
+        "exp": "tf.album_thumbnail[54]  = 'cg55_m.png'"
       },
       "line": 343,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg55_m.png'\"]",
-      "line": 343
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[55"
+        "exp": "tf.album_thumbnail[55]  = 'cg56_m.png'"
       },
       "line": 345,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg56_m.png'\"]",
-      "line": 345
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[56"
+        "exp": "tf.album_thumbnail[56]  = 'cg57_m.png'"
       },
       "line": 347,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg57_m.png'\"]",
-      "line": 347
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[57"
+        "exp": "tf.album_thumbnail[57]  = 'cg58_m.png'"
       },
       "line": 349,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg58_m.png'\"]",
-      "line": 349
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[58"
+        "exp": "tf.album_thumbnail[58]  = 'cg59_m.png'"
       },
       "line": 351,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg59_m.png'\"]",
-      "line": 351
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[59"
+        "exp": "tf.album_thumbnail[59]  = 'cg60_m.png'"
       },
       "line": 353,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg60_m.png'\"]",
-      "line": 353
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[60"
+        "exp": "tf.album_thumbnail[60]  = 'cg61_m.png'"
       },
       "line": 355,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg61_m.png'\"]",
-      "line": 355
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[61"
+        "exp": "tf.album_thumbnail[61]  = 'cg62_m.png'"
       },
       "line": 357,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg62_m.png'\"]",
-      "line": 357
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[62"
+        "exp": "tf.album_thumbnail[62]  = 'cg63_m.png'"
       },
       "line": 359,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg63_m.png'\"]",
-      "line": 359
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[63"
+        "exp": "tf.album_thumbnail[63]  = 'cg64_m.png'"
       },
       "line": 361,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg64_m.png'\"]",
-      "line": 361
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[64"
+        "exp": "tf.album_thumbnail[64]  = 'cg65_m.png'"
       },
       "line": 363,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg65_m.png'\"]",
-      "line": 363
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[65"
+        "exp": "tf.album_thumbnail[65]  = 'cg66_m.png'"
       },
       "line": 365,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg66_m.png'\"]",
-      "line": 365
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[66"
+        "exp": "tf.album_thumbnail[66]  = 'cg67_m.png'"
       },
       "line": 367,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg67_m.png'\"]",
-      "line": 367
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[67"
+        "exp": "tf.album_thumbnail[67]  = 'cg68_m.png'"
       },
       "line": 369,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg68_m.png'\"]",
-      "line": 369
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[68"
+        "exp": "tf.album_thumbnail[68]  = 'cg69_m.png'"
       },
       "line": 371,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg69_m.png'\"]",
-      "line": 371
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[69"
+        "exp": "tf.album_thumbnail[69]  = 'cg70_m.png'"
       },
       "line": 373,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg70_m.png'\"]",
-      "line": 373
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[70"
+        "exp": "tf.album_thumbnail[70]  = 'cg71_m.png'"
       },
       "line": 375,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg71_m.png'\"]",
-      "line": 375
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[71"
+        "exp": "tf.album_thumbnail[71]  = 'cg72_m.png'"
       },
       "line": 377,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg72_m.png'\"]",
-      "line": 377
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[72"
+        "exp": "tf.album_thumbnail[72]  = 'cg73_m.png'"
       },
       "line": 379,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg73_m.png'\"]",
-      "line": 379
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[73"
+        "exp": "tf.album_thumbnail[73]  = 'cg74_m.png'"
       },
       "line": 381,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg74_m.png'\"]",
-      "line": 381
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[74"
+        "exp": "tf.album_thumbnail[74]  = 'cg75_m.png'"
       },
       "line": 383,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg75_m.png'\"]",
-      "line": 383
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[75"
+        "exp": "tf.album_thumbnail[75]  = 'cg76_m.png'"
       },
       "line": 385,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg76_m.png'\"]",
-      "line": 385
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[76"
+        "exp": "tf.album_thumbnail[76]  = 'cg77_m.png'"
       },
       "line": 387,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg77_m.png'\"]",
-      "line": 387
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[77"
+        "exp": "tf.album_thumbnail[77]  = 'cg78_m.png'"
       },
       "line": 389,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg78_m.png'\"]",
-      "line": 389
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[78"
+        "exp": "tf.album_thumbnail[78]  = 'cg79_m.png'"
       },
       "line": 391,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg79_m.png'\"]",
-      "line": 391
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[79"
+        "exp": "tf.album_thumbnail[79]  = 'cg80_m.png'"
       },
       "line": 393,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg80_m.png'\"]",
-      "line": 393
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_thumbnail[80"
+        "exp": "tf.album_thumbnail[80]  = 'cg81_m.png'"
       },
       "line": 395,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = 'cg81_m.png'\"]",
-      "line": 395
     },
     {
       "type": "command",
@@ -2468,15 +1653,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag"
+        "exp": "sf.album_flag = []"
       },
       "line": 409,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 409
     },
     {
       "type": "comment",
@@ -2487,1135 +1667,730 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[0"
+        "exp": "sf.album_flag[0]  = false"
       },
       "line": 413,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 413
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[1"
+        "exp": "sf.album_flag[1]  = false"
       },
       "line": 415,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 415
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[2"
+        "exp": "sf.album_flag[2]  = false"
       },
       "line": 417,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 417
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[3"
+        "exp": "sf.album_flag[3]  = false"
       },
       "line": 419,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 419
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[4"
+        "exp": "sf.album_flag[4]  = false"
       },
       "line": 421,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 421
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[5"
+        "exp": "sf.album_flag[5]  = false"
       },
       "line": 423,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 423
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[6"
+        "exp": "sf.album_flag[6]  = false"
       },
       "line": 425,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 425
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[7"
+        "exp": "sf.album_flag[7]  = false"
       },
       "line": 427,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 427
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[8"
+        "exp": "sf.album_flag[8]  = false"
       },
       "line": 429,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 429
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[9"
+        "exp": "sf.album_flag[9]  = false"
       },
       "line": 431,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 431
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[10"
+        "exp": "sf.album_flag[10]  = false"
       },
       "line": 433,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 433
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[11"
+        "exp": "sf.album_flag[11]  = false"
       },
       "line": 435,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 435
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[12"
+        "exp": "sf.album_flag[12]  = false"
       },
       "line": 437,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 437
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[13"
+        "exp": "sf.album_flag[13]  = false"
       },
       "line": 439,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 439
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[14"
+        "exp": "sf.album_flag[14]  = false"
       },
       "line": 441,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 441
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[15"
+        "exp": "sf.album_flag[15]  = false"
       },
       "line": 443,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 443
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[16"
+        "exp": "sf.album_flag[16]  = false"
       },
       "line": 445,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 445
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[17"
+        "exp": "sf.album_flag[17]  = false"
       },
       "line": 447,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 447
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[18"
+        "exp": "sf.album_flag[18]  = false"
       },
       "line": 449,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 449
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[19"
+        "exp": "sf.album_flag[19]  = false"
       },
       "line": 451,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 451
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[20"
+        "exp": "sf.album_flag[20]  = false"
       },
       "line": 453,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 453
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[21"
+        "exp": "sf.album_flag[21]  = false"
       },
       "line": 455,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 455
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[22"
+        "exp": "sf.album_flag[22]  = false"
       },
       "line": 457,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 457
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[23"
+        "exp": "sf.album_flag[23]  = false"
       },
       "line": 459,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 459
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[24"
+        "exp": "sf.album_flag[24]  = false"
       },
       "line": 461,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 461
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[25"
+        "exp": "sf.album_flag[25]  = false"
       },
       "line": 463,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 463
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[26"
+        "exp": "sf.album_flag[26]  = false"
       },
       "line": 465,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 465
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[27"
+        "exp": "sf.album_flag[27]  = false"
       },
       "line": 467,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 467
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[28"
+        "exp": "sf.album_flag[28]  = false"
       },
       "line": 469,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 469
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[29"
+        "exp": "sf.album_flag[29]  = false"
       },
       "line": 471,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 471
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[30"
+        "exp": "sf.album_flag[30]  = false"
       },
       "line": 473,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 473
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[31"
+        "exp": "sf.album_flag[31]  = false"
       },
       "line": 475,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 475
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[32"
+        "exp": "sf.album_flag[32]  = false"
       },
       "line": 477,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 477
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[33"
+        "exp": "sf.album_flag[33]  = false"
       },
       "line": 479,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 479
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[34"
+        "exp": "sf.album_flag[34]  = false"
       },
       "line": 481,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 481
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[35"
+        "exp": "sf.album_flag[35]  = false"
       },
       "line": 483,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 483
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[36"
+        "exp": "sf.album_flag[36]  = false"
       },
       "line": 485,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 485
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[37"
+        "exp": "sf.album_flag[37]  = false"
       },
       "line": 487,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 487
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[38"
+        "exp": "sf.album_flag[38]  = false"
       },
       "line": 489,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 489
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[39"
+        "exp": "sf.album_flag[39]  = false"
       },
       "line": 491,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 491
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[40"
+        "exp": "sf.album_flag[40]  = false"
       },
       "line": 493,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 493
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[41"
+        "exp": "sf.album_flag[41]  = false"
       },
       "line": 495,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 495
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[42"
+        "exp": "sf.album_flag[42]  = false"
       },
       "line": 497,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 497
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[43"
+        "exp": "sf.album_flag[43]  = false"
       },
       "line": 499,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 499
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[44"
+        "exp": "sf.album_flag[44]  = false"
       },
       "line": 501,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 501
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[45"
+        "exp": "sf.album_flag[45]  = false"
       },
       "line": 503,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 503
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[46"
+        "exp": "sf.album_flag[46]  = false"
       },
       "line": 505,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 505
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[47"
+        "exp": "sf.album_flag[47]  = false"
       },
       "line": 507,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 507
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[48"
+        "exp": "sf.album_flag[48]  = false"
       },
       "line": 509,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 509
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[49"
+        "exp": "sf.album_flag[49]  = false"
       },
       "line": 511,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 511
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[50"
+        "exp": "sf.album_flag[50]  = false"
       },
       "line": 513,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 513
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[51"
+        "exp": "sf.album_flag[51]  = false"
       },
       "line": 515,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 515
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[52"
+        "exp": "sf.album_flag[52]  = false"
       },
       "line": 517,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 517
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[53"
+        "exp": "sf.album_flag[53]  = false"
       },
       "line": 519,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 519
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[54"
+        "exp": "sf.album_flag[54]  = false"
       },
       "line": 521,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 521
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[55"
+        "exp": "sf.album_flag[55]  = false"
       },
       "line": 523,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 523
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[56"
+        "exp": "sf.album_flag[56]  = false"
       },
       "line": 525,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 525
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[57"
+        "exp": "sf.album_flag[57]  = false"
       },
       "line": 527,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 527
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[58"
+        "exp": "sf.album_flag[58]  = false"
       },
       "line": 529,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 529
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[59"
+        "exp": "sf.album_flag[59]  = false"
       },
       "line": 531,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 531
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[60"
+        "exp": "sf.album_flag[60]  = false"
       },
       "line": 533,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 533
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[61"
+        "exp": "sf.album_flag[61]  = false"
       },
       "line": 535,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 535
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[62"
+        "exp": "sf.album_flag[62]  = false"
       },
       "line": 537,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 537
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[63"
+        "exp": "sf.album_flag[63]  = false"
       },
       "line": 539,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 539
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[64"
+        "exp": "sf.album_flag[64]  = false"
       },
       "line": 541,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 541
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[65"
+        "exp": "sf.album_flag[65]  = false"
       },
       "line": 543,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 543
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[66"
+        "exp": "sf.album_flag[66]  = false"
       },
       "line": 545,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 545
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[67"
+        "exp": "sf.album_flag[67]  = false"
       },
       "line": 547,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 547
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[68"
+        "exp": "sf.album_flag[68]  = false"
       },
       "line": 549,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 549
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[69"
+        "exp": "sf.album_flag[69]  = false"
       },
       "line": 551,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 551
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[70"
+        "exp": "sf.album_flag[70]  = false"
       },
       "line": 553,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 553
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[71"
+        "exp": "sf.album_flag[71]  = false"
       },
       "line": 555,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 555
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[72"
+        "exp": "sf.album_flag[72]  = false"
       },
       "line": 557,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 557
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[73"
+        "exp": "sf.album_flag[73]  = false"
       },
       "line": 559,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 559
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[74"
+        "exp": "sf.album_flag[74]  = false"
       },
       "line": 561,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 561
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[75"
+        "exp": "sf.album_flag[75]  = false"
       },
       "line": 563,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 563
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[76"
+        "exp": "sf.album_flag[76]  = false"
       },
       "line": 565,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 565
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[77"
+        "exp": "sf.album_flag[77]  = false"
       },
       "line": 567,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 567
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[78"
+        "exp": "sf.album_flag[78]  = false"
       },
       "line": 569,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 569
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[79"
+        "exp": "sf.album_flag[79]  = false"
       },
       "line": 571,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 571
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[80"
+        "exp": "sf.album_flag[80]  = false"
       },
       "line": 573,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 573
     },
     {
       "type": "command",

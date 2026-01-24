@@ -2180,15 +2180,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.___sliders[mp.name"
+        "exp": "tf.___sliders[mp.name] = ___slider_create(mp)"
       },
       "line": 967,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = ___slider_create(mp)\"]",
-      "line": 967
     },
     {
       "type": "command",
@@ -2270,15 +2265,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.___sliders[mp.name"
+        "exp": "tf.___sliders[mp.name].position = +mp.position"
       },
       "line": 1001,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ".position = +mp.position\"]",
-      "line": 1001
     },
     {
       "type": "command",
@@ -2350,29 +2340,19 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.___sliders[mp.name"
+        "exp": "tf.___sliders[mp.name].visible = false"
       },
       "line": 1031,
       "inline": true
     },
     {
-      "type": "text",
-      "text": ".visible = false\"]",
-      "line": 1031
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"invalidate"
+        "exp": "invalidate tf.___sliders[mp.name]"
       },
       "line": 1033,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 1033
     },
     {
       "type": "command",

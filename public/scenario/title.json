@@ -235,15 +235,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.frame_opacity"
+        "exp": "sf.frame_opacity = kag.fore.layers[tf.frame_layer].opacity"
       },
       "line": 75,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ".opacity\"]",
-      "line": 75
     },
     {
       "type": "comment",

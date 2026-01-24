@@ -207,12 +207,22 @@
     },
     {
       "type": "text",
-      "text": "var foreButtons = []; // 表画面のボタンの配列",
+      "text": "var foreButtons = ",
       "line": 107
     },
     {
       "type": "text",
-      "text": "var backButtons = []; // 裏画面のボタンの配列",
+      "text": "; // 表画面のボタンの配列",
+      "line": 107
+    },
+    {
+      "type": "text",
+      "text": "var backButtons = ",
+      "line": 109
+    },
+    {
+      "type": "text",
+      "text": "; // 裏画面のボタンの配列",
       "line": 109
     },
     {
@@ -1264,7 +1274,12 @@
     },
     {
       "type": "text",
-      "text": "var dic = f.systemButtons = %[];",
+      "text": "var dic = f.systemButtons = %",
+      "line": 541
+    },
+    {
+      "type": "text",
+      "text": ";",
       "line": 541
     },
     {
@@ -1369,7 +1384,12 @@
     },
     {
       "type": "text",
-      "text": "setOptions(%[ forevisible : dic.foreVisible, backvisible : dic.backVisible,",
+      "text": "setOptions(%",
+      "line": 585
+    },
+    {
+      "type": "text",
+      "text": "[ forevisible : dic.foreVisible, backvisible : dic.backVisible,",
       "line": 585
     },
     {

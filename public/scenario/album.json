@@ -179,29 +179,21 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_x"
+        "exp": "tf.album_x = []",
+        "cond": "tf.album_x === void"
       },
       "line": 73,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "\" cond=\"tf.album_x === void\"]",
-      "line": 73
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_y"
+        "exp": "tf.album_y = []",
+        "cond": "tf.album_y === void"
       },
       "line": 75,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" cond=\"tf.album_y === void\"]",
-      "line": 75
     },
     {
       "type": "comment",
@@ -259,29 +251,19 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_x[tf.album_i"
+        "exp": "tf.album_x[tf.album_i] = 99 + 228*tf.album_column"
       },
       "line": 93,
       "inline": true
     },
     {
-      "type": "text",
-      "text": " = 99 + 228*tf.album_column\"]",
-      "line": 93
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_y[tf.album_i"
+        "exp": "tf.album_y[tf.album_i] = 131 + 160*tf.album_line"
       },
       "line": 95,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = 131 + 160*tf.album_line\"]",
-      "line": 95
     },
     {
       "type": "command",
@@ -302,29 +284,21 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_page_x"
+        "exp": "tf.album_page_x = [492, 542, 592, 642, 692, 742]",
+        "cond": "tf.album_page_x === void"
       },
       "line": 101,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "\" cond=\"tf.album_page_x === void\"]",
-      "line": 101
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.album_page_y"
+        "exp": "tf.album_page_y = [595, 595, 595, 595, 595, 595]",
+        "cond": "tf.album_page_y === void"
       },
       "line": 103,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" cond=\"tf.album_page_y === void\"]",
-      "line": 103
     },
     {
       "type": "comment",
@@ -500,15 +474,10 @@
       "type": "command",
       "name": "if",
       "args": {
-        "exp": "\"sf.album_flag[tf.album_i+15*sf.album_page"
+        "exp": "sf.album_flag[tf.album_i+15*sf.album_page]"
       },
       "line": 155,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 155
     },
     {
       "type": "comment",
@@ -519,39 +488,16 @@
       "type": "command",
       "name": "pimage",
       "args": {
-        "storage": "\"&tf.album_thumbnail[tf.album_i+15*sf.album_page"
+        "storage": "&tf.album_thumbnail[tf.album_i+15*sf.album_page]",
+        "layer": "base",
+        "page": "fore",
+        "dx": "&tf.album_x[tf.album_i]",
+        "dy": "&tf.album_y[tf.album_i]",
+        "sw": "170",
+        "sh": "96"
       },
       "line": 159,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" layer=base page=fore dx=\"&tf.album_x",
-      "line": 159
-    },
-    {
-      "type": "command",
-      "name": "tf.album_i",
-      "args": {},
-      "line": 159,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" dy=\"&tf.album_y",
-      "line": 159
-    },
-    {
-      "type": "command",
-      "name": "tf.album_i",
-      "args": {},
-      "line": 159,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" sw=\"170\" sh=\"96\"]",
-      "line": 159
     },
     {
       "type": "comment",
@@ -562,27 +508,11 @@
       "type": "command",
       "name": "locate",
       "args": {
-        "x": "\"&tf.album_x[tf.album_i"
+        "x": "&tf.album_x[tf.album_i]",
+        "y": "&tf.album_y[tf.album_i]"
       },
       "line": 163,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" y=\"&tf.album_y",
-      "line": 163
-    },
-    {
-      "type": "command",
-      "name": "tf.album_i",
-      "args": {},
-      "line": 163,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 163
     },
     {
       "type": "command",
@@ -640,27 +570,11 @@
       "type": "command",
       "name": "locate",
       "args": {
-        "x": "\"&tf.album_page_x[tf.album_i"
+        "x": "&tf.album_page_x[tf.album_i]",
+        "y": "&tf.album_page_y[tf.album_i]"
       },
       "line": 181,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" y=\"&tf.album_page_y",
-      "line": 181
-    },
-    {
-      "type": "command",
-      "name": "tf.album_i",
-      "args": {},
-      "line": 181,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 181
     },
     {
       "type": "command",
@@ -814,15 +728,16 @@
       "name": "jump",
       "args": {
         "storage": "album_sub.ks",
-        "target": "\"&tf.album_storage[tf.album_select+15*sf.album_page"
+        "target": "&tf.album_storage[tf.album_select+15*sf.album_page]",
+        "layer": "&tf.album_layer",
+        "page": "fore",
+        "visible": "true",
+        "left": "0",
+        "top": "0",
+        "index": "1999999"
       },
       "line": 229,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" layer=\"&tf.album_layer\" page=fore visible=true left=0 top=0 index=1999999]",
-      "line": 229
     },
     {
       "type": "comment",

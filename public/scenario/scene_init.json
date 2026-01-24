@@ -124,15 +124,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption"
+        "exp": "tf.scene_caption = []"
       },
       "line": 57,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 57
     },
     {
       "type": "comment",
@@ -143,183 +138,118 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[0"
+        "exp": "tf.scene_caption[0]  = ''"
       },
       "line": 61,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 61
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[1"
+        "exp": "tf.scene_caption[1]  = ''"
       },
       "line": 63,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 63
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[2"
+        "exp": "tf.scene_caption[2]  = ''"
       },
       "line": 65,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 65
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[3"
+        "exp": "tf.scene_caption[3]  = ''"
       },
       "line": 67,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 67
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[4"
+        "exp": "tf.scene_caption[4]  = ''"
       },
       "line": 69,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 69
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[5"
+        "exp": "tf.scene_caption[5]  = ''"
       },
       "line": 71,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 71
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[6"
+        "exp": "tf.scene_caption[6]  = ''"
       },
       "line": 73,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 73
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[7"
+        "exp": "tf.scene_caption[7]  = ''"
       },
       "line": 75,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 75
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[8"
+        "exp": "tf.scene_caption[8]  = ''"
       },
       "line": 77,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 77
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[9"
+        "exp": "tf.scene_caption[9]  = ''"
       },
       "line": 79,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 79
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[10"
+        "exp": "tf.scene_caption[10]  = ''"
       },
       "line": 81,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 81
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[11"
+        "exp": "tf.scene_caption[11]  = ''"
       },
       "line": 83,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 83
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_caption[12"
+        "exp": "tf.scene_caption[12]  = ''"
       },
       "line": 85,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = ''\"]",
-      "line": 85
     },
     {
       "type": "command",
@@ -351,15 +281,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage"
+        "exp": "tf.scene_storage = []"
       },
       "line": 97,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 97
     },
     {
       "type": "comment",
@@ -370,183 +295,118 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[0"
+        "exp": "tf.scene_storage[0]  = 'scenario_rio_1.ks'"
       },
       "line": 101,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_rio_1.ks'\"]",
-      "line": 101
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[1"
+        "exp": "tf.scene_storage[1]  = 'scenario_rio_2.ks'"
       },
       "line": 103,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_rio_2.ks'\"]",
-      "line": 103
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[2"
+        "exp": "tf.scene_storage[2]  = 'scenario_rio_3.ks'"
       },
       "line": 105,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_rio_3.ks'\"]",
-      "line": 105
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[3"
+        "exp": "tf.scene_storage[3]  = 'scenario_kisaki_1.ks'"
       },
       "line": 107,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_kisaki_1.ks'\"]",
-      "line": 107
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[4"
+        "exp": "tf.scene_storage[4]  = 'scenario_kisaki_2.ks'"
       },
       "line": 109,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_kisaki_2.ks'\"]",
-      "line": 109
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[5"
+        "exp": "tf.scene_storage[5]  = 'scenario_kisaki_2.ks'"
       },
       "line": 111,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_kisaki_2.ks'\"]",
-      "line": 111
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[6"
+        "exp": "tf.scene_storage[6]  = 'scenario_9_2.ks'"
       },
       "line": 113,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_9_2.ks'\"]",
-      "line": 113
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[7"
+        "exp": "tf.scene_storage[7]  = 'scenario_yoruko_3.ks'"
       },
       "line": 115,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_yoruko_3.ks'\"]",
-      "line": 115
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[8"
+        "exp": "tf.scene_storage[8]  = 'scenario_yoruko_3.ks'"
       },
       "line": 117,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_yoruko_3.ks'\"]",
-      "line": 117
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[9"
+        "exp": "tf.scene_storage[9]  = 'scenario_12_1.ks'"
       },
       "line": 119,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_12_1.ks'\"]",
-      "line": 119
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[10"
+        "exp": "tf.scene_storage[10]  = 'scenario_12_2.ks'"
       },
       "line": 121,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_12_2.ks'\"]",
-      "line": 121
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[11"
+        "exp": "tf.scene_storage[11]  = 'scenario_12_4.ks'"
       },
       "line": 123,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'scenario_12_4.ks'\"]",
-      "line": 123
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_storage[12"
+        "exp": "tf.scene_storage[12]  = 'scenario_13_2.ks'"
       },
       "line": 125,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = 'scenario_13_2.ks'\"]",
-      "line": 125
     },
     {
       "type": "command",
@@ -578,15 +438,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target"
+        "exp": "tf.scene_target = []"
       },
       "line": 137,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 137
     },
     {
       "type": "comment",
@@ -597,183 +452,118 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[0"
+        "exp": "tf.scene_target[0]  = '*scene01'"
       },
       "line": 141,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene01'\"]",
-      "line": 141
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[1"
+        "exp": "tf.scene_target[1]  = '*scene02'"
       },
       "line": 143,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene02'\"]",
-      "line": 143
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[2"
+        "exp": "tf.scene_target[2]  = '*scene03'"
       },
       "line": 145,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene03'\"]",
-      "line": 145
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[3"
+        "exp": "tf.scene_target[3]  = '*scene04'"
       },
       "line": 147,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene04'\"]",
-      "line": 147
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[4"
+        "exp": "tf.scene_target[4]  = '*scene05'"
       },
       "line": 149,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene05'\"]",
-      "line": 149
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[5"
+        "exp": "tf.scene_target[5]  = '*scene06'"
       },
       "line": 151,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene06'\"]",
-      "line": 151
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[6"
+        "exp": "tf.scene_target[6]  = '*scene07'"
       },
       "line": 153,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene07'\"]",
-      "line": 153
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[7"
+        "exp": "tf.scene_target[7]  = '*scene08'"
       },
       "line": 155,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene08'\"]",
-      "line": 155
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[8"
+        "exp": "tf.scene_target[8]  = '*scene09'"
       },
       "line": 157,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene09'\"]",
-      "line": 157
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[9"
+        "exp": "tf.scene_target[9]  = '*scene10'"
       },
       "line": 159,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene10'\"]",
-      "line": 159
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[10"
+        "exp": "tf.scene_target[10]  = '*scene11'"
       },
       "line": 161,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene11'\"]",
-      "line": 161
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[11"
+        "exp": "tf.scene_target[11]  = '*scene12'"
       },
       "line": 163,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = '*scene12'\"]",
-      "line": 163
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_target[12"
+        "exp": "tf.scene_target[12]  = '*scene13'"
       },
       "line": 165,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = '*scene13'\"]",
-      "line": 165
     },
     {
       "type": "command",
@@ -805,15 +595,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail"
+        "exp": "tf.scene_thumbnail = []"
       },
       "line": 177,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 177
     },
     {
       "type": "comment",
@@ -824,183 +609,118 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[0"
+        "exp": "tf.scene_thumbnail[0]  = 'cg21_m.png'"
       },
       "line": 181,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg21_m.png'\"]",
-      "line": 181
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[1"
+        "exp": "tf.scene_thumbnail[1]  = 'cg23_m.png'"
       },
       "line": 183,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg23_m.png'\"]",
-      "line": 183
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[2"
+        "exp": "tf.scene_thumbnail[2]  = 'cg25_m.png'"
       },
       "line": 185,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg25_m.png'\"]",
-      "line": 185
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[3"
+        "exp": "tf.scene_thumbnail[3]  = 'cg36_m.png'"
       },
       "line": 187,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg36_m.png'\"]",
-      "line": 187
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[4"
+        "exp": "tf.scene_thumbnail[4]  = 'cg38_m.png'"
       },
       "line": 189,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg38_m.png'\"]",
-      "line": 189
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[5"
+        "exp": "tf.scene_thumbnail[5]  = 'cg39_m.png'"
       },
       "line": 191,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg39_m.png'\"]",
-      "line": 191
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[6"
+        "exp": "tf.scene_thumbnail[6]  = 'cg43_m.png'"
       },
       "line": 193,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg43_m.png'\"]",
-      "line": 193
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[7"
+        "exp": "tf.scene_thumbnail[7]  = 'cg77_m.png'"
       },
       "line": 195,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg77_m.png'\"]",
-      "line": 195
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[8"
+        "exp": "tf.scene_thumbnail[8]  = 'cg79_m.png'"
       },
       "line": 197,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg79_m.png'\"]",
-      "line": 197
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[9"
+        "exp": "tf.scene_thumbnail[9]  = 'cg72_m.png'"
       },
       "line": 199,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg72_m.png'\"]",
-      "line": 199
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[10"
+        "exp": "tf.scene_thumbnail[10]  = 'cg74_m.png'"
       },
       "line": 201,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg74_m.png'\"]",
-      "line": 201
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[11"
+        "exp": "tf.scene_thumbnail[11]  = 'cg75_m.png'"
       },
       "line": 203,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = 'cg75_m.png'\"]",
-      "line": 203
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_thumbnail[12"
+        "exp": "tf.scene_thumbnail[12]  = 'cg70_m.png'"
       },
       "line": 205,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = 'cg70_m.png'\"]",
-      "line": 205
     },
     {
       "type": "command",
@@ -1032,15 +752,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag"
+        "exp": "sf.scene_flag = []"
       },
       "line": 217,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 217
     },
     {
       "type": "comment",
@@ -1051,183 +766,118 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[0"
+        "exp": "sf.scene_flag[0]  = false"
       },
       "line": 221,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 221
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[1"
+        "exp": "sf.scene_flag[1]  = false"
       },
       "line": 223,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 223
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[2"
+        "exp": "sf.scene_flag[2]  = false"
       },
       "line": 225,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 225
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[3"
+        "exp": "sf.scene_flag[3]  = false"
       },
       "line": 227,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 227
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[4"
+        "exp": "sf.scene_flag[4]  = false"
       },
       "line": 229,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 229
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[5"
+        "exp": "sf.scene_flag[5]  = false"
       },
       "line": 231,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 231
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[6"
+        "exp": "sf.scene_flag[6]  = false"
       },
       "line": 233,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 233
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[7"
+        "exp": "sf.scene_flag[7]  = false"
       },
       "line": 235,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 235
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[8"
+        "exp": "sf.scene_flag[8]  = false"
       },
       "line": 237,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 237
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[9"
+        "exp": "sf.scene_flag[9]  = false"
       },
       "line": 239,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 239
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[10"
+        "exp": "sf.scene_flag[10]  = false"
       },
       "line": 241,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 241
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[11"
+        "exp": "sf.scene_flag[11]  = false"
       },
       "line": 243,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 243
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[12"
+        "exp": "sf.scene_flag[12]  = false"
       },
       "line": 245,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = false\"]",
-      "line": 245
     },
     {
       "type": "command",

@@ -4018,15 +4018,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[66"
+        "exp": "sf.album_flag[66] = true"
       },
       "line": 1127,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 1127
     },
     {
       "type": "command",

@@ -188,29 +188,21 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_x"
+        "exp": "tf.scene_x = []",
+        "cond": "tf.scene_x === void"
       },
       "line": 75,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "\" cond=\"tf.scene_x === void\"]",
-      "line": 75
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_y"
+        "exp": "tf.scene_y = []",
+        "cond": "tf.scene_y === void"
       },
       "line": 77,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" cond=\"tf.scene_y === void\"]",
-      "line": 77
     },
     {
       "type": "comment",
@@ -268,29 +260,19 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_x[tf.scene_i"
+        "exp": "tf.scene_x[tf.scene_i] = 99 + 228*tf.scene_column"
       },
       "line": 95,
       "inline": true
     },
     {
-      "type": "text",
-      "text": " = 99 + 228*tf.scene_column\"]",
-      "line": 95
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.scene_y[tf.scene_i"
+        "exp": "tf.scene_y[tf.scene_i] = 151 + 160*tf.scene_line"
       },
       "line": 97,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = 151 + 160*tf.scene_line\"]",
-      "line": 97
     },
     {
       "type": "command",
@@ -479,15 +461,10 @@
       "type": "command",
       "name": "if",
       "args": {
-        "exp": "\"sf.scene_flag[tf.scene_i+15*sf.scene_page"
+        "exp": "sf.scene_flag[tf.scene_i+15*sf.scene_page]"
       },
       "line": 155,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 155
     },
     {
       "type": "comment",
@@ -498,39 +475,16 @@
       "type": "command",
       "name": "pimage",
       "args": {
-        "storage": "\"&tf.scene_thumbnail[tf.scene_i+15*sf.scene_page"
+        "storage": "&tf.scene_thumbnail[tf.scene_i+15*sf.scene_page]",
+        "layer": "base",
+        "page": "fore",
+        "dx": "&tf.scene_x[tf.scene_i]",
+        "dy": "&tf.scene_y[tf.scene_i]",
+        "sw": "170",
+        "sh": "96"
       },
       "line": 159,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" layer=base page=fore dx=\"&tf.scene_x",
-      "line": 159
-    },
-    {
-      "type": "command",
-      "name": "tf.scene_i",
-      "args": {},
-      "line": 159,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" dy=\"&tf.scene_y",
-      "line": 159
-    },
-    {
-      "type": "command",
-      "name": "tf.scene_i",
-      "args": {},
-      "line": 159,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" sw=\"170\" sh=\"96\"]",
-      "line": 159
     },
     {
       "type": "comment",
@@ -541,27 +495,11 @@
       "type": "command",
       "name": "locate",
       "args": {
-        "x": "\"&tf.scene_x[tf.scene_i"
+        "x": "&tf.scene_x[tf.scene_i]",
+        "y": "&tf.scene_y[tf.scene_i]"
       },
       "line": 163,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" y=\"&tf.scene_y",
-      "line": 163
-    },
-    {
-      "type": "command",
-      "name": "tf.scene_i",
-      "args": {},
-      "line": 163,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 163
     },
     {
       "type": "command",
@@ -1730,27 +1668,11 @@
       "type": "command",
       "name": "call",
       "args": {
-        "storage": "\"&tf.scene_storage[tf.scene_select"
+        "storage": "&tf.scene_storage[tf.scene_select]",
+        "target": "&tf.scene_target[tf.scene_select]"
       },
       "line": 531,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" target=\"&tf.scene_target",
-      "line": 531
-    },
-    {
-      "type": "command",
-      "name": "tf.scene_select",
-      "args": {},
-      "line": 531,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 531
     },
     {
       "type": "comment",

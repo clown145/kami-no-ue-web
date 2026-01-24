@@ -248,15 +248,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.save_message1_layer"
+        "exp": "tf.save_message1_layer = kag.getLayerFromElm(%['layer'=>tf.save_message1, 'page'=>'fore'])"
       },
       "line": 93,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ")\"]",
-      "line": 93
     },
     {
       "type": "comment",
@@ -267,29 +262,21 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.save_page_x"
+        "exp": "tf.save_page_x =[392,442,492,542,592,642,692,742,792,842]",
+        "cond": "tf.save_page_x === void"
       },
       "line": 97,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "\" cond=\"tf.save_page_x === void\"]",
-      "line": 97
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.save_page_y"
+        "exp": "tf.save_page_y =[595,595,595,595,595,595,595,595,595,595]",
+        "cond": "tf.save_page_y === void"
       },
       "line": 99,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" cond=\"tf.save_page_y === void\"]",
-      "line": 99
     },
     {
       "type": "comment",
@@ -300,29 +287,21 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.save_x"
+        "exp": "tf.save_x = []",
+        "cond": "tf.save_x === void"
       },
       "line": 105,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "\" cond=\"tf.save_x === void\"]",
-      "line": 105
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.save_y"
+        "exp": "tf.save_y = []",
+        "cond": "tf.save_y === void"
       },
       "line": 107,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" cond=\"tf.save_y === void\"]",
-      "line": 107
     },
     {
       "type": "comment",
@@ -395,29 +374,19 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.save_x[tf.save_i"
+        "exp": "tf.save_x[tf.save_i] = 99 + 228*tf.save_column"
       },
       "line": 133,
       "inline": true
     },
     {
-      "type": "text",
-      "text": " = 99 + 228*tf.save_column\"]",
-      "line": 133
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.save_y[tf.save_i"
+        "exp": "tf.save_y[tf.save_i] = 111 + 254*tf.save_line"
       },
       "line": 135,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = 111 + 254*tf.save_line\"]",
-      "line": 135
     },
     {
       "type": "comment",
@@ -729,27 +698,11 @@
       "type": "command",
       "name": "locate",
       "args": {
-        "x": "\"&tf.save_page_x[tf.save_i"
+        "x": "&tf.save_page_x[tf.save_i]",
+        "y": "&tf.save_page_y[tf.save_i]"
       },
       "line": 237,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" y=\"&tf.save_page_y",
-      "line": 237
-    },
-    {
-      "type": "command",
-      "name": "tf.save_i",
-      "args": {},
-      "line": 237,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 237
     },
     {
       "type": "comment",
@@ -856,27 +809,11 @@
       "type": "command",
       "name": "locate",
       "args": {
-        "x": "\"&tf.save_x[tf.save_i"
+        "x": "&tf.save_x[tf.save_i]",
+        "y": "&tf.save_y[tf.save_i]"
       },
       "line": 273,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" y=\"&tf.save_y",
-      "line": 273
-    },
-    {
-      "type": "command",
-      "name": "tf.save_i",
-      "args": {},
-      "line": 273,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 273
     },
     {
       "type": "comment",
@@ -18345,16 +18282,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"kag.setBookMarkProtectedState(tf.save_check_num+sf.save_now_page*10,",
-        "*": true
+        "exp": "kag.setBookMarkProtectedState(tf.save_check_num+sf.save_now_page*10, !kag.bookMarkProtectedStates[tf.save_check_num+sf.save_now_page*10])"
       },
       "line": 3941,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ")\"]",
-      "line": 3941
     },
     {
       "type": "comment",
@@ -18365,15 +18296,10 @@
       "type": "command",
       "name": "if",
       "args": {
-        "exp": "\"kag.bookMarkProtectedStates[tf.save_check_num+sf.save_now_page*10"
+        "exp": "kag.bookMarkProtectedStates[tf.save_check_num+sf.save_now_page*10]"
       },
       "line": 3945,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 3945
     },
     {
       "type": "comment",

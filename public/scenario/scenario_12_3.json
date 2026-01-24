@@ -17892,15 +17892,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[61"
+        "exp": "sf.album_flag[61] = true"
       },
       "line": 5041,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 5041
     },
     {
       "type": "command",
@@ -22731,15 +22726,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[62"
+        "exp": "sf.album_flag[62] = true"
       },
       "line": 6027,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 6027
     },
     {
       "type": "command",
@@ -26129,15 +26119,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[61"
+        "exp": "sf.album_flag[61] = true"
       },
       "line": 6949,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 6949
     },
     {
       "type": "command",
@@ -33789,15 +33774,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[63"
+        "exp": "sf.album_flag[63] = true"
       },
       "line": 8963,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 8963
     },
     {
       "type": "command",
@@ -38498,15 +38478,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[64"
+        "exp": "sf.album_flag[64] = true"
       },
       "line": 10271,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 10271
     },
     {
       "type": "command",
@@ -39699,15 +39674,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[65"
+        "exp": "sf.album_flag[65] = true"
       },
       "line": 10609,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\"]",
-      "line": 10609
     },
     {
       "type": "comment",

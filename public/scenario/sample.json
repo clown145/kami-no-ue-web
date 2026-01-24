@@ -2070,1261 +2070,811 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[0"
+        "exp": "sf.album_flag[0]  = true"
       },
       "line": 501,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 501
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[1"
+        "exp": "sf.album_flag[1]  = true"
       },
       "line": 503,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 503
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[2"
+        "exp": "sf.album_flag[2]  = true"
       },
       "line": 505,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 505
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[3"
+        "exp": "sf.album_flag[3]  = true"
       },
       "line": 507,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 507
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[4"
+        "exp": "sf.album_flag[4]  = true"
       },
       "line": 509,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 509
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[5"
+        "exp": "sf.album_flag[5]  = true"
       },
       "line": 511,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 511
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[6"
+        "exp": "sf.album_flag[6]  = true"
       },
       "line": 513,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 513
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[7"
+        "exp": "sf.album_flag[7]  = true"
       },
       "line": 515,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 515
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[8"
+        "exp": "sf.album_flag[8]  = true"
       },
       "line": 517,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 517
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[9"
+        "exp": "sf.album_flag[9]  = true"
       },
       "line": 519,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 519
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[10"
+        "exp": "sf.album_flag[10]  = true"
       },
       "line": 521,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 521
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[11"
+        "exp": "sf.album_flag[11]  = true"
       },
       "line": 523,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 523
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[12"
+        "exp": "sf.album_flag[12]  = true"
       },
       "line": 525,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 525
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[13"
+        "exp": "sf.album_flag[13]  = true"
       },
       "line": 527,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 527
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[14"
+        "exp": "sf.album_flag[14]  = true"
       },
       "line": 529,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 529
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[15"
+        "exp": "sf.album_flag[15]  = true"
       },
       "line": 531,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 531
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[16"
+        "exp": "sf.album_flag[16]  = true"
       },
       "line": 533,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 533
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[17"
+        "exp": "sf.album_flag[17]  = true"
       },
       "line": 535,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 535
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[18"
+        "exp": "sf.album_flag[18]  = true"
       },
       "line": 537,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 537
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[19"
+        "exp": "sf.album_flag[19]  = true"
       },
       "line": 539,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 539
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[20"
+        "exp": "sf.album_flag[20]  = true"
       },
       "line": 541,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 541
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[21"
+        "exp": "sf.album_flag[21]  = true"
       },
       "line": 543,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 543
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[22"
+        "exp": "sf.album_flag[22]  = true"
       },
       "line": 545,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 545
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[23"
+        "exp": "sf.album_flag[23]  = true"
       },
       "line": 547,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 547
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[24"
+        "exp": "sf.album_flag[24]  = true"
       },
       "line": 549,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 549
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[25"
+        "exp": "sf.album_flag[25]  = true"
       },
       "line": 551,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 551
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[26"
+        "exp": "sf.album_flag[26]  = true"
       },
       "line": 553,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 553
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[27"
+        "exp": "sf.album_flag[27]  = true"
       },
       "line": 555,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 555
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[28"
+        "exp": "sf.album_flag[28]  = true"
       },
       "line": 557,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 557
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[29"
+        "exp": "sf.album_flag[29]  = true"
       },
       "line": 559,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 559
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[30"
+        "exp": "sf.album_flag[30]  = true"
       },
       "line": 561,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 561
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[31"
+        "exp": "sf.album_flag[31]  = true"
       },
       "line": 563,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 563
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[32"
+        "exp": "sf.album_flag[32]  = true"
       },
       "line": 565,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 565
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[33"
+        "exp": "sf.album_flag[33]  = true"
       },
       "line": 567,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 567
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[34"
+        "exp": "sf.album_flag[34]  = true"
       },
       "line": 569,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 569
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[35"
+        "exp": "sf.album_flag[35]  = true"
       },
       "line": 571,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 571
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[36"
+        "exp": "sf.album_flag[36]  = true"
       },
       "line": 573,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 573
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[37"
+        "exp": "sf.album_flag[37]  = true"
       },
       "line": 575,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 575
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[38"
+        "exp": "sf.album_flag[38]  = true"
       },
       "line": 577,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 577
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[39"
+        "exp": "sf.album_flag[39]  = true"
       },
       "line": 579,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 579
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[40"
+        "exp": "sf.album_flag[40]  = true"
       },
       "line": 581,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 581
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[41"
+        "exp": "sf.album_flag[41]  = true"
       },
       "line": 583,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 583
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[42"
+        "exp": "sf.album_flag[42]  = true"
       },
       "line": 585,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 585
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[43"
+        "exp": "sf.album_flag[43]  = true"
       },
       "line": 587,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 587
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[44"
+        "exp": "sf.album_flag[44]  = true"
       },
       "line": 589,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 589
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[45"
+        "exp": "sf.album_flag[45]  = true"
       },
       "line": 591,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 591
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[46"
+        "exp": "sf.album_flag[46]  = true"
       },
       "line": 593,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 593
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[47"
+        "exp": "sf.album_flag[47]  = true"
       },
       "line": 595,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 595
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[48"
+        "exp": "sf.album_flag[48]  = true"
       },
       "line": 597,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 597
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[49"
+        "exp": "sf.album_flag[49]  = true"
       },
       "line": 599,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 599
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[50"
+        "exp": "sf.album_flag[50]  = true"
       },
       "line": 601,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 601
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[51"
+        "exp": "sf.album_flag[51]  = true"
       },
       "line": 603,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 603
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[52"
+        "exp": "sf.album_flag[52]  = true"
       },
       "line": 605,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 605
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[53"
+        "exp": "sf.album_flag[53]  = true"
       },
       "line": 607,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 607
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[54"
+        "exp": "sf.album_flag[54]  = true"
       },
       "line": 609,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 609
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[55"
+        "exp": "sf.album_flag[55]  = true"
       },
       "line": 611,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 611
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[56"
+        "exp": "sf.album_flag[56]  = true"
       },
       "line": 613,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 613
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[57"
+        "exp": "sf.album_flag[57]  = true"
       },
       "line": 615,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 615
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[58"
+        "exp": "sf.album_flag[58]  = true"
       },
       "line": 617,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 617
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[59"
+        "exp": "sf.album_flag[59]  = true"
       },
       "line": 619,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 619
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[60"
+        "exp": "sf.album_flag[60]  = true"
       },
       "line": 621,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 621
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[61"
+        "exp": "sf.album_flag[61]  = true"
       },
       "line": 623,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 623
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[62"
+        "exp": "sf.album_flag[62]  = true"
       },
       "line": 625,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 625
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[63"
+        "exp": "sf.album_flag[63]  = true"
       },
       "line": 627,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 627
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[64"
+        "exp": "sf.album_flag[64]  = true"
       },
       "line": 629,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 629
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[65"
+        "exp": "sf.album_flag[65]  = true"
       },
       "line": 631,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 631
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[66"
+        "exp": "sf.album_flag[66]  = true"
       },
       "line": 633,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 633
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[67"
+        "exp": "sf.album_flag[67]  = true"
       },
       "line": 635,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 635
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[68"
+        "exp": "sf.album_flag[68]  = true"
       },
       "line": 637,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 637
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[69"
+        "exp": "sf.album_flag[69]  = true"
       },
       "line": 639,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 639
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[70"
+        "exp": "sf.album_flag[70]  = true"
       },
       "line": 641,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 641
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[71"
+        "exp": "sf.album_flag[71]  = true"
       },
       "line": 643,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 643
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[72"
+        "exp": "sf.album_flag[72]  = true"
       },
       "line": 645,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 645
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[73"
+        "exp": "sf.album_flag[73]  = true"
       },
       "line": 647,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 647
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[74"
+        "exp": "sf.album_flag[74]  = true"
       },
       "line": 649,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 649
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[75"
+        "exp": "sf.album_flag[75]  = true"
       },
       "line": 651,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 651
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[76"
+        "exp": "sf.album_flag[76]  = true"
       },
       "line": 653,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 653
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[77"
+        "exp": "sf.album_flag[77]  = true"
       },
       "line": 655,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 655
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[78"
+        "exp": "sf.album_flag[78]  = true"
       },
       "line": 657,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 657
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[79"
+        "exp": "sf.album_flag[79]  = true"
       },
       "line": 659,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 659
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[80"
+        "exp": "sf.album_flag[80]  = true"
       },
       "line": 661,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 661
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[81"
+        "exp": "sf.album_flag[81]  = true"
       },
       "line": 663,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 663
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[82"
+        "exp": "sf.album_flag[82]  = true"
       },
       "line": 665,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 665
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[83"
+        "exp": "sf.album_flag[83]  = true"
       },
       "line": 667,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 667
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[84"
+        "exp": "sf.album_flag[84]  = true"
       },
       "line": 669,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 669
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[85"
+        "exp": "sf.album_flag[85]  = true"
       },
       "line": 671,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 671
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[86"
+        "exp": "sf.album_flag[86]  = true"
       },
       "line": 673,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 673
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[87"
+        "exp": "sf.album_flag[87]  = true"
       },
       "line": 675,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 675
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[88"
+        "exp": "sf.album_flag[88]  = true"
       },
       "line": 677,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 677
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[89"
+        "exp": "sf.album_flag[89]  = true"
       },
       "line": 679,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 679
     },
     {
       "type": "comment",
@@ -3335,183 +2885,118 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[0"
+        "exp": "sf.scene_flag[0]  = true"
       },
       "line": 685,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 685
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[1"
+        "exp": "sf.scene_flag[1]  = true"
       },
       "line": 687,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 687
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[2"
+        "exp": "sf.scene_flag[2]  = true"
       },
       "line": 689,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 689
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[3"
+        "exp": "sf.scene_flag[3]  = true"
       },
       "line": 691,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 691
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[4"
+        "exp": "sf.scene_flag[4]  = true"
       },
       "line": 693,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 693
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[5"
+        "exp": "sf.scene_flag[5]  = true"
       },
       "line": 695,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 695
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[6"
+        "exp": "sf.scene_flag[6]  = true"
       },
       "line": 697,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 697
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[7"
+        "exp": "sf.scene_flag[7]  = true"
       },
       "line": 699,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 699
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[8"
+        "exp": "sf.scene_flag[8]  = true"
       },
       "line": 701,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 701
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[9"
+        "exp": "sf.scene_flag[9]  = true"
       },
       "line": 703,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 703
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[10"
+        "exp": "sf.scene_flag[10]  = true"
       },
       "line": 705,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 705
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[11"
+        "exp": "sf.scene_flag[11]  = true"
       },
       "line": 707,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 707
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.scene_flag[12"
+        "exp": "sf.scene_flag[12]  = true"
       },
       "line": 709,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "  = true\"]",
-      "line": 709
     },
     {
       "type": "comment",

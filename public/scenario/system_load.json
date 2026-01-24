@@ -221,15 +221,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.load_message1_layer"
+        "exp": "tf.load_message1_layer = kag.getLayerFromElm(%['layer'=>tf.load_message1, 'page'=>'fore'])"
       },
       "line": 81,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ")\"]",
-      "line": 81
     },
     {
       "type": "comment",
@@ -240,29 +235,21 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.load_page_x"
+        "exp": "tf.load_page_x = [392,442,492,542,592,642,692,742,792,842]",
+        "cond": "tf.load_page_x === void"
       },
       "line": 85,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "\" cond=\"tf.load_page_x === void\"]",
-      "line": 85
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.load_page_y"
+        "exp": "tf.load_page_y = [595,595,595,595,595,595,595,595,595,595]",
+        "cond": "tf.load_page_y === void"
       },
       "line": 87,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" cond=\"tf.load_page_y === void\"]",
-      "line": 87
     },
     {
       "type": "comment",
@@ -273,29 +260,21 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.load_x"
+        "exp": "tf.load_x = []",
+        "cond": "tf.load_x === void"
       },
       "line": 93,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "\" cond=\"tf.load_x === void\"]",
-      "line": 93
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.load_y"
+        "exp": "tf.load_y = []",
+        "cond": "tf.load_y === void"
       },
       "line": 95,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" cond=\"tf.load_y === void\"]",
-      "line": 95
     },
     {
       "type": "comment",
@@ -353,29 +332,19 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.load_x[tf.load_i"
+        "exp": "tf.load_x[tf.load_i] = 99 + 228*tf.load_column"
       },
       "line": 113,
       "inline": true
     },
     {
-      "type": "text",
-      "text": " = 99 + 228*tf.load_column\"]",
-      "line": 113
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.load_y[tf.load_i"
+        "exp": "tf.load_y[tf.load_i] = 111 + 254*tf.load_line"
       },
       "line": 115,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = 111 + 254*tf.load_line\"]",
-      "line": 115
     },
     {
       "type": "command",
@@ -688,27 +657,11 @@
       "type": "command",
       "name": "locate",
       "args": {
-        "x": "\"&tf.load_page_x[tf.load_i"
+        "x": "&tf.load_page_x[tf.load_i]",
+        "y": "&tf.load_page_y[tf.load_i]"
       },
       "line": 207,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" y=\"&tf.load_page_y",
-      "line": 207
-    },
-    {
-      "type": "command",
-      "name": "tf.load_i",
-      "args": {},
-      "line": 207,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 207
     },
     {
       "type": "comment",
@@ -815,27 +768,11 @@
       "type": "command",
       "name": "locate",
       "args": {
-        "x": "\"&tf.load_x[tf.load_i"
+        "x": "&tf.load_x[tf.load_i]",
+        "y": "&tf.load_y[tf.load_i]"
       },
       "line": 239,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" y=\"&tf.load_y",
-      "line": 239
-    },
-    {
-      "type": "command",
-      "name": "tf.load_i",
-      "args": {},
-      "line": 239,
-      "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\"]",
-      "line": 239
     },
     {
       "type": "comment",

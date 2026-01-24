@@ -172,15 +172,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.frame_opacity"
+        "exp": "sf.frame_opacity = kag.fore.layers[tf.frame_layer].opacity"
       },
       "line": 59,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ".opacity\"]",
-      "line": 59
     },
     {
       "type": "label",
@@ -2152,29 +2147,21 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.conf_scr_x"
+        "exp": "tf.conf_scr_x = [262, 372]",
+        "cond": "tf.conf_scr_x === void"
       },
       "line": 505,
       "inline": true
     },
     {
-      "type": "text",
-      "text": "\" cond=\"tf.conf_scr_x === void\"]",
-      "line": 505
-    },
-    {
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"tf.conf_scr_y"
+        "exp": "tf.conf_scr_y = [501, 501]",
+        "cond": "tf.conf_scr_y === void"
       },
       "line": 507,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": "\" cond=\"tf.conf_scr_y === void\"]",
-      "line": 507
     },
     {
       "type": "comment",

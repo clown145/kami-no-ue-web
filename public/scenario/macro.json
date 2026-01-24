@@ -2762,15 +2762,11 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"sf.album_flag[tf.___eventcg_i"
+        "exp": "sf.album_flag[tf.___eventcg_i] = true",
+        "cond": "tf.___eventcg_i >= 0"
       },
       "line": 775,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": " = true\" cond=\"tf.___eventcg_i >= 0\"]",
-      "line": 775
     },
     {
       "type": "comment",
@@ -2876,15 +2872,10 @@
       "type": "command",
       "name": "eval",
       "args": {
-        "exp": "\"kag.current.links[+mp.num"
+        "exp": "kag.current.links[+mp.num].object.loadImages(mp.graphic, mp.graphickey)"
       },
       "line": 817,
       "inline": true
-    },
-    {
-      "type": "text",
-      "text": ".object.loadImages(mp.graphic, mp.graphickey)\"]",
-      "line": 817
     },
     {
       "type": "command",
