@@ -741,7 +741,7 @@
         }
 
         if (document.fullscreenElement && document.exitFullscreen) {
-            document.exitFullscreen().catch(() => {});
+            document.exitFullscreen().catch(() => { });
         }
         this.updateConfigState({
             textSpeed: 0,
@@ -871,7 +871,12 @@
 
     showOverlay(overlay) {
         if (!overlay) return;
-        Renderer.cancelWait();
+        // 注意：不要调用 Renderer.cancelWait()，那会推进对话
+        // 只需要停止自动模式的计时器
+        if (Renderer.clickTimer) {
+            clearTimeout(Renderer.clickTimer);
+            Renderer.clickTimer = null;
+        }
         this.hideAll(true);
         if (window.Interpreter && Interpreter.suspendChoiceLayer) {
             Interpreter.suspendChoiceLayer();

@@ -70,10 +70,12 @@ const Renderer = {
             if (!this.inputEnabled) {
                 return;
             }
-            if (e.target && e.target.closest && e.target.closest('#ui-layer, .overlay')) {
+            // 过滤UI层、覆盖层、系统按钮区域的点击
+            if (e.target && e.target.closest && e.target.closest('#ui-layer, .overlay, #system-buttons, .sys-btn')) {
                 return;
             }
-            if (e.target && e.target.closest && e.target.closest('button, input, select, textarea')) {
+            // 过滤所有交互元素
+            if (e.target && e.target.closest && e.target.closest('button, input, select, textarea, [role="button"]')) {
                 return;
             }
             if (this.messageWindowHidden) {
