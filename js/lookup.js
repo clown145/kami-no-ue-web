@@ -1,8 +1,6 @@
 /**
- * 资源查找模块 - 简化版
- * 使用内嵌的BGIMAGE_MAPPING（从bgimage_mapping.js加载）
+ * 资源查找模块 - 直接使用原始文件名
  */
-const RESOURCE_PATH_MARK = '\uF05C';
 const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.bmp'];
 const IMAGE_ALIASES = {
     'subtitle_outline1': 'subtitle_outline_1',
@@ -16,8 +14,6 @@ const resolveBasePath = () => {
 
 const ResourceLookup = {
     BASE_PATH: resolveBasePath(),
-    resourceMapping: null,
-    voiceMapLower: null,
 
     setBasePath(path) {
         this.BASE_PATH = path ? (path.endsWith('/') ? path : path + '/') : '/public/';
@@ -44,52 +40,20 @@ const ResourceLookup = {
         return name;
     },
 
-    _findMappedName(keys) {
-        if (!window.BGIMAGE_MAPPING) return null;
-        for (const key of keys) {
-            if (key && window.BGIMAGE_MAPPING[key]) {
-                return window.BGIMAGE_MAPPING[key];
-            }
-        }
-        return null;
-    },
+
 
     /**
-     * 初始化 - 不再需要异步加载
+     * 初始化 - 无需加载映射
      */
     async loadMapping() {
-        // BGIMAGE_MAPPING 已经从 bgimage_mapping.js 加载到 window
-        if (window.BGIMAGE_MAPPING) {
-            console.log('Using embedded BGIMAGE_MAPPING:', Object.keys(window.BGIMAGE_MAPPING).length, 'entries');
-        } else {
-            console.warn('BGIMAGE_MAPPING not found, using direct file names');
-        }
+        console.log('ResourceLookup: 使用直接文件名模式');
     },
 
     /**
-     * 查找脚本路径
+     * 加载资源映射 - 已禁用
      */
     async loadResourceMapping() {
-        if (this.resourceMapping) {
-            return;
-        }
-        try {
-            const response = await fetch(this.BASE_PATH + 'resource_mapping.json');
-            if (!response.ok) {
-                return;
-            }
-            const data = await response.json();
-            this.resourceMapping = data;
-            if (data && data.voice) {
-                const lowerMap = {};
-                Object.keys(data.voice).forEach((key) => {
-                    lowerMap[key.toLowerCase()] = data.voice[key];
-                });
-                this.voiceMapLower = lowerMap;
-            }
-        } catch (e) {
-            // ignore
-        }
+        // 不再需要加载映射
     },
 
     locateScript(name) {
@@ -116,26 +80,6 @@ const ResourceLookup = {
         const normalizedLower = normalized.toLowerCase();
         const explicitExt = IMAGE_EXTENSIONS.find(ext => normalizedLower.endsWith(ext)) || null;
         const extensions = explicitExt ? [explicitExt] : IMAGE_EXTENSIONS;
-        const mappedGeneric = this._findMappedName([
-            baseName,
-            RESOURCE_PATH_MARK + baseName,
-            resolvedBaseName,
-            RESOURCE_PATH_MARK + resolvedBaseName
-        ]);
-        const mappedImage = this._findMappedName([
-            'image' + RESOURCE_PATH_MARK + baseName,
-            'image' + RESOURCE_PATH_MARK + resolvedBaseName
-        ]);
-        const mappedBg = this._findMappedName([
-            'bgimage' + RESOURCE_PATH_MARK + baseName,
-            'bgimage' + RESOURCE_PATH_MARK + resolvedBaseName
-        ]);
-        const mappedCg = this._findMappedName([
-            'cg' + RESOURCE_PATH_MARK + baseName,
-            'cg' + RESOURCE_PATH_MARK + resolvedBaseName,
-            'cg-m' + RESOURCE_PATH_MARK + baseName,
-            'cg-m' + RESOURCE_PATH_MARK + resolvedBaseName
-        ]);
         const candidates = [];
         const seen = new Set();
         const push = (path) => {
@@ -144,28 +88,14 @@ const ResourceLookup = {
             candidates.push(path);
         };
 
+        // 根据名字特征判断优先搜索的文件夹
         const looksLikeCg = /^cg\d/i.test(resolvedBaseName);
         const looksLikeUi = /^(title_bg|sc_title_bt_|save_bg|load_bg|save-data|load-data|backlog_base|win\b|win-2|win01|win02)/i.test(resolvedBaseName);
         const folderOrder = looksLikeUi
             ? ['image', 'bgimage', 'cg']
             : (looksLikeCg ? ['cg', 'bgimage', 'image'] : ['bgimage', 'cg', 'image']);
-        const addMapped = () => {
-            if (mappedImage) {
-                push(this.BASE_PATH + 'bgimage/' + mappedImage);
-                push(this.BASE_PATH + 'image/' + mappedImage);
-            }
-            if (mappedBg) {
-                push(this.BASE_PATH + 'bgimage/' + mappedBg);
-            }
-            if (mappedCg) {
-                push(this.BASE_PATH + 'cg/' + mappedCg);
-            }
-            if (mappedGeneric) {
-                push(this.BASE_PATH + 'bgimage/' + mappedGeneric);
-            }
-        };
 
-        addMapped();
+        // 直接使用原始文件名查找
         for (const folder of folderOrder) {
             for (const ext of extensions) {
                 push(this.BASE_PATH + folder + '/' + resolvedBaseName + ext);
@@ -212,24 +142,9 @@ const ResourceLookup = {
     locateVoice(name) {
         if (!name) return null;
         const normalized = this._normalizeName(name);
-        const candidates = [normalized];
+        // 如果没有扩展名，默认加上 .ogg
         if (!normalized.includes('.')) {
-            candidates.push(normalized + '.ogg');
-        }
-        if (this.resourceMapping && this.resourceMapping.voice) {
-            for (const key of candidates) {
-                if (this.resourceMapping.voice[key]) {
-                    return this.BASE_PATH + 'voice/' + this.resourceMapping.voice[key];
-                }
-            }
-        }
-        if (this.voiceMapLower) {
-            for (const key of candidates) {
-                const mapped = this.voiceMapLower[key.toLowerCase()];
-                if (mapped) {
-                    return this.BASE_PATH + 'voice/' + mapped;
-                }
-            }
+            return this.BASE_PATH + 'voice/' + normalized + '.ogg';
         }
         return this.BASE_PATH + 'voice/' + normalized;
     }

@@ -30,6 +30,11 @@ const Game = {
             Renderer.applyMessageSkin();
             if (window.UI) {
                 UI.applyAssets();
+                // 提前显示标题背景，但不显示按钮
+                if (UI.elements.titleScreen) {
+                    UI.elements.titleScreen.classList.remove('hidden');
+                    UI.elements.titleScreen.style.pointerEvents = 'none';
+                }
             }
             Renderer.setLoadingProgress(30);
 
@@ -41,19 +46,25 @@ const Game = {
             this.state.initialized = true;
             Renderer.setLoadingProgress(100);
 
-            // 延迟后隐藏加载画面
+            // 延迟后显示点击进入提示
             await this.delay(500);
-            Renderer.hideLoading();
 
             console.log('Game initialized');
 
-            if (window.UI) {
-                Renderer.hideMessageBox();
-                UI.showTitle();
-            } else {
-                // Start game when no UI is available
-                await this.start();
-            }
+            // 设置点击进入后的回调
+            Renderer.onLoadingEnter = () => {
+                if (window.UI) {
+                    Renderer.hideMessageBox();
+                    // 恢复标题画面的交互功能
+                    if (UI.elements.titleScreen) {
+                        UI.elements.titleScreen.style.pointerEvents = '';
+                    }
+                    UI.showTitle();
+                } else {
+                    this.start();
+                }
+            };
+            Renderer.showLoadingEnter();
         } catch (e) {
             console.error('Initialization failed:', e);
         }

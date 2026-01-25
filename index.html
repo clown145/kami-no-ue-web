@@ -12,110 +12,114 @@
     <div id="game-stage">
         <div id="game-scale">
             <div id="game-container">
-        <!-- 背景层 -->
-        <div id="background-layer" class="layer"></div>
+                <!-- 背景层 -->
+                <div id="background-layer" class="layer"></div>
 
-        <!-- 立绘层 -->
-        <div id="character-layer" class="layer">
-            <img id="chara-left" class="character" data-position="left">
-            <img id="chara-center" class="character" data-position="center">
-            <img id="chara-right" class="character" data-position="right">
-        </div>
-
-        <!-- 对话框层 -->
-        <div id="message-layer" class="layer">
-            <div id="message-box">
-                <div id="message-bg"></div>
-                <div id="name-box">
-                    <div id="name-bg"></div>
-                    <div id="name-text"></div>
+                <!-- 立绘层 -->
+                <div id="character-layer" class="layer">
+                    <img id="chara-left" class="character" data-position="left">
+                    <img id="chara-center" class="character" data-position="center">
+                    <img id="chara-right" class="character" data-position="right">
                 </div>
-                <div id="text-box"></div>
-                <div id="click-indicator">▼</div>
-            </div>
-        </div>
 
-        <!-- 选择支层 -->
-        <div id="choice-layer" class="layer hidden"></div>
+                <!-- 对话框层 -->
+                <div id="message-layer" class="layer">
+                    <div id="message-box">
+                        <div id="message-bg"></div>
+                        <div id="name-box">
+                            <div id="name-bg"></div>
+                            <div id="name-text"></div>
+                        </div>
+                        <div id="text-box"></div>
+                        <div id="click-indicator">▼</div>
+                    </div>
+                </div>
 
-        <!-- Overlays -->
-        <div id="title-screen" class="overlay hidden">
-            <div class="title-menu">
-                <button class="title-btn" data-action="start" aria-label="Start"></button>
-                <button class="title-btn" data-action="load" aria-label="Load"></button>
-                <button class="title-btn" data-action="config" aria-label="Config"></button>
-                <button class="title-btn" data-action="gallery" aria-label="Gallery"></button>
-                <button class="title-btn" data-action="music" aria-label="Music"></button>
-                <button class="title-btn" data-action="scene" aria-label="Scene"></button>
-                <button class="title-btn" data-action="special" aria-label="Special"></button>
-                <button class="title-btn" data-action="exit" aria-label="Exit"></button>
-            </div>
-        </div>
+                <!-- 选择支层 -->
+                <div id="choice-layer" class="layer hidden"></div>
 
-        <div id="save-load-screen" class="overlay hidden">
-            <div class="overlay-header">
-                <div id="save-load-title" class="overlay-title">SAVE</div>
-                <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
-            </div>
-            <div id="save-load-list" class="save-load-list"></div>
-            <div id="save-load-pages" class="save-load-pages"></div>
-            <div id="save-load-actions" class="save-load-actions"></div>
-        </div>
+                <!-- Overlays -->
+                <div id="title-screen" class="overlay hidden">
+                    <div class="title-menu">
+                        <button class="title-btn" data-action="start" aria-label="Start"></button>
+                        <button class="title-btn" data-action="load" aria-label="Load"></button>
+                        <button class="title-btn" data-action="config" aria-label="Config"></button>
+                        <button class="title-btn" data-action="gallery" aria-label="Gallery"></button>
+                        <button class="title-btn" data-action="music" aria-label="Music"></button>
+                        <button class="title-btn" data-action="scene" aria-label="Scene"></button>
+                        <button class="title-btn" data-action="special" aria-label="Special"></button>
+                        <button class="title-btn" data-action="exit" aria-label="Exit"></button>
+                    </div>
+                </div>
 
-        <div id="log-screen" class="overlay hidden">
-            <div class="overlay-header">
-                <div class="overlay-title">HISTORY</div>
-                <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
-            </div>
-            <div id="log-entries" class="log-entries"></div>
-        </div>
+                <div id="save-load-screen" class="overlay hidden">
+                    <div class="overlay-header">
+                        <div id="save-load-title" class="overlay-title">SAVE</div>
+                        <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
+                    </div>
+                    <div id="save-load-list" class="save-load-list"></div>
+                    <div id="save-load-pages" class="save-load-pages"></div>
+                    <div id="save-load-actions" class="save-load-actions"></div>
+                </div>
 
-        <div id="config-screen" class="overlay hidden">
-            <div id="config-main" class="config-page"></div>
-            <div id="config-voice" class="config-page hidden"></div>
-            <div id="config-tabs" class="config-tabs"></div>
-            <div id="config-actions" class="config-actions"></div>
-        </div>
+                <div id="log-screen" class="overlay hidden">
+                    <div class="overlay-header">
+                        <div class="overlay-title">HISTORY</div>
+                        <button class="overlay-close" data-action="close-overlay" aria-label="Close">X</button>
+                    </div>
+                    <div id="log-entries" class="log-entries"></div>
+                </div>
 
-        <div id="confirm-screen" class="overlay hidden">
-            <div id="confirm-dialog" class="confirm-dialog">
-                <div id="confirm-text" class="confirm-text"></div>
-                <button id="confirm-yes" class="confirm-btn confirm-yes" type="button"></button>
-                <button id="confirm-no" class="confirm-btn confirm-no" type="button"></button>
-            </div>
-        </div>
+                <div id="config-screen" class="overlay hidden">
+                    <div id="config-main" class="config-page"></div>
+                    <div id="config-voice" class="config-page hidden"></div>
+                    <div id="config-tabs" class="config-tabs"></div>
+                    <div id="config-actions" class="config-actions"></div>
+                </div>
 
-        <div id="ui-toast" class="ui-toast hidden"></div>
+                <div id="confirm-screen" class="overlay hidden">
+                    <div id="confirm-dialog" class="confirm-dialog">
+                        <div id="confirm-text" class="confirm-text"></div>
+                        <button id="confirm-yes" class="confirm-btn confirm-yes" type="button"></button>
+                        <button id="confirm-no" class="confirm-btn confirm-no" type="button"></button>
+                    </div>
+                </div>
 
-        <!-- UI控制层 -->
-        <div id="ui-layer" class="layer">
-            <div id="system-buttons">
-                <button id="btn-auto" class="sys-btn">AUTO</button>
-                <button id="btn-skip" class="sys-btn">SKIP</button>
-                <button id="btn-log" class="sys-btn">LOG</button>
-                <button id="btn-save" class="sys-btn">SAVE</button>
-                <button id="btn-load" class="sys-btn">LOAD</button>
-                <button id="btn-config" class="sys-btn">CONFIG</button>
-                <button id="btn-win" class="sys-btn">WIN</button>
-            </div>
-        </div>
+                <div id="ui-toast" class="ui-toast hidden"></div>
 
-        <!-- 加载画面 -->
-        <div id="loading-screen">
-            <div id="loading-text">Loading...</div>
-            <div id="loading-bar">
-                <div id="loading-progress"></div>
-            </div>
-        </div>
+                <!-- UI控制层 -->
+                <div id="ui-layer" class="layer">
+                    <div id="system-buttons">
+                        <button id="btn-auto" class="sys-btn">AUTO</button>
+                        <button id="btn-skip" class="sys-btn">SKIP</button>
+                        <button id="btn-log" class="sys-btn">LOG</button>
+                        <button id="btn-save" class="sys-btn">SAVE</button>
+                        <button id="btn-load" class="sys-btn">LOAD</button>
+                        <button id="btn-config" class="sys-btn">CONFIG</button>
+                        <button id="btn-win" class="sys-btn">WIN</button>
+                    </div>
+                </div>
+
+                <!-- 加载画面 -->
+                <div id="loading-screen">
+                    <div id="loading-content">
+                        <div id="loading-text">Loading...</div>
+                        <div id="loading-bar">
+                            <div id="loading-progress"></div>
+                        </div>
+                    </div>
+                    <div id="loading-enter" class="hidden">
+                        <span>点击进入魔法书</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- 按正确顺序加载JS模块 -->
     <script>
-        window.RESOURCE_BASE = window.RESOURCE_BASE || 'https://kami-no-ue-web.kisaki.love';
+        window.RESOURCE_BASE = window.RESOURCE_BASE || './public/';
     </script>
-    <script src="js/bgimage_mapping.js"></script>
     <script src="js/lookup.js"></script>
     <script src="js/preload.js"></script>
     <script src="js/tokenizer.js"></script>

@@ -52,6 +52,8 @@ const Renderer = {
             clickIndicator: document.getElementById('click-indicator'),
             choiceLayer: document.getElementById('choice-layer'),
             loadingScreen: document.getElementById('loading-screen'),
+            loadingContent: document.getElementById('loading-content'),
+            loadingEnter: document.getElementById('loading-enter'),
             loadingProgress: document.getElementById('loading-progress')
         };
 
@@ -451,6 +453,24 @@ const Renderer = {
 
     hideLoading() {
         this.elements.loadingScreen.classList.add('hidden');
+    },
+
+    showLoadingEnter() {
+        if (this.elements.loadingContent) {
+            this.elements.loadingContent.classList.add('hidden');
+        }
+        if (this.elements.loadingEnter) {
+            this.elements.loadingEnter.classList.remove('hidden');
+        }
+        // 绑定点击进入事件
+        const handleEnter = () => {
+            this.hideLoading();
+            this.elements.loadingScreen.removeEventListener('click', handleEnter);
+            if (this.onLoadingEnter) {
+                this.onLoadingEnter();
+            }
+        };
+        this.elements.loadingScreen.addEventListener('click', handleEnter);
     },
 
     setLoadingProgress(percent) {
