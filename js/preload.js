@@ -72,6 +72,16 @@ const PreloadManager = {
         img.src = url;
         const entry = {
             img,
+            loaded: false,
+            promise: new Promise((resolve) => {
+                img.onload = () => {
+                    entry.loaded = true;
+                    resolve(img);
+                };
+                img.onerror = () => {
+                    resolve(null);
+                };
+            }),
             release: () => {
                 img.src = '';
             }
@@ -81,6 +91,52 @@ const PreloadManager = {
             this.pinnedImages.add(url);
         }
         this._evict(this.imageCache, this.maxImages, this.pinnedImages);
+    },
+
+    /**
+     * 获取已缓存的图片对象（如果存在且已加载完成）
+     * @param {string} url 图片URL
+     * @returns {HTMLImageElement|null} 已加载的图片对象，或 null
+     */
+    getCachedImage(url) {
+        if (!url || !this.imageCache.has(url)) {
+            return null;
+        }
+        const entry = this.imageCache.get(url);
+        this._touch(this.imageCache, url);
+        if (entry && entry.img && entry.loaded && entry.img.complete && entry.img.naturalWidth > 0) {
+            return entry.img;
+        }
+        return null;
+    },
+
+    /**
+     * 异步获取图片（优先使用缓存，否则等待加载）
+     * @param {string} url 图片URL
+     * @returns {Promise<HTMLImageElement|null>}
+     */
+    async getImage(url) {
+        if (!url) {
+            return null;
+        }
+        // 如果缓存中已有，等待其加载完成
+        if (this.imageCache.has(url)) {
+            const entry = this.imageCache.get(url);
+            this._touch(this.imageCache, url);
+            if (entry && entry.promise) {
+                return entry.promise;
+            }
+            if (entry && entry.img && entry.loaded) {
+                return entry.img;
+            }
+        }
+        // 没有缓存，开始预加载并等待
+        this.preloadImage(url);
+        const entry = this.imageCache.get(url);
+        if (entry && entry.promise) {
+            return entry.promise;
+        }
+        return null;
     },
 
     preloadAudio(url, pin = false) {
@@ -97,14 +153,78 @@ const PreloadManager = {
         const controller = new AbortController();
         const entry = {
             controller,
-            promise: fetch(url, { signal: controller.signal, cache: 'force-cache' }).catch(() => {}),
-            release: () => controller.abort()
+            blobUrl: null,
+            loaded: false,
+            promise: fetch(url, { signal: controller.signal })
+                .then(async (response) => {
+                    if (!response.ok) {
+                        return null;
+                    }
+                    const blob = await response.blob();
+                    entry.blobUrl = URL.createObjectURL(blob);
+                    entry.loaded = true;
+                    return entry.blobUrl;
+                })
+                .catch(() => null),
+            release: () => {
+                controller.abort();
+                if (entry.blobUrl) {
+                    URL.revokeObjectURL(entry.blobUrl);
+                    entry.blobUrl = null;
+                }
+            }
         };
         this.audioCache.set(url, entry);
         if (pin) {
             this.pinnedAudio.add(url);
         }
         this._evict(this.audioCache, this.maxAudio, this.pinnedAudio);
+    },
+
+    /**
+     * 获取已缓存的音频 Blob URL（如果存在且已加载完成）
+     * @param {string} url 原始音频URL
+     * @returns {string|null} Blob URL，或 null
+     */
+    getCachedAudio(url) {
+        if (!url || !this.audioCache.has(url)) {
+            return null;
+        }
+        const entry = this.audioCache.get(url);
+        this._touch(this.audioCache, url);
+        if (entry && entry.loaded && entry.blobUrl) {
+            return entry.blobUrl;
+        }
+        return null;
+    },
+
+    /**
+     * 异步获取音频 Blob URL（优先使用缓存，否则等待加载）
+     * @param {string} url 原始音频URL
+     * @returns {Promise<string|null>} Blob URL
+     */
+    async getAudio(url) {
+        if (!url) {
+            return null;
+        }
+        // 如果缓存中已有，等待其加载完成
+        if (this.audioCache.has(url)) {
+            const entry = this.audioCache.get(url);
+            this._touch(this.audioCache, url);
+            if (entry && entry.promise) {
+                return entry.promise;
+            }
+            if (entry && entry.loaded && entry.blobUrl) {
+                return entry.blobUrl;
+            }
+        }
+        // 没有缓存，开始预加载并等待
+        this.preloadAudio(url);
+        const entry = this.audioCache.get(url);
+        if (entry && entry.promise) {
+            return entry.promise;
+        }
+        return null;
     },
 
     getAudioExtensionsForBase(basePath) {

@@ -1,6 +1,7 @@
 /**
  * 音频播放器 - 参考kirikiri-web的audio.js
  * 使用HTML5 Audio元素，支持ogg和m4a多格式
+ * 优先使用 PreloadManager 缓存的 Blob URL
  */
 const AudioPlayer = {
     // 音频元素池
@@ -83,6 +84,7 @@ const AudioPlayer = {
             }
         });
     },
+
     getVoiceGroup(name) {
         if (!name) return null;
         const base = String(name).split(/[\\/]/).pop();
@@ -98,11 +100,13 @@ const AudioPlayer = {
         }
         return null;
     },
+
     getEffectiveVolume(type) {
         const base = this.volume[type] ?? 1;
         const master = this.masterVolume ?? 1;
         return Math.max(0, Math.min(1, base * master));
     },
+
     applyVolumes() {
         if (this.bgmPlayer) {
             this.bgmPlayer.volume = this.getEffectiveVolume('bgm');
@@ -116,25 +120,29 @@ const AudioPlayer = {
             this.voicePlayer.volume = Math.max(0, Math.min(1, this.getEffectiveVolume('voice') * groupVolume));
         }
     },
+
     setMasterVolume(value) {
         this.masterVolume = Math.max(0, Math.min(1, value));
         this.applyVolumes();
     },
+
     setVoiceGroupVolume(group, value) {
         if (!group) return;
         this.voiceGroupVolumes[group] = Math.max(0, Math.min(1, value));
     },
+
     setVoiceGroupEnabled(group, enabled) {
         if (!group) return;
         this.voiceGroupEnabled[group] = !!enabled;
     },
 
     /**
-     * 设置音频源 - 参考kirikiri-web使用多source标签
+     * 设置音频源 - 使用多source标签（回退方式）
      */
     setAudioSource(player, basePath) {
         // 清空现有source
         player.innerHTML = '';
+        player.removeAttribute('src');
 
         if (basePath) {
             // 添加ogg格式
@@ -159,7 +167,33 @@ const AudioPlayer = {
     },
 
     /**
-     * 播放BGM
+     * 使用 Blob URL 设置音频源
+     */
+    setAudioSourceDirect(player, blobUrl) {
+        player.innerHTML = '';
+        player.src = blobUrl;
+    },
+
+    /**
+     * 尝试从缓存获取音频 Blob URL
+     * @returns {string|null} Blob URL 或 null
+     */
+    getCachedAudioUrl(basePath, extensions = ['.ogg', '.m4a', '.wav']) {
+        if (!basePath || !window.PreloadManager || !PreloadManager.getCachedAudio) {
+            return null;
+        }
+        for (const ext of extensions) {
+            const url = basePath + ext;
+            const blobUrl = PreloadManager.getCachedAudio(url);
+            if (blobUrl) {
+                return blobUrl;
+            }
+        }
+        return null;
+    },
+
+    /**
+     * 播放BGM - 优先使用缓存
      */
     playBgm(name, fadeTime = 0) {
         if (!name || this.currentBgm === name) return;
@@ -168,11 +202,16 @@ const AudioPlayer = {
         if (!path) return;
 
         this.currentBgm = name;
-        this.setAudioSource(this.bgmPlayer, path);
-        this.bgmPlayer.volume = this.getEffectiveVolume('bgm');
-        if (window.PreloadManager) {
-            PreloadManager.useAudio(path + '.ogg');
+
+        // 尝试从缓存获取
+        const cachedUrl = this.getCachedAudioUrl(path, ['.ogg']);
+        if (cachedUrl) {
+            this.setAudioSourceDirect(this.bgmPlayer, cachedUrl);
+        } else {
+            this.setAudioSource(this.bgmPlayer, path);
         }
+
+        this.bgmPlayer.volume = this.getEffectiveVolume('bgm');
 
         if (fadeTime > 0) {
             this.bgmPlayer.volume = 0;
@@ -190,6 +229,7 @@ const AudioPlayer = {
     stopBgm() {
         this.bgmPlayer.pause();
         this.bgmPlayer.innerHTML = '';
+        this.bgmPlayer.removeAttribute('src');
         this.currentBgm = null;
     },
 
@@ -202,7 +242,7 @@ const AudioPlayer = {
     },
 
     /**
-     * 播放音效
+     * 播放音效 - 优先使用缓存
      */
     playSe(name, fadeTime = 0) {
         if (!name) return;
@@ -210,12 +250,16 @@ const AudioPlayer = {
         const path = ResourceLookup.locateSound(name);
         if (!path) return;
 
-        this.setAudioSource(this.sePlayer, path);
+        // 尝试从缓存获取
+        const cachedUrl = this.getCachedAudioUrl(path, ['.ogg', '.wav']);
+        if (cachedUrl) {
+            this.setAudioSourceDirect(this.sePlayer, cachedUrl);
+        } else {
+            this.setAudioSource(this.sePlayer, path);
+        }
+
         this.sePlayer.volume = this.getEffectiveVolume('se');
         this.sePlayer.play().catch(() => { });
-        if (window.PreloadManager) {
-            PreloadManager.useAudio(path + '.ogg');
-        }
     },
 
     /**
@@ -224,10 +268,11 @@ const AudioPlayer = {
     stopSe() {
         this.sePlayer.pause();
         this.sePlayer.innerHTML = '';
+        this.sePlayer.removeAttribute('src');
     },
 
     /**
-     * 播放语音
+     * 播放语音 - 优先使用缓存
      */
     playVoice(name) {
         if (!name) return;
@@ -242,8 +287,16 @@ const AudioPlayer = {
         }
         this.currentVoiceGroup = group;
 
-        // 如果有扩展名，直接设置src
-        if (name.includes('.')) {
+        // 尝试从缓存获取
+        const cachedUrl = window.PreloadManager && PreloadManager.getCachedAudio
+            ? PreloadManager.getCachedAudio(path)
+            : null;
+
+        if (cachedUrl) {
+            this.setAudioSourceDirect(this.voicePlayer, cachedUrl);
+        } else if (name.includes('.')) {
+            // 如果有扩展名，直接设置src
+            this.voicePlayer.innerHTML = '';
             this.voicePlayer.src = path;
         } else {
             this.setAudioSource(this.voicePlayer, path);
@@ -253,9 +306,6 @@ const AudioPlayer = {
         const effective = this.getEffectiveVolume('voice') * groupVolume;
         this.voicePlayer.volume = Math.max(0, Math.min(1, effective));
         this.voicePlayer.play().catch(() => { });
-        if (window.PreloadManager) {
-            PreloadManager.useAudio(path);
-        }
     },
 
     /**
@@ -266,6 +316,7 @@ const AudioPlayer = {
         this.clearVoiceSource();
         this.currentVoiceGroup = null;
     },
+
     clearVoiceSource() {
         if (!this.voicePlayer) {
             return;

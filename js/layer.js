@@ -90,27 +90,30 @@ const LayerRenderer = {
     },
 
     /**
-     * 预加载图片 - 参考kirikiri-web的preload
+     * 预加载图片 - 优先使用 PreloadManager 缓存
      */
+    async preloadImage(src, silent = false) {
+        // 优先使用 PreloadManager 的缓存
+        if (window.PreloadManager && PreloadManager.getImage) {
+            const img = await PreloadManager.getImage(src);
+            if (img && img.complete && img.naturalWidth > 0) {
+                return img;
+            }
+        }
 
-    preloadImage(src, silent = false) {
-        return new Promise((resolve, reject) => {
+        // 回退到直接加载
+        return new Promise((resolve) => {
             const img = new Image();
             img.onload = () => resolve(img);
             img.onerror = () => {
                 if (!silent) {
                     console.warn('Failed to load image:', src);
                 }
-                resolve(null);  // ????????
+                resolve(null);
             };
             img.src = src;
         });
     },
-
-
-    /**
-     * 显示背景图 - 参考kirikiri-web的layer渲染
-     */
 
     async showBackground(name, duration = 0) {
         const candidates = ResourceLookup.locateImageCandidates
