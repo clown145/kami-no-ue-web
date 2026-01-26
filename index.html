@@ -115,12 +115,23 @@
                 </div>
             </div>
         </div>
-    </div>
+   <script>
+    (function() {
+        // 获取当前浏览器地址栏的域名
+        const currentHost = window.location.hostname;
 
-    <!-- 按正确顺序加载JS模块 -->
-    <script>
-        window.RESOURCE_BASE = window.RESOURCE_BASE || 'https://kami-no-ue-web.kisaki.love';
-    </script>
+        // 逻辑判断
+        if (currentHost.includes('i.kisaki.love')) {
+            // 如果是通过优选域名访问（包含 i.kisaki.love）
+            window.RESOURCE_BASE = 'https://r2yx.kisaki.love';
+        } else {
+            // 其他情况的兜底方案
+            window.RESOURCE_BASE = 'https://kami-no-ue-web.kisaki.love';
+        }
+
+        console.log("当前使用的资源库地址:", window.RESOURCE_BASE);
+    })();
+</script>
     <script src="js/lookup.js"></script>
     <script src="js/preload.js"></script>
     <script src="js/tokenizer.js"></script>
