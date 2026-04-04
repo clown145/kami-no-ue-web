@@ -212,10 +212,25 @@
             if (!this.config.state) {
                 return;
             }
-            this.config.state.fullscreen = !!document.fullscreenElement;
+            this.config.state.fullscreen = this.isFullscreenActive();
             this.updateConfigUI();
             this.saveConfigState();
         });
+        window.addEventListener('miniappfullscreenchange', () => {
+            if (!this.config.state) {
+                return;
+            }
+            this.config.state.fullscreen = this.isFullscreenActive();
+            this.updateConfigUI();
+            this.saveConfigState();
+        });
+    },
+
+    isFullscreenActive() {
+        if (window.MiniAppBridge && MiniAppBridge.isAvailable()) {
+            return MiniAppBridge.isFullscreen();
+        }
+        return !!document.fullscreenElement;
     },
 
     loadConfigState() {
@@ -251,7 +266,7 @@
             cskip: sf.cskip === undefined ? true : !!sf.cskip,
             askSave: !!sf.Asksave,
             voiceCut: !!sf.voice_cut,
-            fullscreen: !!document.fullscreenElement,
+            fullscreen: this.isFullscreenActive(),
             voiceEnabled: baseVoiceEnabled,
             voiceVolumes: baseVoiceVolumes
         };
@@ -703,6 +718,13 @@
 
     setFullscreen(enable) {
         const next = !!enable;
+        if (window.MiniAppBridge && MiniAppBridge.isAvailable()) {
+            const handled = next ? MiniAppBridge.requestFullscreen() : MiniAppBridge.exitFullscreen();
+            if (handled) {
+                this.updateConfigState({ fullscreen: next });
+                return;
+            }
+        }
         if (next) {
             if (document.documentElement.requestFullscreen) {
                 document.documentElement.requestFullscreen().then(() => {
@@ -740,7 +762,11 @@
             return;
         }
 
-        if (document.fullscreenElement && document.exitFullscreen) {
+        if (window.MiniAppBridge && MiniAppBridge.isAvailable()) {
+            if (MiniAppBridge.isFullscreen()) {
+                MiniAppBridge.exitFullscreen();
+            }
+        } else if (document.fullscreenElement && document.exitFullscreen) {
             document.exitFullscreen().catch(() => { });
         }
         this.updateConfigState({

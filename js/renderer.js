@@ -64,6 +64,9 @@ const Renderer = {
         window.addEventListener('resize', () => {
             this.applyViewportScale();
         });
+        window.addEventListener('miniappviewportchange', () => {
+            this.applyViewportScale();
+        });
 
         // 绑定点击事件
         this.elements.container.addEventListener('click', (e) => {
@@ -128,8 +131,8 @@ const Renderer = {
 
     applyViewportScale() {
         const base = LayerRenderer.baseSize || { width: 1280, height: 720 };
-        const width = window.innerWidth || document.documentElement.clientWidth;
-        const height = window.innerHeight || document.documentElement.clientHeight;
+        const width = (this.elements.stage && this.elements.stage.clientWidth) || window.innerWidth || document.documentElement.clientWidth;
+        const height = (this.elements.stage && this.elements.stage.clientHeight) || window.innerHeight || document.documentElement.clientHeight;
         if (!width || !height) {
             return;
         }

@@ -6,6 +6,11 @@
     --primary-color: #2a1a4a;
     --text-color: #f0e6d8;
     --accent-color: #8b5cf6;
+    --app-height: 100vh;
+    --tg-safe-area-top: 0px;
+    --tg-safe-area-right: 0px;
+    --tg-safe-area-bottom: 0px;
+    --tg-safe-area-left: 0px;
 }
 
 * {
@@ -37,7 +42,7 @@ body {
 #game-stage {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: var(--app-height, 100vh);
     display: flex;
     align-items: center;
     justify-content: center;
