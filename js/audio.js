@@ -217,6 +217,14 @@ const AudioPlayer = {
         return PreloadManager.getAudioIfPreloaded(url);
     },
 
+    runPlaybackTask(label, task) {
+        Promise.resolve()
+            .then(task)
+            .catch((error) => {
+                console.error(`Failed to start ${label} playback`, error);
+            });
+    },
+
     /**
      * 播放BGM - 优先使用缓存
      */
@@ -251,7 +259,7 @@ const AudioPlayer = {
                 console.log('BGM autoplay blocked:', e.message);
             });
         };
-        start();
+        this.runPlaybackTask('BGM', start);
     },
 
     /**
@@ -297,7 +305,7 @@ const AudioPlayer = {
             this.sePlayer.volume = this.getEffectiveVolume('se');
             this.sePlayer.play().catch(() => { });
         };
-        start();
+        this.runPlaybackTask('SE', start);
     },
 
     /**
@@ -345,7 +353,7 @@ const AudioPlayer = {
             this.voicePlayer.volume = Math.max(0, Math.min(1, effective));
             this.voicePlayer.play().catch(() => { });
         };
-        start();
+        this.runPlaybackTask('voice', start);
     },
 
     /**
