@@ -99,6 +99,7 @@ const LayerRenderer = {
             if (img && img.complete && img.naturalWidth > 0) {
                 return img;
             }
+            return null;
         }
 
         // 回退到直接加载
