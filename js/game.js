@@ -27,9 +27,7 @@ const Game = {
             if (ResourceLookup.loadResourceMapping) {
                 await ResourceLookup.loadResourceMapping();
             }
-            Renderer.applyMessageSkin();
             if (window.UI) {
-                UI.applyAssets();
                 // 提前显示标题背景，但不显示按钮
                 if (UI.elements.titleScreen) {
                     UI.elements.titleScreen.classList.remove('hidden');

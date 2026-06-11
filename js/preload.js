@@ -199,6 +199,26 @@ const PreloadManager = {
     },
 
     /**
+     * 获取已缓存或正在预加载的音频，不主动创建新的请求。
+     * @param {string} url 原始音频URL
+     * @returns {Promise<string|null>} Blob URL，或 null
+     */
+    async getAudioIfPreloaded(url) {
+        if (!url || !this.audioCache.has(url)) {
+            return null;
+        }
+        const entry = this.audioCache.get(url);
+        this._touch(this.audioCache, url);
+        if (entry && entry.loaded && entry.blobUrl) {
+            return entry.blobUrl;
+        }
+        if (entry && entry.promise) {
+            return entry.promise;
+        }
+        return null;
+    },
+
+    /**
      * 异步获取音频 Blob URL（优先使用缓存，否则等待加载）
      * @param {string} url 原始音频URL
      * @returns {Promise<string|null>} Blob URL
